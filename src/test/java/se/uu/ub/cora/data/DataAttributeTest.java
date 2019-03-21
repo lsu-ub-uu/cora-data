@@ -28,9 +28,9 @@ import se.uu.ub.cora.data.DataAttribute;
 public class DataAttributeTest {
 	@Test
 	public void testInit() {
-		DataAttribute spiderDataAttribute = DataAttribute
+		DataAttribute dataAttribute = DataAttribute
 				.withNameInDataAndValue("nameInData", "value");
-		assertEquals(spiderDataAttribute.getNameInData(), "nameInData");
-		assertEquals(spiderDataAttribute.getValue(), "value");
+		assertEquals(dataAttribute.getNameInData(), "nameInData");
+		assertEquals(dataAttribute.getValue(), "value");
 	}
 }

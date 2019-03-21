@@ -28,60 +28,55 @@ import java.util.Set;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import se.uu.ub.cora.data.Action;
-import se.uu.ub.cora.data.Data;
-import se.uu.ub.cora.data.DataGroup;
-import se.uu.ub.cora.data.DataRecord;
-
 public class DataRecordTest {
-	private DataRecord spiderDataRecord;
+	private DataRecord dataRecord;
 
 	@BeforeMethod
 	public void beforeMethod() {
-		DataGroup spiderDataGroup = DataGroup.withNameInData("nameInData");
-		spiderDataRecord = DataRecord.withSpiderDataGroup(spiderDataGroup);
+		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
+		dataRecord = DataRecord.withDataGroup(dataGroup);
 	}
 
 	@Test
-	public void testRecordIsSpiderData() {
-		assertTrue(spiderDataRecord instanceof Data);
+	public void testRecordIsData() {
+		assertTrue(dataRecord instanceof Data);
 	}
 
 	@Test
 	public void testKeys() {
-		spiderDataRecord.addKey("KEY");
-		assertTrue(spiderDataRecord.containsKey("KEY"));
+		dataRecord.addKey("KEY");
+		assertTrue(dataRecord.containsKey("KEY"));
 	}
 
 	@Test
 	public void testGetKeys() {
-		spiderDataRecord.addKey("KEY1");
-		spiderDataRecord.addKey("KEY2");
-		Set<String> keys = spiderDataRecord.getKeys();
+		dataRecord.addKey("KEY1");
+		dataRecord.addKey("KEY2");
+		Set<String> keys = dataRecord.getKeys();
 		assertTrue(keys.contains("KEY1"));
 		assertTrue(keys.contains("KEY2"));
 	}
 
 	@Test
 	public void testAddAction() {
-		spiderDataRecord.addAction(Action.READ);
+		dataRecord.addAction(Action.READ);
 
-		assertTrue(spiderDataRecord.getActions().contains(Action.READ));
-		assertFalse(spiderDataRecord.getActions().contains(Action.DELETE));
+		assertTrue(dataRecord.getActions().contains(Action.READ));
+		assertFalse(dataRecord.getActions().contains(Action.DELETE));
 		// small hack to get 100% coverage on enum
 		Action.valueOf(Action.READ.toString());
 	}
 
 	@Test
-	public void testGetSpiderDataGroup() {
-		String nameInData = spiderDataRecord.getSpiderDataGroup().getNameInData();
+	public void testGetDataGroup() {
+		String nameInData = dataRecord.getDataGroup().getNameInData();
 		assertEquals(nameInData, "nameInData");
 	}
 
 	@Test
-	public void testSpiderDataGroup() {
-		DataGroup spiderDataGroup = DataGroup.withNameInData("nameInData");
-		spiderDataRecord.setSpiderDataGroup(spiderDataGroup);
-		assertEquals(spiderDataRecord.getSpiderDataGroup(), spiderDataGroup);
+	public void testDataGroup() {
+		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
+		dataRecord.setDataGroup(dataGroup);
+		assertEquals(dataRecord.getDataGroup(), dataGroup);
 	}
 }

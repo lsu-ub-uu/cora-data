@@ -25,56 +25,51 @@ import java.util.List;
 
 import org.testng.annotations.Test;
 
-import se.uu.ub.cora.data.Data;
-import se.uu.ub.cora.data.DataGroup;
-import se.uu.ub.cora.data.DataList;
-import se.uu.ub.cora.data.DataRecord;
-
 public class DataListTest {
 	@Test
 	public void testInit() {
 		String containDataOfType = "metadata";
-		DataList spiderDataList = DataList.withContainDataOfType(containDataOfType);
-		assertEquals(spiderDataList.getContainDataOfType(), "metadata");
+		DataList dataList = DataList.withContainDataOfType(containDataOfType);
+		assertEquals(dataList.getContainDataOfType(), "metadata");
 	}
 
 	@Test
 	public void testAddRecord() {
-		DataList spiderDataList = DataList.withContainDataOfType("metadata");
-		DataGroup spiderDataGroup = DataGroup.withNameInData("spiderDataGroupId");
-		DataRecord record = DataRecord.withSpiderDataGroup(spiderDataGroup);
-		spiderDataList.addData(record);
-		List<Data> records = spiderDataList.getDataList();
+		DataList dataList = DataList.withContainDataOfType("metadata");
+		DataGroup dataGroup = DataGroup.withNameInData("dataGroupId");
+		DataRecord record = DataRecord.withDataGroup(dataGroup);
+		dataList.addData(record);
+		List<Data> records = dataList.getDataList();
 		assertEquals(records.get(0), record);
 	}
 
 	@Test
 	public void testAddGroup() {
-		DataList spiderDataList = DataList.withContainDataOfType("metadata");
-		DataGroup spiderDataGroup = DataGroup.withNameInData("spiderDataGroupId");
-		spiderDataList.addData(spiderDataGroup);
-		List<Data> groups = spiderDataList.getDataList();
-		assertEquals(groups.get(0), spiderDataGroup);
+		DataList dataList = DataList.withContainDataOfType("metadata");
+		DataGroup dataGroup = DataGroup.withNameInData("dataGroupId");
+		dataList.addData(dataGroup);
+		List<Data> groups = dataList.getDataList();
+		assertEquals(groups.get(0), dataGroup);
 	}
 
 	@Test
 	public void testTotalNo() {
-		DataList spiderDataList = DataList.withContainDataOfType("metadata");
-		spiderDataList.setTotalNo("2");
-		assertEquals(spiderDataList.getTotalNumberOfTypeInStorage(), "2");
+		DataList dataList = DataList.withContainDataOfType("metadata");
+		dataList.setTotalNo("2");
+		assertEquals(dataList.getTotalNumberOfTypeInStorage(), "2");
 	}
 
 	@Test
 	public void testFromNo() {
-		DataList spiderDataList = DataList.withContainDataOfType("metadata");
-		spiderDataList.setFromNo("0");
-		assertEquals(spiderDataList.getFromNo(), "0");
+		DataList dataList = DataList.withContainDataOfType("metadata");
+		dataList.setFromNo("0");
+		assertEquals(dataList.getFromNo(), "0");
 	}
 
 	@Test
 	public void testToNo() {
-		DataList spiderDataList = DataList.withContainDataOfType("metadata");
-		spiderDataList.setToNo("2");
-		assertEquals(spiderDataList.getToNo(), "2");
+		DataList dataList = DataList.withContainDataOfType("metadata");
+		dataList.setToNo("2");
+		assertEquals(dataList.getToNo(), "2");
 	}
 }

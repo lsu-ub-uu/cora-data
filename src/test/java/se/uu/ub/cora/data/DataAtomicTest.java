@@ -28,36 +28,36 @@ public class DataAtomicTest {
 
 	@Test
 	public void testInit() {
-		DataAtomic spiderDataAtomic = DataAtomic.withNameInDataAndValue("nameInData",
+		DataAtomic dataAtomic = DataAtomic.withNameInDataAndValue("nameInData",
 				"value");
-		assertEquals(spiderDataAtomic.getNameInData(), "nameInData");
-		assertEquals(spiderDataAtomic.getValue(), "value");
+		assertEquals(dataAtomic.getNameInData(), "nameInData");
+		assertEquals(dataAtomic.getValue(), "value");
 	}
 
 	@Test
 	public void testInitWithRepeatId() {
-		DataAtomic spiderDataAtomic = DataAtomic
+		DataAtomic dataAtomic = DataAtomic
 				.withNameInDataAndValueAndRepeatId("nameInData", "value", "2");
-		assertEquals(spiderDataAtomic.getNameInData(), "nameInData");
-		assertEquals(spiderDataAtomic.getValue(), "value");
-		assertEquals(spiderDataAtomic.getRepeatId(), "2");
+		assertEquals(dataAtomic.getNameInData(), "nameInData");
+		assertEquals(dataAtomic.getValue(), "value");
+		assertEquals(dataAtomic.getRepeatId(), "2");
 	}
 
 	@Test
 	public void testSetRepeatId() {
-		DataAtomic spiderDataAtomic = DataAtomic.withNameInDataAndValue("nameInData",
+		DataAtomic dataAtomic = DataAtomic.withNameInDataAndValue("nameInData",
 				"value");
-		spiderDataAtomic.setRepeatId("3");
-		assertEquals(spiderDataAtomic.getNameInData(), "nameInData");
-		assertEquals(spiderDataAtomic.getValue(), "value");
-		assertEquals(spiderDataAtomic.getRepeatId(), "3");
+		dataAtomic.setRepeatId("3");
+		assertEquals(dataAtomic.getNameInData(), "nameInData");
+		assertEquals(dataAtomic.getValue(), "value");
+		assertEquals(dataAtomic.getRepeatId(), "3");
 	}
 
 	@Test
 	public void testGetAttributesInDataElementInterface() {
-		DataAtomic spiderDataAtomic = DataAtomic.withNameInDataAndValue("nameInData",
+		DataAtomic dataAtomic = DataAtomic.withNameInDataAndValue("nameInData",
 				"value");
-		assertTrue(spiderDataAtomic.getAttributes().isEmpty());
+		assertTrue(dataAtomic.getAttributes().isEmpty());
 
 	}
 }

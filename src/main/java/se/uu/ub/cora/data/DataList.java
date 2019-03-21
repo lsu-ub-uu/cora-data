@@ -25,7 +25,7 @@ import java.util.List;
 public final class DataList {
 
 	private String containDataOfType;
-	private List<Data> dataList = new ArrayList<>();
+	private List<Data> listOfData = new ArrayList<>();
 	private String totalNo;
 	private String fromNo;
 	private String toNo;
@@ -42,13 +42,13 @@ public final class DataList {
 		return containDataOfType;
 	}
 
-	public void addData(Data spiderData) {
-		dataList.add(spiderData);
+	public void addData(Data data) {
+		listOfData.add(data);
 
 	}
 
 	public List<Data> getDataList() {
-		return dataList;
+		return listOfData;
 	}
 
 	public void setTotalNo(String totalNo) {

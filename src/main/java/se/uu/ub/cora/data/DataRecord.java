@@ -26,15 +26,15 @@ import java.util.Set;
 
 public final class DataRecord implements Data {
 	private Set<String> keys = new HashSet<>();
-	private DataGroup spiderDataGroup;
+	private DataGroup dataGroup;
 	private List<Action> actions = new ArrayList<>();
 
-	public static DataRecord withSpiderDataGroup(DataGroup spiderDataGroup) {
-		return new DataRecord(spiderDataGroup);
+	public static DataRecord withDataGroup(DataGroup dataGroup) {
+		return new DataRecord(dataGroup);
 	}
 
-	private DataRecord(DataGroup spiderDataGroup) {
-		this.spiderDataGroup = spiderDataGroup;
+	private DataRecord(DataGroup dataGroup) {
+		this.dataGroup = dataGroup;
 	}
 
 	public void addKey(String key) {
@@ -49,13 +49,13 @@ public final class DataRecord implements Data {
 		return keys;
 	}
 
-	public void setSpiderDataGroup(DataGroup spiderDataGroup) {
-		this.spiderDataGroup = spiderDataGroup;
+	public void setDataGroup(DataGroup dataGroup) {
+		this.dataGroup = dataGroup;
 
 	}
 
-	public DataGroup getSpiderDataGroup() {
-		return spiderDataGroup;
+	public DataGroup getDataGroup() {
+		return dataGroup;
 	}
 
 	public void addAction(Action action) {

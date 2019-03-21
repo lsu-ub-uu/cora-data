@@ -31,43 +31,36 @@ import java.util.Map.Entry;
 
 import org.testng.annotations.Test;
 
-import se.uu.ub.cora.data.DataMissingException;
-import se.uu.ub.cora.data.Data;
-import se.uu.ub.cora.data.DataAtomic;
-import se.uu.ub.cora.data.DataAttribute;
-import se.uu.ub.cora.data.DataElement;
-import se.uu.ub.cora.data.DataGroup;
-
 public class DataGroupTest {
 	@Test
 	public void testInit() {
-		DataGroup spiderDataGroup = DataGroup.withNameInData("nameInData");
-		assertEquals(spiderDataGroup.getNameInData(), "nameInData");
-		assertNotNull(spiderDataGroup.getAttributes());
-		assertNotNull(spiderDataGroup.getChildren());
+		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
+		assertEquals(dataGroup.getNameInData(), "nameInData");
+		assertNotNull(dataGroup.getAttributes());
+		assertNotNull(dataGroup.getChildren());
 	}
 
 	@Test
-	public void testGroupIsSpiderData() {
-		DataGroup spiderDataGroup = DataGroup.withNameInData("nameInData");
-		assertTrue(spiderDataGroup instanceof Data);
+	public void testGroupIsData() {
+		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
+		assertTrue(dataGroup instanceof Data);
 	}
 
 	@Test
 	public void testInitWithRepeatId() {
-		DataGroup spiderDataGroup = DataGroup.withNameInData("nameInData");
-		spiderDataGroup.setRepeatId("hrumph");
-		assertEquals(spiderDataGroup.getNameInData(), "nameInData");
-		assertNotNull(spiderDataGroup.getAttributes());
-		assertNotNull(spiderDataGroup.getChildren());
-		assertEquals(spiderDataGroup.getRepeatId(), "hrumph");
+		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
+		dataGroup.setRepeatId("hrumph");
+		assertEquals(dataGroup.getNameInData(), "nameInData");
+		assertNotNull(dataGroup.getAttributes());
+		assertNotNull(dataGroup.getChildren());
+		assertEquals(dataGroup.getRepeatId(), "hrumph");
 	}
 
 	@Test
 	public void testAddAttribute() {
-		DataGroup spiderDataGroup = DataGroup.withNameInData("nameInData");
-		spiderDataGroup.addAttributeByIdWithValue("nameInData", "value");
-		Map<String, String> attributes = spiderDataGroup.getAttributes();
+		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
+		dataGroup.addAttributeByIdWithValue("nameInData", "value");
+		Map<String, String> attributes = dataGroup.getAttributes();
 		Entry<String, String> entry = attributes.entrySet().iterator().next();
 		assertEquals(entry.getKey(), "nameInData");
 		assertEquals(entry.getValue(), "value");
@@ -75,11 +68,11 @@ public class DataGroupTest {
 
 	@Test
 	public void testAddChild() {
-		DataGroup spiderDataGroup = DataGroup.withNameInData("nameInData");
+		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
 		DataElement dataElement = DataAtomic.withNameInDataAndValue("childNameInData",
 				"childValue");
-		spiderDataGroup.addChild(dataElement);
-		List<DataElement> children = spiderDataGroup.getChildren();
+		dataGroup.addChild(dataElement);
+		List<DataElement> children = dataGroup.getChildren();
 		DataElement childElementOut = children.get(0);
 		assertEquals(childElementOut.getNameInData(), "childNameInData");
 	}
@@ -87,8 +80,7 @@ public class DataGroupTest {
 	@Test
 	public void testContainsChildWithId() {
 		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
-		dataGroup.addChild(
-				DataAtomic.withNameInDataAndValue("otherChildId", "otherChildValue"));
+		dataGroup.addChild(DataAtomic.withNameInDataAndValue("otherChildId", "otherChildValue"));
 		DataElement child = DataAtomic.withNameInDataAndValue("childId", "child value");
 		dataGroup.addChild(child);
 		assertTrue(dataGroup.containsChildWithNameInData("childId"));
@@ -120,107 +112,104 @@ public class DataGroupTest {
 
 	@Test
 	public void testExtractAtomicValue() {
-		DataGroup spiderDataGroup = DataGroup.withNameInData("nameInData");
-		spiderDataGroup.addChild(
-				DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
-		assertEquals(spiderDataGroup.getFirstAtomicValueWithNameInData("atomicNameInData"),
+		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
+		dataGroup
+				.addChild(DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
+		assertEquals(dataGroup.getFirstAtomicValueWithNameInData("atomicNameInData"),
 				"atomicValue");
 	}
 
 	@Test(expectedExceptions = DataMissingException.class, expectedExceptionsMessageRegExp = ""
 			+ "Atomic value not found for childNameInData:" + "atomicNameInData_NOT_FOUND")
 	public void testExtractAtomicValueNotFound() {
-		DataGroup spiderDataGroup = DataGroup.withNameInData("nameInData");
-		spiderDataGroup.addChild(
-				DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
-		spiderDataGroup.getFirstAtomicValueWithNameInData("atomicNameInData_NOT_FOUND");
+		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
+		dataGroup
+				.addChild(DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
+		dataGroup.getFirstAtomicValueWithNameInData("atomicNameInData_NOT_FOUND");
 	}
 
 	@Test
 	public void testExtractGroup() {
-		DataGroup spiderDataGroup = DataGroup.withNameInData("nameInData");
-		spiderDataGroup.addChild(
-				DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
+		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
+		dataGroup
+				.addChild(DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
 		DataGroup dataGroup2 = DataGroup.withNameInData("childNameInData");
 		dataGroup2.addChild(DataGroup.withNameInData("grandChildNameInData"));
-		spiderDataGroup.addChild(dataGroup2);
-		assertEquals(spiderDataGroup.getFirstGroupWithNameInData("childNameInData"), dataGroup2);
+		dataGroup.addChild(dataGroup2);
+		assertEquals(dataGroup.getFirstGroupWithNameInData("childNameInData"), dataGroup2);
 	}
 
 	@Test(expectedExceptions = DataMissingException.class, expectedExceptionsMessageRegExp = ""
 			+ "Group not found for childNameInData:childNameInData_NOT_FOUND")
 	public void testGetFirstGroupWithNameInDataNotFound() {
-		DataGroup spiderDataGroup = DataGroup.withNameInData("nameInData");
-		spiderDataGroup.addChild(
-				DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
+		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
+		dataGroup
+				.addChild(DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
 		DataGroup dataGroup2 = DataGroup.withNameInData("childNameInData");
 		dataGroup2.addChild(DataGroup.withNameInData("grandChildNameInData"));
-		spiderDataGroup.addChild(dataGroup2);
-		spiderDataGroup.getFirstGroupWithNameInData("childNameInData_NOT_FOUND");
+		dataGroup.addChild(dataGroup2);
+		dataGroup.getFirstGroupWithNameInData("childNameInData_NOT_FOUND");
 	}
 
 	@Test
 	public void testGetFirstChildWithNameInData() {
-		DataGroup spiderDataGroup = DataGroup.withNameInData("nameInData");
-		spiderDataGroup.addChild(
-				DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
+		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
+		dataGroup
+				.addChild(DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
 		DataGroup dataGroup2 = DataGroup.withNameInData("childNameInData");
 		dataGroup2.addChild(DataGroup.withNameInData("grandChildNameInData"));
-		spiderDataGroup.addChild(dataGroup2);
-		assertEquals(spiderDataGroup.getFirstChildWithNameInData("childNameInData"), dataGroup2);
+		dataGroup.addChild(dataGroup2);
+		assertEquals(dataGroup.getFirstChildWithNameInData("childNameInData"), dataGroup2);
 	}
 
 	@Test(expectedExceptions = DataMissingException.class, expectedExceptionsMessageRegExp = ""
 			+ "Element not found for childNameInData:childNameInData_NOT_FOUND")
 	public void testGetFirstChildWithNameInDataNotFound() {
-		DataGroup spiderDataGroup = DataGroup.withNameInData("nameInData");
-		spiderDataGroup.addChild(
-				DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
+		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
+		dataGroup
+				.addChild(DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
 		DataGroup dataGroup2 = DataGroup.withNameInData("childNameInData");
 		dataGroup2.addChild(DataGroup.withNameInData("grandChildNameInData"));
-		spiderDataGroup.addChild(dataGroup2);
-		spiderDataGroup.getFirstChildWithNameInData("childNameInData_NOT_FOUND");
+		dataGroup.addChild(dataGroup2);
+		dataGroup.getFirstChildWithNameInData("childNameInData_NOT_FOUND");
 	}
 
 	@Test
 	public void testGetAllGroupsWithNameInData() {
-		DataGroup spiderDataGroup = DataGroup.withNameInData("nameInData");
-		spiderDataGroup.addChild(
-				DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
-		addTwoGroupChildrenWithSameNameInData(spiderDataGroup);
+		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
+		dataGroup
+				.addChild(DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
+		addTwoGroupChildrenWithSameNameInData(dataGroup);
 
-		List<DataGroup> groupsFound = spiderDataGroup
-				.getAllGroupsWithNameInData("childNameInData");
+		List<DataGroup> groupsFound = dataGroup.getAllGroupsWithNameInData("childNameInData");
 		assertEquals(groupsFound.size(), 2);
 	}
 
-	private void addTwoGroupChildrenWithSameNameInData(DataGroup spiderDataGroup) {
+	private void addTwoGroupChildrenWithSameNameInData(DataGroup parentDataGroup) {
 		DataGroup dataGroup = DataGroup.withNameInData("childNameInData");
 		dataGroup.addChild(DataAtomic.withNameInDataAndValue("firstName", "someName"));
 		dataGroup.setRepeatId("0");
-		spiderDataGroup.addChild(dataGroup);
+		parentDataGroup.addChild(dataGroup);
 		DataGroup dataGroup2 = DataGroup.withNameInData("childNameInData");
 		dataGroup2.addChild(DataAtomic.withNameInDataAndValue("firstName", "someOtherName"));
 		dataGroup2.setRepeatId("1");
-		spiderDataGroup.addChild(dataGroup2);
+		parentDataGroup.addChild(dataGroup2);
 	}
 
 	@Test
 	public void testGetAllGroupsWithNameInDataNoMatches() {
-		DataGroup spiderDataGroup = DataGroup.withNameInData("nameInData");
-		spiderDataGroup.addChild(
-				DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
+		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
+		dataGroup
+				.addChild(DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
 
-		List<DataGroup> groupsFound = spiderDataGroup
-				.getAllGroupsWithNameInData("childNameInData");
+		List<DataGroup> groupsFound = dataGroup.getAllGroupsWithNameInData("childNameInData");
 		assertEquals(groupsFound.size(), 0);
 	}
 
 	@Test
 	public void testGetAllGroupsWithNameInDataAndAttributesOneMatch() {
 		DataGroup dataGroup = DataGroup.withNameInData("someDataGroup");
-		DataGroup child3 = createTestGroupForAttributesReturnChildGroupWithAttribute(
-				dataGroup);
+		DataGroup child3 = createTestGroupForAttributesReturnChildGroupWithAttribute(dataGroup);
 
 		Collection<DataGroup> groupsFound = dataGroup.getAllGroupsWithNameInDataAndAttributes(
 				"groupId2", DataAttribute.withNameInDataAndValue("nameInData", "value1"));
@@ -255,8 +244,8 @@ public class DataGroupTest {
 		return child;
 	}
 
-	private DataGroup addAndReturnDataGroupChildWithNameInDataAndAttributes(
-			DataGroup dataGroup, String nameInData, DataAttribute... attributes) {
+	private DataGroup addAndReturnDataGroupChildWithNameInDataAndAttributes(DataGroup dataGroup,
+			String nameInData, DataAttribute... attributes) {
 		DataGroup child = DataGroup.withNameInData(nameInData);
 		dataGroup.addChild(child);
 		for (DataAttribute attribute : attributes) {
@@ -268,8 +257,7 @@ public class DataGroupTest {
 	@Test
 	public void testGetAllGroupsWithNameInDataAndAttributesTwoMatches() {
 		DataGroup dataGroup = DataGroup.withNameInData("someDataGroup");
-		DataGroup child3 = createTestGroupForAttributesReturnChildGroupWithAttribute(
-				dataGroup);
+		DataGroup child3 = createTestGroupForAttributesReturnChildGroupWithAttribute(dataGroup);
 		DataGroup child4 = addAndReturnDataGroupChildWithNameInDataAndAttributes(dataGroup,
 				"groupId2", DataAttribute.withNameInDataAndValue("nameInData", "value1"));
 
@@ -283,8 +271,7 @@ public class DataGroupTest {
 	@Test
 	public void testGetAllGroupsWithNameInDataAndAttributesOneWrongAttributeValueTwoMatches() {
 		DataGroup dataGroup = DataGroup.withNameInData("someDataGroup");
-		DataGroup child3 = createTestGroupForAttributesReturnChildGroupWithAttribute(
-				dataGroup);
+		DataGroup child3 = createTestGroupForAttributesReturnChildGroupWithAttribute(dataGroup);
 		DataGroup child4 = addAndReturnDataGroupChildWithNameInDataAndAttributes(dataGroup,
 				"groupId2", DataAttribute.withNameInDataAndValue("nameInData", "value1"));
 		addAndReturnDataGroupChildWithNameInDataAndAttributes(dataGroup, "groupId2",
@@ -300,8 +287,7 @@ public class DataGroupTest {
 	@Test
 	public void testGetAllGroupsWithNameInDataAndAttributesOneWrongAttributeNameTwoMatches() {
 		DataGroup dataGroup = DataGroup.withNameInData("someDataGroup");
-		DataGroup child3 = createTestGroupForAttributesReturnChildGroupWithAttribute(
-				dataGroup);
+		DataGroup child3 = createTestGroupForAttributesReturnChildGroupWithAttribute(dataGroup);
 		DataGroup child4 = addAndReturnDataGroupChildWithNameInDataAndAttributes(dataGroup,
 				"groupId2", DataAttribute.withNameInDataAndValue("nameInData", "value1"));
 		addAndReturnDataGroupChildWithNameInDataAndAttributes(dataGroup, "groupId2",

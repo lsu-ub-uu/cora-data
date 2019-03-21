@@ -14,40 +14,40 @@ import se.uu.ub.cora.data.DataResourceLink;
 
 public class DataResourceLinkTest {
 
-	DataResourceLink spiderResourceLink;
+	DataResourceLink resourceLink;
 
 	@BeforeMethod
 	public void setUp() {
-		spiderResourceLink = DataResourceLink.withNameInData("nameInData");
+		resourceLink = DataResourceLink.withNameInData("nameInData");
 
 		DataAtomic streamId = DataAtomic.withNameInDataAndValue("streamId",
 				"myStreamId");
-		spiderResourceLink.addChild(streamId);
+		resourceLink.addChild(streamId);
 
 	}
 
 	@Test
 	public void testInit() {
-		assertEquals(spiderResourceLink.getNameInData(), "nameInData");
-		assertNotNull(spiderResourceLink.getAttributes());
-		assertNotNull(spiderResourceLink.getChildren());
-		assertEquals(spiderResourceLink.getFirstAtomicValueWithNameInData("streamId"),
+		assertEquals(resourceLink.getNameInData(), "nameInData");
+		assertNotNull(resourceLink.getAttributes());
+		assertNotNull(resourceLink.getChildren());
+		assertEquals(resourceLink.getFirstAtomicValueWithNameInData("streamId"),
 				"myStreamId");
-		assertNotNull(spiderResourceLink.getActions());
+		assertNotNull(resourceLink.getActions());
 	}
 
 	@Test
 	public void testInitWithRepeatId() {
-		spiderResourceLink.setRepeatId("hugh");
-		assertEquals(spiderResourceLink.getRepeatId(), "hugh");
+		resourceLink.setRepeatId("hugh");
+		assertEquals(resourceLink.getRepeatId(), "hugh");
 	}
 
 	@Test
 	public void testAddAction() {
-		spiderResourceLink.addAction(Action.READ);
+		resourceLink.addAction(Action.READ);
 
-		assertTrue(spiderResourceLink.getActions().contains(Action.READ));
-		assertFalse(spiderResourceLink.getActions().contains(Action.DELETE));
+		assertTrue(resourceLink.getActions().contains(Action.READ));
+		assertFalse(resourceLink.getActions().contains(Action.DELETE));
 		// small hack to get 100% coverage on enum
 		Action.valueOf(Action.READ.toString());
 	}

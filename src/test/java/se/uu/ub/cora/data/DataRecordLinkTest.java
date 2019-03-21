@@ -17,46 +17,46 @@ import se.uu.ub.cora.data.DataRecordLink;
 
 public class DataRecordLinkTest {
 
-	DataRecordLink spiderRecordLink;
+	DataRecordLink recordLink;
 
 	@BeforeMethod
 	public void setUp() {
-		spiderRecordLink = DataRecordLink.withNameInData("nameInData");
+		recordLink = DataRecordLink.withNameInData("nameInData");
 
 		DataAtomic linkedRecordType = DataAtomic
 				.withNameInDataAndValue("linkedRecordType", "myLinkedRecordType");
-		spiderRecordLink.addChild(linkedRecordType);
+		recordLink.addChild(linkedRecordType);
 
 		DataAtomic linkedRecordId = DataAtomic.withNameInDataAndValue("linkedRecordId",
 				"myLinkedRecordId");
-		spiderRecordLink.addChild(linkedRecordId);
+		recordLink.addChild(linkedRecordId);
 
 	}
 
 	@Test
 	public void testInit() {
-		assertEquals(spiderRecordLink.getNameInData(), "nameInData");
-		assertNotNull(spiderRecordLink.getAttributes());
-		assertNotNull(spiderRecordLink.getChildren());
-		assertEquals(spiderRecordLink.getFirstAtomicValueWithNameInData("linkedRecordType"),
+		assertEquals(recordLink.getNameInData(), "nameInData");
+		assertNotNull(recordLink.getAttributes());
+		assertNotNull(recordLink.getChildren());
+		assertEquals(recordLink.getFirstAtomicValueWithNameInData("linkedRecordType"),
 				"myLinkedRecordType");
-		assertEquals(spiderRecordLink.getFirstAtomicValueWithNameInData("linkedRecordId"),
+		assertEquals(recordLink.getFirstAtomicValueWithNameInData("linkedRecordId"),
 				"myLinkedRecordId");
-		assertNotNull(spiderRecordLink.getActions());
+		assertNotNull(recordLink.getActions());
 	}
 
 	@Test
 	public void testInitWithRepeatId() {
-		spiderRecordLink.setRepeatId("hugh");
-		assertEquals(spiderRecordLink.getRepeatId(), "hugh");
+		recordLink.setRepeatId("hugh");
+		assertEquals(recordLink.getRepeatId(), "hugh");
 	}
 
 	@Test
 	public void testAddAttribute() {
-		spiderRecordLink = DataRecordLink.withNameInData("nameInData");
-		spiderRecordLink.addAttributeByIdWithValue("someId", "someValue");
+		recordLink = DataRecordLink.withNameInData("nameInData");
+		recordLink.addAttributeByIdWithValue("someId", "someValue");
 
-		Map<String, String> attributes = spiderRecordLink.getAttributes();
+		Map<String, String> attributes = recordLink.getAttributes();
 		Map.Entry<String, String> entry = attributes.entrySet().iterator().next();
 		assertEquals(entry.getKey(), "someId");
 		assertEquals(entry.getValue(), "someValue");
@@ -64,17 +64,17 @@ public class DataRecordLinkTest {
 
 	@Test
 	public void testInitWithLinkedPath() {
-		DataGroup spiderDataGroup = DataGroup.withNameInData("linkedPath");
-		spiderRecordLink.addChild(spiderDataGroup);
-		assertNotNull(spiderRecordLink.getFirstChildWithNameInData("linkedPath"));
+		DataGroup dataGroup = DataGroup.withNameInData("linkedPath");
+		recordLink.addChild(dataGroup);
+		assertNotNull(recordLink.getFirstChildWithNameInData("linkedPath"));
 	}
 
 	@Test
 	public void testAddAction() {
-		spiderRecordLink.addAction(Action.READ);
+		recordLink.addAction(Action.READ);
 
-		assertTrue(spiderRecordLink.getActions().contains(Action.READ));
-		assertFalse(spiderRecordLink.getActions().contains(Action.DELETE));
+		assertTrue(recordLink.getActions().contains(Action.READ));
+		assertFalse(recordLink.getActions().contains(Action.DELETE));
 		// small hack to get 100% coverage on enum
 		Action.valueOf(Action.READ.toString());
 	}
