@@ -20,12 +20,12 @@
 package se.uu.ub.cora.data;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
 public final class DataRecord implements Data {
-	private Set<String> keys = new HashSet<>();
+	private Set<String> keys = new LinkedHashSet<>();
 	private DataGroup dataGroup;
 	private List<Action> actions = new ArrayList<>();
 

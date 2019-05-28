@@ -19,7 +19,7 @@
 
 package se.uu.ub.cora.data;
 
-public final class DataAtomic implements DataElement {
+public final class DataAtomic implements DataElement, DataPart {
 
 	private String nameInData;
 	private String value;
@@ -29,8 +29,8 @@ public final class DataAtomic implements DataElement {
 		return new DataAtomic(nameInData, value);
 	}
 
-	public static DataAtomic withNameInDataAndValueAndRepeatId(String nameInData,
-			String value, String repeatId) {
+	public static DataAtomic withNameInDataAndValueAndRepeatId(String nameInData, String value,
+			String repeatId) {
 		return new DataAtomic(nameInData, value, repeatId);
 	}
 
@@ -58,6 +58,7 @@ public final class DataAtomic implements DataElement {
 		this.repeatId = repeatId;
 	}
 
+	@Override
 	public String getRepeatId() {
 		return repeatId;
 	}

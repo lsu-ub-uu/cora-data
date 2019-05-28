@@ -67,6 +67,14 @@ public class DataGroupTest {
 	}
 
 	@Test
+	public void testGetAttribute() {
+		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
+		dataGroup.addAttributeByIdWithValue("attributeId", "attributeValue");
+		assertEquals(dataGroup.getAttribute("attributeId"), "attributeValue");
+
+	}
+
+	@Test
 	public void testAddChild() {
 		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
 		DataElement dataElement = DataAtomic.withNameInDataAndValue("childNameInData",
@@ -113,8 +121,7 @@ public class DataGroupTest {
 	@Test
 	public void testExtractAtomicValue() {
 		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
-		dataGroup
-				.addChild(DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
+		dataGroup.addChild(DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
 		assertEquals(dataGroup.getFirstAtomicValueWithNameInData("atomicNameInData"),
 				"atomicValue");
 	}
@@ -123,16 +130,14 @@ public class DataGroupTest {
 			+ "Atomic value not found for childNameInData:" + "atomicNameInData_NOT_FOUND")
 	public void testExtractAtomicValueNotFound() {
 		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
-		dataGroup
-				.addChild(DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
+		dataGroup.addChild(DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
 		dataGroup.getFirstAtomicValueWithNameInData("atomicNameInData_NOT_FOUND");
 	}
 
 	@Test
 	public void testExtractGroup() {
 		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
-		dataGroup
-				.addChild(DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
+		dataGroup.addChild(DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
 		DataGroup dataGroup2 = DataGroup.withNameInData("childNameInData");
 		dataGroup2.addChild(DataGroup.withNameInData("grandChildNameInData"));
 		dataGroup.addChild(dataGroup2);
@@ -143,8 +148,7 @@ public class DataGroupTest {
 			+ "Group not found for childNameInData:childNameInData_NOT_FOUND")
 	public void testGetFirstGroupWithNameInDataNotFound() {
 		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
-		dataGroup
-				.addChild(DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
+		dataGroup.addChild(DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
 		DataGroup dataGroup2 = DataGroup.withNameInData("childNameInData");
 		dataGroup2.addChild(DataGroup.withNameInData("grandChildNameInData"));
 		dataGroup.addChild(dataGroup2);
@@ -154,8 +158,7 @@ public class DataGroupTest {
 	@Test
 	public void testGetFirstChildWithNameInData() {
 		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
-		dataGroup
-				.addChild(DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
+		dataGroup.addChild(DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
 		DataGroup dataGroup2 = DataGroup.withNameInData("childNameInData");
 		dataGroup2.addChild(DataGroup.withNameInData("grandChildNameInData"));
 		dataGroup.addChild(dataGroup2);
@@ -166,8 +169,7 @@ public class DataGroupTest {
 			+ "Element not found for childNameInData:childNameInData_NOT_FOUND")
 	public void testGetFirstChildWithNameInDataNotFound() {
 		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
-		dataGroup
-				.addChild(DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
+		dataGroup.addChild(DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
 		DataGroup dataGroup2 = DataGroup.withNameInData("childNameInData");
 		dataGroup2.addChild(DataGroup.withNameInData("grandChildNameInData"));
 		dataGroup.addChild(dataGroup2);
@@ -177,8 +179,7 @@ public class DataGroupTest {
 	@Test
 	public void testGetAllGroupsWithNameInData() {
 		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
-		dataGroup
-				.addChild(DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
+		dataGroup.addChild(DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
 		addTwoGroupChildrenWithSameNameInData(dataGroup);
 
 		List<DataGroup> groupsFound = dataGroup.getAllGroupsWithNameInData("childNameInData");
@@ -199,8 +200,7 @@ public class DataGroupTest {
 	@Test
 	public void testGetAllGroupsWithNameInDataNoMatches() {
 		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
-		dataGroup
-				.addChild(DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
+		dataGroup.addChild(DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
 
 		List<DataGroup> groupsFound = dataGroup.getAllGroupsWithNameInData("childNameInData");
 		assertEquals(groupsFound.size(), 0);

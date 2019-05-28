@@ -30,7 +30,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class DataGroup implements DataElement, Data {
+public class DataGroup implements DataElement, DataPart, Data {
 
 	private String nameInData;
 	private Map<String, String> attributes = new HashMap<>();
@@ -59,8 +59,7 @@ public class DataGroup implements DataElement, Data {
 		return dataElement -> dataElementsNameInDataIs(dataElement, childNameInData);
 	}
 
-	private boolean dataElementsNameInDataIs(DataElement dataElement,
-			String childNameInData) {
+	private boolean dataElementsNameInDataIs(DataElement dataElement, String childNameInData) {
 		return dataElement.getNameInData().equals(childNameInData);
 	}
 
@@ -107,16 +106,14 @@ public class DataGroup implements DataElement, Data {
 	}
 
 	public DataElement getFirstChildWithNameInData(String childNameInData) {
-		Optional<DataElement> optionalFirst = possiblyFindFirstChildWithNameInData(
-				childNameInData);
+		Optional<DataElement> optionalFirst = possiblyFindFirstChildWithNameInData(childNameInData);
 		if (optionalFirst.isPresent()) {
 			return optionalFirst.get();
 		}
 		throw new DataMissingException("Element not found for childNameInData:" + childNameInData);
 	}
 
-	private Optional<DataElement> possiblyFindFirstChildWithNameInData(
-			String childNameInData) {
+	private Optional<DataElement> possiblyFindFirstChildWithNameInData(String childNameInData) {
 		return getChildrenStream().filter(filterByNameInData(childNameInData)).findFirst();
 	}
 
@@ -155,25 +152,25 @@ public class DataGroup implements DataElement, Data {
 		this.repeatId = repeatId;
 	}
 
+	@Override
 	public String getRepeatId() {
 		return repeatId;
 	}
 
-	public Collection<DataGroup> getAllGroupsWithNameInDataAndAttributes(
-			String childNameInData, DataAttribute... childAttributes) {
+	public Collection<DataGroup> getAllGroupsWithNameInDataAndAttributes(String childNameInData,
+			DataAttribute... childAttributes) {
 		return getGroupChildrenWithNameInDataAndAttributes(childNameInData, childAttributes)
 				.collect(Collectors.toList());
 
 	}
 
-	private Stream<DataGroup> getGroupChildrenWithNameInDataAndAttributes(
-			String childNameInData, DataAttribute... childAttributes) {
+	private Stream<DataGroup> getGroupChildrenWithNameInDataAndAttributes(String childNameInData,
+			DataAttribute... childAttributes) {
 		return getGroupChildrenWithNameInDataStream(childNameInData)
 				.filter(filterByAttributes(childAttributes));
 	}
 
-	private Predicate<DataElement> filterByAttributes(
-			DataAttribute... childAttributes) {
+	private Predicate<DataElement> filterByAttributes(DataAttribute... childAttributes) {
 		return dataElement -> dataElementsHasAttributes(dataElement, childAttributes);
 	}
 
@@ -193,8 +190,8 @@ public class DataGroup implements DataElement, Data {
 		return childAttributes.length != attributesFromElement.size();
 	}
 
-	private boolean allRequestedAttributesMatchExistingAttributes(
-			DataAttribute[] childAttributes, Map<String, String> attributesFromElement) {
+	private boolean allRequestedAttributesMatchExistingAttributes(DataAttribute[] childAttributes,
+			Map<String, String> attributesFromElement) {
 		for (DataAttribute dataAttribute : childAttributes) {
 			if (attributesDoesNotMatch(attributesFromElement, dataAttribute)) {
 				return false;
@@ -219,5 +216,9 @@ public class DataGroup implements DataElement, Data {
 			Map<String, String> attributesFromElement, DataAttribute dataAttribute) {
 		return !attributesFromElement.get(dataAttribute.getNameInData())
 				.equals(dataAttribute.getValue());
+	}
+
+	public String getAttribute(String attributeId) {
+		return attributes.get(attributeId);
 	}
 }

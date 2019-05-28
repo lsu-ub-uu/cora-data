@@ -1,5 +1,5 @@
 /*
- * Copyright 2015, 2019 Uppsala University Library
+ * Copyright 2019 Uppsala University Library
  *
  * This file is part of Cora.
  *
@@ -19,17 +19,8 @@
 
 package se.uu.ub.cora.data;
 
-import java.util.Collections;
-import java.util.Map;
-
-public interface DataElement {
+public interface DataPart {
 
 	String getNameInData();
-
-	String getRepeatId();
-
-	default Map<String, String> getAttributes() {
-		return Collections.emptyMap();
-	}
 
 }
