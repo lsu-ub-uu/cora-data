@@ -29,6 +29,23 @@ public final class DataResourceLink extends DataGroup implements DataLink {
 		super(nameInData);
 	}
 
+	public DataResourceLink(DataGroup dataGroup) {
+		super(dataGroup.getNameInData());
+		addResourceLinkChildren(dataGroup);
+
+	}
+
+	private void addResourceLinkChildren(DataGroup dataGroup) {
+		DataElement streamId = dataGroup.getFirstChildWithNameInData("streamId");
+		addChild(streamId);
+		DataElement fileName = dataGroup.getFirstChildWithNameInData("filename");
+		addChild(fileName);
+		DataElement fileSize = dataGroup.getFirstChildWithNameInData("filesize");
+		addChild(fileSize);
+		DataElement mimeType = dataGroup.getFirstChildWithNameInData("mimeType");
+		addChild(mimeType);
+	}
+
 	public static DataResourceLink withNameInData(String nameInData) {
 		return new DataResourceLink(nameInData);
 	}
@@ -41,5 +58,9 @@ public final class DataResourceLink extends DataGroup implements DataLink {
 	@Override
 	public List<Action> getActions() {
 		return actions;
+	}
+
+	public static DataResourceLink fromDataGroup(DataGroup dataGroup) {
+		return new DataResourceLink(dataGroup);
 	}
 }

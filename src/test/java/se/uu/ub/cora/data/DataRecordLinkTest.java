@@ -3,17 +3,13 @@ package se.uu.ub.cora.data;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertNull;
 import static org.testng.Assert.assertTrue;
 
 import java.util.Map;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import se.uu.ub.cora.data.Action;
-import se.uu.ub.cora.data.DataAtomic;
-import se.uu.ub.cora.data.DataGroup;
-import se.uu.ub.cora.data.DataRecordLink;
 
 public class DataRecordLinkTest {
 
@@ -23,8 +19,8 @@ public class DataRecordLinkTest {
 	public void setUp() {
 		recordLink = DataRecordLink.withNameInData("nameInData");
 
-		DataAtomic linkedRecordType = DataAtomic
-				.withNameInDataAndValue("linkedRecordType", "myLinkedRecordType");
+		DataAtomic linkedRecordType = DataAtomic.withNameInDataAndValue("linkedRecordType",
+				"myLinkedRecordType");
 		recordLink.addChild(linkedRecordType);
 
 		DataAtomic linkedRecordId = DataAtomic.withNameInDataAndValue("linkedRecordId",
@@ -77,6 +73,52 @@ public class DataRecordLinkTest {
 		assertFalse(recordLink.getActions().contains(Action.DELETE));
 		// small hack to get 100% coverage on enum
 		Action.valueOf(Action.READ.toString());
+	}
+
+	@Test
+	public void testFromDataGroup() {
+		DataGroup dataGroupRecordLink = createRecordLinkAsDataGroup();
+
+		DataRecordLink dataRecordLink = DataRecordLink.fromDataGroup(dataGroupRecordLink);
+
+		assertCorrectFromDataRecordLink(dataRecordLink);
+		assertNull(dataRecordLink.getRepeatId());
+	}
+
+	private DataGroup createRecordLinkAsDataGroup() {
+		DataGroup dataGroupRecordLink = DataGroup.withNameInData("nameInData");
+
+		DataAtomic linkedRecordType = DataAtomic.withNameInDataAndValue("linkedRecordType",
+				"someLinkedRecordType");
+		dataGroupRecordLink.addChild(linkedRecordType);
+
+		DataAtomic linkedRecordId = DataAtomic.withNameInDataAndValue("linkedRecordId",
+				"someLinkedRecordId");
+		dataGroupRecordLink.addChild(linkedRecordId);
+		return dataGroupRecordLink;
+	}
+
+	private void assertCorrectFromDataRecordLink(DataRecordLink recordLink) {
+		assertEquals(recordLink.getNameInData(), "nameInData");
+
+		DataAtomic convertedRecordType = (DataAtomic) recordLink
+				.getFirstChildWithNameInData("linkedRecordType");
+		assertEquals(convertedRecordType.getValue(), "someLinkedRecordType");
+
+		DataAtomic convertedRecordId = (DataAtomic) recordLink
+				.getFirstChildWithNameInData("linkedRecordId");
+		assertEquals(convertedRecordId.getValue(), "someLinkedRecordId");
+	}
+
+	@Test
+	public void testFromDataGroupWithRepeatId() {
+		DataGroup dataGroupRecordLink = createRecordLinkAsDataGroup();
+		dataGroupRecordLink.setRepeatId("1");
+
+		DataRecordLink dataRecordLink = DataRecordLink.fromDataGroup(dataGroupRecordLink);
+
+		assertCorrectFromDataRecordLink(dataRecordLink);
+		assertEquals(dataRecordLink.getRepeatId(), "1");
 	}
 
 }

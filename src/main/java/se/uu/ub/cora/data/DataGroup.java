@@ -47,6 +47,14 @@ public class DataGroup implements DataElement, DataPart, Data {
 		this.nameInData = nameInData;
 	}
 
+	public static DataGroup asLinkWithNameInDataAndTypeAndId(String nameInData, String type,
+			String id) {
+		DataGroup dataGroup = new DataGroup(nameInData);
+		dataGroup.addChild(DataAtomic.withNameInDataAndValue("linkedRecordType", type));
+		dataGroup.addChild(DataAtomic.withNameInDataAndValue("linkedRecordId", id));
+		return dataGroup;
+	}
+
 	public boolean containsChildWithNameInData(String nameInData) {
 		return getChildrenStream().anyMatch(filterByNameInData(nameInData));
 	}
@@ -85,6 +93,15 @@ public class DataGroup implements DataElement, DataPart, Data {
 
 	private Stream<DataElement> getAtomicChildrenStream() {
 		return getChildrenStream().filter(isDataAtomic);
+	}
+
+	public List<DataAtomic> getAllDataAtomicsWithNameInData(String childNameInData) {
+		return getDataAtomicChildrenWithNameInData(childNameInData).collect(Collectors.toList());
+	}
+
+	private Stream<DataAtomic> getDataAtomicChildrenWithNameInData(String childNameInData) {
+		return getAtomicChildrenStream().filter(filterByNameInData(childNameInData))
+				.map(DataAtomic.class::cast);
 	}
 
 	public DataGroup getFirstGroupWithNameInData(String childNameInData) {
@@ -128,6 +145,24 @@ public class DataGroup implements DataElement, DataPart, Data {
 
 	public void addAttributeByIdWithValue(String nameInData, String value) {
 		attributes.put(nameInData, value);
+	}
+
+	public void removeFirstChildWithNameInData(String childNameInData) {
+		boolean childRemoved = tryToRemoveChild(childNameInData);
+		if (!childRemoved) {
+			throw new DataMissingException(
+					"Element not found for childNameInData:" + childNameInData);
+		}
+	}
+
+	private boolean tryToRemoveChild(String childNameInData) {
+		for (DataElement dataElement : getChildren()) {
+			if (dataElementsNameInDataIs(dataElement, childNameInData)) {
+				getChildren().remove(dataElement);
+				return true;
+			}
+		}
+		return false;
 	}
 
 	@Override

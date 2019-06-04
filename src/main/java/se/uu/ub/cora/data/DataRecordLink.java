@@ -29,6 +29,19 @@ public final class DataRecordLink extends DataGroup implements DataLink {
 		super(nameInData);
 	}
 
+	private DataRecordLink(DataGroup dataGroup) {
+		super(dataGroup.getNameInData());
+		addLinkedRecordTypeAndId(dataGroup);
+		setRepeatId(dataGroup.getRepeatId());
+	}
+
+	private void addLinkedRecordTypeAndId(DataGroup dataGroup) {
+		DataElement linkedRecordType = dataGroup.getFirstChildWithNameInData("linkedRecordType");
+		addChild(linkedRecordType);
+		DataElement linkedRecordId = dataGroup.getFirstChildWithNameInData("linkedRecordId");
+		addChild(linkedRecordId);
+	}
+
 	public static DataRecordLink withNameInData(String nameInData) {
 		return new DataRecordLink(nameInData);
 	}
@@ -41,5 +54,9 @@ public final class DataRecordLink extends DataGroup implements DataLink {
 	@Override
 	public List<Action> getActions() {
 		return actions;
+	}
+
+	public static DataRecordLink fromDataGroup(DataGroup dataGroup) {
+		return new DataRecordLink(dataGroup);
 	}
 }
