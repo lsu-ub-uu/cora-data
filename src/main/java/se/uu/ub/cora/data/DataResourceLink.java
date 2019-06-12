@@ -32,7 +32,7 @@ public final class DataResourceLink extends DataGroup implements DataLink {
 	public DataResourceLink(DataGroup dataGroup) {
 		super(dataGroup.getNameInData());
 		addResourceLinkChildren(dataGroup);
-
+		setRepeatId(dataGroup.getRepeatId());
 	}
 
 	private void addResourceLinkChildren(DataGroup dataGroup) {

@@ -49,15 +49,15 @@ public class DataResourceLinkTest {
 
 	@Test
 	public void testFromDataGroup() {
-		DataGroup dataGroupRecordLink = createRecordLinkAsDataGroup();
+		DataGroup dataGroupResourceLink = createResourceLinkAsDataGroup();
 
-		DataResourceLink dataRecordLink = DataResourceLink.fromDataGroup(dataGroupRecordLink);
+		DataResourceLink dataResourceLink = DataResourceLink.fromDataGroup(dataGroupResourceLink);
 
-		assertCorrectFromDataRecordLink(dataRecordLink);
-		assertNull(dataRecordLink.getRepeatId());
+		assertCorrectFromDataResourceLink(dataResourceLink);
+		assertNull(dataResourceLink.getRepeatId());
 	}
 
-	private DataGroup createRecordLinkAsDataGroup() {
+	private DataGroup createResourceLinkAsDataGroup() {
 		DataGroup dataGroupRecordLink = DataGroup.withNameInData("nameInData");
 
 		DataAtomic fileName = DataAtomic.withNameInDataAndValue("filename", "someFileName");
@@ -72,7 +72,7 @@ public class DataResourceLinkTest {
 		return dataGroupRecordLink;
 	}
 
-	private void assertCorrectFromDataRecordLink(DataResourceLink resourceLink) {
+	private void assertCorrectFromDataResourceLink(DataResourceLink resourceLink) {
 		assertEquals(resourceLink.getNameInData(), "nameInData");
 
 		DataAtomic convertedFileName = (DataAtomic) resourceLink
@@ -90,5 +90,16 @@ public class DataResourceLinkTest {
 		DataAtomic convertedMimeType = (DataAtomic) resourceLink
 				.getFirstChildWithNameInData("mimeType");
 		assertEquals(convertedMimeType.getValue(), "someMimeType");
+	}
+
+	@Test
+	public void testFromDataGroupWithRepeatId() {
+		DataGroup dataGroupResourceLink = createResourceLinkAsDataGroup();
+		dataGroupResourceLink.setRepeatId("2");
+
+		DataResourceLink dataResourceLink = DataResourceLink.fromDataGroup(dataGroupResourceLink);
+
+		assertCorrectFromDataResourceLink(dataResourceLink);
+		assertEquals(dataResourceLink.getRepeatId(), "2");
 	}
 }
