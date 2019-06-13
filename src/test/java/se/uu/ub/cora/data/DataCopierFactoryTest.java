@@ -32,4 +32,17 @@ public class DataCopierFactoryTest {
 		assertTrue(dataCopier instanceof DataAtomicCopier);
 
 	}
+
+	@Test
+	public void testFactorDataGroupCopier() {
+		DataGroup dataGroup = DataGroup.withNameInData("someDataGroup");
+		dataGroup.addChild(DataAtomic.withNameInDataAndValue("aName", "aValue"));
+		DataCopierFactory dataCopierFactoryImp = new DataCopierFactoryImp();
+		DataCopier dataCopier = dataCopierFactoryImp.factorForDataElement(dataGroup);
+		assertTrue(dataCopier instanceof DataGroupCopier);
+
+		DataGroupCopier dataGroupCopier = (DataGroupCopier) dataCopier;
+		assertTrue(dataGroupCopier.getCopierFactory() instanceof DataCopierFactoryImp);
+
+	}
 }

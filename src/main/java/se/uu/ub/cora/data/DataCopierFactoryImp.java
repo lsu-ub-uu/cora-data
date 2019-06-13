@@ -22,7 +22,11 @@ public class DataCopierFactoryImp implements DataCopierFactory {
 
 	@Override
 	public DataCopier factorForDataElement(DataElement dataElement) {
-		return DataAtomicCopier.usingDataAtomic(dataElement);
+		if (dataElement instanceof DataAtomic) {
+			return DataAtomicCopier.usingDataAtomic(dataElement);
+		}
+		return DataGroupCopier.usingDataGroupAndCopierFactory(dataElement,
+				new DataCopierFactoryImp());
 	}
 
 }

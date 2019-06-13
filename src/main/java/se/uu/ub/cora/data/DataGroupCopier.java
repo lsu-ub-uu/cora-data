@@ -21,24 +21,33 @@ package se.uu.ub.cora.data;
 
 public class DataGroupCopier implements DataCopier {
 
-	private DataGroup dataGroup;
+	private DataElement dataElement;
 	private DataCopierFactory copierFactory;
 
-	private DataGroupCopier(DataGroup dataGroup, DataCopierFactory copierFactory) {
-		this.dataGroup = dataGroup;
+	private DataGroupCopier(DataElement dataElement, DataCopierFactory copierFactory) {
+		this.dataElement = dataElement;
 		this.copierFactory = copierFactory;
 	}
 
-	public static DataGroupCopier usingDataGroupAndCopierFactory(DataGroup dataGroup,
+	public static DataGroupCopier usingDataGroupAndCopierFactory(DataElement dataElement,
 			DataCopierFactory copierFactory) {
-		return new DataGroupCopier(dataGroup, copierFactory);
+		return new DataGroupCopier(dataElement, copierFactory);
 	}
 
 	@Override
 	public DataGroup copy() {
+		DataGroup dataGroup = (DataGroup) dataElement;
 		DataGroup dataGroupCopy = DataGroup.withNameInData(dataGroup.getNameInData());
-		copierFactory.factorForDataElement(dataGroup.getChildren().get(0));
+		for (DataElement childElement : dataGroup.getChildren()) {
+			DataCopier dataCopier = copierFactory.factorForDataElement(childElement);
+			DataElement copiedElement = dataCopier.copy();
+			dataGroupCopy.addChild(copiedElement);
+		}
 		return dataGroupCopy;
+	}
+
+	DataCopierFactory getCopierFactory() {
+		return copierFactory;
 	}
 
 }

@@ -22,48 +22,110 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertNotSame;
 import static org.testng.Assert.assertSame;
+import static org.testng.Assert.assertTrue;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class DataGroupCopierTest {
 
-	private DataGroup dataGroup;
+	private DataGroup originalDataGroup;
 	private DataGroupCopier dataGroupCopier;
 	private DataCopierFactorySpy copierFactory;
 
 	@BeforeMethod
 	public void setUp() {
-		dataGroup = DataGroup.withNameInData("someDataGroup");
+		originalDataGroup = DataGroup.withNameInData("someDataGroup");
 		copierFactory = new DataCopierFactorySpy();
-		dataGroupCopier = DataGroupCopier.usingDataGroupAndCopierFactory(dataGroup, copierFactory);
+		dataGroupCopier = DataGroupCopier.usingDataGroupAndCopierFactory(originalDataGroup,
+				copierFactory);
+	}
+
+	@Test
+	public void testGetCopierFactory() {
+		assertEquals(dataGroupCopier.getCopierFactory(), copierFactory);
 	}
 
 	@Test
 	public void testCopyDataGroupNotSameObject() {
 		DataGroup dataGroupCopy = dataGroupCopier.copy();
 		assertNotNull(dataGroupCopy);
-		assertNotSame(dataGroup, dataGroupCopy);
+		assertNotSame(originalDataGroup, dataGroupCopy);
 	}
 
 	@Test
 	public void testCopyDataGroupSameNameInData() {
 		DataGroup dataGroupCopy = dataGroupCopier.copy();
-		assertEquals(dataGroupCopy.getNameInData(), dataGroup.getNameInData());
+		assertEquals(dataGroupCopy.getNameInData(), originalDataGroup.getNameInData());
 	}
 
 	@Test
-	public void testCopyDataGroupChildDataAtomicIsCopied() {
-		DataAtomic atomicChild = DataAtomic.withNameInDataAndValue("someAtomicChild",
-				"someAtomicValue");
-		dataGroup.addChild(atomicChild);
+	public void testCopyDataGroupOneChildDataAtomicIsCopied() {
+		createAndAddAtomicChildToOrginalDataGroup("someAtomicChild", "someAtomicValue");
 
 		DataGroup dataGroupCopy = dataGroupCopier.copy();
+		assertEquals(dataGroupCopy.getNameInData(), originalDataGroup.getNameInData());
 
-		assertSame(copierFactory.dataElements.get(0), atomicChild);
-		assertNotNull(copierFactory.dataElements.get(0));
-		// String atomicChildCopy =
-		// dataGroupCopy.getFirstAtomicValueWithNameInData("someAtomicChild");
-		// assertEquals(atomicChildCopy, atomicChild.getValue());
+		assertChildIssentToCopierUsingIndex(0);
+		assertChildReturnedFromCopierIsAddedToGroupUsingIndex(dataGroupCopy, 0);
+		assertEquals(dataGroupCopy.getChildren().size(), 1);
+	}
+
+	private void createAndAddAtomicChildToOrginalDataGroup(String nameInData, String value) {
+		DataAtomic atomicChild = DataAtomic.withNameInDataAndValue(nameInData, value);
+		originalDataGroup.addChild(atomicChild);
+	}
+
+	private void assertChildIssentToCopierUsingIndex(int index) {
+		DataElement dataElementSentToCopierFactory = copierFactory.dataElements.get(index);
+		DataElement firstChildInOrignalDataGroup = originalDataGroup.getChildren().get(index);
+
+		assertSame(dataElementSentToCopierFactory, firstChildInOrignalDataGroup);
+		assertNotNull(copierFactory.dataElements.get(index));
+	}
+
+	private void assertChildReturnedFromCopierIsAddedToGroupUsingIndex(DataGroup dataGroupCopy,
+			int index) {
+		DataCopierSpy factoredCopier = copierFactory.factoredDataCopiers.get(index);
+		assertTrue(factoredCopier.copyWasCalled);
+
+		DataElement firstChildInCopiedGroup = dataGroupCopy.getChildren().get(index);
+		DataElement elementReturnedFromCopier = copierFactory.factoredDataCopiers
+				.get(index).returnedElement;
+
+		assertSame(firstChildInCopiedGroup, elementReturnedFromCopier);
+	}
+
+	@Test
+	public void testCopyDataGroupTwoChildrenDataAtomicsAreCopied() {
+		createAndAddAtomicChildToOrginalDataGroup("someAtomicChild", "someAtomicValue");
+		createAndAddAtomicChildToOrginalDataGroup("anotherAtomicChild", "anotherAtomicValue");
+
+		DataGroup copiedDataGroup = dataGroupCopier.copy();
+
+		assertChildIssentToCopierUsingIndex(0);
+		assertChildReturnedFromCopierIsAddedToGroupUsingIndex(copiedDataGroup, 0);
+		assertChildIssentToCopierUsingIndex(1);
+		assertChildReturnedFromCopierIsAddedToGroupUsingIndex(copiedDataGroup, 1);
+		assertEquals(copiedDataGroup.getChildren().size(), 2);
+	}
+
+	@Test
+	public void testCopyDataGroupThreeChildrenDataAtomicsAndGroupAreCopied() {
+		createAndAddAtomicChildToOrginalDataGroup("someAtomicChild", "someAtomicValue");
+		createAndAddAtomicChildToOrginalDataGroup("anotherAtomicChild", "anotherAtomicValue");
+		DataGroup childGroup = DataGroup.withNameInData("childGroup");
+		childGroup.addChild(
+				DataAtomic.withNameInDataAndValue("grandChldNameInData", "grandChildValue"));
+		originalDataGroup.addChild(childGroup);
+
+		DataGroup copiedDataGroup = dataGroupCopier.copy();
+
+		assertChildIssentToCopierUsingIndex(0);
+		assertChildReturnedFromCopierIsAddedToGroupUsingIndex(copiedDataGroup, 0);
+		assertChildIssentToCopierUsingIndex(1);
+		assertChildReturnedFromCopierIsAddedToGroupUsingIndex(copiedDataGroup, 1);
+		assertChildReturnedFromCopierIsAddedToGroupUsingIndex(copiedDataGroup, 2);
+		assertEquals(copiedDataGroup.getChildren().size(), 3);
 	}
 }

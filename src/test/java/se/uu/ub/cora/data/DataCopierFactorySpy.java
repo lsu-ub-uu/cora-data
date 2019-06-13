@@ -24,11 +24,14 @@ import java.util.List;
 public class DataCopierFactorySpy implements DataCopierFactory {
 
 	public List<DataElement> dataElements = new ArrayList<>();
+	public List<DataCopierSpy> factoredDataCopiers = new ArrayList<>();
 
 	@Override
 	public DataCopier factorForDataElement(DataElement dataElement) {
 		dataElements.add(dataElement);
-		return null;
+		DataCopierSpy dataCopier = new DataCopierSpy();
+		factoredDataCopiers.add(dataCopier);
+		return dataCopier;
 	}
 
 }
