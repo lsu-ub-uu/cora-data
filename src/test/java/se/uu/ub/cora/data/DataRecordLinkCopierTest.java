@@ -21,6 +21,7 @@ package se.uu.ub.cora.data;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertNotSame;
+import static org.testng.Assert.assertNull;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -65,5 +66,36 @@ public class DataRecordLinkCopierTest {
 		assertEquals(linkedRecordId.getValue(),
 				originalRecordLink.getFirstAtomicValueWithNameInData("linkedRecordId"));
 
+	}
+
+	@Test
+	public void testCopyDataAssertNoRepeatId() {
+		DataGroup dataGroupCopy = dataRecordLinkCopier.copy();
+		assertNull(dataGroupCopy.getRepeatId());
+	}
+
+	@Test
+	public void testCopyDataGroupWithRepeatId() {
+		originalRecordLink.setRepeatId("1");
+		DataGroup dataGroupCopy = dataRecordLinkCopier.copy();
+		assertEquals(dataGroupCopy.getRepeatId(), originalRecordLink.getRepeatId());
+	}
+
+	@Test
+	public void testCopyDataGroupWithOneAttribute() {
+		originalRecordLink.addAttributeByIdWithValue("type", "someTypeAttribute");
+		DataGroup dataGroupCopy = dataRecordLinkCopier.copy();
+		assertEquals(dataGroupCopy.getAttribute("type"), "someTypeAttribute");
+		assertEquals(dataGroupCopy.getAttributes().size(), 1);
+	}
+
+	@Test
+	public void testCopyDataGroupWithTwoAttributes() {
+		originalRecordLink.addAttributeByIdWithValue("type", "someTypeAttribute");
+		originalRecordLink.addAttributeByIdWithValue("otherAttribute", "someOtherAttribute");
+		DataGroup dataGroupCopy = dataRecordLinkCopier.copy();
+		assertEquals(dataGroupCopy.getAttribute("type"), "someTypeAttribute");
+		assertEquals(dataGroupCopy.getAttribute("otherAttribute"), "someOtherAttribute");
+		assertEquals(dataGroupCopy.getAttributes().size(), 2);
 	}
 }

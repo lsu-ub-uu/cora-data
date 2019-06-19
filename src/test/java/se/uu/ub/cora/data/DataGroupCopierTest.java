@@ -74,6 +74,24 @@ public class DataGroupCopierTest {
 	}
 
 	@Test
+	public void testCopyDataGroupWithOneAttribute() {
+		originalDataGroup.addAttributeByIdWithValue("type", "someTypeAttribute");
+		DataGroup dataGroupCopy = dataGroupCopier.copy();
+		assertEquals(dataGroupCopy.getAttribute("type"), "someTypeAttribute");
+		assertEquals(dataGroupCopy.getAttributes().size(), 1);
+	}
+
+	@Test
+	public void testCopyDataGroupWithTwoAttributes() {
+		originalDataGroup.addAttributeByIdWithValue("type", "someTypeAttribute");
+		originalDataGroup.addAttributeByIdWithValue("otherAttribute", "someOtherAttribute");
+		DataGroup dataGroupCopy = dataGroupCopier.copy();
+		assertEquals(dataGroupCopy.getAttribute("type"), "someTypeAttribute");
+		assertEquals(dataGroupCopy.getAttribute("otherAttribute"), "someOtherAttribute");
+		assertEquals(dataGroupCopy.getAttributes().size(), 2);
+	}
+
+	@Test
 	public void testCopyDataGroupOneChildDataAtomicIsCopied() {
 		createAndAddAtomicChildToOrginalDataGroup("someAtomicChild", "someAtomicValue");
 

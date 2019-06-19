@@ -19,10 +19,15 @@
 
 package se.uu.ub.cora.data;
 
+import java.util.Map;
+import java.util.Map.Entry;
+
 public class DataGroupCopier implements DataCopier {
 
 	private DataElement dataElement;
 	private DataCopierFactory copierFactory;
+	private DataGroup originalDataGroup;
+	private DataGroup dataGroupCopy;
 
 	private DataGroupCopier(DataElement dataElement, DataCopierFactory copierFactory) {
 		this.dataElement = dataElement;
@@ -36,24 +41,33 @@ public class DataGroupCopier implements DataCopier {
 
 	@Override
 	public DataGroup copy() {
-		DataGroup dataGroup = (DataGroup) dataElement;
-		DataGroup dataGroupCopy = DataGroup.withNameInData(dataGroup.getNameInData());
-		copyChildren(dataGroup, dataGroupCopy);
-		possiblyCopyRepeatId(dataGroup, dataGroupCopy);
+		originalDataGroup = (DataGroup) dataElement;
+		dataGroupCopy = DataGroup.withNameInData(originalDataGroup.getNameInData());
+		copyChildren();
+		possiblyCopyRepeatId();
+		possiblyCopyAttributes();
+
 		return dataGroupCopy;
 	}
 
-	private void possiblyCopyRepeatId(DataGroup dataGroup, DataGroup dataGroupCopy) {
-		if (dataGroup.getRepeatId() != null) {
-			dataGroupCopy.setRepeatId(dataGroup.getRepeatId());
-		}
-	}
-
-	private void copyChildren(DataGroup dataGroup, DataGroup dataGroupCopy) {
-		for (DataElement childElement : dataGroup.getChildren()) {
+	private void copyChildren() {
+		for (DataElement childElement : originalDataGroup.getChildren()) {
 			DataCopier dataCopier = copierFactory.factorForDataElement(childElement);
 			DataElement copiedElement = dataCopier.copy();
 			dataGroupCopy.addChild(copiedElement);
+		}
+	}
+
+	private void possiblyCopyRepeatId() {
+		if (originalDataGroup.getRepeatId() != null) {
+			dataGroupCopy.setRepeatId(originalDataGroup.getRepeatId());
+		}
+	}
+
+	private void possiblyCopyAttributes() {
+		Map<String, String> attributes = originalDataGroup.getAttributes();
+		for (Entry<String, String> attribute : attributes.entrySet()) {
+			dataGroupCopy.addAttributeByIdWithValue(attribute.getKey(), attribute.getValue());
 		}
 	}
 

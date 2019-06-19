@@ -18,9 +18,14 @@
  */
 package se.uu.ub.cora.data;
 
+import java.util.Map;
+import java.util.Map.Entry;
+
 public class DataRecordLinkCopier implements DataCopier {
 
 	private DataElement dataElement;
+	private DataRecordLink orignialDataRecordLink;
+	private DataRecordLink dataRecordLinkCopy;
 
 	public DataRecordLinkCopier(DataElement dataElement) {
 		this.dataElement = dataElement;
@@ -28,26 +33,39 @@ public class DataRecordLinkCopier implements DataCopier {
 
 	@Override
 	public DataRecordLink copy() {
-		DataRecordLink orignialDataRecordLink = (DataRecordLink) dataElement;
-		DataRecordLink recordLinkCopy = DataRecordLink.withNameInData(dataElement.getNameInData());
+		orignialDataRecordLink = (DataRecordLink) dataElement;
+		dataRecordLinkCopy = DataRecordLink.withNameInData(dataElement.getNameInData());
 
-		copyAndAddChild(orignialDataRecordLink, recordLinkCopy, "linkedRecordType");
-		copyAndAddChild(orignialDataRecordLink, recordLinkCopy, "linkedRecordId");
-		return recordLinkCopy;
+		copyAndAddChildWithNameInData("linkedRecordType");
+		copyAndAddChildWithNameInData("linkedRecordId");
+		possiblyCopyRepeatId();
+		possiblyCopyAttributes();
+		return dataRecordLinkCopy;
 	}
 
-	private void copyAndAddChild(DataRecordLink orignialDataRecordLink,
-			DataRecordLink recordLinkCopy, String childNameInData) {
+	private void copyAndAddChildWithNameInData(String childNameInData) {
 		DataElement linkedRecordTypeCopy = copyChildFromOriginalLinkUsingChildNameInData(
-				orignialDataRecordLink, childNameInData);
-		recordLinkCopy.addChild(linkedRecordTypeCopy);
+				childNameInData);
+		dataRecordLinkCopy.addChild(linkedRecordTypeCopy);
 	}
 
-	private DataElement copyChildFromOriginalLinkUsingChildNameInData(
-			DataRecordLink orignialDataRecordLink, String childNameInData) {
+	private DataElement copyChildFromOriginalLinkUsingChildNameInData(String childNameInData) {
 		DataAtomicCopier atomicCopier = DataAtomicCopier.usingDataAtomic(
 				orignialDataRecordLink.getFirstChildWithNameInData(childNameInData));
 		return atomicCopier.copy();
+	}
+
+	private void possiblyCopyRepeatId() {
+		if (orignialDataRecordLink.getRepeatId() != null) {
+			dataRecordLinkCopy.setRepeatId(orignialDataRecordLink.getRepeatId());
+		}
+	}
+
+	private void possiblyCopyAttributes() {
+		Map<String, String> attributes = orignialDataRecordLink.getAttributes();
+		for (Entry<String, String> attribute : attributes.entrySet()) {
+			dataRecordLinkCopy.addAttributeByIdWithValue(attribute.getKey(), attribute.getValue());
+		}
 	}
 
 }
