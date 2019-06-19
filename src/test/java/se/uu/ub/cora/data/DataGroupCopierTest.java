@@ -21,6 +21,7 @@ package se.uu.ub.cora.data;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertNotSame;
+import static org.testng.Assert.assertNull;
 import static org.testng.Assert.assertSame;
 import static org.testng.Assert.assertTrue;
 
@@ -60,13 +61,26 @@ public class DataGroupCopierTest {
 	}
 
 	@Test
+	public void testCopyDataAssertNoRepeatId() {
+		DataGroup dataGroupCopy = dataGroupCopier.copy();
+		assertNull(dataGroupCopy.getRepeatId());
+	}
+
+	@Test
+	public void testCopyDataGroupWithRepeatId() {
+		originalDataGroup.setRepeatId("1");
+		DataGroup dataGroupCopy = dataGroupCopier.copy();
+		assertEquals(dataGroupCopy.getRepeatId(), originalDataGroup.getRepeatId());
+	}
+
+	@Test
 	public void testCopyDataGroupOneChildDataAtomicIsCopied() {
 		createAndAddAtomicChildToOrginalDataGroup("someAtomicChild", "someAtomicValue");
 
 		DataGroup dataGroupCopy = dataGroupCopier.copy();
 		assertEquals(dataGroupCopy.getNameInData(), originalDataGroup.getNameInData());
 
-		assertChildIssentToCopierUsingIndex(0);
+		assertChildIsSentToCopierUsingIndex(0);
 		assertChildReturnedFromCopierIsAddedToGroupUsingIndex(dataGroupCopy, 0);
 		assertEquals(dataGroupCopy.getChildren().size(), 1);
 	}
@@ -76,7 +90,7 @@ public class DataGroupCopierTest {
 		originalDataGroup.addChild(atomicChild);
 	}
 
-	private void assertChildIssentToCopierUsingIndex(int index) {
+	private void assertChildIsSentToCopierUsingIndex(int index) {
 		DataElement dataElementSentToCopierFactory = copierFactory.dataElements.get(index);
 		DataElement firstChildInOrignalDataGroup = originalDataGroup.getChildren().get(index);
 
@@ -103,9 +117,9 @@ public class DataGroupCopierTest {
 
 		DataGroup copiedDataGroup = dataGroupCopier.copy();
 
-		assertChildIssentToCopierUsingIndex(0);
+		assertChildIsSentToCopierUsingIndex(0);
 		assertChildReturnedFromCopierIsAddedToGroupUsingIndex(copiedDataGroup, 0);
-		assertChildIssentToCopierUsingIndex(1);
+		assertChildIsSentToCopierUsingIndex(1);
 		assertChildReturnedFromCopierIsAddedToGroupUsingIndex(copiedDataGroup, 1);
 		assertEquals(copiedDataGroup.getChildren().size(), 2);
 	}
@@ -121,9 +135,9 @@ public class DataGroupCopierTest {
 
 		DataGroup copiedDataGroup = dataGroupCopier.copy();
 
-		assertChildIssentToCopierUsingIndex(0);
+		assertChildIsSentToCopierUsingIndex(0);
 		assertChildReturnedFromCopierIsAddedToGroupUsingIndex(copiedDataGroup, 0);
-		assertChildIssentToCopierUsingIndex(1);
+		assertChildIsSentToCopierUsingIndex(1);
 		assertChildReturnedFromCopierIsAddedToGroupUsingIndex(copiedDataGroup, 1);
 		assertChildReturnedFromCopierIsAddedToGroupUsingIndex(copiedDataGroup, 2);
 		assertEquals(copiedDataGroup.getChildren().size(), 3);

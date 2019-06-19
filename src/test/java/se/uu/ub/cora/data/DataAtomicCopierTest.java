@@ -19,8 +19,8 @@
 package se.uu.ub.cora.data;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertNotSame;
+import static org.testng.Assert.assertNull;
 
 import org.testng.annotations.Test;
 
@@ -33,10 +33,23 @@ public class DataAtomicCopierTest {
 		DataAtomicCopier dataAtomicCopier = DataAtomicCopier.usingDataAtomic(dataAtomic);
 
 		DataAtomic dataAtomicCopy = (DataAtomic) dataAtomicCopier.copy();
-		assertNotNull(dataAtomicCopy);
 		assertNotSame(dataAtomic, dataAtomicCopy);
 		assertEquals(dataAtomic.getNameInData(), dataAtomicCopy.getNameInData());
 		assertEquals(dataAtomic.getValue(), dataAtomicCopy.getValue());
+		assertNull(dataAtomic.getRepeatId());
+	}
+
+	@Test
+	public void testCopyDataAtomicWithRepeatId() {
+		DataAtomic dataAtomic = DataAtomic.withNameInDataAndValueAndRepeatId("someNameInData",
+				"someAtomicValue", "22");
+		DataAtomicCopier dataAtomicCopier = DataAtomicCopier.usingDataAtomic(dataAtomic);
+
+		DataAtomic dataAtomicCopy = (DataAtomic) dataAtomicCopier.copy();
+		assertNotSame(dataAtomic, dataAtomicCopy);
+		assertEquals(dataAtomic.getNameInData(), dataAtomicCopy.getNameInData());
+		assertEquals(dataAtomic.getValue(), dataAtomicCopy.getValue());
+		assertEquals(dataAtomic.getRepeatId(), dataAtomicCopy.getRepeatId());
 	}
 
 }

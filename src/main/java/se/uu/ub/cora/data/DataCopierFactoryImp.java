@@ -24,6 +24,8 @@ public class DataCopierFactoryImp implements DataCopierFactory {
 	public DataCopier factorForDataElement(DataElement dataElement) {
 		if (dataElement instanceof DataAtomic) {
 			return DataAtomicCopier.usingDataAtomic(dataElement);
+		} else if (dataElement instanceof DataRecordLink) {
+			return new DataRecordLinkCopier(dataElement);
 		}
 		return DataGroupCopier.usingDataGroupAndCopierFactory(dataElement,
 				new DataCopierFactoryImp());

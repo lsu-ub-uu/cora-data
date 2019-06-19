@@ -33,7 +33,16 @@ public class DataAtomicCopier implements DataCopier {
 	@Override
 	public DataElement copy() {
 		DataAtomic dataAtomic = (DataAtomic) dataElement;
-		return DataAtomic.withNameInDataAndValue(dataAtomic.getNameInData(), dataAtomic.getValue());
+		DataAtomic dataAtomicCopy = DataAtomic.withNameInDataAndValue(dataAtomic.getNameInData(),
+				dataAtomic.getValue());
+		possiblySetRepeatId(dataAtomic, dataAtomicCopy);
+		return dataAtomicCopy;
+	}
+
+	private void possiblySetRepeatId(DataAtomic dataAtomic, DataAtomic dataAtomicCopy) {
+		if (dataAtomic.getRepeatId() != null) {
+			dataAtomicCopy.setRepeatId(dataAtomic.getRepeatId());
+		}
 	}
 
 }

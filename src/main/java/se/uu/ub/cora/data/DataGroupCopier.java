@@ -38,12 +38,23 @@ public class DataGroupCopier implements DataCopier {
 	public DataGroup copy() {
 		DataGroup dataGroup = (DataGroup) dataElement;
 		DataGroup dataGroupCopy = DataGroup.withNameInData(dataGroup.getNameInData());
+		copyChildren(dataGroup, dataGroupCopy);
+		possiblyCopyRepeatId(dataGroup, dataGroupCopy);
+		return dataGroupCopy;
+	}
+
+	private void possiblyCopyRepeatId(DataGroup dataGroup, DataGroup dataGroupCopy) {
+		if (dataGroup.getRepeatId() != null) {
+			dataGroupCopy.setRepeatId(dataGroup.getRepeatId());
+		}
+	}
+
+	private void copyChildren(DataGroup dataGroup, DataGroup dataGroupCopy) {
 		for (DataElement childElement : dataGroup.getChildren()) {
 			DataCopier dataCopier = copierFactory.factorForDataElement(childElement);
 			DataElement copiedElement = dataCopier.copy();
 			dataGroupCopy.addChild(copiedElement);
 		}
-		return dataGroupCopy;
 	}
 
 	DataCopierFactory getCopierFactory() {

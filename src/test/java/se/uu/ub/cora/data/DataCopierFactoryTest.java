@@ -45,4 +45,15 @@ public class DataCopierFactoryTest {
 		assertTrue(dataGroupCopier.getCopierFactory() instanceof DataCopierFactoryImp);
 
 	}
+
+	@Test
+	public void testFactorDataRecordLinkCopier() {
+		DataGroup dataGroup = DataGroup.asLinkWithNameInDataAndTypeAndId("someLinkNameInData",
+				"someLinkType", "someLinkValue");
+		DataRecordLink dataRecordLink = DataRecordLink.fromDataGroup(dataGroup);
+
+		DataCopierFactory dataCopierFactoryImp = new DataCopierFactoryImp();
+		DataCopier dataCopier = dataCopierFactoryImp.factorForDataElement(dataRecordLink);
+		assertTrue(dataCopier instanceof DataRecordLinkCopier);
+	}
 }
