@@ -33,6 +33,7 @@
 	<name>Cora data</name>
 
 	<properties>
+	<json.version>1.0.0</json.version>
 	</properties>
 
 	<scm>
@@ -48,6 +49,11 @@
 			<artifactId>testng</artifactId>
 			<version>${testng.version}</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>se.uu.ub.cora</groupId>
+			<artifactId>json</artifactId>
+			<version>${json.version}</version>
 		</dependency>
 	</dependencies>
 </project>
