@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Uppsala University Library
+ * Copyright 2018 Uppsala University Library
  *
  * This file is part of Cora.
  *
@@ -16,20 +16,20 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
+package se.uu.ub.cora.data;
 
-package se.uu.ub.cora.data.converter;
+public final class RecordIdentifier {
 
-import se.uu.ub.cora.json.parser.JsonValue;
+	public static RecordIdentifier usingTypeAndId(String type, String id) {
+		return new RecordIdentifier(type, id);
+	}
 
-public interface JsonToDataConverterFactory {
+	public final String type;
+	public final String id;
 
-	JsonToDataConverter createForJsonObject(JsonValue jsonValue);
-
-	JsonToDataConverter createForJsonString(String json);
-
-	JsonToDataActionLinkConverter createActionLinksConverterForJsonString(String json);
-
-	JsonToDataActionLinkConverter createJsonToDataActionLinkConverterForJsonObject(
-			JsonValue jsonValue);
+	private RecordIdentifier(String type, String id) {
+		this.type = type;
+		this.id = id;
+	}
 
 }

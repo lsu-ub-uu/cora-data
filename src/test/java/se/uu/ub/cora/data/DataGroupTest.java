@@ -386,4 +386,56 @@ public class DataGroupTest {
 		dataGroup.addChild(child);
 		return child;
 	}
+
+	@Test
+	public void testGetAllChildrenWithNameInDataNoChildFound() {
+		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
+		DataElement atomicChild = DataAtomic.withNameInDataAndValue("childNameInData",
+				"child value");
+		dataGroup.addChild(atomicChild);
+		DataGroup groupChild = DataGroup.withNameInData("childNameInData");
+		dataGroup.addChild(groupChild);
+
+		List<DataElement> childrenFound = dataGroup
+				.getAllChildrenWithNameInData("NOThildNameInData");
+		assertEquals(childrenFound.size(), 0);
+	}
+
+	@Test
+	public void testGetAllChildrenWithNameInDataOneGroup() {
+		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
+		DataGroup groupChild = DataGroup.withNameInData("childNameInData");
+		dataGroup.addChild(groupChild);
+
+		List<DataElement> childrenFound = dataGroup.getAllChildrenWithNameInData("childNameInData");
+		assertEquals(childrenFound.size(), 1);
+		assertEquals(childrenFound.get(0), groupChild);
+	}
+
+	@Test
+	public void testGetAllChildrenWithNameInDataOneDataAtomic() {
+		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
+		DataElement atomicChild = DataAtomic.withNameInDataAndValue("childNameInData",
+				"child value");
+		dataGroup.addChild(atomicChild);
+
+		List<DataElement> childrenFound = dataGroup.getAllChildrenWithNameInData("childNameInData");
+		assertEquals(childrenFound.size(), 1);
+		assertEquals(childrenFound.get(0), atomicChild);
+	}
+
+	@Test
+	public void testGetAllChildrenWithNameInDataOneGroupAndOneDataAtomic() {
+		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
+		DataElement atomicChild = DataAtomic.withNameInDataAndValue("childNameInData",
+				"child value");
+		dataGroup.addChild(atomicChild);
+		DataGroup groupChild = DataGroup.withNameInData("childNameInData");
+		dataGroup.addChild(groupChild);
+
+		List<DataElement> childrenFound = dataGroup.getAllChildrenWithNameInData("childNameInData");
+		assertEquals(childrenFound.size(), 2);
+		assertEquals(childrenFound.get(0), atomicChild);
+		assertEquals(childrenFound.get(1), groupChild);
+	}
 }

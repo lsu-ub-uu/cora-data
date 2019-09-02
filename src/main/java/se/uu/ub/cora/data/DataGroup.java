@@ -143,6 +143,15 @@ public class DataGroup implements DataElement, DataPart, Data {
 		return getGroupChildrenWithNameInDataStream(childNameInData).collect(Collectors.toList());
 	}
 
+	public List<DataElement> getAllChildrenWithNameInData(String childNameInData) {
+		return getChildrenWithNameInDataStream(childNameInData).collect(Collectors.toList());
+	}
+
+	private Stream<DataElement> getChildrenWithNameInDataStream(String childNameInData) {
+		return getChildrenStream().filter(filterByNameInData(childNameInData))
+				.map(DataElement.class::cast);
+	}
+
 	public void addAttributeByIdWithValue(String nameInData, String value) {
 		attributes.put(nameInData, value);
 	}

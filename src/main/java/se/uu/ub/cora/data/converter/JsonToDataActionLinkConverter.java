@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Uppsala University Library
+ * Copyright 2018 Uppsala University Library
  *
  * This file is part of Cora.
  *
@@ -16,20 +16,10 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package se.uu.ub.cora.data.converter;
 
-import se.uu.ub.cora.json.parser.JsonValue;
+import se.uu.ub.cora.data.Data;
 
-public interface JsonToDataConverterFactory {
-
-	JsonToDataConverter createForJsonObject(JsonValue jsonValue);
-
-	JsonToDataConverter createForJsonString(String json);
-
-	JsonToDataActionLinkConverter createActionLinksConverterForJsonString(String json);
-
-	JsonToDataActionLinkConverter createJsonToDataActionLinkConverterForJsonObject(
-			JsonValue jsonValue);
-
+public interface JsonToDataActionLinkConverter {
+	Data toInstance();
 }
