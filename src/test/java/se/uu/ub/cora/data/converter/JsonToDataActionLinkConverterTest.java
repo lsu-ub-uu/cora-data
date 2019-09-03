@@ -24,6 +24,9 @@ import static org.testng.Assert.assertEquals;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import se.uu.ub.cora.data.Action;
+import se.uu.ub.cora.data.ActionLink;
+import se.uu.ub.cora.data.Data;
 import se.uu.ub.cora.json.parser.JsonObject;
 import se.uu.ub.cora.json.parser.JsonParseException;
 import se.uu.ub.cora.json.parser.JsonParser;
@@ -51,7 +54,7 @@ public class JsonToDataActionLinkConverterTest {
 
 		JsonToDataActionLinkConverter jsonToDataConverter = JsonToDataActionLinkConverterImp
 				.forJsonObjectUsingFactory((JsonObject) jsonValue, factory);
-		ClientData clientData = jsonToDataConverter.toInstance();
+		Data clientData = jsonToDataConverter.toInstance();
 		return (ActionLink) clientData;
 	}
 

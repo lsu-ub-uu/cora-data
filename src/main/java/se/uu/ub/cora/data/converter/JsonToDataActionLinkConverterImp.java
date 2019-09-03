@@ -18,6 +18,10 @@
  */
 package se.uu.ub.cora.data.converter;
 
+import se.uu.ub.cora.data.Action;
+import se.uu.ub.cora.data.ActionLink;
+import se.uu.ub.cora.data.Data;
+import se.uu.ub.cora.data.DataGroup;
 import se.uu.ub.cora.json.parser.JsonObject;
 import se.uu.ub.cora.json.parser.JsonParseException;
 
@@ -108,7 +112,7 @@ public class JsonToDataActionLinkConverterImp implements JsonToDataActionLinkCon
 		if (jsonObject.containsKey("body")) {
 			JsonToDataConverter converter = factory
 					.createForJsonObject(jsonObject.getValue("body"));
-			ClientDataGroup bodyAsClientDataGroup = (ClientDataGroup) converter.toInstance();
+			DataGroup bodyAsClientDataGroup = (DataGroup) converter.toInstance();
 			actionLink.setBody(bodyAsClientDataGroup);
 		}
 	}

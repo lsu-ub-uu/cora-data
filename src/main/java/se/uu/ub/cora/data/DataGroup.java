@@ -26,6 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.StringJoiner;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -260,6 +261,34 @@ public class DataGroup implements DataElement, DataPart, Data {
 			Map<String, String> attributesFromElement, DataAttribute dataAttribute) {
 		return !attributesFromElement.get(dataAttribute.getNameInData())
 				.equals(dataAttribute.getValue());
+	}
+
+	public DataGroup getFirstGroupWithNameInDataAndAttributes(String childNameInData,
+			DataAttribute... childDataAttributes) {
+		Collection<DataGroup> allGroupsWithNameInDataAndAttributes = getAllGroupsWithNameInDataAndAttributes(
+				childNameInData, childDataAttributes);
+		throwErrorIfNoGroupsFound(childNameInData, allGroupsWithNameInDataAndAttributes,
+				childDataAttributes);
+		return allGroupsWithNameInDataAndAttributes.iterator().next();
+	}
+
+	private void throwErrorIfNoGroupsFound(String childNameInData,
+			Collection<DataGroup> allGroupsWithNameInDataAndAttributes,
+			DataAttribute... childDataAttributes) {
+		if (allGroupsWithNameInDataAndAttributes.isEmpty()) {
+			StringJoiner attributesError = createErrorMessagesForAttributes(childDataAttributes);
+			throw new DataMissingException("Group not found for childNameInData: " + childNameInData
+					+ " with attributes: " + attributesError);
+		}
+	}
+
+	private StringJoiner createErrorMessagesForAttributes(DataAttribute... childDataAttributes) {
+		StringJoiner attributesError = new StringJoiner(", ");
+		for (DataAttribute clientDataAttribute : childDataAttributes) {
+			attributesError.add(
+					clientDataAttribute.getNameInData() + ":" + clientDataAttribute.getValue());
+		}
+		return attributesError;
 	}
 
 	public String getAttribute(String attributeId) {

@@ -259,20 +259,10 @@ public class DataGroupTest {
 		}
 	}
 
-	private DataGroup createTestGroupForAttributesReturnChildGroupWithAttribute(
-			DataGroup dataGroup) {
-		addAndReturnDataGroupChildWithNameInData(dataGroup, "groupId2");
-		addAndReturnDataGroupChildWithNameInData(dataGroup, "groupId3");
-		addAndReturnDataGroupChildWithNameInData(dataGroup, "groupId2");
-		DataGroup child3 = addAndReturnDataGroupChildWithNameInDataAndAttributes(dataGroup,
-				"groupId2", DataAttribute.withNameInDataAndValue("nameInData", "value1"));
-		return child3;
-	}
-
-	private DataGroup addAndReturnDataGroupChildWithNameInData(DataGroup dataGroup,
+	private DataGroup addAndReturnDataGroupChildWithNameInData(DataGroup clientDataGroup,
 			String nameInData) {
 		DataGroup child = DataGroup.withNameInData(nameInData);
-		dataGroup.addChild(child);
+		clientDataGroup.addChild(child);
 		return child;
 	}
 
@@ -437,5 +427,112 @@ public class DataGroupTest {
 		assertEquals(childrenFound.size(), 2);
 		assertEquals(childrenFound.get(0), atomicChild);
 		assertEquals(childrenFound.get(1), groupChild);
+	}
+
+	@Test
+	public void testGetFirstGroupsWithNameInDataAndAttributesOneMatch() {
+		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
+		DataGroup child3 = createTestGroupForAttributesReturnChildGroupWithAttribute(dataGroup);
+
+		DataGroup found = dataGroup.getFirstGroupWithNameInDataAndAttributes("groupId2",
+				DataAttribute.withNameInDataAndValue("nameInData", "value1"));
+
+		assertEquals(found, child3);
+	}
+
+	private DataGroup createTestGroupForAttributesReturnChildGroupWithAttribute(
+			DataGroup dataGroup) {
+		addAndReturnDataGroupChildWithNameInData(dataGroup, "groupId2");
+		addAndReturnDataGroupChildWithNameInData("groupId3");
+		addAndReturnDataGroupChildWithNameInData("groupId2");
+		// createDataAtomicWithNameInData("groupId2");
+		DataGroup child3 = addAndReturnDataGroupChildWithNameInDataAndAttributes(dataGroup,
+				"groupId2", DataAttribute.withNameInDataAndValue("nameInData", "value1"));
+		return child3;
+	}
+
+	private DataGroup addAndReturnDataGroupChildWithNameInData(String nameInData) {
+		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
+		DataGroup child = DataGroup.withNameInData(nameInData);
+		dataGroup.addChild(child);
+		return child;
+	}
+
+	@Test
+	public void testGetFirstGroupWithNameInDataAndAttributesTwoMatches() {
+		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
+		DataGroup child3 = createTestGroupForAttributesReturnChildGroupWithAttribute(dataGroup);
+		addAndReturnDataGroupChildWithNameInDataAndAttributes(dataGroup, "groupId2",
+				DataAttribute.withNameInDataAndValue("nameInData", "value1"));
+
+		DataGroup found = dataGroup.getFirstGroupWithNameInDataAndAttributes("groupId2",
+				DataAttribute.withNameInDataAndValue("nameInData", "value1"));
+
+		assertEquals(found, child3);
+	}
+
+	@Test
+	public void testGetFirstGroupWithNameInDataAndAttributesOneWrongAttributeValueTwoMatches() {
+		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
+		DataGroup child3 = createTestGroupForAttributesReturnChildGroupWithAttribute(dataGroup);
+		addAndReturnDataGroupChildWithNameInDataAndAttributes(dataGroup, "groupId2",
+				DataAttribute.withNameInDataAndValue("nameInData", "value1"));
+		addAndReturnDataGroupChildWithNameInDataAndAttributes(dataGroup, "groupId2",
+				DataAttribute.withNameInDataAndValue("nameInData", "value2"));
+
+		DataGroup found = dataGroup.getFirstGroupWithNameInDataAndAttributes("groupId2",
+				DataAttribute.withNameInDataAndValue("nameInData", "value1"));
+
+		assertEquals(found, child3);
+	}
+
+	@Test
+	public void testGetFirstGroupWithNameInDataAndAttributesOneWrongAttributeNameTwoMatches() {
+		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
+		DataGroup child3 = createTestGroupForAttributesReturnChildGroupWithAttribute(dataGroup);
+
+		addAndReturnDataGroupChildWithNameInDataAndAttributes(dataGroup, "groupId2",
+				DataAttribute.withNameInDataAndValue("nameInData", "value1"));
+
+		addAndReturnDataGroupChildWithNameInDataAndAttributes(dataGroup, "groupId2",
+				DataAttribute.withNameInDataAndValue("nameInData2", "value1"));
+
+		DataGroup found = dataGroup.getFirstGroupWithNameInDataAndAttributes("groupId2",
+				DataAttribute.withNameInDataAndValue("nameInData", "value1"));
+
+		assertEquals(found, child3);
+	}
+
+	@Test(expectedExceptions = DataMissingException.class, expectedExceptionsMessageRegExp = ""
+			+ "Group not found for childNameInData: groupId2 "
+			+ "with attributes: nameInData:value1, nameInData2:value1")
+	public void testGetFirstGroupWithNameInDataAndTwoAttributesNoMatches() {
+		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
+		createTestGroupForAttributesReturnChildGroupWithAttribute(dataGroup);
+		addAndReturnDataGroupChildWithNameInDataAndAttributes(dataGroup, "groupId2",
+				DataAttribute.withNameInDataAndValue("nameInData", "value1"),
+				DataAttribute.withNameInDataAndValue("nameInData2", "value2"));
+
+		dataGroup.getFirstGroupWithNameInDataAndAttributes("groupId2",
+				DataAttribute.withNameInDataAndValue("nameInData", "value1"),
+				DataAttribute.withNameInDataAndValue("nameInData2", "value1"));
+	}
+
+	@Test
+	public void testGetFirstGroupWithNameInDataAndTwoAttributesOneMatches() {
+		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
+		createTestGroupForAttributesReturnChildGroupWithAttribute(dataGroup);
+		DataGroup child4 = addAndReturnDataGroupChildWithNameInDataAndAttributes(dataGroup,
+				"groupId2", DataAttribute.withNameInDataAndValue("nameInData", "value1"),
+				DataAttribute.withNameInDataAndValue("nameInData2", "value2"));
+		addAndReturnDataGroupChildWithNameInDataAndAttributes(dataGroup, "groupId2",
+				DataAttribute.withNameInDataAndValue("nameInData", "value1"),
+				DataAttribute.withNameInDataAndValue("nameInData3", "value2"));
+
+		DataGroup found = dataGroup.getFirstGroupWithNameInDataAndAttributes("groupId2",
+				DataAttribute.withNameInDataAndValue("nameInData", "value1"),
+				DataAttribute.withNameInDataAndValue("nameInData2", "value2"));
+
+		assertEquals(found, child4);
 	}
 }
