@@ -23,7 +23,7 @@ import static org.testng.Assert.assertEquals;
 
 import org.testng.annotations.Test;
 
-import se.uu.ub.cora.data.DataGroup;
+import se.uu.ub.cora.data.CoraDataGroup;
 import se.uu.ub.cora.data.DataRecord;
 import se.uu.ub.cora.json.builder.JsonBuilderFactory;
 import se.uu.ub.cora.json.builder.org.OrgJsonBuilderFactoryAdapter;
@@ -31,7 +31,7 @@ import se.uu.ub.cora.json.builder.org.OrgJsonBuilderFactoryAdapter;
 public class DataRecordToJsonConverterTest {
 	@Test
 	public void testToJson() {
-		DataGroup dataGroup = DataGroup.withNameInData("groupNameInData");
+		CoraDataGroup dataGroup = CoraDataGroup.withNameInData("groupNameInData");
 		DataRecord dataRecord = DataRecord.withDataGroup(dataGroup);
 
 		JsonBuilderFactory jsonFactory = new OrgJsonBuilderFactoryAdapter();
@@ -44,7 +44,7 @@ public class DataRecordToJsonConverterTest {
 
 	@Test
 	public void testToJsonWithKey() {
-		DataGroup dataGroup = DataGroup.withNameInData("groupNameInData");
+		CoraDataGroup dataGroup = CoraDataGroup.withNameInData("groupNameInData");
 		DataRecord dataRecord = DataRecord.withDataGroup(dataGroup);
 		dataRecord.addKey("KEY1");
 
@@ -59,7 +59,7 @@ public class DataRecordToJsonConverterTest {
 
 	@Test
 	public void testToJsonWithKeys() {
-		DataGroup dataGroup = DataGroup.withNameInData("groupNameInData");
+		CoraDataGroup dataGroup = CoraDataGroup.withNameInData("groupNameInData");
 		DataRecord dataRecord = DataRecord.withDataGroup(dataGroup);
 		dataRecord.addKey("KEY1");
 		dataRecord.addKey("KEY2");

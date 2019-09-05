@@ -26,8 +26,8 @@ public class DataGroupCopier implements DataCopier {
 
 	private DataElement dataElement;
 	private DataCopierFactory copierFactory;
-	private DataGroup originalDataGroup;
-	private DataGroup dataGroupCopy;
+	private CoraDataGroup originalDataGroup;
+	private CoraDataGroup dataGroupCopy;
 
 	private DataGroupCopier(DataElement dataElement, DataCopierFactory copierFactory) {
 		this.dataElement = dataElement;
@@ -40,9 +40,9 @@ public class DataGroupCopier implements DataCopier {
 	}
 
 	@Override
-	public DataGroup copy() {
-		originalDataGroup = (DataGroup) dataElement;
-		dataGroupCopy = DataGroup.withNameInData(originalDataGroup.getNameInData());
+	public CoraDataGroup copy() {
+		originalDataGroup = (CoraDataGroup) dataElement;
+		dataGroupCopy = CoraDataGroup.withNameInData(originalDataGroup.getNameInData());
 		copyChildren();
 		possiblyCopyRepeatId();
 		possiblyCopyAttributes();

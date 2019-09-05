@@ -49,7 +49,7 @@ public class DataResourceLinkTest {
 
 	@Test
 	public void testFromDataGroup() {
-		DataGroup dataGroupResourceLink = createResourceLinkAsDataGroup();
+		CoraDataGroup dataGroupResourceLink = createResourceLinkAsDataGroup();
 
 		DataResourceLink dataResourceLink = DataResourceLink.fromDataGroup(dataGroupResourceLink);
 
@@ -57,8 +57,8 @@ public class DataResourceLinkTest {
 		assertNull(dataResourceLink.getRepeatId());
 	}
 
-	private DataGroup createResourceLinkAsDataGroup() {
-		DataGroup dataGroupRecordLink = DataGroup.withNameInData("nameInData");
+	private CoraDataGroup createResourceLinkAsDataGroup() {
+		CoraDataGroup dataGroupRecordLink = CoraDataGroup.withNameInData("nameInData");
 
 		DataAtomic fileName = DataAtomic.withNameInDataAndValue("filename", "someFileName");
 		dataGroupRecordLink.addChild(fileName);
@@ -94,7 +94,7 @@ public class DataResourceLinkTest {
 
 	@Test
 	public void testFromDataGroupWithRepeatId() {
-		DataGroup dataGroupResourceLink = createResourceLinkAsDataGroup();
+		CoraDataGroup dataGroupResourceLink = createResourceLinkAsDataGroup();
 		dataGroupResourceLink.setRepeatId("2");
 
 		DataResourceLink dataResourceLink = DataResourceLink.fromDataGroup(dataGroupResourceLink);

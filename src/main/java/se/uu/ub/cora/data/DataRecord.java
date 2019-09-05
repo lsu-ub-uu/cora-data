@@ -26,14 +26,14 @@ import java.util.Set;
 
 public final class DataRecord implements Data {
 	private Set<String> keys = new LinkedHashSet<>();
-	private DataGroup dataGroup;
+	private CoraDataGroup dataGroup;
 	private List<Action> actions = new ArrayList<>();
 
-	public static DataRecord withDataGroup(DataGroup dataGroup) {
+	public static DataRecord withDataGroup(CoraDataGroup dataGroup) {
 		return new DataRecord(dataGroup);
 	}
 
-	private DataRecord(DataGroup dataGroup) {
+	private DataRecord(CoraDataGroup dataGroup) {
 		this.dataGroup = dataGroup;
 	}
 
@@ -49,12 +49,12 @@ public final class DataRecord implements Data {
 		return keys;
 	}
 
-	public void setDataGroup(DataGroup dataGroup) {
+	public void setDataGroup(CoraDataGroup dataGroup) {
 		this.dataGroup = dataGroup;
 
 	}
 
-	public DataGroup getDataGroup() {
+	public CoraDataGroup getDataGroup() {
 		return dataGroup;
 	}
 

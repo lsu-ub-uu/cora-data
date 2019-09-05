@@ -35,7 +35,7 @@ public class DataCopierFactoryTest {
 
 	@Test
 	public void testFactorDataGroupCopier() {
-		DataGroup dataGroup = DataGroup.withNameInData("someDataGroup");
+		CoraDataGroup dataGroup = CoraDataGroup.withNameInData("someDataGroup");
 		dataGroup.addChild(DataAtomic.withNameInDataAndValue("aName", "aValue"));
 		DataCopierFactory dataCopierFactoryImp = new DataCopierFactoryImp();
 		DataCopier dataCopier = dataCopierFactoryImp.factorForDataElement(dataGroup);
@@ -48,7 +48,7 @@ public class DataCopierFactoryTest {
 
 	@Test
 	public void testFactorDataRecordLinkCopier() {
-		DataGroup dataGroup = DataGroup.asLinkWithNameInDataAndTypeAndId("someLinkNameInData",
+		CoraDataGroup dataGroup = CoraDataGroup.asLinkWithNameInDataAndTypeAndId("someLinkNameInData",
 				"someLinkType", "someLinkValue");
 		DataRecordLink dataRecordLink = DataRecordLink.fromDataGroup(dataGroup);
 

@@ -21,7 +21,7 @@ package se.uu.ub.cora.data.converter;
 
 import se.uu.ub.cora.data.DataAtomic;
 import se.uu.ub.cora.data.DataAttribute;
-import se.uu.ub.cora.data.DataGroup;
+import se.uu.ub.cora.data.CoraDataGroup;
 import se.uu.ub.cora.data.DataPart;
 import se.uu.ub.cora.json.builder.JsonBuilderFactory;
 
@@ -30,9 +30,9 @@ public class DataToJsonConverterFactoryImp implements DataToJsonConverterFactory
 	@Override
 	public DataToJsonConverter createForDataElement(JsonBuilderFactory factory, DataPart dataPart) {
 
-		if (dataPart instanceof DataGroup) {
+		if (dataPart instanceof CoraDataGroup) {
 			return DataGroupToJsonConverter.usingJsonFactoryForDataGroup(factory,
-					(DataGroup) dataPart);
+					(CoraDataGroup) dataPart);
 		}
 		if (dataPart instanceof DataAtomic) {
 			return DataAtomicToJsonConverter.usingJsonFactoryForDataAtomic(factory,

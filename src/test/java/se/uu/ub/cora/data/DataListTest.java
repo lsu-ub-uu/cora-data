@@ -36,7 +36,7 @@ public class DataListTest {
 	@Test
 	public void testAddRecord() {
 		DataList dataList = DataList.withContainDataOfType("metadata");
-		DataGroup dataGroup = DataGroup.withNameInData("dataGroupId");
+		CoraDataGroup dataGroup = CoraDataGroup.withNameInData("dataGroupId");
 		DataRecord record = DataRecord.withDataGroup(dataGroup);
 		dataList.addData(record);
 		List<Data> records = dataList.getDataList();
@@ -46,7 +46,7 @@ public class DataListTest {
 	@Test
 	public void testAddGroup() {
 		DataList dataList = DataList.withContainDataOfType("metadata");
-		DataGroup dataGroup = DataGroup.withNameInData("dataGroupId");
+		CoraDataGroup dataGroup = CoraDataGroup.withNameInData("dataGroupId");
 		dataList.addData(dataGroup);
 		List<Data> groups = dataList.getDataList();
 		assertEquals(groups.get(0), dataGroup);

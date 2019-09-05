@@ -23,7 +23,7 @@ import static org.testng.Assert.assertEquals;
 
 import org.testng.annotations.Test;
 
-import se.uu.ub.cora.data.DataGroup;
+import se.uu.ub.cora.data.CoraDataGroup;
 import se.uu.ub.cora.data.DataList;
 import se.uu.ub.cora.data.DataRecord;
 import se.uu.ub.cora.json.builder.JsonBuilderFactory;
@@ -33,7 +33,7 @@ public class DataListToJsonConverterTest {
 	@Test
 	public void testToJson() {
 		DataList dataList = DataList.withContainDataOfType("place");
-		DataGroup dataGroup = DataGroup.withNameInData("groupId");
+		CoraDataGroup dataGroup = CoraDataGroup.withNameInData("groupId");
 		DataRecord dataRecord = DataRecord.withDataGroup(dataGroup);
 		dataList.addData(dataRecord);
 		dataList.setTotalNo("1");
@@ -53,7 +53,7 @@ public class DataListToJsonConverterTest {
 	@Test
 	public void testToJsonWithGroup() {
 		DataList dataList = DataList.withContainDataOfType("place");
-		DataGroup dataGroup = DataGroup.withNameInData("groupId");
+		CoraDataGroup dataGroup = CoraDataGroup.withNameInData("groupId");
 		dataList.addData(dataGroup);
 		dataList.setTotalNo("1");
 		dataList.setFromNo("0");

@@ -33,7 +33,7 @@ public class DataRecordTest {
 
 	@BeforeMethod
 	public void beforeMethod() {
-		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
+		CoraDataGroup dataGroup = CoraDataGroup.withNameInData("nameInData");
 		dataRecord = DataRecord.withDataGroup(dataGroup);
 	}
 
@@ -75,7 +75,7 @@ public class DataRecordTest {
 
 	@Test
 	public void testDataGroup() {
-		DataGroup dataGroup = DataGroup.withNameInData("nameInData");
+		CoraDataGroup dataGroup = CoraDataGroup.withNameInData("nameInData");
 		dataRecord.setDataGroup(dataGroup);
 		assertEquals(dataRecord.getDataGroup(), dataGroup);
 	}

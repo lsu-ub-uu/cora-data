@@ -21,7 +21,7 @@ package se.uu.ub.cora.data;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class DataResourceLink extends DataGroup implements DataLink {
+public final class DataResourceLink extends CoraDataGroup implements DataLink {
 
 	private List<Action> actions = new ArrayList<>();
 
@@ -29,13 +29,13 @@ public final class DataResourceLink extends DataGroup implements DataLink {
 		super(nameInData);
 	}
 
-	public DataResourceLink(DataGroup dataGroup) {
+	public DataResourceLink(CoraDataGroup dataGroup) {
 		super(dataGroup.getNameInData());
 		addResourceLinkChildren(dataGroup);
 		setRepeatId(dataGroup.getRepeatId());
 	}
 
-	private void addResourceLinkChildren(DataGroup dataGroup) {
+	private void addResourceLinkChildren(CoraDataGroup dataGroup) {
 		DataElement streamId = dataGroup.getFirstChildWithNameInData("streamId");
 		addChild(streamId);
 		DataElement fileName = dataGroup.getFirstChildWithNameInData("filename");
@@ -60,7 +60,7 @@ public final class DataResourceLink extends DataGroup implements DataLink {
 		return actions;
 	}
 
-	public static DataResourceLink fromDataGroup(DataGroup dataGroup) {
+	public static DataResourceLink fromDataGroup(CoraDataGroup dataGroup) {
 		return new DataResourceLink(dataGroup);
 	}
 }

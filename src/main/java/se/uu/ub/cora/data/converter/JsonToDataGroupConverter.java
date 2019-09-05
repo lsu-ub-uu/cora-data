@@ -22,7 +22,7 @@ package se.uu.ub.cora.data.converter;
 import java.util.Map.Entry;
 
 import se.uu.ub.cora.data.DataElement;
-import se.uu.ub.cora.data.DataGroup;
+import se.uu.ub.cora.data.CoraDataGroup;
 import se.uu.ub.cora.data.DataPart;
 import se.uu.ub.cora.json.parser.JsonArray;
 import se.uu.ub.cora.json.parser.JsonObject;
@@ -37,7 +37,7 @@ public final class JsonToDataGroupConverter implements JsonToDataConverter {
 	private static final String ATTRIBUTES = "attributes";
 	private static final int NUM_OF_ALLOWED_KEYS_AT_TOP_LEVEL = 4;
 	private JsonObject jsonObject;
-	private DataGroup dataGroup;
+	private CoraDataGroup dataGroup;
 
 	static JsonToDataGroupConverter forJsonObject(JsonObject jsonObject) {
 		return new JsonToDataGroupConverter(jsonObject);
@@ -111,7 +111,7 @@ public final class JsonToDataGroupConverter implements JsonToDataConverter {
 
 	private DataPart createDataGroupInstance() {
 		String nameInData = getNameInDataFromJsonObject();
-		dataGroup = DataGroup.withNameInData(nameInData);
+		dataGroup = CoraDataGroup.withNameInData(nameInData);
 		addRepeatIdToGroup();
 		if (hasAttributes()) {
 			addAttributesToGroup();

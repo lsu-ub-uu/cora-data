@@ -30,13 +30,13 @@ import org.testng.annotations.Test;
 
 public class DataGroupCopierTest {
 
-	private DataGroup originalDataGroup;
+	private CoraDataGroup originalDataGroup;
 	private DataGroupCopier dataGroupCopier;
 	private DataCopierFactorySpy copierFactory;
 
 	@BeforeMethod
 	public void setUp() {
-		originalDataGroup = DataGroup.withNameInData("someDataGroup");
+		originalDataGroup = CoraDataGroup.withNameInData("someDataGroup");
 		copierFactory = new DataCopierFactorySpy();
 		dataGroupCopier = DataGroupCopier.usingDataGroupAndCopierFactory(originalDataGroup,
 				copierFactory);
@@ -49,34 +49,34 @@ public class DataGroupCopierTest {
 
 	@Test
 	public void testCopyDataGroupNotSameObject() {
-		DataGroup dataGroupCopy = dataGroupCopier.copy();
+		CoraDataGroup dataGroupCopy = dataGroupCopier.copy();
 		assertNotNull(dataGroupCopy);
 		assertNotSame(originalDataGroup, dataGroupCopy);
 	}
 
 	@Test
 	public void testCopyDataGroupSameNameInData() {
-		DataGroup dataGroupCopy = dataGroupCopier.copy();
+		CoraDataGroup dataGroupCopy = dataGroupCopier.copy();
 		assertEquals(dataGroupCopy.getNameInData(), originalDataGroup.getNameInData());
 	}
 
 	@Test
 	public void testCopyDataAssertNoRepeatId() {
-		DataGroup dataGroupCopy = dataGroupCopier.copy();
+		CoraDataGroup dataGroupCopy = dataGroupCopier.copy();
 		assertNull(dataGroupCopy.getRepeatId());
 	}
 
 	@Test
 	public void testCopyDataGroupWithRepeatId() {
 		originalDataGroup.setRepeatId("1");
-		DataGroup dataGroupCopy = dataGroupCopier.copy();
+		CoraDataGroup dataGroupCopy = dataGroupCopier.copy();
 		assertEquals(dataGroupCopy.getRepeatId(), originalDataGroup.getRepeatId());
 	}
 
 	@Test
 	public void testCopyDataGroupWithOneAttribute() {
 		originalDataGroup.addAttributeByIdWithValue("type", "someTypeAttribute");
-		DataGroup dataGroupCopy = dataGroupCopier.copy();
+		CoraDataGroup dataGroupCopy = dataGroupCopier.copy();
 		assertEquals(dataGroupCopy.getAttribute("type"), "someTypeAttribute");
 		assertEquals(dataGroupCopy.getAttributes().size(), 1);
 	}
@@ -85,7 +85,7 @@ public class DataGroupCopierTest {
 	public void testCopyDataGroupWithTwoAttributes() {
 		originalDataGroup.addAttributeByIdWithValue("type", "someTypeAttribute");
 		originalDataGroup.addAttributeByIdWithValue("otherAttribute", "someOtherAttribute");
-		DataGroup dataGroupCopy = dataGroupCopier.copy();
+		CoraDataGroup dataGroupCopy = dataGroupCopier.copy();
 		assertEquals(dataGroupCopy.getAttribute("type"), "someTypeAttribute");
 		assertEquals(dataGroupCopy.getAttribute("otherAttribute"), "someOtherAttribute");
 		assertEquals(dataGroupCopy.getAttributes().size(), 2);
@@ -95,7 +95,7 @@ public class DataGroupCopierTest {
 	public void testCopyDataGroupOneChildDataAtomicIsCopied() {
 		createAndAddAtomicChildToOrginalDataGroup("someAtomicChild", "someAtomicValue");
 
-		DataGroup dataGroupCopy = dataGroupCopier.copy();
+		CoraDataGroup dataGroupCopy = dataGroupCopier.copy();
 		assertEquals(dataGroupCopy.getNameInData(), originalDataGroup.getNameInData());
 
 		assertChildIsSentToCopierUsingIndex(0);
@@ -116,7 +116,7 @@ public class DataGroupCopierTest {
 		assertNotNull(copierFactory.dataElements.get(index));
 	}
 
-	private void assertChildReturnedFromCopierIsAddedToGroupUsingIndex(DataGroup dataGroupCopy,
+	private void assertChildReturnedFromCopierIsAddedToGroupUsingIndex(CoraDataGroup dataGroupCopy,
 			int index) {
 		DataCopierSpy factoredCopier = copierFactory.factoredDataCopiers.get(index);
 		assertTrue(factoredCopier.copyWasCalled);
@@ -133,7 +133,7 @@ public class DataGroupCopierTest {
 		createAndAddAtomicChildToOrginalDataGroup("someAtomicChild", "someAtomicValue");
 		createAndAddAtomicChildToOrginalDataGroup("anotherAtomicChild", "anotherAtomicValue");
 
-		DataGroup copiedDataGroup = dataGroupCopier.copy();
+		CoraDataGroup copiedDataGroup = dataGroupCopier.copy();
 
 		assertChildIsSentToCopierUsingIndex(0);
 		assertChildReturnedFromCopierIsAddedToGroupUsingIndex(copiedDataGroup, 0);
@@ -146,12 +146,12 @@ public class DataGroupCopierTest {
 	public void testCopyDataGroupThreeChildrenDataAtomicsAndGroupAreCopied() {
 		createAndAddAtomicChildToOrginalDataGroup("someAtomicChild", "someAtomicValue");
 		createAndAddAtomicChildToOrginalDataGroup("anotherAtomicChild", "anotherAtomicValue");
-		DataGroup childGroup = DataGroup.withNameInData("childGroup");
+		CoraDataGroup childGroup = CoraDataGroup.withNameInData("childGroup");
 		childGroup.addChild(
 				DataAtomic.withNameInDataAndValue("grandChldNameInData", "grandChildValue"));
 		originalDataGroup.addChild(childGroup);
 
-		DataGroup copiedDataGroup = dataGroupCopier.copy();
+		CoraDataGroup copiedDataGroup = dataGroupCopier.copy();
 
 		assertChildIsSentToCopierUsingIndex(0);
 		assertChildReturnedFromCopierIsAddedToGroupUsingIndex(copiedDataGroup, 0);

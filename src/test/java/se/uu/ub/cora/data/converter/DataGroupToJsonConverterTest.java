@@ -26,20 +26,20 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import se.uu.ub.cora.data.DataAtomic;
-import se.uu.ub.cora.data.DataGroup;
+import se.uu.ub.cora.data.CoraDataGroup;
 import se.uu.ub.cora.json.builder.JsonBuilderFactory;
 import se.uu.ub.cora.json.builder.org.OrgJsonBuilderFactoryAdapter;
 
 public class DataGroupToJsonConverterTest {
 	private DataToJsonConverterFactory dataToJsonConverterFactory;
 	private JsonBuilderFactory factory;
-	private DataGroup dataGroup;
+	private CoraDataGroup dataGroup;
 
 	@BeforeMethod
 	public void beforeMethod() {
 		dataToJsonConverterFactory = new DataToJsonConverterFactoryImp();
 		factory = new OrgJsonBuilderFactoryAdapter();
-		dataGroup = DataGroup.withNameInData("groupNameInData");
+		dataGroup = CoraDataGroup.withNameInData("groupNameInData");
 	}
 
 	@Test
@@ -130,7 +130,7 @@ public class DataGroupToJsonConverterTest {
 	public void testToJsonGroupWithAtomicChildAndGroupChildWithAtomicChild() {
 		dataGroup.addChild(DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
 
-		DataGroup dataGroup2 = DataGroup.withNameInData("groupNameInData2");
+		CoraDataGroup dataGroup2 = CoraDataGroup.withNameInData("groupNameInData2");
 		dataGroup.addChild(dataGroup2);
 
 		dataGroup2.addChild(DataAtomic.withNameInDataAndValue("atomicNameInData2", "atomicValue2"));
@@ -164,7 +164,7 @@ public class DataGroupToJsonConverterTest {
 		dataGroup.addAttributeByIdWithValue("attributeNameInData", "attributeValue");
 		dataGroup.addAttributeByIdWithValue("attributeNameInData2", "attributeValue2");
 
-		DataGroup recordInfo = DataGroup.withNameInData("recordInfo");
+		CoraDataGroup recordInfo = CoraDataGroup.withNameInData("recordInfo");
 		recordInfo.addChild(DataAtomic.withNameInDataAndValue("id", "place:0001"));
 		recordInfo.addChild(DataAtomic.withNameInDataAndValue("type", "place"));
 		recordInfo.addChild(DataAtomic.withNameInDataAndValue("createdBy", "userId"));
@@ -172,7 +172,7 @@ public class DataGroupToJsonConverterTest {
 
 		dataGroup.addChild(DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
 
-		DataGroup dataGroup2 = DataGroup.withNameInData("groupNameInData2");
+		CoraDataGroup dataGroup2 = CoraDataGroup.withNameInData("groupNameInData2");
 		dataGroup2.addAttributeByIdWithValue("g2AttributeNameInData", "g2AttributeValue");
 		dataGroup.addChild(dataGroup2);
 
@@ -226,7 +226,7 @@ public class DataGroupToJsonConverterTest {
 	public void testToJsonCompactFormatGroupWithAtomicChildAndGroupChildWithAtomicChild() {
 		dataGroup.addChild(DataAtomic.withNameInDataAndValue("atomicNameInData", "atomicValue"));
 
-		DataGroup dataGroup2 = DataGroup.withNameInData("groupNameInData2");
+		CoraDataGroup dataGroup2 = CoraDataGroup.withNameInData("groupNameInData2");
 		dataGroup.addChild(dataGroup2);
 
 		dataGroup2.addChild(DataAtomic.withNameInDataAndValue("atomicNameInData2", "atomicValue2"));

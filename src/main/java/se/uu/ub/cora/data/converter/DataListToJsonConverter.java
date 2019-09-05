@@ -20,7 +20,7 @@
 package se.uu.ub.cora.data.converter;
 
 import se.uu.ub.cora.data.Data;
-import se.uu.ub.cora.data.DataGroup;
+import se.uu.ub.cora.data.CoraDataGroup;
 import se.uu.ub.cora.data.DataList;
 import se.uu.ub.cora.data.DataRecord;
 import se.uu.ub.cora.json.builder.JsonArrayBuilder;
@@ -87,7 +87,7 @@ public final class DataListToJsonConverter {
 
 	private void convertGroupToJsonBuilder(JsonArrayBuilder recordsJsonBuilder, Data data) {
 		DataGroupToJsonConverter converter = DataGroupToJsonConverter
-				.usingJsonFactoryForDataGroup(jsonBuilderFactory, (DataGroup) data);
+				.usingJsonFactoryForDataGroup(jsonBuilderFactory, (CoraDataGroup) data);
 		recordsJsonBuilder.addJsonObjectBuilder(converter.toJsonObjectBuilder());
 	}
 

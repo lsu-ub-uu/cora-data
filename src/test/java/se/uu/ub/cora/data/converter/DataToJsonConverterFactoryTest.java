@@ -26,7 +26,7 @@ import org.testng.annotations.Test;
 
 import se.uu.ub.cora.data.DataAtomic;
 import se.uu.ub.cora.data.DataAttribute;
-import se.uu.ub.cora.data.DataGroup;
+import se.uu.ub.cora.data.CoraDataGroup;
 import se.uu.ub.cora.data.DataPart;
 import se.uu.ub.cora.json.builder.JsonBuilderFactory;
 import se.uu.ub.cora.json.builder.org.OrgJsonBuilderFactoryAdapter;
@@ -43,7 +43,7 @@ public class DataToJsonConverterFactoryTest {
 
 	@Test
 	public void testJsonCreatorFactoryDataGroup() {
-		DataPart dataPart = DataGroup.withNameInData("groupNameInData");
+		DataPart dataPart = CoraDataGroup.withNameInData("groupNameInData");
 
 		DataToJsonConverter dataToJsonConverter = dataToJsonConverterFactory
 				.createForDataElement(factory, dataPart);
