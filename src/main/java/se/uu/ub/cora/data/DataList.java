@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Uppsala University Library
+ * Copyright 2019 Uppsala University Library
  *
  * This file is part of Cora.
  *
@@ -16,63 +16,8 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package se.uu.ub.cora.data;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public final class DataList {
-
-	private String containDataOfType;
-	private List<Data> listOfData = new ArrayList<>();
-	private String totalNo;
-	private String fromNo;
-	private String toNo;
-
-	private DataList(String containDataOfType) {
-		this.containDataOfType = containDataOfType;
-	}
-
-	public static DataList withContainDataOfType(String containDataOfType) {
-		return new DataList(containDataOfType);
-	}
-
-	public String getContainDataOfType() {
-		return containDataOfType;
-	}
-
-	public void addData(Data data) {
-		listOfData.add(data);
-
-	}
-
-	public List<Data> getDataList() {
-		return listOfData;
-	}
-
-	public void setTotalNo(String totalNo) {
-		this.totalNo = totalNo;
-	}
-
-	public String getTotalNumberOfTypeInStorage() {
-		return totalNo;
-	}
-
-	public void setFromNo(String fromNo) {
-		this.fromNo = fromNo;
-	}
-
-	public String getFromNo() {
-		return fromNo;
-	}
-
-	public void setToNo(String toNo) {
-		this.toNo = toNo;
-	}
-
-	public String getToNo() {
-		return toNo;
-	}
+public interface DataList {
 
 }

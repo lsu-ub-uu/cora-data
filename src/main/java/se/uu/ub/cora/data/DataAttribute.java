@@ -1,5 +1,5 @@
 /*
- * Copyright 2015, 2019 Uppsala University Library
+ * Copyright 2019 Uppsala University Library
  *
  * This file is part of Cora.
  *
@@ -16,30 +16,8 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package se.uu.ub.cora.data;
 
-public final class DataAttribute implements DataPart {
-
-	private String nameInData;
-	private String value;
-
-	private DataAttribute(String nameInData, String value) {
-		this.nameInData = nameInData;
-		this.value = value;
-	}
-
-	public static DataAttribute withNameInDataAndValue(String nameInData, String value) {
-		return new DataAttribute(nameInData, value);
-	}
-
-	@Override
-	public String getNameInData() {
-		return nameInData;
-	}
-
-	public String getValue() {
-		return value;
-	}
+public interface DataAttribute {
 
 }
