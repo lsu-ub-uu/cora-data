@@ -42,7 +42,7 @@ public class DataGroupTest {
 
 	@Test
 	public void testGroupIsData() {
-		CoraDataGroup dataGroup = CoraDataGroup.withNameInData("nameInData");
+		DataGroup dataGroup = CoraDataGroup.withNameInData("nameInData");
 		assertTrue(dataGroup instanceof Data);
 	}
 
@@ -241,7 +241,7 @@ public class DataGroupTest {
 	@Test
 	public void testGetAllGroupsWithNameInDataAndAttributesOneMatch() {
 		CoraDataGroup dataGroup = CoraDataGroup.withNameInData("someDataGroup");
-		CoraDataGroup child3 = createTestGroupForAttributesReturnChildGroupWithAttribute(dataGroup);
+		DataGroup child3 = createTestGroupForAttributesReturnChildGroupWithAttribute(dataGroup);
 
 		Collection<CoraDataGroup> groupsFound = dataGroup.getAllGroupsWithNameInDataAndAttributes(
 				"groupId2", DataAttribute.withNameInDataAndValue("nameInData", "value1"));
@@ -251,32 +251,32 @@ public class DataGroupTest {
 	}
 
 	private void assertGroupsFoundAre(Collection<CoraDataGroup> groupsFound,
-			CoraDataGroup... assertedGroups) {
+			DataGroup... assertedGroups) {
 		int i = 0;
-		for (CoraDataGroup groupFound : groupsFound) {
+		for (DataGroup groupFound : groupsFound) {
 			assertEquals(groupFound, assertedGroups[i]);
 			i++;
 		}
 	}
 
-	private CoraDataGroup createTestGroupForAttributesReturnChildGroupWithAttribute(
+	private DataGroup createTestGroupForAttributesReturnChildGroupWithAttribute(
 			CoraDataGroup dataGroup) {
 		addAndReturnDataGroupChildWithNameInData(dataGroup, "groupId2");
 		addAndReturnDataGroupChildWithNameInData(dataGroup, "groupId3");
 		addAndReturnDataGroupChildWithNameInData(dataGroup, "groupId2");
-		CoraDataGroup child3 = addAndReturnDataGroupChildWithNameInDataAndAttributes(dataGroup,
+		DataGroup child3 = addAndReturnDataGroupChildWithNameInDataAndAttributes(dataGroup,
 				"groupId2", DataAttribute.withNameInDataAndValue("nameInData", "value1"));
 		return child3;
 	}
 
-	private CoraDataGroup addAndReturnDataGroupChildWithNameInData(CoraDataGroup dataGroup,
+	private DataGroup addAndReturnDataGroupChildWithNameInData(CoraDataGroup dataGroup,
 			String nameInData) {
 		CoraDataGroup child = CoraDataGroup.withNameInData(nameInData);
 		dataGroup.addChild(child);
 		return child;
 	}
 
-	private CoraDataGroup addAndReturnDataGroupChildWithNameInDataAndAttributes(CoraDataGroup dataGroup,
+	private DataGroup addAndReturnDataGroupChildWithNameInDataAndAttributes(CoraDataGroup dataGroup,
 			String nameInData, DataAttribute... attributes) {
 		CoraDataGroup child = CoraDataGroup.withNameInData(nameInData);
 		dataGroup.addChild(child);
@@ -289,8 +289,8 @@ public class DataGroupTest {
 	@Test
 	public void testGetAllGroupsWithNameInDataAndAttributesTwoMatches() {
 		CoraDataGroup dataGroup = CoraDataGroup.withNameInData("someDataGroup");
-		CoraDataGroup child3 = createTestGroupForAttributesReturnChildGroupWithAttribute(dataGroup);
-		CoraDataGroup child4 = addAndReturnDataGroupChildWithNameInDataAndAttributes(dataGroup,
+		DataGroup child3 = createTestGroupForAttributesReturnChildGroupWithAttribute(dataGroup);
+		DataGroup child4 = addAndReturnDataGroupChildWithNameInDataAndAttributes(dataGroup,
 				"groupId2", DataAttribute.withNameInDataAndValue("nameInData", "value1"));
 
 		Collection<CoraDataGroup> groupsFound = dataGroup.getAllGroupsWithNameInDataAndAttributes(
@@ -303,8 +303,8 @@ public class DataGroupTest {
 	@Test
 	public void testGetAllGroupsWithNameInDataAndAttributesOneWrongAttributeValueTwoMatches() {
 		CoraDataGroup dataGroup = CoraDataGroup.withNameInData("someDataGroup");
-		CoraDataGroup child3 = createTestGroupForAttributesReturnChildGroupWithAttribute(dataGroup);
-		CoraDataGroup child4 = addAndReturnDataGroupChildWithNameInDataAndAttributes(dataGroup,
+		DataGroup child3 = createTestGroupForAttributesReturnChildGroupWithAttribute(dataGroup);
+		DataGroup child4 = addAndReturnDataGroupChildWithNameInDataAndAttributes(dataGroup,
 				"groupId2", DataAttribute.withNameInDataAndValue("nameInData", "value1"));
 		addAndReturnDataGroupChildWithNameInDataAndAttributes(dataGroup, "groupId2",
 				DataAttribute.withNameInDataAndValue("nameInData", "value2"));
@@ -319,8 +319,8 @@ public class DataGroupTest {
 	@Test
 	public void testGetAllGroupsWithNameInDataAndAttributesOneWrongAttributeNameTwoMatches() {
 		CoraDataGroup dataGroup = CoraDataGroup.withNameInData("someDataGroup");
-		CoraDataGroup child3 = createTestGroupForAttributesReturnChildGroupWithAttribute(dataGroup);
-		CoraDataGroup child4 = addAndReturnDataGroupChildWithNameInDataAndAttributes(dataGroup,
+		DataGroup child3 = createTestGroupForAttributesReturnChildGroupWithAttribute(dataGroup);
+		DataGroup child4 = addAndReturnDataGroupChildWithNameInDataAndAttributes(dataGroup,
 				"groupId2", DataAttribute.withNameInDataAndValue("nameInData", "value1"));
 		addAndReturnDataGroupChildWithNameInDataAndAttributes(dataGroup, "groupId2",
 				DataAttribute.withNameInDataAndValue("nameInData2", "value1"));
@@ -351,7 +351,7 @@ public class DataGroupTest {
 	public void testGetAllGroupsWithNameInDataAndTwoAttributesOneMatches() {
 		CoraDataGroup dataGroup = CoraDataGroup.withNameInData("someDataGroup");
 		createTestGroupForAttributesReturnChildGroupWithAttribute(dataGroup);
-		CoraDataGroup child4 = addAndReturnDataGroupChildWithNameInDataAndAttributes(dataGroup,
+		DataGroup child4 = addAndReturnDataGroupChildWithNameInDataAndAttributes(dataGroup,
 				"groupId2", DataAttribute.withNameInDataAndValue("nameInData", "value1"),
 				DataAttribute.withNameInDataAndValue("nameInData2", "value2"));
 		addAndReturnDataGroupChildWithNameInDataAndAttributes(dataGroup, "groupId2",

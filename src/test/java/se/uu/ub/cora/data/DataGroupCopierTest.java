@@ -49,7 +49,7 @@ public class DataGroupCopierTest {
 
 	@Test
 	public void testCopyDataGroupNotSameObject() {
-		CoraDataGroup dataGroupCopy = dataGroupCopier.copy();
+		DataGroup dataGroupCopy = dataGroupCopier.copy();
 		assertNotNull(dataGroupCopy);
 		assertNotSame(originalDataGroup, dataGroupCopy);
 	}

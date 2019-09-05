@@ -104,6 +104,7 @@ public class CoraDataGroup implements DataGroup, DataElement, DataPart, Data {
 				.map(DataAtomic.class::cast);
 	}
 
+	@Override
 	public CoraDataGroup getFirstGroupWithNameInData(String childNameInData) {
 		Optional<CoraDataGroup> findFirst = getGroupChildrenWithNameInDataStream(childNameInData)
 				.findFirst();
