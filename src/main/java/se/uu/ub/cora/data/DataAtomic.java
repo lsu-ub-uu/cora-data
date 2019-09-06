@@ -20,4 +20,8 @@ package se.uu.ub.cora.data;
 
 public interface DataAtomic {
 
+	String getNameInData();
+
+	String getValue();
+
 }

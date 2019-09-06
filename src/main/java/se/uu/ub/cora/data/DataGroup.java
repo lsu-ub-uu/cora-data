@@ -20,6 +20,9 @@ package se.uu.ub.cora.data;
 
 public interface DataGroup {
 
-	DataGroup getFirstGroupWithNameInData(String childNameInData);
+	String getNameInData();
 
+	String getFirstAtomicValueWithNameInData(String nameInData);
+
+	DataGroup getFirstGroupWithNameInData(String childNameInData);
 }
