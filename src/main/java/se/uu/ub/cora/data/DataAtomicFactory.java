@@ -18,19 +18,10 @@
  */
 package se.uu.ub.cora.data;
 
-import java.util.List;
+import se.uu.ub.cora.data.DataAtomic;
 
-public interface DataGroup {
+public interface DataAtomicFactory {
 
-	String getNameInData();
+	DataAtomic factorUsingNameInDataAndValue(String nameInData, String value);
 
-	String getFirstAtomicValueWithNameInData(String nameInData);
-
-	DataGroup getFirstGroupWithNameInData(String childNameInData);
-
-	void addChild(DataElement dataElement);
-
-	List<DataElement> getChildren();
-
-	boolean containsChildWithNameInData(String nameInData);
 }

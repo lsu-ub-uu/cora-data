@@ -18,19 +18,11 @@
  */
 package se.uu.ub.cora.data;
 
-import java.util.List;
+public interface DataGroupFactory {
 
-public interface DataGroup {
+	DataGroup factorUsingNameInData(String nameInData);
 
-	String getNameInData();
+	DataGroup factorAsLinkWithNameInDataTypeAndId(String nameInData, String recordType,
+			String recordId);
 
-	String getFirstAtomicValueWithNameInData(String nameInData);
-
-	DataGroup getFirstGroupWithNameInData(String childNameInData);
-
-	void addChild(DataElement dataElement);
-
-	List<DataElement> getChildren();
-
-	boolean containsChildWithNameInData(String nameInData);
 }
