@@ -3,4 +3,6 @@ module se.uu.ub.cora.data {
 
 	exports se.uu.ub.cora.data;
 
+	uses se.uu.ub.cora.data.DataGroupFactory;
+
 }
