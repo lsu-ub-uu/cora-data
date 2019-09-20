@@ -1,10 +1,12 @@
 package se.uu.ub.cora.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DataGroupSpy implements DataGroup {
 
 	public String nameInData;
+	public List<DataElement> children = new ArrayList<>();
 
 	public DataGroupSpy(String nameInData) {
 		this.nameInData = nameInData;
@@ -30,20 +32,25 @@ public class DataGroupSpy implements DataGroup {
 
 	@Override
 	public void addChild(DataElement dataElement) {
-		// TODO Auto-generated method stub
+		children.add(dataElement);
 
 	}
 
 	@Override
 	public List<DataElement> getChildren() {
-		// TODO Auto-generated method stub
-		return null;
+		return children;
 	}
 
 	@Override
 	public boolean containsChildWithNameInData(String nameInData) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public String getRepeatId() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

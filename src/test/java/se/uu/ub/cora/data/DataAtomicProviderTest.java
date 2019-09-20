@@ -31,26 +31,27 @@ import java.lang.reflect.Modifier;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import se.uu.ub.cora.data.starter.DataGroupModuleStarter;
-import se.uu.ub.cora.data.starter.DataGroupModuleStarterImp;
+import se.uu.ub.cora.data.starter.DataAtomicModuleStarter;
+import se.uu.ub.cora.data.starter.DataAtomicModuleStarterImp;
 import se.uu.ub.cora.data.starter.DataInitializationException;
 
-public class DataGroupProviderTest {
+public class DataAtomicProviderTest {
+
 	@BeforeMethod
 	public void beforeMethod() {
-		DataGroupProvider.setDataGroupFactory(null);
+		DataAtomicProvider.setDataAtomicFactory(null);
 	}
 
 	@Test
 	public void testPrivateConstructor() throws Exception {
-		Constructor<DataGroupProvider> constructor = DataGroupProvider.class
+		Constructor<DataAtomicProvider> constructor = DataAtomicProvider.class
 				.getDeclaredConstructor();
 		assertTrue(Modifier.isPrivate(constructor.getModifiers()));
 	}
 
 	@Test(expectedExceptions = InvocationTargetException.class)
 	public void testPrivateConstructorInvoke() throws Exception {
-		Constructor<DataGroupProvider> constructor = DataGroupProvider.class
+		Constructor<DataAtomicProvider> constructor = DataAtomicProvider.class
 				.getDeclaredConstructor();
 		assertTrue(Modifier.isPrivate(constructor.getModifiers()));
 		constructor.setAccessible(true);
@@ -58,57 +59,61 @@ public class DataGroupProviderTest {
 	}
 
 	@Test
-	public void testDataGroupProviderUsesExistingDataGroupFactory() throws Exception {
-		DataGroupFactorySpy dataGroupFactorySpy = new DataGroupFactorySpy();
-		DataGroupProvider.setDataGroupFactory(dataGroupFactorySpy);
+	public void testDataAtomicProviderUsesExistingDataAtomicFactory() throws Exception {
+		DataAtomicFactorySpy dataAtomicFactorySpy = new DataAtomicFactorySpy();
+		DataAtomicProvider.setDataAtomicFactory(dataAtomicFactorySpy);
 		String nameInData = "someNameInData";
-		DataGroup dataGroup = DataGroupProvider.getDataGroupUsingNameInData(nameInData);
+		String value = "someValue";
+		DataAtomic dataAtomic = DataAtomicProvider.getDataAtomicUsingNameInDataAndValue(nameInData,
+				value);
 
-		assertTrue(dataGroupFactorySpy.withNameInDataWasCalled);
-		assertEquals(dataGroupFactorySpy.nameInData, nameInData);
-		assertSame(dataGroup, dataGroupFactorySpy.returnedDataGroup);
+		assertTrue(dataAtomicFactorySpy.withNameInDataAndValueWasCalled);
+		assertEquals(dataAtomicFactorySpy.nameInData, nameInData);
+		assertEquals(dataAtomicFactorySpy.value, value);
+		assertSame(dataAtomic, dataAtomicFactorySpy.returnedDataAtomic);
 	}
 
 	@Test
-	public void testStartingOfDataGoupFactoryCanOnlyBeDoneByOneThreadAtATime() throws Exception {
-		Method declaredMethod = DataGroupProvider.class
-				.getDeclaredMethod("ensureDataGroupFactoryIsSet");
+	public void testStartingOfDataAtomicFactoryCanOnlyBeDoneByOneThreadAtATime() throws Exception {
+		Method declaredMethod = DataAtomicProvider.class
+				.getDeclaredMethod("ensureDataAtomicFactoryIsSet");
 		assertTrue(Modifier.isSynchronized(declaredMethod.getModifiers()));
 	}
 
 	@Test
 	public void testNonExceptionThrowingStartup() throws Exception {
-		DataGroupModuleStarterSpy starter = startDataGroupModuleInitializerWithStarterSpy();
-		DataGroupProvider.getDataGroupUsingNameInData("someNameInData");
+		DataAtomicModuleStarterSpy starter = startDataAtomicModuleInitializerWithStarterSpy();
+		DataAtomicProvider.getDataAtomicUsingNameInDataAndValue("someNameInData", "someValue");
 		assertTrue(starter.startWasCalled);
 	}
 
-	private DataGroupModuleStarterSpy startDataGroupModuleInitializerWithStarterSpy() {
-		DataGroupModuleStarter starter = new DataGroupModuleStarterSpy();
-		DataGroupProvider.setStarter(starter);
-		return (DataGroupModuleStarterSpy) starter;
+	private DataAtomicModuleStarterSpy startDataAtomicModuleInitializerWithStarterSpy() {
+		DataAtomicModuleStarter starter = new DataAtomicModuleStarterSpy();
+		DataAtomicProvider.setStarter(starter);
+		return (DataAtomicModuleStarterSpy) starter;
 	}
 
 	@Test
 	public void testInitUsesDefaultLoggerModuleStarter() throws Exception {
 		makeSureErrorIsThrownAsNoImplementationsExistInThisModule();
-		DataGroupModuleStarter starter = DataGroupProvider.getStarter();
-		assertStarterIsDataGroupModuleStarter(starter);
+		DataAtomicModuleStarter starter = DataAtomicProvider.getStarter();
+		assertStarterIsDataAtomicModuleStarter(starter);
 	}
 
 	private void makeSureErrorIsThrownAsNoImplementationsExistInThisModule() {
 		Exception caughtException = null;
 		try {
-			DataGroupProvider.getDataGroupUsingNameInData("someNameInData");
+			DataAtomicProvider.getDataAtomicUsingNameInDataAndValue("someNameInData", "someValue");
 		} catch (Exception e) {
 			caughtException = e;
 		}
 		assertTrue(caughtException instanceof DataInitializationException);
-		assertEquals(caughtException.getMessage(), "No implementations found for DataGroupFactory");
+		assertEquals(caughtException.getMessage(),
+				"No implementations found for DataAtomicFactory");
 	}
 
-	private void assertStarterIsDataGroupModuleStarter(DataGroupModuleStarter starter) {
-		assertTrue(starter instanceof DataGroupModuleStarterImp);
+	private void assertStarterIsDataAtomicModuleStarter(DataAtomicModuleStarter starter) {
+		assertTrue(starter instanceof DataAtomicModuleStarterImp);
 	}
 
 }

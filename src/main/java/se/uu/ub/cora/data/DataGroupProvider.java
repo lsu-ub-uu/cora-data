@@ -45,10 +45,10 @@ public class DataGroupProvider {
 	}
 
 	private static void getDataGroupFactoryImpUsingModuleStarter() {
-		Iterable<DataGroupFactory> loggerFactoryImplementations = ServiceLoader
+		Iterable<DataGroupFactory> dataGroupFactoryImplementations = ServiceLoader
 				.load(DataGroupFactory.class);
 		dataGroupModuleStarter
-				.startUsingDataGroupFactoryImplementations(loggerFactoryImplementations);
+				.startUsingDataGroupFactoryImplementations(dataGroupFactoryImplementations);
 		dataGroupFactory = dataGroupModuleStarter.getDataGroupFactory();
 	}
 
@@ -59,7 +59,7 @@ public class DataGroupProvider {
 	 * an implementation of DataGroupFactory in a seperate java module.
 	 * 
 	 * @param dataGroupFactory
-	 *            A DataGroupFactory to use to create loggers for testing
+	 *            A DataGroupFactory to use to create dataGroups for testing
 	 */
 	public static void setDataGroupFactory(DataGroupFactory dataGroupFactory) {
 		DataGroupProvider.dataGroupFactory = dataGroupFactory;

@@ -18,8 +18,9 @@
  */
 package se.uu.ub.cora.data;
 
-public interface DataAtomic {
+public interface DataAtomic extends DataElement {
 
+	@Override
 	String getNameInData();
 
 	String getValue();

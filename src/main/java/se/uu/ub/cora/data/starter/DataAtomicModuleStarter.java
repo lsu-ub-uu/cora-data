@@ -16,22 +16,15 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-package se.uu.ub.cora.data;
+package se.uu.ub.cora.data.starter;
 
-import java.util.List;
+import se.uu.ub.cora.data.DataAtomicFactory;
 
-public interface DataGroup extends DataElement {
+public interface DataAtomicModuleStarter {
 
-	@Override
-	String getNameInData();
+	void startUsingDataAtomicFactoryImplementations(
+			Iterable<DataAtomicFactory> loggerFactoryImplementations);
 
-	String getFirstAtomicValueWithNameInData(String nameInData);
+	DataAtomicFactory getDataAtomicFactory();
 
-	DataGroup getFirstGroupWithNameInData(String childNameInData);
-
-	void addChild(DataElement dataElement);
-
-	List<DataElement> getChildren();
-
-	boolean containsChildWithNameInData(String nameInData);
 }
