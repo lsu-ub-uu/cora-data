@@ -53,4 +53,10 @@ public class DataGroupSpy implements DataGroup {
 		return null;
 	}
 
+	@Override
+	public void setRepeatId(String repeatId) {
+		// TODO Auto-generated method stub
+
+	}
+
 }
