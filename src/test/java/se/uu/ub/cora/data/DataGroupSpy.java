@@ -59,4 +59,22 @@ public class DataGroupSpy implements DataGroup {
 
 	}
 
+	@Override
+	public void addAttributeByIdWithValue(String id, String value) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public DataElement getFirstChildWithNameInData(String nameInData) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<DataGroup> getAllGroupsWithNameInData(String nameInData) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

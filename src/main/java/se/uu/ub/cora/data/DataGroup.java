@@ -36,4 +36,10 @@ public interface DataGroup extends DataElement {
 	boolean containsChildWithNameInData(String nameInData);
 
 	void setRepeatId(String repeatId);
+
+	void addAttributeByIdWithValue(String id, String value);
+
+	DataElement getFirstChildWithNameInData(String nameInData);
+
+	List<DataGroup> getAllGroupsWithNameInData(String nameInData);
 }
