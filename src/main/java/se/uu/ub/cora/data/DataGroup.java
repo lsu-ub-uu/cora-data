@@ -42,4 +42,6 @@ public interface DataGroup extends DataElement {
 	DataElement getFirstChildWithNameInData(String nameInData);
 
 	List<DataGroup> getAllGroupsWithNameInData(String nameInData);
+
+	String getAttribute(String attributeId);
 }
