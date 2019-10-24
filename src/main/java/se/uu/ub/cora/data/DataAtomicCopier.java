@@ -22,12 +22,12 @@ public class DataAtomicCopier implements DataCopier {
 
 	private DataAtomic dataAtomic;
 
-	private DataAtomicCopier(DataAtomic dataElement) {
-		this.dataAtomic = dataElement;
+	private DataAtomicCopier(DataAtomic dataAtomic) {
+		this.dataAtomic = dataAtomic;
 	}
 
-	public static DataAtomicCopier usingDataAtomic(DataAtomic dataElement) {
-		return new DataAtomicCopier(dataElement);
+	public static DataAtomicCopier usingDataAtomic(DataAtomic dataAtomic) {
+		return new DataAtomicCopier(dataAtomic);
 	}
 
 	@Override
