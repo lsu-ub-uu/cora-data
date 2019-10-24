@@ -23,7 +23,7 @@ public class DataCopierFactoryImp implements DataCopierFactory {
 	@Override
 	public DataCopier factorForDataElement(DataElement dataElement) {
 		if (dataElement instanceof DataAtomic) {
-			return DataAtomicCopier.usingDataAtomic(dataElement);
+			return DataAtomicCopier.usingDataAtomic((DataAtomic) dataElement);
 		} else if (dataElement instanceof DataRecordLink) {
 			return new DataRecordLinkCopier(dataElement);
 		}

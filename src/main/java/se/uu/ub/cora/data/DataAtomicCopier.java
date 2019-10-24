@@ -20,19 +20,18 @@ package se.uu.ub.cora.data;
 
 public class DataAtomicCopier implements DataCopier {
 
-	private DataElement dataElement;
+	private DataAtomic dataAtomic;
 
-	private DataAtomicCopier(DataElement dataElement) {
-		this.dataElement = dataElement;
+	private DataAtomicCopier(DataAtomic dataElement) {
+		this.dataAtomic = dataElement;
 	}
 
-	public static DataAtomicCopier usingDataAtomic(DataElement dataElement) {
+	public static DataAtomicCopier usingDataAtomic(DataAtomic dataElement) {
 		return new DataAtomicCopier(dataElement);
 	}
 
 	@Override
 	public DataElement copy() {
-		DataAtomic dataAtomic = (DataAtomic) dataElement;
 		DataAtomic dataAtomicCopy = DataAtomic.withNameInDataAndValue(dataAtomic.getNameInData(),
 				dataAtomic.getValue());
 		possiblySetRepeatId(dataAtomic, dataAtomicCopy);

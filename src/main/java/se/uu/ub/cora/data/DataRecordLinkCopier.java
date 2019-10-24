@@ -51,7 +51,7 @@ public class DataRecordLinkCopier implements DataCopier {
 
 	private DataElement copyChildFromOriginalLinkUsingChildNameInData(String childNameInData) {
 		DataAtomicCopier atomicCopier = DataAtomicCopier.usingDataAtomic(
-				orignialDataRecordLink.getFirstChildWithNameInData(childNameInData));
+				(DataAtomic) orignialDataRecordLink.getFirstChildWithNameInData(childNameInData));
 		return atomicCopier.copy();
 	}
 
