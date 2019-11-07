@@ -77,4 +77,10 @@ public class DataGroupSpy implements DataGroup {
 		return null;
 	}
 
+	@Override
+	public String getAttribute(String attributeId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

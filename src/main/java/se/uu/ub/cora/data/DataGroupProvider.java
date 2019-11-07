@@ -52,6 +52,13 @@ public class DataGroupProvider {
 		dataGroupFactory = dataGroupModuleStarter.getDataGroupFactory();
 	}
 
+	public static DataGroup getDataGroupAsLinkUsingNameInDataTypeAndId(String nameInData,
+			String recordType, String recordId) {
+		ensureDataGroupFactoryIsSet();
+		return dataGroupFactory.factorAsLinkWithNameInDataTypeAndId(nameInData, recordType,
+				recordId);
+	}
+
 	/**
 	 * Sets a DataGroupFactory that will be used to factor dataGroups for Classes. This possibility
 	 * to set a DataGroupFactory is provided to enable testing of logging in other classes and is

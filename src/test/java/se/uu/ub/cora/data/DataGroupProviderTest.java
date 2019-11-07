@@ -58,13 +58,28 @@ public class DataGroupProviderTest {
 	}
 
 	@Test
-	public void testDataGroupProviderUsesExistingDataGroupFactory() throws Exception {
+	public void testGetDataGroupUsesExistingDataGroupFactory() throws Exception {
 		DataGroupFactorySpy dataGroupFactorySpy = new DataGroupFactorySpy();
 		DataGroupProvider.setDataGroupFactory(dataGroupFactorySpy);
 		String nameInData = "someNameInData";
 		DataGroup dataGroup = DataGroupProvider.getDataGroupUsingNameInData(nameInData);
 
 		assertTrue(dataGroupFactorySpy.withNameInDataWasCalled);
+		assertEquals(dataGroupFactorySpy.nameInData, nameInData);
+		assertSame(dataGroup, dataGroupFactorySpy.returnedDataGroup);
+	}
+
+	@Test
+	public void testGetLinkAsDataGroupProviderUsesExistingDataGroupFactory() throws Exception {
+		DataGroupFactorySpy dataGroupFactorySpy = new DataGroupFactorySpy();
+		DataGroupProvider.setDataGroupFactory(dataGroupFactorySpy);
+		String nameInData = "someNameInData";
+		String recordType = "someRecordType";
+		String recordId = "someRecordId";
+		DataGroup dataGroup = DataGroupProvider
+				.getDataGroupAsLinkUsingNameInDataTypeAndId(nameInData, recordType, recordId);
+
+		assertTrue(dataGroupFactorySpy.asLinkWasCalled);
 		assertEquals(dataGroupFactorySpy.nameInData, nameInData);
 		assertSame(dataGroup, dataGroupFactorySpy.returnedDataGroup);
 	}
@@ -80,6 +95,14 @@ public class DataGroupProviderTest {
 	public void testNonExceptionThrowingStartup() throws Exception {
 		DataGroupModuleStarterSpy starter = startDataGroupModuleInitializerWithStarterSpy();
 		DataGroupProvider.getDataGroupUsingNameInData("someNameInData");
+		assertTrue(starter.startWasCalled);
+	}
+
+	@Test
+	public void testNonExceptionThrowingStartupForDataGroupAsLink() throws Exception {
+		DataGroupModuleStarterSpy starter = startDataGroupModuleInitializerWithStarterSpy();
+		DataGroupProvider.getDataGroupAsLinkUsingNameInDataTypeAndId("someNameInData", "someType",
+				"someId");
 		assertTrue(starter.startWasCalled);
 	}
 
