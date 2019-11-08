@@ -25,4 +25,6 @@ public interface DataAtomic extends DataElement {
 
 	String getValue();
 
+	void setRepeatId(String repeatId);
+
 }
