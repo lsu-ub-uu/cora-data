@@ -16,4 +16,11 @@ public class DataAtomicFactorySpy implements DataAtomicFactory {
 		return returnedDataAtomic;
 	}
 
+	@Override
+	public DataAtomic factorUsingNameInDataAndValueAndRepeatId(String nameInData, String value,
+			String repeatId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

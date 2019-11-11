@@ -18,14 +18,8 @@
  */
 package se.uu.ub.cora.data;
 
-import java.util.Set;
+public interface DataAttributeFactory {
 
-public interface DataRecord {
-
-	DataGroup getDataGroup();
-
-	void addKey(String key);
-
-	Set<String> getKeys();
+	DataAttribute factorUsingNameInDataAndValue(String nameInData, String value);
 
 }

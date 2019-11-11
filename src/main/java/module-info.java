@@ -5,5 +5,7 @@ module se.uu.ub.cora.data {
 
 	uses se.uu.ub.cora.data.DataGroupFactory;
 	uses se.uu.ub.cora.data.DataAtomicFactory;
+	uses se.uu.ub.cora.data.DataRecordFactory;
+	uses se.uu.ub.cora.data.DataAttributeFactory;
 
 }

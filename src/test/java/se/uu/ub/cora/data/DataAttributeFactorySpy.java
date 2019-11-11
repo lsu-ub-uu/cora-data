@@ -18,34 +18,20 @@
  */
 package se.uu.ub.cora.data;
 
-import java.util.List;
+public class DataAttributeFactorySpy implements DataAttributeFactory {
 
-public interface DataGroup extends DataElement, DataPart {
+	public boolean withNameInDataAndValueWasCalled = false;
+	public String nameInData;
+	public String value;
+	public DataAttributeSpy returnedDataAttribute;
 
 	@Override
-	String getNameInData();
+	public DataAttribute factorUsingNameInDataAndValue(String nameInData, String value) {
+		this.nameInData = nameInData;
+		this.value = value;
+		withNameInDataAndValueWasCalled = true;
+		returnedDataAttribute = new DataAttributeSpy();
+		return returnedDataAttribute;
+	}
 
-	String getFirstAtomicValueWithNameInData(String nameInData);
-
-	DataGroup getFirstGroupWithNameInData(String childNameInData);
-
-	void addChild(DataElement dataElement);
-
-	List<DataElement> getChildren();
-
-	boolean containsChildWithNameInData(String nameInData);
-
-	void setRepeatId(String repeatId);
-
-	void addAttributeByIdWithValue(String id, String value);
-
-	DataElement getFirstChildWithNameInData(String nameInData);
-
-	List<DataGroup> getAllGroupsWithNameInData(String nameInData);
-
-	String getAttribute(String attributeId);
-
-	List<DataAtomic> getAllDataAtomicsWithNameInData(String childNameInData);
-
-	void removeFirstChildWithNameInData(String childNameInData);
 }

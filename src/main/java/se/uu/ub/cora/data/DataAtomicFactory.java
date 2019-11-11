@@ -18,10 +18,11 @@
  */
 package se.uu.ub.cora.data;
 
-import se.uu.ub.cora.data.DataAtomic;
-
 public interface DataAtomicFactory {
 
 	DataAtomic factorUsingNameInDataAndValue(String nameInData, String value);
+
+	DataAtomic factorUsingNameInDataAndValueAndRepeatId(String nameInData, String value,
+			String repeatId);
 
 }

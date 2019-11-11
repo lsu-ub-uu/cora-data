@@ -18,34 +18,18 @@
  */
 package se.uu.ub.cora.data;
 
-import java.util.List;
-
-public interface DataGroup extends DataElement, DataPart {
+public class DataAttributeSpy implements DataAttribute {
 
 	@Override
-	String getNameInData();
+	public String getNameInData() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-	String getFirstAtomicValueWithNameInData(String nameInData);
+	@Override
+	public String getValue() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-	DataGroup getFirstGroupWithNameInData(String childNameInData);
-
-	void addChild(DataElement dataElement);
-
-	List<DataElement> getChildren();
-
-	boolean containsChildWithNameInData(String nameInData);
-
-	void setRepeatId(String repeatId);
-
-	void addAttributeByIdWithValue(String id, String value);
-
-	DataElement getFirstChildWithNameInData(String nameInData);
-
-	List<DataGroup> getAllGroupsWithNameInData(String nameInData);
-
-	String getAttribute(String attributeId);
-
-	List<DataAtomic> getAllDataAtomicsWithNameInData(String childNameInData);
-
-	void removeFirstChildWithNameInData(String childNameInData);
 }

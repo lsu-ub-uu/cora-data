@@ -18,34 +18,21 @@
  */
 package se.uu.ub.cora.data;
 
-import java.util.List;
+import se.uu.ub.cora.data.starter.DataAttributeModuleStarter;
 
-public interface DataGroup extends DataElement, DataPart {
+public class DataAttributeModuleStarterSpy implements DataAttributeModuleStarter {
+
+	public boolean startWasCalled = false;
 
 	@Override
-	String getNameInData();
+	public void startUsingDataAttributeFactoryImplementations(
+			Iterable<DataAttributeFactory> loggerFactoryImplementations) {
+		startWasCalled = true;
+	}
 
-	String getFirstAtomicValueWithNameInData(String nameInData);
+	@Override
+	public DataAttributeFactory getDataAttributeFactory() {
+		return new DataAttributeFactorySpy();
+	}
 
-	DataGroup getFirstGroupWithNameInData(String childNameInData);
-
-	void addChild(DataElement dataElement);
-
-	List<DataElement> getChildren();
-
-	boolean containsChildWithNameInData(String nameInData);
-
-	void setRepeatId(String repeatId);
-
-	void addAttributeByIdWithValue(String id, String value);
-
-	DataElement getFirstChildWithNameInData(String nameInData);
-
-	List<DataGroup> getAllGroupsWithNameInData(String nameInData);
-
-	String getAttribute(String attributeId);
-
-	List<DataAtomic> getAllDataAtomicsWithNameInData(String childNameInData);
-
-	void removeFirstChildWithNameInData(String childNameInData);
 }

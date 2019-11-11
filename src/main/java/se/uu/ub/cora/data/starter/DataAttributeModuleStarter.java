@@ -16,16 +16,15 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-package se.uu.ub.cora.data;
+package se.uu.ub.cora.data.starter;
 
-import java.util.Set;
+import se.uu.ub.cora.data.DataAttributeFactory;
 
-public interface DataRecord {
+public interface DataAttributeModuleStarter {
 
-	DataGroup getDataGroup();
+	void startUsingDataAttributeFactoryImplementations(
+			Iterable<DataAttributeFactory> loggerFactoryImplementations);
 
-	void addKey(String key);
-
-	Set<String> getKeys();
+	DataAttributeFactory getDataAttributeFactory();
 
 }

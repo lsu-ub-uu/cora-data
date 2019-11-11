@@ -18,9 +18,6 @@
  */
 package se.uu.ub.cora.data;
 
-import se.uu.ub.cora.data.DataGroup;
-import se.uu.ub.cora.data.DataRecord;
-
 public interface DataRecordFactory {
 
 	DataRecord factorUsingDataGroup(DataGroup dataGroup);
