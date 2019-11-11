@@ -66,12 +66,12 @@ public class DataRecordProvider {
 		dataRecordFactory = dataRecordModuleStarter.getDataRecordFactory();
 	}
 
-	public static void setStarter(DataRecordModuleStarter starter) {
+	static void setStarter(DataRecordModuleStarter starter) {
 		dataRecordModuleStarter = starter;
 
 	}
 
-	public static DataRecordModuleStarter getStarter() {
+	static DataRecordModuleStarter getStarter() {
 		return dataRecordModuleStarter;
 	}
 }
