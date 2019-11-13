@@ -36,6 +36,7 @@ import se.uu.ub.cora.data.starter.DataGroupModuleStarterImp;
 import se.uu.ub.cora.data.starter.DataInitializationException;
 
 public class DataGroupProviderTest {
+
 	@BeforeMethod
 	public void beforeMethod() {
 		DataGroupProvider.setDataGroupFactory(null);
