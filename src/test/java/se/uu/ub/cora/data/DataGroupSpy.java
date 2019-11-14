@@ -20,6 +20,7 @@ package se.uu.ub.cora.data;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class DataGroupSpy implements DataGroup {
 
@@ -111,6 +112,12 @@ public class DataGroupSpy implements DataGroup {
 	public void removeFirstChildWithNameInData(String childNameInData) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Map<String, String> getAttributes() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
