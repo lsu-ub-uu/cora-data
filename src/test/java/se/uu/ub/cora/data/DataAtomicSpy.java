@@ -19,6 +19,14 @@
 package se.uu.ub.cora.data;
 
 public class DataAtomicSpy implements DataAtomic {
+	public String nameInData;
+	public String value;
+	public String repeatId;
+
+	public DataAtomicSpy(String nameInData, String value) {
+		this.nameInData = nameInData;
+		this.value = value;
+	}
 
 	@Override
 	public String getNameInData() {

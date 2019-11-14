@@ -16,15 +16,25 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-package se.uu.ub.cora.data;
+package se.uu.ub.cora.data.starter;
 
-public interface DataAtomic extends DataElement, DataPart {
+import se.uu.ub.cora.data.DataPart;
+import se.uu.ub.cora.data.converter.DataToJsonConverter;
+import se.uu.ub.cora.data.converter.DataToJsonConverterFactory;
+import se.uu.ub.cora.json.builder.JsonBuilderFactory;
+
+public class DataToJsonConverterFactorySpy implements DataToJsonConverterFactory {
+
+	public boolean getConverterCalled = false;
+	public JsonBuilderFactory factory;
+	public DataPart dataPart;
 
 	@Override
-	String getNameInData();
-
-	String getValue();
-
-	void setRepeatId(String repeatId);
+	public DataToJsonConverter createForDataElement(JsonBuilderFactory factory, DataPart dataPart) {
+		this.factory = factory;
+		this.dataPart = dataPart;
+		getConverterCalled = true;
+		return new DataToJsonConverterSpy();
+	}
 
 }
