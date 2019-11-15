@@ -18,6 +18,8 @@
  */
 package se.uu.ub.cora.data.converter;
 
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertSame;
 import static org.testng.Assert.assertTrue;
 
 import java.lang.reflect.Constructor;
@@ -29,12 +31,11 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import se.uu.ub.cora.data.DataAtomicSpy;
+import se.uu.ub.cora.data.starter.DataInitializationException;
 import se.uu.ub.cora.data.starter.DataToJsonConverterFactorySpy;
 import se.uu.ub.cora.data.starter.DataToJsonConverterModuleStarter;
 import se.uu.ub.cora.data.starter.DataToJsonConverterModuleStarterImp;
 import se.uu.ub.cora.json.builder.org.OrgJsonBuilderFactoryAdapter;
-import se.uu.ub.cora.json.parser.JsonValue;
-import se.uu.ub.cora.json.parser.org.OrgJsonParser;
 
 public class DataToJsonConverterProviderTest {
 
@@ -63,21 +64,14 @@ public class DataToJsonConverterProviderTest {
 	public void testGetConverterUsesExistingConverterFactory() throws Exception {
 		DataToJsonConverterFactorySpy converterFactorySpy = new DataToJsonConverterFactorySpy();
 		DataToJsonConverterProvider.setDataToJsonConverterFactory(converterFactorySpy);
-		// JsonValue jsonValue = createJsonValue();
 		DataAtomicSpy dataAtomicSpy = new DataAtomicSpy("someNameInData", "someValue");
 		DataToJsonConverter converter = DataToJsonConverterProvider
 				.getConverterUsingDataPart(dataAtomicSpy);
 
 		assertTrue(converterFactorySpy.getConverterCalled);
 		assertTrue(converterFactorySpy.factory instanceof OrgJsonBuilderFactoryAdapter);
-		// assertSame(converter, converterFactorySpy.returnedConverter);
-	}
-
-	private JsonValue createJsonValue() {
-		OrgJsonParser jsonParser = new OrgJsonParser();
-		String json = "{\"name\":\"groupNameInData\", \"children\":[]}";
-		JsonValue jsonValue = jsonParser.parseString(json);
-		return jsonValue;
+		assertSame(converterFactorySpy.dataPart, dataAtomicSpy);
+		assertSame(converterFactorySpy.dataToJsonConverterSpy, converter);
 	}
 
 	@Test
@@ -87,20 +81,19 @@ public class DataToJsonConverterProviderTest {
 		assertTrue(Modifier.isSynchronized(declaredMethod.getModifiers()));
 	}
 
-	// @Test
-	// public void testNonExceptionThrowingStartup() throws Exception {
-	// DataToJsonConverterModuleStarterSpy starter =
-	// startDataGroupModuleInitializerWithStarterSpy();
-	// JsonValue jsonValue = createJsonValue();
-	// DataToJsonConverterProvider.getConverterUsingDataPart(jsonValue);
-	// assertTrue(starter.startWasCalled);
-	// }
-	//
-	// private DataToJsonConverterModuleStarterSpy startDataGroupModuleInitializerWithStarterSpy() {
-	// DataToJsonConverterModuleStarter starter = new DataToJsonConverterModuleStarterSpy();
-	// DataToJsonConverterProvider.setStarter(starter);
-	// return (DataToJsonConverterModuleStarterSpy) starter;
-	// }
+	@Test
+	public void testNonExceptionThrowingStartup() throws Exception {
+		DataToJsonConverterModuleStarterSpy starter = startDataGroupModuleInitializerWithStarterSpy();
+		DataAtomicSpy dataAtomicSpy = new DataAtomicSpy("someNameInData", "someValue");
+		DataToJsonConverterProvider.getConverterUsingDataPart(dataAtomicSpy);
+		assertTrue(starter.startWasCalled);
+	}
+
+	private DataToJsonConverterModuleStarterSpy startDataGroupModuleInitializerWithStarterSpy() {
+		DataToJsonConverterModuleStarter starter = new DataToJsonConverterModuleStarterSpy();
+		DataToJsonConverterProvider.setStarter(starter);
+		return (DataToJsonConverterModuleStarterSpy) starter;
+	}
 
 	@Test
 	public void testInitUsesDefaultLoggerModuleStarter() throws Exception {
@@ -109,17 +102,18 @@ public class DataToJsonConverterProviderTest {
 		assertStarterIsDataGroupModuleStarter(starter);
 	}
 
-	// private void makeSureErrorIsThrownAsNoImplementationsExistInThisModule() {
-	// Exception caughtException = null;
-	// try {
-	// DataToJsonConverterProvider.getConverterUsingDataPart(createJsonValue());
-	// } catch (Exception e) {
-	// caughtException = e;
-	// }
-	// assertTrue(caughtException instanceof DataInitializationException);
-	// assertEquals(caughtException.getMessage(),
-	// "No implementations found for DataToJsonConverterFactory");
-	// }
+	private void makeSureErrorIsThrownAsNoImplementationsExistInThisModule() {
+		Exception caughtException = null;
+		try {
+			DataAtomicSpy dataAtomicSpy = new DataAtomicSpy("someNameInData", "someValue");
+			DataToJsonConverterProvider.getConverterUsingDataPart(dataAtomicSpy);
+		} catch (Exception e) {
+			caughtException = e;
+		}
+		assertTrue(caughtException instanceof DataInitializationException);
+		assertEquals(caughtException.getMessage(),
+				"No implementations found for DataToJsonConverterFactory");
+	}
 
 	private void assertStarterIsDataGroupModuleStarter(DataToJsonConverterModuleStarter starter) {
 		assertTrue(starter instanceof DataToJsonConverterModuleStarterImp);

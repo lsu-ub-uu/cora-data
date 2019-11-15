@@ -28,13 +28,15 @@ public class DataToJsonConverterFactorySpy implements DataToJsonConverterFactory
 	public boolean getConverterCalled = false;
 	public JsonBuilderFactory factory;
 	public DataPart dataPart;
+	public DataToJsonConverterSpy dataToJsonConverterSpy;
 
 	@Override
 	public DataToJsonConverter createForDataElement(JsonBuilderFactory factory, DataPart dataPart) {
 		this.factory = factory;
 		this.dataPart = dataPart;
 		getConverterCalled = true;
-		return new DataToJsonConverterSpy();
+		dataToJsonConverterSpy = new DataToJsonConverterSpy();
+		return dataToJsonConverterSpy;
 	}
 
 }

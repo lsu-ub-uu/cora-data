@@ -28,6 +28,10 @@ public class DataAtomicSpy implements DataAtomic {
 		this.value = value;
 	}
 
+	public DataAtomicSpy() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public String getNameInData() {
 		// TODO Auto-generated method stub

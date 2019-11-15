@@ -39,7 +39,7 @@ public class DataToJsonConverterProvider {
 	public static DataToJsonConverter getConverterUsingDataPart(DataPart dataPart) {
 		ensureConverterFactoryIsSet();
 		JsonBuilderFactory jsonBuilderFactory = new OrgJsonBuilderFactoryAdapter();
-		return dataToJsonConverterFactory.createForDataElement(jsonBuilderFactory, null);
+		return dataToJsonConverterFactory.createForDataElement(jsonBuilderFactory, dataPart);
 	}
 
 	private static synchronized void ensureConverterFactoryIsSet() {
