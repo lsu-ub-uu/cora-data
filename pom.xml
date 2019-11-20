@@ -27,7 +27,7 @@
 	</parent>
 
 	<artifactId>coradata</artifactId>
-    <version>3.0.0</version>
+    <version>3.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>Cora data</name>
@@ -40,7 +40,7 @@
 		<connection>scm:git:https://github.com/lsu-ub-uu/cora-data.git</connection>
 		<developerConnection>scm:git:https://github.com/lsu-ub-uu/cora-data.git</developerConnection>
 		<url>https://github.com/lsu-ub-uu/cora-data.git</url>
-	  <tag>coradata-3.0.0</tag>
+	  <tag>release/3.0</tag>
   </scm>
 
 	<dependencies>
