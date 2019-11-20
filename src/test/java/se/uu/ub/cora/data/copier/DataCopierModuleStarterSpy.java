@@ -24,7 +24,7 @@ import se.uu.ub.cora.data.starter.DataCopierModuleStarter;
 public class DataCopierModuleStarterSpy implements DataCopierModuleStarter {
 
 	public boolean startWasCalled = false;
-	public DataCopierFactorySpy dataCopierFactorySpy;
+	public DataCopierFactory dataCopierFactorySpy;
 
 	@Override
 	public void startUsingDataCopierFactoryImplementations(
