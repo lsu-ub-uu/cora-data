@@ -18,13 +18,8 @@
  */
 package se.uu.ub.cora.data;
 
-public interface DataAtomic extends DataElement, DataPart {
+public interface DataRecordFactory {
 
-	@Override
-	String getNameInData();
-
-	String getValue();
-
-	void setRepeatId(String repeatId);
+	DataRecord factorUsingDataGroup(DataGroup dataGroup);
 
 }

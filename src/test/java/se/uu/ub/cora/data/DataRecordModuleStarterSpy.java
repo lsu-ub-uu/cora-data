@@ -18,13 +18,22 @@
  */
 package se.uu.ub.cora.data;
 
-public interface DataAtomic extends DataElement, DataPart {
+import se.uu.ub.cora.data.starter.DataRecordModuleStarter;
+
+public class DataRecordModuleStarterSpy implements DataRecordModuleStarter {
+
+	public boolean startWasCalled = false;
 
 	@Override
-	String getNameInData();
+	public void startUsingDataRecordFactoryImplementations(
+			Iterable<DataRecordFactory> dataRecordFactoryImplementations) {
+		startWasCalled = true;
+	}
 
-	String getValue();
-
-	void setRepeatId(String repeatId);
+	@Override
+	public DataRecordFactory getDataRecordFactory() {
+		// TODO Auto-generated method stub
+		return new DataRecordFactorySpy();
+	}
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Uppsala University Library
+ * Copyright 2015, 2019 Uppsala University Library
  *
  * This file is part of Cora.
  *
@@ -18,13 +18,15 @@
  */
 package se.uu.ub.cora.data;
 
-public interface DataAtomic extends DataElement, DataPart {
+import static org.testng.Assert.assertTrue;
 
-	@Override
-	String getNameInData();
+import org.testng.annotations.Test;
 
-	String getValue();
+public class DataElementTest {
 
-	void setRepeatId(String repeatId);
-
+	@Test
+	public void testGetAttributesInInterfaceThroughDataAtomicSpy() {
+		DataAtomicSpy dataAtomicSpy = new DataAtomicSpy();
+		assertTrue(dataAtomicSpy.getAttributes().isEmpty());
+	}
 }

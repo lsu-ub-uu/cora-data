@@ -16,15 +16,24 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-package se.uu.ub.cora.data;
+package se.uu.ub.cora.data.converter;
 
-public interface DataAtomic extends DataElement, DataPart {
+import se.uu.ub.cora.data.starter.DataToJsonConverterFactorySpy;
+import se.uu.ub.cora.data.starter.DataToJsonConverterModuleStarter;
+
+public class DataToJsonConverterModuleStarterSpy implements DataToJsonConverterModuleStarter {
+
+	public boolean startWasCalled = false;
 
 	@Override
-	String getNameInData();
+	public void startUsingConverterFactoryImplementations(
+			Iterable<DataToJsonConverterFactory> converterFactoryImplementations) {
+		startWasCalled = true;
+	}
 
-	String getValue();
-
-	void setRepeatId(String repeatId);
+	@Override
+	public DataToJsonConverterFactory getDataToJsonConverterFactory() {
+		return new DataToJsonConverterFactorySpy();
+	}
 
 }

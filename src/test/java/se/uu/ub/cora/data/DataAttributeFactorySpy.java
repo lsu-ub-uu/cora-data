@@ -18,13 +18,20 @@
  */
 package se.uu.ub.cora.data;
 
-public interface DataAtomic extends DataElement, DataPart {
+public class DataAttributeFactorySpy implements DataAttributeFactory {
+
+	public boolean withNameInDataAndValueWasCalled = false;
+	public String nameInData;
+	public String value;
+	public DataAttributeSpy returnedDataAttribute;
 
 	@Override
-	String getNameInData();
-
-	String getValue();
-
-	void setRepeatId(String repeatId);
+	public DataAttribute factorUsingNameInDataAndValue(String nameInData, String value) {
+		this.nameInData = nameInData;
+		this.value = value;
+		withNameInDataAndValueWasCalled = true;
+		returnedDataAttribute = new DataAttributeSpy();
+		return returnedDataAttribute;
+	}
 
 }

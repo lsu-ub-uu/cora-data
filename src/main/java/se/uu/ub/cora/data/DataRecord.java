@@ -1,5 +1,5 @@
 /*
- * Copyright 2015, 2016, 2019 Uppsala University Library
+ * Copyright 2019 Uppsala University Library
  *
  * This file is part of Cora.
  *
@@ -16,53 +16,16 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package se.uu.ub.cora.data;
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 
-public final class DataRecord implements Data {
-	private Set<String> keys = new LinkedHashSet<>();
-	private DataGroup dataGroup;
-	private List<Action> actions = new ArrayList<>();
+public interface DataRecord {
 
-	public static DataRecord withDataGroup(DataGroup dataGroup) {
-		return new DataRecord(dataGroup);
-	}
+	DataGroup getDataGroup();
 
-	private DataRecord(DataGroup dataGroup) {
-		this.dataGroup = dataGroup;
-	}
+	void addKey(String key);
 
-	public void addKey(String key) {
-		keys.add(key);
-	}
+	Set<String> getKeys();
 
-	public boolean containsKey(String key) {
-		return keys.contains(key);
-	}
-
-	public Set<String> getKeys() {
-		return keys;
-	}
-
-	public void setDataGroup(DataGroup dataGroup) {
-		this.dataGroup = dataGroup;
-
-	}
-
-	public DataGroup getDataGroup() {
-		return dataGroup;
-	}
-
-	public void addAction(Action action) {
-		actions.add(action);
-	}
-
-	public List<Action> getActions() {
-		return actions;
-	}
 }

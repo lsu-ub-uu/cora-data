@@ -18,13 +18,18 @@
  */
 package se.uu.ub.cora.data;
 
-public interface DataAtomic extends DataElement, DataPart {
+public class DataAttributeSpy implements DataAttribute {
 
 	@Override
-	String getNameInData();
+	public String getNameInData() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-	String getValue();
-
-	void setRepeatId(String repeatId);
+	@Override
+	public String getValue() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

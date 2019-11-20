@@ -18,13 +18,24 @@
  */
 package se.uu.ub.cora.data;
 
-public interface DataAtomic extends DataElement, DataPart {
+import se.uu.ub.cora.data.starter.DataGroupModuleStarter;
+
+public class DataGroupModuleStarterSpy implements DataGroupModuleStarter {
+
+	public boolean startWasCalled = false;
+	public DataGroupFactorySpy dataGroupFactorySpy;
 
 	@Override
-	String getNameInData();
+	public void startUsingDataGroupFactoryImplementations(
+			Iterable<DataGroupFactory> dataGroupFactoryImplementations) {
+		startWasCalled = true;
 
-	String getValue();
+	}
 
-	void setRepeatId(String repeatId);
+	@Override
+	public DataGroupFactory getDataGroupFactory() {
+		dataGroupFactorySpy = new DataGroupFactorySpy();
+		return dataGroupFactorySpy;
+	}
 
 }

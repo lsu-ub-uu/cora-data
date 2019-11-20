@@ -16,15 +16,15 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-package se.uu.ub.cora.data;
+package se.uu.ub.cora.data.starter;
 
-public interface DataAtomic extends DataElement, DataPart {
+import se.uu.ub.cora.data.copier.DataCopierFactory;
 
-	@Override
-	String getNameInData();
+public interface DataCopierModuleStarter {
 
-	String getValue();
+	void startUsingDataCopierFactoryImplementations(
+			Iterable<DataCopierFactory> loggerFactoryImplementations);
 
-	void setRepeatId(String repeatId);
+	DataCopierFactory getDataCopierFactory();
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Uppsala University Library
+ * Copyright 2015, 2018 Uppsala University Library
  *
  * This file is part of Cora.
  *
@@ -16,15 +16,16 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 package se.uu.ub.cora.data;
 
-public interface DataAtomic extends DataElement, DataPart {
+import org.testng.annotations.Test;
 
-	@Override
-	String getNameInData();
-
-	String getValue();
-
-	void setRepeatId(String repeatId);
+public class ActionTest {
+	@Test
+	public void testAddAction() {
+		// small hack to get 100% coverage on enum
+		Action.valueOf(Action.READ.toString());
+	}
 
 }

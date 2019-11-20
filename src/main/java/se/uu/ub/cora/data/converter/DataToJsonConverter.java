@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Uppsala University Library
+ * Copyright 2015, 2019 Uppsala University Library
  * Copyright 2016 Olov McKie
  *
  * This file is part of Cora.
@@ -22,18 +22,12 @@ package se.uu.ub.cora.data.converter;
 
 import se.uu.ub.cora.json.builder.JsonObjectBuilder;
 
-public abstract class DataToJsonConverter {
+public interface DataToJsonConverter {
 
-	public String toJson() {
-		JsonObjectBuilder jsonObjectBuilder = toJsonObjectBuilder();
-		return jsonObjectBuilder.toJsonFormattedPrettyString();
-	}
+	JsonObjectBuilder toJsonObjectBuilder();
 
-	abstract JsonObjectBuilder toJsonObjectBuilder();
+	String toJsonCompactFormat();
 
-	public String toJsonCompactFormat() {
-		JsonObjectBuilder jsonObjectBuilder = toJsonObjectBuilder();
-		return jsonObjectBuilder.toJsonFormattedString();
-	}
+	String toJson();
 
 }

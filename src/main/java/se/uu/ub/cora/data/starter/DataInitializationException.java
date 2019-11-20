@@ -16,15 +16,14 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-package se.uu.ub.cora.data;
+package se.uu.ub.cora.data.starter;
 
-public interface DataAtomic extends DataElement, DataPart {
+public class DataInitializationException extends RuntimeException {
 
-	@Override
-	String getNameInData();
+	private static final long serialVersionUID = -8255613510823742429L;
 
-	String getValue();
-
-	void setRepeatId(String repeatId);
+	public DataInitializationException(String message) {
+		super(message);
+	}
 
 }

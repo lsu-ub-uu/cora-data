@@ -21,7 +21,7 @@ package se.uu.ub.cora.data;
 
 import java.util.List;
 
-public interface DataLink {
+public interface DataLink extends DataElement {
 
 	void addAction(Action action);
 
