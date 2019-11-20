@@ -64,12 +64,12 @@ public class DataToJsonConverterProvider {
 	 * DataGroupFactory to use should be provided through an implementation of
 	 * DataToJsonConverterFactory in a seperate java module.
 	 * 
-	 * @param jsonToDataConverterFactory
+	 * @param dataToJsonConverterFactory
 	 *            A DataToJsonConverterFactory to use to create jsonToDataConverters for testing
 	 */
 	public static void setDataToJsonConverterFactory(
-			DataToJsonConverterFactory jsonToDataConverterFactory) {
-		DataToJsonConverterProvider.dataToJsonConverterFactory = jsonToDataConverterFactory;
+			DataToJsonConverterFactory dataToJsonConverterFactory) {
+		DataToJsonConverterProvider.dataToJsonConverterFactory = dataToJsonConverterFactory;
 
 	}
 

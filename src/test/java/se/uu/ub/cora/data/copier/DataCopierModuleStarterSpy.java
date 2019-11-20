@@ -16,10 +16,26 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-package se.uu.ub.cora.data;
+package se.uu.ub.cora.data.copier;
 
-public interface DataCopier {
+import se.uu.ub.cora.data.starter.DataCopierFactorySpy;
+import se.uu.ub.cora.data.starter.DataCopierModuleStarter;
 
-	DataElement copy();
+public class DataCopierModuleStarterSpy implements DataCopierModuleStarter {
+
+	public boolean startWasCalled = false;
+	public DataCopierFactorySpy dataCopierFactorySpy;
+
+	@Override
+	public void startUsingDataCopierFactoryImplementations(
+			Iterable<DataCopierFactory> loggerFactoryImplementations) {
+		startWasCalled = true;
+	}
+
+	@Override
+	public DataCopierFactory getDataCopierFactory() {
+		dataCopierFactorySpy = new DataCopierFactorySpy();
+		return dataCopierFactorySpy;
+	}
 
 }
