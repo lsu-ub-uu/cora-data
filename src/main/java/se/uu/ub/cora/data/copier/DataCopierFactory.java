@@ -19,7 +19,6 @@
 package se.uu.ub.cora.data.copier;
 
 import se.uu.ub.cora.data.DataElement;
-import se.uu.ub.cora.data.copier.DataCopier;
 
 public interface DataCopierFactory {
 
