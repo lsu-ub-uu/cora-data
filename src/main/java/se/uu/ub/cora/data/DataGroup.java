@@ -18,6 +18,7 @@
  */
 package se.uu.ub.cora.data;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -49,6 +50,9 @@ public interface DataGroup extends DataElement, DataPart {
 	List<DataAtomic> getAllDataAtomicsWithNameInData(String childNameInData);
 
 	void removeFirstChildWithNameInData(String childNameInData);
+
+	Collection<DataGroup> getAllGroupsWithNameInDataAndAttributes(String childNameInData,
+			DataAttribute... childAttributes);
 
 	@Override
 	Map<String, String> getAttributes();
