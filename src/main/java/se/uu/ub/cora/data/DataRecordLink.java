@@ -18,19 +18,6 @@
  */
 package se.uu.ub.cora.data;
 
-import java.util.List;
-import java.util.Set;
-
-public interface DataRecord {
-
-	DataGroup getDataGroup();
-
-	void addKey(String key);
-
-	Set<String> getKeys();
-
-	List<Action> getActions();
-
-	void addAction(Action action);
+public interface DataRecordLink extends DataLink {
 
 }

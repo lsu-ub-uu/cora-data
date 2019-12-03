@@ -18,6 +18,18 @@
  */
 package se.uu.ub.cora.data;
 
+import java.util.List;
+
 public interface DataList {
+
+	String getFromNo();
+
+	String getToNo();
+
+	String getTotalNumberOfTypeInStorage();
+
+	String getContainDataOfType();
+
+	List<Data> getDataList();
 
 }
