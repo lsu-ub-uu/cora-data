@@ -22,7 +22,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-public interface DataGroup extends DataElement, DataPart {
+public interface DataGroup extends DataElement, DataPart, Data {
 
 	@Override
 	String getNameInData();
