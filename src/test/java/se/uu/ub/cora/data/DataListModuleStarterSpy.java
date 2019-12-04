@@ -18,26 +18,23 @@
  */
 package se.uu.ub.cora.data;
 
-import java.util.List;
+import se.uu.ub.cora.data.starter.DataListFactorySpy;
+import se.uu.ub.cora.data.starter.DataListModuleStarter;
 
-public interface DataList {
+public class DataListModuleStarterSpy implements DataListModuleStarter {
 
-	String getFromNo();
+	public boolean startWasCalled = false;
 
-	String getToNo();
+	@Override
+	public void startUsingDataListFactoryImplementations(
+			Iterable<DataListFactory> dataListFactoryImplementations) {
+		startWasCalled = true;
 
-	String getTotalNumberOfTypeInStorage();
+	}
 
-	String getContainDataOfType();
-
-	List<Data> getDataList();
-
-	void addData(Data data);
-
-	void setFromNo(String valueOf);
-
-	void setToNo(String valueOf);
-
-	void setTotalNo(String valueOf);
+	@Override
+	public DataListFactory getDataListFactory() {
+		return new DataListFactorySpy();
+	}
 
 }

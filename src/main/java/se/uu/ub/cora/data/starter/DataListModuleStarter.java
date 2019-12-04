@@ -16,28 +16,15 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-package se.uu.ub.cora.data;
+package se.uu.ub.cora.data.starter;
 
-import java.util.List;
+import se.uu.ub.cora.data.DataListFactory;
 
-public interface DataList {
+public interface DataListModuleStarter {
 
-	String getFromNo();
+	void startUsingDataListFactoryImplementations(
+			Iterable<DataListFactory> dataListFactoryImplementations);
 
-	String getToNo();
-
-	String getTotalNumberOfTypeInStorage();
-
-	String getContainDataOfType();
-
-	List<Data> getDataList();
-
-	void addData(Data data);
-
-	void setFromNo(String valueOf);
-
-	void setToNo(String valueOf);
-
-	void setTotalNo(String valueOf);
+	DataListFactory getDataListFactory();
 
 }

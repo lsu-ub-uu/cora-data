@@ -21,7 +21,7 @@ package se.uu.ub.cora.data;
 import java.util.List;
 import java.util.Set;
 
-public interface DataRecord {
+public interface DataRecord extends Data {
 
 	DataGroup getDataGroup();
 

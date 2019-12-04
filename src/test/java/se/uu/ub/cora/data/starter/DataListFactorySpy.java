@@ -16,28 +16,19 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-package se.uu.ub.cora.data;
+package se.uu.ub.cora.data.starter;
 
-import java.util.List;
+import se.uu.ub.cora.data.DataList;
+import se.uu.ub.cora.data.DataListFactory;
 
-public interface DataList {
+public class DataListFactorySpy implements DataListFactory {
 
-	String getFromNo();
+	public String nameOfDataType;
 
-	String getToNo();
-
-	String getTotalNumberOfTypeInStorage();
-
-	String getContainDataOfType();
-
-	List<Data> getDataList();
-
-	void addData(Data data);
-
-	void setFromNo(String valueOf);
-
-	void setToNo(String valueOf);
-
-	void setTotalNo(String valueOf);
+	@Override
+	public DataList factorUsingNameOfDataType(String nameOfDataType) {
+		this.nameOfDataType = nameOfDataType;
+		return new DataListSpy();
+	}
 
 }
