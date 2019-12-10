@@ -18,6 +18,6 @@
  */
 package se.uu.ub.cora.data;
 
-public interface DataRecordLink extends DataLink {
+public interface DataRecordLink extends DataLink, DataGroup {
 
 }
