@@ -25,7 +25,7 @@ import se.uu.ub.cora.data.starter.DataCopierModuleStarter;
 import se.uu.ub.cora.data.starter.DataCopierModuleStarterImp;
 
 public class DataCopierProvider {
-	private static DataCopierFactory dataAtomicFactory;
+	private static DataCopierFactory dataCopierFactory;
 	private static DataCopierModuleStarter dataCopierModuleStarter = new DataCopierModuleStarterImp();
 
 	private DataCopierProvider() {
@@ -35,11 +35,11 @@ public class DataCopierProvider {
 
 	public static DataCopier getDataCopierUsingDataElement(DataElement dataElement) {
 		ensureDataCopierFactoryIsSet();
-		return dataAtomicFactory.factorForDataElement(dataElement);
+		return dataCopierFactory.factorForDataElement(dataElement);
 	}
 
 	private static synchronized void ensureDataCopierFactoryIsSet() {
-		if (null == dataAtomicFactory) {
+		if (null == dataCopierFactory) {
 			getDataCopierFactoryImpUsingModuleStarter();
 		}
 	}
@@ -49,7 +49,7 @@ public class DataCopierProvider {
 				.load(DataCopierFactory.class);
 		dataCopierModuleStarter
 				.startUsingDataCopierFactoryImplementations(dataAtomicFactoryImplementations);
-		dataAtomicFactory = dataCopierModuleStarter.getDataCopierFactory();
+		dataCopierFactory = dataCopierModuleStarter.getDataCopierFactory();
 	}
 
 	/**
@@ -58,11 +58,11 @@ public class DataCopierProvider {
 	 * classes and is not intented to be used in production. The DataCopierFactory to use should be
 	 * provided through an implementation of DataCopierFactory in a seperate java module.
 	 * 
-	 * @param dataAtomicFactory
+	 * @param dataCopierFactory
 	 *            A DataCopierFactory to use to create dataAtomics for testing
 	 */
-	public static void setDataCopierFactory(DataCopierFactory dataAtomicFactory) {
-		DataCopierProvider.dataAtomicFactory = dataAtomicFactory;
+	public static void setDataCopierFactory(DataCopierFactory dataCopierFactory) {
+		DataCopierProvider.dataCopierFactory = dataCopierFactory;
 
 	}
 

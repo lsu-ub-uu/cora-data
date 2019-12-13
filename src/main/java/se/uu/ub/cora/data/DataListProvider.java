@@ -35,7 +35,7 @@ public class DataListProvider {
 
 	public static DataList getDataListWithNameOfDataType(String nameOfDataType) {
 		ensureDataListFactoryIsSet();
-		return dataListFactory.factorUsingNameOfDataType(nameOfDataType);
+		return dataListFactory.factorWithContainDataOfType(nameOfDataType);
 	}
 
 	/**

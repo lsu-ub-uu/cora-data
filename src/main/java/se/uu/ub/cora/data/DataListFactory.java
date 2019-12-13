@@ -20,6 +20,6 @@ package se.uu.ub.cora.data;
 
 public interface DataListFactory {
 
-	DataList factorUsingNameOfDataType(String nameOfDataType);
+	DataList factorWithContainDataOfType(String nameOfDataType);
 
 }
