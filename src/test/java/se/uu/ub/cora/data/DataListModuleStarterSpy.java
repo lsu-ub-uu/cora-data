@@ -18,39 +18,23 @@
  */
 package se.uu.ub.cora.data;
 
-import java.util.List;
-import java.util.Set;
+import se.uu.ub.cora.data.starter.DataListFactorySpy;
+import se.uu.ub.cora.data.starter.DataListModuleStarter;
 
-public class DataRecordSpy implements DataRecord {
+public class DataListModuleStarterSpy implements DataListModuleStarter {
+
+	public boolean startWasCalled = false;
 
 	@Override
-	public DataGroup getDataGroup() {
-		// TODO Auto-generated method stub
-		return null;
+	public void startUsingDataListFactoryImplementations(
+			Iterable<DataListFactory> dataListFactoryImplementations) {
+		startWasCalled = true;
+
 	}
 
 	@Override
-	public void addKey(String key) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public Set<String> getKeys() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Action> getActions() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void addAction(Action action) {
-		// TODO Auto-generated method stub
-
+	public DataListFactory getDataListFactory() {
+		return new DataListFactorySpy();
 	}
 
 }

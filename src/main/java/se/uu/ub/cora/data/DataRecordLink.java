@@ -18,8 +18,6 @@
  */
 package se.uu.ub.cora.data;
 
-public interface DataRecordLinkFactory {
-
-	DataGroup factorUsingNameInData(String nameInData);
+public interface DataRecordLink extends DataLink, DataGroup {
 
 }

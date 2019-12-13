@@ -16,41 +16,25 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-package se.uu.ub.cora.data;
+package se.uu.ub.cora.data.starter;
 
-import java.util.List;
-import java.util.Set;
+import se.uu.ub.cora.data.DataListFactory;
 
-public class DataRecordSpy implements DataRecord {
+public class DataListModuleStarterImp extends ModuleStarter implements DataListModuleStarter {
+
+	private DataListFactory dataListFactory;
 
 	@Override
-	public DataGroup getDataGroup() {
-		// TODO Auto-generated method stub
-		return null;
+	public void startUsingDataListFactoryImplementations(
+			Iterable<DataListFactory> dataListFactoryImplementations) {
+		dataListFactory = getImplementationThrowErrorIfNoneOrMoreThanOne(
+				dataListFactoryImplementations, "DataListFactory");
+
 	}
 
 	@Override
-	public void addKey(String key) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public Set<String> getKeys() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Action> getActions() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void addAction(Action action) {
-		// TODO Auto-generated method stub
-
+	public DataListFactory getDataListFactory() {
+		return dataListFactory;
 	}
 
 }

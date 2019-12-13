@@ -18,39 +18,8 @@
  */
 package se.uu.ub.cora.data;
 
-import java.util.List;
-import java.util.Set;
+public interface DataListFactory {
 
-public class DataRecordSpy implements DataRecord {
-
-	@Override
-	public DataGroup getDataGroup() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void addKey(String key) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public Set<String> getKeys() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Action> getActions() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void addAction(Action action) {
-		// TODO Auto-generated method stub
-
-	}
+	DataList factorWithContainDataOfType(String nameOfDataType);
 
 }
