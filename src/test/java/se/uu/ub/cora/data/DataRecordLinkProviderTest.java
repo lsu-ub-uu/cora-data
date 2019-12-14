@@ -40,7 +40,7 @@ public class DataRecordLinkProviderTest {
 
 	@BeforeMethod
 	public void beforeMethod() {
-		DataGroupProvider.setDataGroupFactory(null);
+		DataRecordLinkProvider.setDataRecordLinkFactory(null);
 	}
 
 	@Test
@@ -61,31 +61,31 @@ public class DataRecordLinkProviderTest {
 
 	@Test
 	public void testGetDataRecordLinkUsesExistingDataRecordLinkFactory() throws Exception {
-		DataRecordLinkFactorySpy dataGroupFactorySpy = new DataRecordLinkFactorySpy();
-		DataRecordLinkProvider.setDataRecordLinkFactory(dataGroupFactorySpy);
+		DataRecordLinkFactorySpy dataRecordLinkFactorySpy = new DataRecordLinkFactorySpy();
+		DataRecordLinkProvider.setDataRecordLinkFactory(dataRecordLinkFactorySpy);
 		String nameInData = "someNameInData";
-		DataRecordLink dataGroup = DataRecordLinkProvider
+		DataRecordLink dataRecordLink = DataRecordLinkProvider
 				.getDataRecordLinkUsingNameInData(nameInData);
 
-		assertTrue(dataGroupFactorySpy.withNameInDataWasCalled);
-		assertEquals(dataGroupFactorySpy.nameInData, nameInData);
-		assertSame(dataGroup, dataGroupFactorySpy.returnedDataRecordLink);
+		assertTrue(dataRecordLinkFactorySpy.withNameInDataWasCalled);
+		assertEquals(dataRecordLinkFactorySpy.nameInData, nameInData);
+		assertSame(dataRecordLink, dataRecordLinkFactorySpy.returnedDataRecordLink);
 	}
 
 	@Test
 	public void testGetLinkAsDataRecordLinkProviderUsesExistingDataRecordLinkFactory()
 			throws Exception {
-		DataRecordLinkFactorySpy dataGroupFactorySpy = new DataRecordLinkFactorySpy();
-		DataRecordLinkProvider.setDataRecordLinkFactory(dataGroupFactorySpy);
+		DataRecordLinkFactorySpy dataRecordLinkFactorySpy = new DataRecordLinkFactorySpy();
+		DataRecordLinkProvider.setDataRecordLinkFactory(dataRecordLinkFactorySpy);
 		String nameInData = "someNameInData";
 		String recordType = "someRecordType";
 		String recordId = "someRecordId";
-		DataRecordLink dataGroup = DataRecordLinkProvider
+		DataRecordLink dataRecordLink = DataRecordLinkProvider
 				.getDataRecordLinkAsLinkUsingNameInDataTypeAndId(nameInData, recordType, recordId);
 
-		assertTrue(dataGroupFactorySpy.asLinkWasCalled);
-		assertEquals(dataGroupFactorySpy.nameInData, nameInData);
-		assertSame(dataGroup, dataGroupFactorySpy.returnedDataRecordLink);
+		assertTrue(dataRecordLinkFactorySpy.asLinkWasCalled);
+		assertEquals(dataRecordLinkFactorySpy.nameInData, nameInData);
+		assertSame(dataRecordLink, dataRecordLinkFactorySpy.returnedDataRecordLink);
 	}
 
 	@Test

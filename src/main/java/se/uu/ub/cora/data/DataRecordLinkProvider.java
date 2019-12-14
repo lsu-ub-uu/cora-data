@@ -25,8 +25,8 @@ import se.uu.ub.cora.data.starter.DataRecordLinkModuleStarterImp;
 
 public class DataRecordLinkProvider {
 
-	private static DataRecordLinkFactory dataGroupFactory;
-	private static DataRecordLinkModuleStarter dataGroupModuleStarter = new DataRecordLinkModuleStarterImp();
+	private static DataRecordLinkFactory dataRecordLinkFactory;
+	private static DataRecordLinkModuleStarter dataRecordLinkModuleStarter = new DataRecordLinkModuleStarterImp();
 
 	private DataRecordLinkProvider() {
 		// not called
@@ -35,50 +35,50 @@ public class DataRecordLinkProvider {
 
 	public static DataRecordLink getDataRecordLinkUsingNameInData(String nameInData) {
 		ensureDataRecordLinkFactoryIsSet();
-		return dataGroupFactory.factorUsingNameInData(nameInData);
+		return dataRecordLinkFactory.factorUsingNameInData(nameInData);
 	}
 
 	private static synchronized void ensureDataRecordLinkFactoryIsSet() {
-		if (null == dataGroupFactory) {
+		if (null == dataRecordLinkFactory) {
 			getDataRecordLinkFactoryImpUsingModuleStarter();
 		}
 	}
 
 	private static void getDataRecordLinkFactoryImpUsingModuleStarter() {
-		Iterable<DataRecordLinkFactory> dataGroupFactoryImplementations = ServiceLoader
+		Iterable<DataRecordLinkFactory> dataRecordLinkFactoryImplementations = ServiceLoader
 				.load(DataRecordLinkFactory.class);
-		dataGroupModuleStarter
-				.startUsingDataRecordLinkFactoryImplementations(dataGroupFactoryImplementations);
-		dataGroupFactory = dataGroupModuleStarter.getDataRecordLinkFactory();
+		dataRecordLinkModuleStarter.startUsingDataRecordLinkFactoryImplementations(
+				dataRecordLinkFactoryImplementations);
+		dataRecordLinkFactory = dataRecordLinkModuleStarter.getDataRecordLinkFactory();
 	}
 
 	public static DataRecordLink getDataRecordLinkAsLinkUsingNameInDataTypeAndId(String nameInData,
 			String recordType, String recordId) {
 		ensureDataRecordLinkFactoryIsSet();
-		return dataGroupFactory.factorAsLinkWithNameInDataTypeAndId(nameInData, recordType,
+		return dataRecordLinkFactory.factorAsLinkWithNameInDataTypeAndId(nameInData, recordType,
 				recordId);
 	}
 
 	/**
-	 * Sets a DataRecordLinkFactory that will be used to factor dataGroups for Classes. This
+	 * Sets a DataRecordLinkFactory that will be used to factor dataRecordLinks for Classes. This
 	 * possibility to set a DataRecordLinkFactory is provided to enable testing of logging in other
 	 * classes and is not intented to be used in production. The DataRecordLinkFactory to use should
 	 * be provided through an implementation of DataRecordLinkFactory in a seperate java module.
 	 * 
-	 * @param dataGroupFactory
-	 *            A DataRecordLinkFactory to use to create dataGroups for testing
+	 * @param dataRecordLinkFactory
+	 *            A DataRecordLinkFactory to use to create dataRecordlinks for testing
 	 */
-	public static void setDataRecordLinkFactory(DataRecordLinkFactory dataGroupFactory) {
-		DataRecordLinkProvider.dataGroupFactory = dataGroupFactory;
+	public static void setDataRecordLinkFactory(DataRecordLinkFactory dataRecordLinkFactory) {
+		DataRecordLinkProvider.dataRecordLinkFactory = dataRecordLinkFactory;
 
 	}
 
 	static DataRecordLinkModuleStarter getStarter() {
-		return dataGroupModuleStarter;
+		return dataRecordLinkModuleStarter;
 	}
 
 	static void setStarter(DataRecordLinkModuleStarter starter) {
-		dataGroupModuleStarter = starter;
+		dataRecordLinkModuleStarter = starter;
 	}
 
 }

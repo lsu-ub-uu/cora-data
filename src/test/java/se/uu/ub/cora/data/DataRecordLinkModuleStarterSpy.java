@@ -24,6 +24,7 @@ import se.uu.ub.cora.data.starter.DataRecordLinkModuleStarter;
 public class DataRecordLinkModuleStarterSpy implements DataRecordLinkModuleStarter {
 
 	public boolean startWasCalled = false;
+	public DataRecordLinkFactory factorySpy;
 
 	@Override
 	public void startUsingDataRecordLinkFactoryImplementations(
@@ -33,7 +34,8 @@ public class DataRecordLinkModuleStarterSpy implements DataRecordLinkModuleStart
 
 	@Override
 	public DataRecordLinkFactory getDataRecordLinkFactory() {
-		return new DataRecordLinkFactorySpy();
+		factorySpy = new DataRecordLinkFactorySpy();
+		return factorySpy;
 	}
 
 }
