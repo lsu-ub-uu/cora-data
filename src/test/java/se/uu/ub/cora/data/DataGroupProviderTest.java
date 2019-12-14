@@ -82,6 +82,8 @@ public class DataGroupProviderTest {
 
 		assertTrue(dataGroupFactorySpy.asLinkWasCalled);
 		assertEquals(dataGroupFactorySpy.nameInData, nameInData);
+		assertEquals(dataGroupFactorySpy.recordType, recordType);
+		assertEquals(dataGroupFactorySpy.recordId, recordId);
 		assertSame(dataGroup, dataGroupFactorySpy.returnedDataGroup);
 	}
 

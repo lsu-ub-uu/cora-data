@@ -85,6 +85,8 @@ public class DataRecordLinkProviderTest {
 
 		assertTrue(dataRecordLinkFactorySpy.asLinkWasCalled);
 		assertEquals(dataRecordLinkFactorySpy.nameInData, nameInData);
+		assertEquals(dataRecordLinkFactorySpy.recordType, recordType);
+		assertEquals(dataRecordLinkFactorySpy.recordId, recordId);
 		assertSame(dataRecordLink, dataRecordLinkFactorySpy.returnedDataRecordLink);
 	}
 

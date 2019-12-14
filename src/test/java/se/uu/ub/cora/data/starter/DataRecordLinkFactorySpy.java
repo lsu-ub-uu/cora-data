@@ -27,8 +27,8 @@ public class DataRecordLinkFactorySpy implements DataRecordLinkFactory {
 	public String nameInData;
 	public DataRecordLink returnedDataRecordLink;
 	public boolean asLinkWasCalled = false;
-	private String recordType;
-	private String recordId;
+	public String recordType;
+	public String recordId;
 
 	@Override
 	public DataRecordLink factorUsingNameInData(String nameInData) {

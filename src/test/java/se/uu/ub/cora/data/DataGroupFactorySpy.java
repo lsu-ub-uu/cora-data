@@ -6,6 +6,8 @@ public class DataGroupFactorySpy implements DataGroupFactory {
 	public boolean asLinkWasCalled = false;
 	public String nameInData;
 	public DataGroup returnedDataGroup;
+	public String recordType;
+	public String recordId;
 
 	@Override
 	public DataGroup factorUsingNameInData(String nameInData) {
@@ -20,6 +22,8 @@ public class DataGroupFactorySpy implements DataGroupFactory {
 			String recordId) {
 		asLinkWasCalled = true;
 		this.nameInData = nameInData;
+		this.recordType = recordType;
+		this.recordId = recordId;
 		returnedDataGroup = new DataGroupSpy("nameInData");
 		return returnedDataGroup;
 	}
