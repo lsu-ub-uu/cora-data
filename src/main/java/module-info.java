@@ -14,5 +14,6 @@ module se.uu.ub.cora.data {
 	uses se.uu.ub.cora.data.converter.DataToJsonConverterFactory;
 	uses se.uu.ub.cora.data.copier.DataCopierFactory;
 	uses se.uu.ub.cora.data.DataRecordLinkFactory;
+	uses se.uu.ub.cora.data.DataResourceLinkFactory;
 
 }
