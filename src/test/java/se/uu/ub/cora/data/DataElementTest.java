@@ -18,15 +18,11 @@
  */
 package se.uu.ub.cora.data;
 
-import static org.testng.Assert.assertTrue;
-
-import org.testng.annotations.Test;
-
 public class DataElementTest {
 
-	@Test
-	public void testGetAttributesInInterfaceThroughDataAtomicSpy() {
-		DataAtomicSpy dataAtomicSpy = new DataAtomicSpy();
-		assertTrue(dataAtomicSpy.getAttributes().isEmpty());
-	}
+	// @Test
+	// public void testGetAttributesInInterfaceThroughDataAtomicSpy() {
+	// DataAtomicSpy dataAtomicSpy = new DataAtomicSpy();
+	// assertTrue(dataAtomicSpy.getAttributes().isEmpty());
+	// }
 }

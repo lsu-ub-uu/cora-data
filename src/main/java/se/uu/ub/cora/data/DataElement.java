@@ -19,17 +19,17 @@
 
 package se.uu.ub.cora.data;
 
-import java.util.Collections;
-import java.util.Map;
+/**
+ * DataElement defines DataElements that can be added as parts of a DataGroup
+ */
+public interface DataElement extends DataPart {
 
-public interface DataElement {
-
-	String getNameInData();
+	void setRepeatId(String repeatId);
 
 	String getRepeatId();
 
-	default Map<String, String> getAttributes() {
-		return Collections.emptyMap();
-	}
+	// default Map<String, String> getAttributes() {
+	// return Collections.emptyMap();
+	// }
 
 }

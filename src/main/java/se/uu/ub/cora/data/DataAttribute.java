@@ -18,10 +18,7 @@
  */
 package se.uu.ub.cora.data;
 
-public interface DataAttribute {
-
-	String getNameInData();
+public interface DataAttribute extends DataPart {
 
 	String getValue();
-
 }

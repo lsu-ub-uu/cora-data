@@ -22,18 +22,12 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-public interface DataGroup extends DataElement, DataPart, Data {
-
-	@Override
-	String getNameInData();
-
-	void setRepeatId(String repeatId);
+public interface DataGroup extends DataElement, Data {
 
 	void addAttributeByIdWithValue(String id, String value);
 
 	String getAttribute(String attributeId);
 
-	@Override
 	Map<String, String> getAttributes();
 
 	boolean containsChildWithNameInData(String nameInData);
@@ -55,13 +49,17 @@ public interface DataGroup extends DataElement, DataPart, Data {
 	Collection<DataGroup> getAllGroupsWithNameInDataAndAttributes(String childNameInData,
 			DataAttribute... childAttributes);
 
+	/**
+	 * removeFirstChildWithNameInData, removes the first child in this DataGroup that has the
+	 * specified nameInData. A {@link DataMissingException} SHOULD be thrown if no child exists with
+	 * the specified nameInData.
+	 */
 	void removeFirstChildWithNameInData(String childNameInData);
 
 	/**
 	 * removeAllChildrenWithNameInData, removes all children in this DataGroup that has the
-	 * specified nameInData. If no child exists with the specified nameInData a
-	 * {@link DataMissingException} SHOULD be thrown.
-	 * 
+	 * specified nameInData. A {@link DataMissingException} SHOULD be thrown if no child exists with
+	 * the specified nameInData.
 	 */
 	void removeAllChildrenWithNameInData(String childNameInData);
 

@@ -19,8 +19,17 @@
 
 package se.uu.ub.cora.data;
 
+/**
+ * DataPart defines the minimum required functionality for any part of data that the system handles
+ */
 public interface DataPart {
-
+	/**
+	 * getNameInData returns the name this piece of information should have when it is reprented as
+	 * data.
+	 * 
+	 * @return A String with the name to use when this DataPart is used in some sort of a block of
+	 *         data
+	 */
 	String getNameInData();
 
 }

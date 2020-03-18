@@ -18,13 +18,6 @@
  */
 package se.uu.ub.cora.data;
 
-public interface DataAtomic extends DataElement, DataPart {
-
-	@Override
-	String getNameInData();
-
+public interface DataAtomic extends DataElement {
 	String getValue();
-
-	void setRepeatId(String repeatId);
-
 }
