@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Uppsala University Library
+ * Copyright 2019, 2020 Uppsala University Library
  *
  * This file is part of Cora.
  *
@@ -27,33 +27,42 @@ public interface DataGroup extends DataElement, DataPart, Data {
 	@Override
 	String getNameInData();
 
-	String getFirstAtomicValueWithNameInData(String nameInData);
+	void setRepeatId(String repeatId);
 
-	DataGroup getFirstGroupWithNameInData(String childNameInData);
+	void addAttributeByIdWithValue(String id, String value);
+
+	String getAttribute(String attributeId);
+
+	@Override
+	Map<String, String> getAttributes();
+
+	boolean containsChildWithNameInData(String nameInData);
 
 	void addChild(DataElement dataElement);
 
 	List<DataElement> getChildren();
 
-	boolean containsChildWithNameInData(String nameInData);
-
-	void setRepeatId(String repeatId);
-
-	void addAttributeByIdWithValue(String id, String value);
-
 	DataElement getFirstChildWithNameInData(String nameInData);
 
-	List<DataGroup> getAllGroupsWithNameInData(String nameInData);
-
-	String getAttribute(String attributeId);
+	String getFirstAtomicValueWithNameInData(String nameInData);
 
 	List<DataAtomic> getAllDataAtomicsWithNameInData(String childNameInData);
 
-	void removeFirstChildWithNameInData(String childNameInData);
+	DataGroup getFirstGroupWithNameInData(String childNameInData);
+
+	List<DataGroup> getAllGroupsWithNameInData(String nameInData);
 
 	Collection<DataGroup> getAllGroupsWithNameInDataAndAttributes(String childNameInData,
 			DataAttribute... childAttributes);
 
-	@Override
-	Map<String, String> getAttributes();
+	void removeFirstChildWithNameInData(String childNameInData);
+
+	/**
+	 * removeAllChildrenWithNameInData, removes all children in this DataGroup that has the
+	 * specified nameInData. If no child exists with the specified nameInData a
+	 * {@link DataMissingException} SHOULD be thrown.
+	 * 
+	 */
+	void removeAllChildrenWithNameInData(String childNameInData);
+
 }

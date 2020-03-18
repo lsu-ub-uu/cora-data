@@ -139,4 +139,10 @@ public class DataRecordLinkSpy implements DataRecordLink {
 		return null;
 	}
 
+	@Override
+	public void removeAllChildrenWithNameInData(String childNameInData) {
+		// TODO Auto-generated method stub
+
+	}
+
 }

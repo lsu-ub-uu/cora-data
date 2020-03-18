@@ -120,4 +120,10 @@ public class DataResourceLinkSpy implements DataResourceLink {
 	public Map<String, String> getAttributes() {
 		return null;
 	}
+
+	@Override
+	public void removeAllChildrenWithNameInData(String childNameInData) {
+		// TODO Auto-generated method stub
+
+	}
 }
