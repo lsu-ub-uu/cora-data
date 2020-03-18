@@ -19,6 +19,9 @@
 
 package se.uu.ub.cora.data;
 
+import java.util.Collections;
+import java.util.Map;
+
 /**
  * DataElement defines DataElements that can be added as parts of a DataGroup
  */
@@ -28,8 +31,17 @@ public interface DataElement extends DataPart {
 
 	String getRepeatId();
 
-	// default Map<String, String> getAttributes() {
-	// return Collections.emptyMap();
-	// }
+	/**
+	 * getAttributes returns the attributes that this dataElement has.<br>
+	 * <br>
+	 * Note that this interface currently has a default implementation, awaiting that the system
+	 * gets support for attributes for DataAtomic as well. Once the system has support for
+	 * attributes for DataAtomics will this default implementation be removed.
+	 * 
+	 * @return A Map
+	 */
+	default Map<String, String> getAttributes() {
+		return Collections.emptyMap();
+	}
 
 }

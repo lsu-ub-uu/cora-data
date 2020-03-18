@@ -20,7 +20,8 @@
 package se.uu.ub.cora.data;
 
 /**
- * DataPart defines the minimum required functionality for any part of data that the system handles
+ * DataPart defines the minimum required functionality for any part of data that the system handles.
+ * All dataParts must at least have a name.
  */
 public interface DataPart {
 	/**
