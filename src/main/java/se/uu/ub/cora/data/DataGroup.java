@@ -28,6 +28,7 @@ public interface DataGroup extends DataElement, Data {
 
 	String getAttribute(String attributeId);
 
+	@Override
 	Map<String, String> getAttributes();
 
 	boolean containsChildWithNameInData(String nameInData);
@@ -50,17 +51,24 @@ public interface DataGroup extends DataElement, Data {
 			DataAttribute... childAttributes);
 
 	/**
-	 * removeFirstChildWithNameInData, removes the first child in this DataGroup that has the
+	 * removeFirstChildWithNameInData removes the first child in this DataGroup that has the
 	 * specified nameInData. A {@link DataMissingException} SHOULD be thrown if no child exists with
 	 * the specified nameInData.
 	 */
 	void removeFirstChildWithNameInData(String childNameInData);
 
 	/**
-	 * removeAllChildrenWithNameInData, removes all children in this DataGroup that has the
-	 * specified nameInData. A {@link DataMissingException} SHOULD be thrown if no child exists with
-	 * the specified nameInData.
+	 * removeAllChildrenWithNameInData removes all children in this DataGroup that has the specified
+	 * nameInData. A {@link DataMissingException} SHOULD be thrown if no child exists with the
+	 * specified nameInData.
 	 */
 	void removeAllChildrenWithNameInData(String childNameInData);
+
+	/**
+	 * getFirstDataAtomicWithNameInData returns the first DataAtomic child with the specified
+	 * nameInData.A {@link DataMissingException} SHOULD be thrown if no child exists with the
+	 * specified nameInData.
+	 */
+	DataAtomic getFirstDataAtomicWithNameInData(String childNameInData);
 
 }
