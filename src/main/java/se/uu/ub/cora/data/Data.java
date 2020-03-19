@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Uppsala University Library
+ * Copyright 2015, 2020 Uppsala University Library
  *
  * This file is part of Cora.
  *
@@ -19,6 +19,11 @@
 
 package se.uu.ub.cora.data;
 
+/**
+ * Data defines information at the level sent to and from the cora system. This is normaly
+ * information about an cora-object handled by the system. Data is used as a communication object
+ * between the cora system and its clients.
+ */
 public interface Data {
 
 }

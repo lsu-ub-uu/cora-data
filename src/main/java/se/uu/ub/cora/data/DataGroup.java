@@ -31,11 +31,35 @@ public interface DataGroup extends DataElement, Data {
 	@Override
 	Map<String, String> getAttributes();
 
+	/**
+	 * containsChildWithNameInData checks if this DataGroup has a child with the specified name or
+	 * not.
+	 * 
+	 * @return A boolean, true if a child exists with the specified name, else false.
+	 */
 	boolean containsChildWithNameInData(String nameInData);
 
 	void addChild(DataElement dataElement);
 
+	/**
+	 * addChildren is used to add the entered dataElements as children into the current dataGroup.
+	 * 
+	 * @param dataElements
+	 *            to add as children
+	 */
+	void addChildren(Collection<DataElement> dataElements);
+
 	List<DataElement> getChildren();
+
+	/**
+	 * getAllChildrenWithNameInData is used to get all children that matches the specified
+	 * nameInData as DataElements.
+	 * 
+	 * @param nameInData
+	 *            to get children by
+	 * @return A Collection with all children that has the specified nameInData
+	 */
+	Collection<DataElement> getAllChildrenWithNameInData(String nameInData);
 
 	DataElement getFirstChildWithNameInData(String nameInData);
 

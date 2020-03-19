@@ -25,11 +25,9 @@ package se.uu.ub.cora.data;
  */
 public interface DataPart {
 	/**
-	 * getNameInData returns the name this piece of information should have when it is reprented as
-	 * data.
+	 * getNameInData returns the name of this piece of information.
 	 * 
-	 * @return A String with the name to use when this DataPart is used in some sort of a block of
-	 *         data
+	 * @return A String with the name of this piece of data.
 	 */
 	String getNameInData();
 
