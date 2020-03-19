@@ -158,7 +158,7 @@ public class DataRecordLinkSpy implements DataRecordLink {
 	}
 
 	@Override
-	public Collection<DataElement> getAllChildrenWithNameInData(String nameInData) {
+	public List<DataElement> getAllChildrenWithNameInData(String nameInData) {
 		// TODO Auto-generated method stub
 		return null;
 	}

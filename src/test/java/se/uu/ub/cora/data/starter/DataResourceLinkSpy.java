@@ -140,7 +140,7 @@ public class DataResourceLinkSpy implements DataResourceLink {
 	}
 
 	@Override
-	public Collection<DataElement> getAllChildrenWithNameInData(String nameInData) {
+	public List<DataElement> getAllChildrenWithNameInData(String nameInData) {
 		// TODO Auto-generated method stub
 		return null;
 	}

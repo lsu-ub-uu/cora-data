@@ -59,7 +59,7 @@ public interface DataGroup extends DataElement, Data {
 	 *            to get children by
 	 * @return A Collection with all children that has the specified nameInData
 	 */
-	Collection<DataElement> getAllChildrenWithNameInData(String nameInData);
+	List<DataElement> getAllChildrenWithNameInData(String nameInData);
 
 	DataElement getFirstChildWithNameInData(String nameInData);
 
