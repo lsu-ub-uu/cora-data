@@ -20,9 +20,9 @@
 package se.uu.ub.cora.data;
 
 /**
- * Data defines information at the level sent to and from the cora system. This is normaly
- * information about an cora-object handled by the system. Data is used as a communication object
- * between the cora system and its clients.
+ * Data defines information at the level sent to and from a cora system. This is normaly information
+ * about an cora-object handled by the system. Data is used as a communication object between a cora
+ * system and its clients.
  */
 public interface Data {
 

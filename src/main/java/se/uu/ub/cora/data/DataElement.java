@@ -23,7 +23,7 @@ import java.util.Collections;
 import java.util.Map;
 
 /**
- * DataElement defines DataElements that can be added as parts (children) of a DataGroup
+ * DataElement defines DataElements that can be added as children to a DataGroup.
  */
 public interface DataElement extends DataPart {
 

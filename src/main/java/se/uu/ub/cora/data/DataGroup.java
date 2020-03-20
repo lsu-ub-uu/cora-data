@@ -20,7 +20,6 @@ package se.uu.ub.cora.data;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
 public interface DataGroup extends DataElement, Data {
 
@@ -28,13 +27,12 @@ public interface DataGroup extends DataElement, Data {
 
 	String getAttribute(String attributeId);
 
-	@Override
-	Map<String, String> getAttributes();
-
 	/**
-	 * containsChildWithNameInData checks if this DataGroup has a child with the specified name or
-	 * not.
+	 * containsChildWithNameInData checks if this DataGroup has at least one child with the
+	 * specified name or not.
 	 * 
+	 * @param nameInData
+	 *            A String with the child name
 	 * @return A boolean, true if a child exists with the specified name, else false.
 	 */
 	boolean containsChildWithNameInData(String nameInData);
@@ -43,6 +41,7 @@ public interface DataGroup extends DataElement, Data {
 
 	/**
 	 * addChildren is used to add the entered dataElements as children into the current dataGroup.
+	 * If the entered collection of dataElements is empty should no children be added.
 	 * 
 	 * @param dataElements
 	 *            to add as children
@@ -53,11 +52,13 @@ public interface DataGroup extends DataElement, Data {
 
 	/**
 	 * getAllChildrenWithNameInData is used to get all children that matches the specified
-	 * nameInData as DataElements.
+	 * nameInData as DataElements.<br>
+	 * <br>
+	 * An empty list SHOULD be returned if no child exists with the specified nameInData.
 	 * 
 	 * @param nameInData
 	 *            to get children by
-	 * @return A Collection with all children that has the specified nameInData
+	 * @return A List with all children that has the specified nameInData
 	 */
 	List<DataElement> getAllChildrenWithNameInData(String nameInData);
 
@@ -76,22 +77,28 @@ public interface DataGroup extends DataElement, Data {
 
 	/**
 	 * removeFirstChildWithNameInData removes the first child in this DataGroup that has the
-	 * specified nameInData. A {@link DataMissingException} SHOULD be thrown if no child exists with
-	 * the specified nameInData.
+	 * specified nameInData. <br>
+	 * <br>
+	 * A {@link DataMissingException} SHOULD be thrown if no child exists with the specified
+	 * nameInData.
 	 */
 	void removeFirstChildWithNameInData(String childNameInData);
 
 	/**
 	 * removeAllChildrenWithNameInData removes all children in this DataGroup that has the specified
-	 * nameInData. A {@link DataMissingException} SHOULD be thrown if no child exists with the
-	 * specified nameInData.
+	 * nameInData.<br>
+	 * <br>
+	 * A {@link DataMissingException} SHOULD be thrown if no child exists with the specified
+	 * nameInData.
 	 */
 	void removeAllChildrenWithNameInData(String childNameInData);
 
 	/**
 	 * getFirstDataAtomicWithNameInData returns the first DataAtomic child with the specified
-	 * nameInData.A {@link DataMissingException} SHOULD be thrown if no child exists with the
-	 * specified nameInData.
+	 * nameInData.<br>
+	 * <br>
+	 * A {@link DataMissingException} SHOULD be thrown if no child exists with the specified
+	 * nameInData.
 	 */
 	DataAtomic getFirstDataAtomicWithNameInData(String childNameInData);
 
