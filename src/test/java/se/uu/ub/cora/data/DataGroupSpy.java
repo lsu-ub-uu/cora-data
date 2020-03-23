@@ -110,9 +110,8 @@ public class DataGroupSpy implements DataGroup {
 	}
 
 	@Override
-	public void removeFirstChildWithNameInData(String childNameInData) {
-		// TODO Auto-generated method stub
-
+	public boolean removeFirstChildWithNameInData(String childNameInData) {
+		return true;
 	}
 
 	@Override
@@ -129,9 +128,8 @@ public class DataGroupSpy implements DataGroup {
 	}
 
 	@Override
-	public void removeAllChildrenWithNameInData(String childNameInData) {
-		// TODO Auto-generated method stub
-
+	public boolean removeAllChildrenWithNameInData(String childNameInData) {
+		return true;
 	}
 
 	@Override

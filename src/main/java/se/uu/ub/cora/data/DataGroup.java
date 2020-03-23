@@ -79,19 +79,18 @@ public interface DataGroup extends DataElement, Data {
 	 * removeFirstChildWithNameInData removes the first child in this DataGroup that has the
 	 * specified nameInData. <br>
 	 * <br>
-	 * A {@link DataMissingException} SHOULD be thrown if no child exists with the specified
-	 * nameInData.
+	 * 
+	 * @return true if a child was removed, false otherwise
 	 */
-	void removeFirstChildWithNameInData(String childNameInData);
+	boolean removeFirstChildWithNameInData(String childNameInData);
 
 	/**
 	 * removeAllChildrenWithNameInData removes all children in this DataGroup that has the specified
 	 * nameInData.<br>
 	 * <br>
-	 * A {@link DataMissingException} SHOULD be thrown if no child exists with the specified
-	 * nameInData.
+	 * s * @return true if any child has been removed, false otherwise
 	 */
-	void removeAllChildrenWithNameInData(String childNameInData);
+	boolean removeAllChildrenWithNameInData(String childNameInData);
 
 	/**
 	 * getFirstDataAtomicWithNameInData returns the first DataAtomic child with the specified
