@@ -21,7 +21,7 @@ package se.uu.ub.cora.data;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
+import java.util.Set;
 
 public class DataGroupSpy implements DataGroup {
 
@@ -115,7 +115,7 @@ public class DataGroupSpy implements DataGroup {
 	}
 
 	@Override
-	public Map<String, String> getAttributes() {
+	public Set<DataAttribute> getAttributes() {
 		// TODO Auto-generated method stub
 		return null;
 	}

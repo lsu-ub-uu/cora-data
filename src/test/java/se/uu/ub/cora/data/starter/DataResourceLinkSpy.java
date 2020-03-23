@@ -2,7 +2,7 @@ package se.uu.ub.cora.data.starter;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
+import java.util.Set;
 
 import se.uu.ub.cora.data.Action;
 import se.uu.ub.cora.data.DataAtomic;
@@ -116,7 +116,7 @@ public class DataResourceLinkSpy implements DataResourceLink {
 	}
 
 	@Override
-	public Map<String, String> getAttributes() {
+	public Set<DataAttribute> getAttributes() {
 		return null;
 	}
 
