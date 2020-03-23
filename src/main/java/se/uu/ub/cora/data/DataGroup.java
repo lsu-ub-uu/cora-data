@@ -25,7 +25,13 @@ public interface DataGroup extends DataElement, Data {
 
 	void addAttributeByIdWithValue(String id, String value);
 
-	String getAttribute(String attributeId);
+	/**
+	 * getAttribute returns the DataAttribute with the specified nameInData.<br>
+	 * <br>
+	 * A {@link DataMissingException} SHOULD be thrown if no attribute exists with the specified
+	 * nameInData.
+	 */
+	DataAttribute getAttribute(String nameInData);
 
 	/**
 	 * containsChildWithNameInData checks if this DataGroup has at least one child with the

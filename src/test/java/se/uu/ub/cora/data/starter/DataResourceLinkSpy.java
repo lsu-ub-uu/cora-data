@@ -92,7 +92,7 @@ public class DataResourceLinkSpy implements DataResourceLink {
 	}
 
 	@Override
-	public String getAttribute(String attributeId) {
+	public DataAttribute getAttribute(String attributeId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
