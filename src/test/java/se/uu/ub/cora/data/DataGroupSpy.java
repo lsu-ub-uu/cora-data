@@ -38,6 +38,12 @@ public class DataGroupSpy implements DataGroup {
 	}
 
 	@Override
+	public boolean hasChildren() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
 	public String getFirstAtomicValueWithNameInData(String nameInData) {
 		// TODO Auto-generated method stub
 		return null;

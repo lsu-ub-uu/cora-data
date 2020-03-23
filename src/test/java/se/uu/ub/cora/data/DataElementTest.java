@@ -18,27 +18,38 @@
  */
 package se.uu.ub.cora.data;
 
+import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class DataElementTest {
+	private DataElement dataElement;
+
+	@BeforeMethod
+	public void BeforeMethod() {
+		dataElement = new DataAtomicSpy();
+	}
+
 	@Test
 	public void testAddAttributeWithValue() throws Exception {
-		DataElement dataElement = new DataAtomicSpy();
 		dataElement.addAttributeByIdWithValue("someAttributeId", "someAttributeValue");
 		assertTrue(dataElement.getAttributes().isEmpty());
 	}
 
+	@Test
+	public void testHasAttributes() throws Exception {
+		assertFalse(dataElement.hasAttributes());
+	}
+
 	@Test(expectedExceptions = DataMissingException.class)
 	public void testGetAttributeDoesNotExist() {
-		DataElement dataElement = new DataAtomicSpy();
 		dataElement.getAttribute("someAttributeId");
 	}
 
 	@Test
 	public void testGetAttributesInInterfaceThroughDataAtomicSpy() {
-		DataElement dataElement = new DataAtomicSpy();
 		assertTrue(dataElement.getAttributes().isEmpty());
 	}
 

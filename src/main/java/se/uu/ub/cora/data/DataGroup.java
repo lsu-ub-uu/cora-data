@@ -22,6 +22,12 @@ import java.util.Collection;
 import java.util.List;
 
 public interface DataGroup extends DataElement, Data {
+	/**
+	 * hasChildren checks if this DataGroup has at least one child or not
+	 * 
+	 * @return A boolean, true if at least one child exists, else false
+	 */
+	boolean hasChildren();
 
 	/**
 	 * containsChildWithNameInData checks if this DataGroup has at least one child with the

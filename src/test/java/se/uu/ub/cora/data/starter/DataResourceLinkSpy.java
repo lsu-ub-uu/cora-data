@@ -141,4 +141,10 @@ public class DataResourceLinkSpy implements DataResourceLink {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public boolean hasChildren() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

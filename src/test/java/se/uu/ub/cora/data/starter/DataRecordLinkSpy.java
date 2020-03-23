@@ -160,4 +160,10 @@ public class DataRecordLinkSpy implements DataRecordLink {
 		return null;
 	}
 
+	@Override
+	public boolean hasChildren() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

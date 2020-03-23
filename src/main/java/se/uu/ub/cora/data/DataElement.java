@@ -44,6 +44,19 @@ public interface DataElement extends DataPart {
 	}
 
 	/**
+	 * hasAttributes returns true if this DataElement has attributes else false is returned<br>
+	 * <br>
+	 * Note that this interface currently has a default implementation, awaiting that the system
+	 * gets support for attributes for all DataElements (DataAtomic) as well. Once the system has
+	 * support for attributes for all DataElements will this default implementation be removed.
+	 * 
+	 * @return true if this element has attributes else false
+	 */
+	default boolean hasAttributes() {
+		return false;
+	}
+
+	/**
 	 * getAttribute returns the DataAttribute with the specified nameInData.<br>
 	 * <br>
 	 * A {@link DataMissingException} SHOULD be thrown if no attribute exists with the specified
@@ -73,4 +86,5 @@ public interface DataElement extends DataPart {
 	default Collection<DataAttribute> getAttributes() {
 		return Collections.emptySet();
 	}
+
 }
