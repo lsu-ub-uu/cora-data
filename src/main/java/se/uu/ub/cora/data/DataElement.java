@@ -23,7 +23,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 /**
- * DataElement defines DataElements that can be added as children to a DataGroup.
+ * DataElement defines elements that can be added as children to a DataGroup.
  */
 public interface DataElement extends DataPart {
 
@@ -32,16 +32,45 @@ public interface DataElement extends DataPart {
 	String getRepeatId();
 
 	/**
+	 * addAttributeByIdWithValue adds a DataAttribute with the specified nameInData and value. The
+	 * implementation is expected to allow only one attribute with the specified nameInData.<br>
+	 * <br>
+	 * Note that this interface currently has a default implementation, awaiting that the system
+	 * gets support for attributes for all DataElements (DataAtomic) as well. Once the system has
+	 * support for attributes for all DataElements will this default implementation be removed.
+	 */
+	default void addAttributeByIdWithValue(String id, String value) {
+		// does nothing by design, see note in javadoc
+	}
+
+	/**
+	 * getAttribute returns the DataAttribute with the specified nameInData.<br>
+	 * <br>
+	 * A {@link DataMissingException} SHOULD be thrown if no attribute exists with the specified
+	 * nameInData.<br>
+	 * <br>
+	 * Note that this interface currently has a default implementation, awaiting that the system
+	 * gets support for attributes for all DataElements (DataAtomic) as well. Once the system has
+	 * support for attributes for all DataElements will this default implementation be removed.
+	 */
+	default DataAttribute getAttribute(String nameInData) {
+		throw new ExceptionToBeRemoved();
+	}
+
+	class ExceptionToBeRemoved extends RuntimeException implements DataMissingException {
+		// does nothing by design, see note in javadoc
+	}
+
+	/**
 	 * getAttributes returns the attributes that this dataElement has.<br>
 	 * <br>
 	 * Note that this interface currently has a default implementation, awaiting that the system
-	 * gets support for attributes for DataAtomic as well. Once the system has support for
-	 * attributes for DataAtomics will this default implementation be removed.
+	 * gets support for attributes for all DataElements (DataAtomic) as well. Once the system has
+	 * support for attributes for all DataElements will this default implementation be removed.
 	 * 
 	 * @return A Collection of this elements DataAttributes
 	 */
 	default Collection<DataAttribute> getAttributes() {
 		return Collections.emptySet();
 	}
-
 }

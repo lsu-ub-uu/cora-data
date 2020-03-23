@@ -23,10 +23,23 @@ import static org.testng.Assert.assertTrue;
 import org.testng.annotations.Test;
 
 public class DataElementTest {
+	@Test
+	public void testAddAttributeWithValue() throws Exception {
+		DataElement dataElement = new DataAtomicSpy();
+		dataElement.addAttributeByIdWithValue("someAttributeId", "someAttributeValue");
+		assertTrue(dataElement.getAttributes().isEmpty());
+	}
+
+	@Test(expectedExceptions = DataMissingException.class)
+	public void testGetAttributeDoesNotExist() {
+		DataElement dataElement = new DataAtomicSpy();
+		dataElement.getAttribute("someAttributeId");
+	}
 
 	@Test
 	public void testGetAttributesInInterfaceThroughDataAtomicSpy() {
 		DataElement dataElement = new DataAtomicSpy();
 		assertTrue(dataElement.getAttributes().isEmpty());
 	}
+
 }

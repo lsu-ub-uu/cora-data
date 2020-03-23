@@ -24,21 +24,6 @@ import java.util.List;
 public interface DataGroup extends DataElement, Data {
 
 	/**
-	 * addAttributeByIdWithValue adds a DataAttribute with the specified nameInData and value. The
-	 * implementation is expected to allow only one attribute with the specified nameInData.<br>
-	 * <br>
-	 */
-	void addAttributeByIdWithValue(String id, String value);
-
-	/**
-	 * getAttribute returns the DataAttribute with the specified nameInData.<br>
-	 * <br>
-	 * A {@link DataMissingException} SHOULD be thrown if no attribute exists with the specified
-	 * nameInData.
-	 */
-	DataAttribute getAttribute(String nameInData);
-
-	/**
 	 * containsChildWithNameInData checks if this DataGroup has at least one child with the
 	 * specified name or not.
 	 * 
