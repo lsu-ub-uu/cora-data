@@ -99,7 +99,8 @@ public interface DataGroup extends DataElement, Data {
 	 * removeAllChildrenWithNameInData removes all children in this DataGroup that has the specified
 	 * nameInData.<br>
 	 * <br>
-	 * s * @return true if any child has been removed, false otherwise
+	 * 
+	 * @return true if any child has been removed, false otherwise
 	 */
 	boolean removeAllChildrenWithNameInData(String childNameInData);
 

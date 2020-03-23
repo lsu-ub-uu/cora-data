@@ -19,8 +19,8 @@
 
 package se.uu.ub.cora.data;
 
+import java.util.Collection;
 import java.util.Collections;
-import java.util.Set;
 
 /**
  * DataElement defines DataElements that can be added as children to a DataGroup.
@@ -38,9 +38,9 @@ public interface DataElement extends DataPart {
 	 * gets support for attributes for DataAtomic as well. Once the system has support for
 	 * attributes for DataAtomics will this default implementation be removed.
 	 * 
-	 * @return A Set of DataAttributes
+	 * @return A Collection of this elements DataAttributes
 	 */
-	default Set<DataAttribute> getAttributes() {
+	default Collection<DataAttribute> getAttributes() {
 		return Collections.emptySet();
 	}
 

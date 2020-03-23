@@ -20,7 +20,6 @@ package se.uu.ub.cora.data.starter;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 import se.uu.ub.cora.data.Action;
 import se.uu.ub.cora.data.DataAtomic;
@@ -134,7 +133,7 @@ public class DataRecordLinkSpy implements DataRecordLink {
 	}
 
 	@Override
-	public Set<DataAttribute> getAttributes() {
+	public Collection<DataAttribute> getAttributes() {
 		return null;
 	}
 
