@@ -18,10 +18,14 @@
  */
 package se.uu.ub.cora.data;
 
-public interface DataAttribute {
-
-	String getNameInData();
-
+/**
+ * DataAttribute is the interface used for attributes to data.
+ */
+public interface DataAttribute extends DataPart {
+	/**
+	 * getValue returns this DataAttributes value
+	 * 
+	 * @return A String with the value of this attribute
+	 */
 	String getValue();
-
 }

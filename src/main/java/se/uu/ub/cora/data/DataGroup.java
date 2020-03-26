@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Uppsala University Library
+ * Copyright 2019, 2020 Uppsala University Library
  *
  * This file is part of Cora.
  *
@@ -20,40 +20,88 @@ package se.uu.ub.cora.data;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
-public interface DataGroup extends DataElement, DataPart, Data {
+public interface DataGroup extends DataElement, Data {
+	/**
+	 * hasChildren checks if this DataGroup has at least one child or not
+	 * 
+	 * @return A boolean, true if at least one child exists, else false
+	 */
+	boolean hasChildren();
 
-	@Override
-	String getNameInData();
-
-	String getFirstAtomicValueWithNameInData(String nameInData);
-
-	DataGroup getFirstGroupWithNameInData(String childNameInData);
+	/**
+	 * containsChildWithNameInData checks if this DataGroup has at least one child with the
+	 * specified name or not.
+	 * 
+	 * @param nameInData
+	 *            A String with the child name
+	 * @return A boolean, true if a child exists with the specified name, else false.
+	 */
+	boolean containsChildWithNameInData(String nameInData);
 
 	void addChild(DataElement dataElement);
 
+	/**
+	 * addChildren is used to add the entered dataElements as children into the current dataGroup.
+	 * If the entered collection of dataElements is empty should no children be added.
+	 * 
+	 * @param dataElements
+	 *            to add as children
+	 */
+	void addChildren(Collection<DataElement> dataElements);
+
 	List<DataElement> getChildren();
 
-	boolean containsChildWithNameInData(String nameInData);
-
-	void setRepeatId(String repeatId);
-
-	void addAttributeByIdWithValue(String id, String value);
+	/**
+	 * getAllChildrenWithNameInData is used to get all children that matches the specified
+	 * nameInData as DataElements.<br>
+	 * <br>
+	 * An empty list SHOULD be returned if no child exists with the specified nameInData.
+	 * 
+	 * @param nameInData
+	 *            to get children by
+	 * @return A List with all children that has the specified nameInData
+	 */
+	List<DataElement> getAllChildrenWithNameInData(String nameInData);
 
 	DataElement getFirstChildWithNameInData(String nameInData);
 
-	List<DataGroup> getAllGroupsWithNameInData(String nameInData);
-
-	String getAttribute(String attributeId);
+	String getFirstAtomicValueWithNameInData(String nameInData);
 
 	List<DataAtomic> getAllDataAtomicsWithNameInData(String childNameInData);
 
-	void removeFirstChildWithNameInData(String childNameInData);
+	DataGroup getFirstGroupWithNameInData(String childNameInData);
+
+	List<DataGroup> getAllGroupsWithNameInData(String nameInData);
 
 	Collection<DataGroup> getAllGroupsWithNameInDataAndAttributes(String childNameInData,
 			DataAttribute... childAttributes);
 
-	@Override
-	Map<String, String> getAttributes();
+	/**
+	 * removeFirstChildWithNameInData removes the first child in this DataGroup that has the
+	 * specified nameInData. <br>
+	 * <br>
+	 * 
+	 * @return true if a child was removed, false otherwise
+	 */
+	boolean removeFirstChildWithNameInData(String childNameInData);
+
+	/**
+	 * removeAllChildrenWithNameInData removes all children in this DataGroup that has the specified
+	 * nameInData.<br>
+	 * <br>
+	 * 
+	 * @return true if any child has been removed, false otherwise
+	 */
+	boolean removeAllChildrenWithNameInData(String childNameInData);
+
+	/**
+	 * getFirstDataAtomicWithNameInData returns the first DataAtomic child with the specified
+	 * nameInData.<br>
+	 * <br>
+	 * A {@link DataMissingException} SHOULD be thrown if no child exists with the specified
+	 * nameInData.
+	 */
+	DataAtomic getFirstDataAtomicWithNameInData(String childNameInData);
+
 }

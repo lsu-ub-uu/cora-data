@@ -21,7 +21,6 @@ package se.uu.ub.cora.data;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
 public class DataGroupSpy implements DataGroup {
 
@@ -36,6 +35,12 @@ public class DataGroupSpy implements DataGroup {
 	public String getNameInData() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public boolean hasChildren() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	@Override
@@ -98,7 +103,7 @@ public class DataGroupSpy implements DataGroup {
 	}
 
 	@Override
-	public String getAttribute(String attributeId) {
+	public DataAttribute getAttribute(String attributeId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -110,13 +115,12 @@ public class DataGroupSpy implements DataGroup {
 	}
 
 	@Override
-	public void removeFirstChildWithNameInData(String childNameInData) {
-		// TODO Auto-generated method stub
-
+	public boolean removeFirstChildWithNameInData(String childNameInData) {
+		return true;
 	}
 
 	@Override
-	public Map<String, String> getAttributes() {
+	public Collection<DataAttribute> getAttributes() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -124,6 +128,29 @@ public class DataGroupSpy implements DataGroup {
 	@Override
 	public Collection<DataGroup> getAllGroupsWithNameInDataAndAttributes(String childNameInData,
 			DataAttribute... childAttributes) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean removeAllChildrenWithNameInData(String childNameInData) {
+		return true;
+	}
+
+	@Override
+	public DataAtomic getFirstDataAtomicWithNameInData(String childNameInData) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void addChildren(Collection<DataElement> dataElements) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public List<DataElement> getAllChildrenWithNameInData(String nameInData) {
 		// TODO Auto-generated method stub
 		return null;
 	}

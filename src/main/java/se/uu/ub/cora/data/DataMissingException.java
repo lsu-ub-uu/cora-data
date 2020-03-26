@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Uppsala University Library
+ * Copyright 2020 Uppsala University Library
  *
  * This file is part of Cora.
  *
@@ -20,15 +20,8 @@
 package se.uu.ub.cora.data;
 
 /**
- * DataPart defines the minimum required functionality for any part of data that the system handles.
- * All dataParts must at least have a name.
+ * DataMissingException is used when an operation can not be performed as the data the operation
+ * would be performed on is missing.
  */
-public interface DataPart {
-	/**
-	 * getNameInData returns the name of this piece of information.
-	 * 
-	 * @return A String with the name of this piece of data.
-	 */
-	String getNameInData();
-
+public interface DataMissingException {
 }
