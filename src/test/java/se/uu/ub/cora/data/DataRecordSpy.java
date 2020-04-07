@@ -53,4 +53,28 @@ public class DataRecordSpy implements DataRecord {
 
 	}
 
+	@Override
+	public Set<String> getReadPermissions() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Set<String> getWritePermissions() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void addReadPermission(String string) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void addWritePermission(String string) {
+		// TODO Auto-generated method stub
+
+	}
+
 }

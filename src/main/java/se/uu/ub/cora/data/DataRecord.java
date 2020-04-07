@@ -33,4 +33,12 @@ public interface DataRecord extends Data {
 
 	void addAction(Action action);
 
+	void addReadPermission(String readPermission);
+
+	Set<String> getReadPermissions();
+
+	void addWritePermission(String writePermission);
+
+	Set<String> getWritePermissions();
+
 }
