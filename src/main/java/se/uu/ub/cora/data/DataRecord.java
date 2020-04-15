@@ -18,27 +18,107 @@
  */
 package se.uu.ub.cora.data;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * DataRecord defines methods that can be used on a data record. The contents of the DataRecord is
+ * adapted to the User who in an interaction (read, update, etc.) with the server got the DataRecord
+ * in return.
+ * <p>
+ * The DataRecord consists of four major parts, a DataGroup holding the data for the record, a set
+ * of Actions that the User is allowed to do with the record, read permissions that the User has for
+ * this record, write permissions that the User has for this record.
+ * <p>
+ * Links to other DataGroups within the records DataGroup has "read" action added if the User is
+ * allowed to read them.
+ *
+ */
 public interface DataRecord extends Data {
 
+	/**
+	 * setDataGroup sets the DataGroup in the DataRecord replacing any preexisting DataGroup
+	 * 
+	 * @param dataGroup
+	 *            that is governed by the record
+	 */
+	void setDataGroup(DataGroup dataGroup);
+
+	/**
+	 * getDataGroup returns the datagroup governed by the record. Multiple calls to getDataGroup
+	 * should return the same instance.
+	 * 
+	 * @return the DataGroup governed by the record
+	 */
 	DataGroup getDataGroup();
 
-	void addKey(String key);
-
-	Set<String> getKeys();
-
-	List<Action> getActions();
-
+	/**
+	 * addAction adds an action to the preexistings list of actions that the User that interacted
+	 * with the record is authorized to execute
+	 * 
+	 * @param action
+	 *            is the action to be added to the record.
+	 */
 	void addAction(Action action);
 
+	/**
+	 * getActions returns a list with actions that the User that interacted with the record is
+	 * authorized to execute.
+	 * 
+	 * @return List of actions from the record.
+	 */
+	List<Action> getActions();
+
+	/**
+	 * addReadPermission adds a permission to the preexisting read permission that the User has for
+	 * this record
+	 * 
+	 * @param readPermission
+	 *            is the permission to be added.
+	 */
 	void addReadPermission(String readPermission);
 
+	/**
+	 * addReadPermission adds a Collection of permissions to the preexisting read permission that
+	 * the User has for this record.
+	 * 
+	 * @param readPermission
+	 *            is the permissions to be added.
+	 */
+	void addReadPermissions(Collection<String> readPermissions);
+
+	/**
+	 * getReadPermissions returns a Set with the read permissions that the User has for this record
+	 * 
+	 * @return a Set of Strings containing the read permissions
+	 */
 	Set<String> getReadPermissions();
 
+	/**
+	 * addWritePermission adds a permission to the preexisting write permission hat the User has for
+	 * this record
+	 * 
+	 * @param writePermission
+	 *            A String with the
+	 */
 	void addWritePermission(String writePermission);
 
+	/**
+	 * addWritePermissions adds a Collection of permissions to the preexisting write permission that
+	 * the User has for this record.
+	 * 
+	 * @param writePermissions
+	 *            is the permissions to be added.
+	 */
+	void addWritePermissions(Collection<String> writePermissions);
+
+	/**
+	 * getWritePermissions returns a Set with the write permissions that the User has for this
+	 * record
+	 * 
+	 * @return a Set of Strings containing the write permissions
+	 */
 	Set<String> getWritePermissions();
 
 }
