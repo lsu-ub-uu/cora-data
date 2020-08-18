@@ -64,6 +64,22 @@ public interface DataGroup extends DataElement, Data {
 	 */
 	List<DataElement> getAllChildrenWithNameInData(String nameInData);
 
+	/**
+	 * getAllChildrenWithNameInDataAndAttributes is used to get all children that matches the
+	 * specified nameInData and the specified attributes, as DataElements.<br>
+	 * <br>
+	 * An empty list SHOULD be returned if no child exists with the specified nameInData.
+	 * 
+	 * @param nameInData
+	 *            to get children by
+	 * @param childAttributes
+	 *            to get children by
+	 * 
+	 * @return A List with all children that has the specified nameInData
+	 */
+	List<DataElement> getAllChildrenWithNameInDataAndAttributes(String nameInData,
+			DataAttribute... childAttributes);
+
 	DataElement getFirstChildWithNameInData(String nameInData);
 
 	String getFirstAtomicValueWithNameInData(String nameInData);
@@ -94,6 +110,22 @@ public interface DataGroup extends DataElement, Data {
 	 * @return true if any child has been removed, false otherwise
 	 */
 	boolean removeAllChildrenWithNameInData(String childNameInData);
+
+	/**
+	 * removeAllChildrenWithNameInDataAndAttributes removes all children in this DataGroup that has
+	 * the specified nameInData and the specified attributes.<br>
+	 * <br>
+	 * 
+	 * @param childNameInData
+	 *            to remove children by
+	 * 
+	 * @param DataAttribute
+	 *            to remove children by
+	 * 
+	 * @return true if any child has been removed, false otherwise
+	 */
+	boolean removeAllChildrenWithNameInDataAndAttributes(String childNameInData,
+			DataAttribute... childAttributes);
 
 	/**
 	 * getFirstDataAtomicWithNameInData returns the first DataAtomic child with the specified
