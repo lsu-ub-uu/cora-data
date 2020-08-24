@@ -173,4 +173,11 @@ public class DataRecordLinkSpy implements DataRecordLink {
 		return false;
 	}
 
+	@Override
+	public List<DataElement> getAllChildrenWithNameInDataAndAttributes(String nameInData,
+			DataAttribute... childAttributes) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

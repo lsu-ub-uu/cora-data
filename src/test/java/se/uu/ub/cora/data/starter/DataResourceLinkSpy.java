@@ -154,4 +154,11 @@ public class DataResourceLinkSpy implements DataResourceLink {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public List<DataElement> getAllChildrenWithNameInDataAndAttributes(String nameInData,
+			DataAttribute... childAttributes) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
