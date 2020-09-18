@@ -44,6 +44,13 @@ public class DataAtomicProvider {
 		}
 	}
 
+	public static DataAtomic getDataAtomicUsingNameInDataAndValueAndRepeatId(String nameInData,
+			String value, String repeatId) {
+		ensureDataAtomicFactoryIsSet();
+		return dataAtomicFactory.factorUsingNameInDataAndValueAndRepeatId(nameInData, value,
+				repeatId);
+	}
+
 	private static void getDataAtomicFactoryImpUsingModuleStarter() {
 		Iterable<DataAtomicFactory> dataAtomicFactoryImplementations = ServiceLoader
 				.load(DataAtomicFactory.class);

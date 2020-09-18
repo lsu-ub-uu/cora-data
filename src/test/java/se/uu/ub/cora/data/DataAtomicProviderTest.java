@@ -74,6 +74,23 @@ public class DataAtomicProviderTest {
 	}
 
 	@Test
+	public void testDataAtomicProviderUsesExistingDataAtomicFactoryForRepeatId() throws Exception {
+		DataAtomicFactorySpy dataAtomicFactorySpy = new DataAtomicFactorySpy();
+		DataAtomicProvider.setDataAtomicFactory(dataAtomicFactorySpy);
+		String nameInData = "someNameInData";
+		String value = "someValue";
+		String repeatId = "0";
+		DataAtomic dataAtomic = DataAtomicProvider
+				.getDataAtomicUsingNameInDataAndValueAndRepeatId(nameInData, value, repeatId);
+
+		assertTrue(dataAtomicFactorySpy.withNameInDataAndValueAndRepeatIdWasCalled);
+		assertEquals(dataAtomicFactorySpy.nameInData, nameInData);
+		assertEquals(dataAtomicFactorySpy.value, value);
+		assertEquals(dataAtomicFactorySpy.repeatId, repeatId);
+		assertSame(dataAtomic, dataAtomicFactorySpy.returnedDataAtomic);
+	}
+
+	@Test
 	public void testStartingOfDataAtomicFactoryCanOnlyBeDoneByOneThreadAtATime() throws Exception {
 		Method declaredMethod = DataAtomicProvider.class
 				.getDeclaredMethod("ensureDataAtomicFactoryIsSet");
@@ -84,6 +101,14 @@ public class DataAtomicProviderTest {
 	public void testNonExceptionThrowingStartup() throws Exception {
 		DataAtomicModuleStarterSpy starter = startDataAtomicModuleInitializerWithStarterSpy();
 		DataAtomicProvider.getDataAtomicUsingNameInDataAndValue("someNameInData", "someValue");
+		assertTrue(starter.startWasCalled);
+	}
+
+	@Test
+	public void testNonExceptionThrowingStartupWithRepatId() throws Exception {
+		DataAtomicModuleStarterSpy starter = startDataAtomicModuleInitializerWithStarterSpy();
+		DataAtomicProvider.getDataAtomicUsingNameInDataAndValueAndRepeatId("someNameInData",
+				"someValue", "someRepeatId");
 		assertTrue(starter.startWasCalled);
 	}
 
