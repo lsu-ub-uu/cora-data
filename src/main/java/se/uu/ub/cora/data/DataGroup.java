@@ -84,13 +84,13 @@ public interface DataGroup extends DataElement, Data {
 
 	String getFirstAtomicValueWithNameInData(String nameInData);
 
-	List<DataAtomic> getAllDataAtomicsWithNameInData(String childNameInData);
+	List<DataAtomic> getAllDataAtomicsWithNameInData(String nameInData);
 
-	DataGroup getFirstGroupWithNameInData(String childNameInData);
+	DataGroup getFirstGroupWithNameInData(String nameInData);
 
 	List<DataGroup> getAllGroupsWithNameInData(String nameInData);
 
-	Collection<DataGroup> getAllGroupsWithNameInDataAndAttributes(String childNameInData,
+	Collection<DataGroup> getAllGroupsWithNameInDataAndAttributes(String nameInData,
 			DataAttribute... childAttributes);
 
 	/**
@@ -100,7 +100,7 @@ public interface DataGroup extends DataElement, Data {
 	 * 
 	 * @return true if a child was removed, false otherwise
 	 */
-	boolean removeFirstChildWithNameInData(String childNameInData);
+	boolean removeFirstChildWithNameInData(String nameInData);
 
 	/**
 	 * removeAllChildrenWithNameInData removes all children in this DataGroup that has the specified
@@ -109,14 +109,14 @@ public interface DataGroup extends DataElement, Data {
 	 * 
 	 * @return true if any child has been removed, false otherwise
 	 */
-	boolean removeAllChildrenWithNameInData(String childNameInData);
+	boolean removeAllChildrenWithNameInData(String nameInData);
 
 	/**
 	 * removeAllChildrenWithNameInDataAndAttributes removes all children in this DataGroup that has
 	 * the specified nameInData and the specified attributes.<br>
 	 * <br>
 	 * 
-	 * @param childNameInData
+	 * @param nameInData
 	 *            to remove children by
 	 * 
 	 * @param DataAttribute
@@ -124,7 +124,7 @@ public interface DataGroup extends DataElement, Data {
 	 * 
 	 * @return true if any child has been removed, false otherwise
 	 */
-	boolean removeAllChildrenWithNameInDataAndAttributes(String childNameInData,
+	boolean removeAllChildrenWithNameInDataAndAttributes(String nameInData,
 			DataAttribute... childAttributes);
 
 	/**
@@ -134,6 +134,6 @@ public interface DataGroup extends DataElement, Data {
 	 * A {@link DataMissingException} SHOULD be thrown if no child exists with the specified
 	 * nameInData.
 	 */
-	DataAtomic getFirstDataAtomicWithNameInData(String childNameInData);
+	DataAtomic getFirstDataAtomicWithNameInData(String nameInData);
 
 }
