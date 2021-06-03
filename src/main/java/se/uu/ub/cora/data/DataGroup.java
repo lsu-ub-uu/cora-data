@@ -86,6 +86,13 @@ public interface DataGroup extends DataElement, Data {
 
 	List<DataAtomic> getAllDataAtomicsWithNameInData(String nameInData);
 
+	/**
+	 * getFirstGroupWithNameInData returns the first DataGroup child with the specified
+	 * nameInData.<br>
+	 * <br>
+	 * A {@link DataMissingException} SHOULD be thrown if no child exists with the specified
+	 * nameInData.
+	 */
 	DataGroup getFirstGroupWithNameInData(String nameInData);
 
 	List<DataGroup> getAllGroupsWithNameInData(String nameInData);
