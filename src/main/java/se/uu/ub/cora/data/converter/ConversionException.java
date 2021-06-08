@@ -1,5 +1,5 @@
 /*
- * Copyright 2015, 2019 Uppsala University Library
+ * Copyright 2021 Uppsala University Library
  *
  * This file is part of Cora.
  *
@@ -16,24 +16,16 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package se.uu.ub.cora.data.converter;
 
-import se.uu.ub.cora.data.DataPart;
-
 /**
- * JsonToDataConverter converts a json string to a DataPart object.
+ * ConversionException is an exception used when an exceptions occurs while converting between data
+ * formats.
  */
-public interface JsonToDataConverter {
+public interface ConversionException {
 
 	/**
-	 * toInstance method is responsible for converting a json String to a DataPart object.
-	 * <p>
-	 * If an exception occurs during conversion MUST an exception implementing
-	 * {@link ConversionException} be thrown.
-	 * 
-	 * @return a DataPart converted from the json String
+	 * getMessage returns the detail message string of ConversionException.
 	 */
-	DataPart toInstance();
-
+	public String getMessage();
 }
