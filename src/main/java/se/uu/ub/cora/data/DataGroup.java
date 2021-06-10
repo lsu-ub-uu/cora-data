@@ -21,6 +21,9 @@ package se.uu.ub.cora.data;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * DataGroup is a container for related DataElements
+ */
 public interface DataGroup extends DataElement, Data {
 	/**
 	 * hasChildren checks if this DataGroup has at least one child or not

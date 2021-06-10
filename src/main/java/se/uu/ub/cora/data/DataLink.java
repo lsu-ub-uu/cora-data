@@ -21,9 +21,36 @@ package se.uu.ub.cora.data;
 
 import java.util.List;
 
+/**
+ * DataLink contains information linking the {@link DataRecord} this link is a part of to another
+ * entity in the system.
+ */
 public interface DataLink extends DataGroup {
 
+	/**
+	 * addAction adds an Action to this DataLink. The actions added represents the actions the
+	 * current user can perform on the resource this link points to.
+	 * <p>
+	 * At this moment only READ action are implemented for DataLinks.
+	 */
 	void addAction(Action action);
 
+	/**
+	 * @deprecated use {@linkplain #hasReadAction()} instead
+	 * @return A List of Actions that the current user has access to for the resource this link
+	 *         points to.
+	 */
+	@Deprecated
 	List<Action> getActions();
+
+	/**
+	 * hasReadAction returns true if the current user is allowed to read the resource this link
+	 * points to. This is known as this link has read action.
+	 * <p>
+	 * Note! The action inforamtion is not always populated into this link.
+	 * 
+	 * @return a boolean true if this link has read as one of its actions else false
+	 */
+	boolean hasReadAction();
+
 }

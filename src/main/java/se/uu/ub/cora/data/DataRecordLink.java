@@ -18,6 +18,10 @@
  */
 package se.uu.ub.cora.data;
 
+/**
+ * DataRecordLink contains information linking the {@link DataRecord} this link is a part of to
+ * another {@link DataRecord}
+ */
 public interface DataRecordLink extends DataLink {
 
 }

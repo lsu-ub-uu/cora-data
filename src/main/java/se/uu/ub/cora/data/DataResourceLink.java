@@ -18,6 +18,18 @@
  */
 package se.uu.ub.cora.data;
 
+/**
+ * DataResourceLink contains information linking the {@link DataRecord} this link is a part of to a
+ * resource such as an image.
+ */
 public interface DataResourceLink extends DataLink {
-
+	/**
+	 * getMimeType returns the mimeType for this link.
+	 * <p>
+	 * This information is expected to be present, if this link does not have information about what
+	 * the mimetype is, SHOULD a {@link DataMissingException} be thrown.
+	 * 
+	 * @return A String with the mimetype for this link.
+	 */
+	String getMimeType();
 }
