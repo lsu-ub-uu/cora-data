@@ -45,9 +45,10 @@ public interface DataLink extends DataGroup {
 
 	/**
 	 * hasReadAction returns true if the current user is allowed to read the resource this link
-	 * points to. This is known as this link has read action.
+	 * points to. This is also known as: link has read action.
 	 * <p>
-	 * Note! The action inforamtion is not always populated into this link.
+	 * Note! The action information is not always present. If no action information is present
+	 * SHOULD hasReadAction return false.
 	 * 
 	 * @return a boolean true if this link has read as one of its actions else false
 	 */
