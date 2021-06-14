@@ -28,7 +28,7 @@ public class DataElementTest {
 	private DataElement dataElement;
 
 	@BeforeMethod
-	public void BeforeMethod() {
+	public void beforeMethod() {
 		dataElement = new DataAtomicSpy();
 	}
 
