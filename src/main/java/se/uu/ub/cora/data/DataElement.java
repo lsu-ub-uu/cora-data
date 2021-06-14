@@ -33,8 +33,8 @@ public interface DataElement extends DataPart {
 
 	/**
 	 * addAttributeByIdWithValue adds a DataAttribute with the specified nameInData and value. The
-	 * implementation is expected to allow only one attribute with the specified nameInData.<br>
-	 * <br>
+	 * implementation is expected to allow only one attribute with the specified nameInData.
+	 * <p>
 	 * Note that this interface currently has a default implementation, awaiting that the system
 	 * gets support for attributes for all DataElements (DataAtomic) as well. Once the system has
 	 * support for attributes for all DataElements will this default implementation be removed.
@@ -44,8 +44,8 @@ public interface DataElement extends DataPart {
 	}
 
 	/**
-	 * hasAttributes returns true if this DataElement has attributes else false is returned<br>
-	 * <br>
+	 * hasAttributes returns true if this DataElement has attributes else false is returned
+	 * <p>
 	 * Note that this interface currently has a default implementation, awaiting that the system
 	 * gets support for attributes for all DataElements (DataAtomic) as well. Once the system has
 	 * support for attributes for all DataElements will this default implementation be removed.
@@ -57,26 +57,22 @@ public interface DataElement extends DataPart {
 	}
 
 	/**
-	 * getAttribute returns the DataAttribute with the specified nameInData.<br>
-	 * <br>
+	 * getAttribute returns the DataAttribute with the specified nameInData.
+	 * <p>
 	 * A {@link DataMissingException} SHOULD be thrown if no attribute exists with the specified
-	 * nameInData.<br>
-	 * <br>
+	 * nameInData.
+	 * <p>
 	 * Note that this interface currently has a default implementation, awaiting that the system
 	 * gets support for attributes for all DataElements (DataAtomic) as well. Once the system has
 	 * support for attributes for all DataElements will this default implementation be removed.
 	 */
 	default DataAttribute getAttribute(String nameInData) {
-		throw new ExceptionToBeRemoved();
-	}
-
-	class ExceptionToBeRemoved extends RuntimeException implements DataMissingException {
-		// does nothing by design, see note in javadoc
+		throw new DataMissingException("This class has not implemented getAttribute.");
 	}
 
 	/**
-	 * getAttributes returns the attributes that this dataElement has.<br>
-	 * <br>
+	 * getAttributes returns the attributes that this dataElement has.
+	 * <p>
 	 * Note that this interface currently has a default implementation, awaiting that the system
 	 * gets support for attributes for all DataElements (DataAtomic) as well. Once the system has
 	 * support for attributes for all DataElements will this default implementation be removed.

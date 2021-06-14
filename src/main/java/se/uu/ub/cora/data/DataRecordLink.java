@@ -23,5 +23,24 @@ package se.uu.ub.cora.data;
  * another {@link DataRecord}
  */
 public interface DataRecordLink extends DataLink {
+	/**
+	 * getLinkedRecordId returns the record id of the record this link refers to
+	 * <p>
+	 * This information is expected to be present, if this link does not have information about what
+	 * the linked record id is, MUST a {@link DataMissingException} be thrown.
+	 * 
+	 * @return A String with the id of the record type that this link refers to.
+	 */
+	public String getLinkedRecordId();
+
+	/**
+	 * getLinkedRecordType returns the record type of the record this link refers to.
+	 * <p>
+	 * This information is expected to be present, if this link does not have information about what
+	 * the linked record type is, MUST a {@link DataMissingException} be thrown.
+	 * 
+	 * @return A String with the record type that this link refers to.
+	 */
+	public String getLinkedRecordType();
 
 }

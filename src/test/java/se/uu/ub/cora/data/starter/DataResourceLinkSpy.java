@@ -161,4 +161,16 @@ public class DataResourceLinkSpy implements DataResourceLink {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public boolean hasReadAction() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public String getMimeType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
