@@ -1,5 +1,5 @@
 /*
- * Copyright 2015, 2020 Uppsala University Library
+ * Copyright 2021 Uppsala University Library
  *
  * This file is part of Cora.
  *
@@ -16,17 +16,10 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package se.uu.ub.cora.data;
 
 /**
- * Data defines a unit of information at the level sent to and from a cora system. This is normaly
- * information about an cora-object handled by the system. Data is used as a container of related
- * information between a cora system and its clients.
- * <p>
- * If multiple instances of {@link Data} needs to be sent to a client at once can they be added to a
- * {@link DataList}.
+ * Objects that are intended to be converted to a different representation
  */
-public interface Data {
-
+public interface Convertible {
 }

@@ -22,7 +22,7 @@ package se.uu.ub.cora.data;
  * DataRecordLink contains information linking the {@link DataRecord} this link is a part of to
  * another {@link DataRecord}
  */
-public interface DataRecordLink extends DataLink {
+public interface DataRecordLink extends DataLink, Convertible {
 	/**
 	 * getLinkedRecordId returns the record id of the record this link refers to
 	 * <p>

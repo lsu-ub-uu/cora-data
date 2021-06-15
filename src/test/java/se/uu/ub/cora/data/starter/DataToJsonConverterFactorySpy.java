@@ -18,22 +18,19 @@
  */
 package se.uu.ub.cora.data.starter;
 
-import se.uu.ub.cora.data.DataPart;
+import se.uu.ub.cora.data.Convertible;
 import se.uu.ub.cora.data.converter.DataToJsonConverter;
 import se.uu.ub.cora.data.converter.DataToJsonConverterFactory;
-import se.uu.ub.cora.json.builder.JsonBuilderFactory;
 
 public class DataToJsonConverterFactorySpy implements DataToJsonConverterFactory {
 
 	public boolean getConverterCalled = false;
-	public JsonBuilderFactory factory;
-	public DataPart dataPart;
+	public Convertible convertible;
 	public DataToJsonConverterSpy dataToJsonConverterSpy;
 
 	@Override
-	public DataToJsonConverter createForDataElement(JsonBuilderFactory factory, DataPart dataPart) {
-		this.factory = factory;
-		this.dataPart = dataPart;
+	public DataToJsonConverter factor(Convertible convertible) {
+		this.convertible = convertible;
 		getConverterCalled = true;
 		dataToJsonConverterSpy = new DataToJsonConverterSpy();
 		return dataToJsonConverterSpy;

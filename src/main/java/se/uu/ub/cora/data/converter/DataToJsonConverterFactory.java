@@ -19,11 +19,22 @@
 
 package se.uu.ub.cora.data.converter;
 
-import se.uu.ub.cora.data.DataPart;
-import se.uu.ub.cora.json.builder.JsonBuilderFactory;
+import se.uu.ub.cora.data.Convertible;
+
+/**
+ * DataToJsonConverterFactory is a factory that creates new instances of {@link DataToJsonConverter}
+ * for provided {@link Convertible}s
+ */
 
 public interface DataToJsonConverterFactory {
-
-	DataToJsonConverter createForDataElement(JsonBuilderFactory factory, DataPart dataPart);
+	/**
+	 * factor creates a {@link DataToJsonConverter} for the provided {@link Convertible}
+	 * 
+	 * @param convertible
+	 *            A {@link Convertible} to create a converter for
+	 * @return returns a {@link DataToJsonConverter} x of converting the {@link Convertible} to a
+	 *         json String.
+	 */
+	DataToJsonConverter factor(Convertible convertible);
 
 }

@@ -35,7 +35,7 @@ import java.util.Set;
  * allowed to read them.
  *
  */
-public interface DataRecord extends Data {
+public interface DataRecord extends Data, Convertible {
 
 	/**
 	 * setDataGroup sets the DataGroup in the DataRecord replacing any preexisting DataGroup

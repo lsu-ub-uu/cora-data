@@ -20,7 +20,7 @@ package se.uu.ub.cora.data.converter;
 
 import java.util.ServiceLoader;
 
-import se.uu.ub.cora.data.DataPart;
+import se.uu.ub.cora.data.Convertible;
 import se.uu.ub.cora.data.starter.DataToJsonConverterModuleStarter;
 import se.uu.ub.cora.data.starter.DataToJsonConverterModuleStarterImp;
 import se.uu.ub.cora.json.builder.JsonBuilderFactory;
@@ -36,10 +36,38 @@ public class DataToJsonConverterProvider {
 		throw new UnsupportedOperationException();
 	}
 
-	public static DataToJsonConverter getConverterUsingDataPart(DataPart dataPart) {
+	// not tested
+	// TODO: implement like this..
+	// public static DataToJsonConverterFactory getDataToJsonConverterFactory() {
+	// ensureConverterFactoryIsSet();
+	// DataToJsonConverterFactory factory =
+	// dataToJsonConverterFactoryFactory.createFactoryWithoutUrl();
+	// return factory;
+	// }
+	// public static DataToJsonConverterFactory getDataToJsonConverterFactoryForUrl(String baseUrl)
+	// {
+	// ensureConverterFactoryIsSet();
+	// DataToJsonConverterFactory factory =
+	// dataToJsonConverterFactoryFactory.createFactoryWithUrl(baseUrl);
+	// factory.factor(null)
+	// return factory;
+	// }
+	//
+	// private static void getConverterFactoryImpUsingModuleStarter() {
+	// Iterable<DataToJsonConverterFactory> dataToJsonConverterFactoryImplementations =
+	// ServiceLoader
+	// .load(DataToJsonConverterFactoryFactory.class);
+	// jsonToDataConverterModuleStarter.startUsingConverterFactoryImplementations(
+	// dataToJsonConverterFactoryImplementations);
+	// dataToJsonConverterFactory = jsonToDataConverterModuleStarter
+	// .getDataToJsonConverterFactory();
+	// }
+	// end not tested
+
+	public static DataToJsonConverter getConverterUsingDataPart(Convertible convertible) {
 		ensureConverterFactoryIsSet();
 		JsonBuilderFactory jsonBuilderFactory = new OrgJsonBuilderFactoryAdapter();
-		return dataToJsonConverterFactory.createForDataElement(jsonBuilderFactory, dataPart);
+		return dataToJsonConverterFactory.factor(convertible);
 	}
 
 	private static synchronized void ensureConverterFactoryIsSet() {
@@ -49,10 +77,10 @@ public class DataToJsonConverterProvider {
 	}
 
 	private static void getConverterFactoryImpUsingModuleStarter() {
-		Iterable<DataToJsonConverterFactory> dataGroupFactoryImplementations = ServiceLoader
+		Iterable<DataToJsonConverterFactory> dataToJsonConverterFactoryImplementations = ServiceLoader
 				.load(DataToJsonConverterFactory.class);
-		jsonToDataConverterModuleStarter
-				.startUsingConverterFactoryImplementations(dataGroupFactoryImplementations);
+		jsonToDataConverterModuleStarter.startUsingConverterFactoryImplementations(
+				dataToJsonConverterFactoryImplementations);
 		dataToJsonConverterFactory = jsonToDataConverterModuleStarter
 				.getDataToJsonConverterFactory();
 	}

@@ -20,10 +20,12 @@
 
 package se.uu.ub.cora.data.converter;
 
+import se.uu.ub.cora.data.DataPart;
 import se.uu.ub.cora.json.builder.JsonObjectBuilder;
 
 /**
- * DataToJsonConverter is an interface for classes that convert DataPart objects to json Strings.
+ * DataToJsonConverter is an interface for classes that convert {@link DataPart} objects to json
+ * Strings.
  */
 public interface DataToJsonConverter {
 	/**

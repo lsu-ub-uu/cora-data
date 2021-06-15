@@ -28,7 +28,7 @@ package se.uu.ub.cora.data;
  * of the binary data. The different versions can for instance be a thumbnail, a scaled version or
  * the master version of an image.
  */
-public interface DataResourceLink extends DataLink {
+public interface DataResourceLink extends DataLink, Convertible {
 	/**
 	 * getMimeType returns the mimeType for this link.
 	 * <p>
