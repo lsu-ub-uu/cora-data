@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Uppsala University Library
+ * Copyright 2021 Uppsala University Library
  *
  * This file is part of Cora.
  *
@@ -16,14 +16,19 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-package se.uu.ub.cora.data.starter;
+package se.uu.ub.cora.data.converter;
 
-import se.uu.ub.cora.data.converter.DataToJsonConverterFactoryCreator;
-
-public interface DataToJsonConverterModuleStarter {
-
-	void startUsingConverterFactoryImplementations(
-			Iterable<DataToJsonConverterFactoryCreator> converterFactoryCreatorImplementations);
-
-	DataToJsonConverterFactoryCreator getDataToJsonConverterFactoryCreator();
+/**
+ * DataToJsonConverterFactoryCreator is an inteface used by implementing projects to create
+ * factories of type {@link DataToJsonConverterFactory}. {@link DataToJsonConverterProvider} will
+ * use ServiceLoader to find implementations of this class to provide a means to get instances of
+ * DataToJsonConverterFactories.
+ */
+public interface DataToJsonConverterFactoryCreator {
+	/**
+	 * createFactory creates a new instance of {@link DataToJsonConverterFactory}.
+	 * 
+	 * @return A {@link DataToJsonConverterFactory}
+	 */
+	public DataToJsonConverterFactory createFactory();
 }

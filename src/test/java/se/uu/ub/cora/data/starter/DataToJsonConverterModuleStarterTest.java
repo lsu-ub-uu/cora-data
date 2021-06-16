@@ -27,40 +27,40 @@ import java.util.List;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import se.uu.ub.cora.data.converter.DataToJsonConverterFactory;
+import se.uu.ub.cora.data.converter.DataToJsonConverterFactoryCreator;
+import se.uu.ub.cora.data.converter.DataToJsonConverterFactoryCreatorSpy;
 
 public class DataToJsonConverterModuleStarterTest {
 	DataToJsonConverterModuleStarter starter;
-	List<DataToJsonConverterFactory> converterFactoryImplementations;
-	DataToJsonConverterFactory converterFactorySpy;
+	List<DataToJsonConverterFactoryCreator> converterFactoryCreatorImplementations;
+	DataToJsonConverterFactoryCreator converterFactoryCreatorSpy;
 
 	@BeforeMethod
 	public void beforeMethod() {
 		starter = new DataToJsonConverterModuleStarterImp();
-		converterFactoryImplementations = new ArrayList<>();
-		converterFactorySpy = new DataToJsonConverterFactorySpy();
-
+		converterFactoryCreatorImplementations = new ArrayList<>();
+		converterFactoryCreatorSpy = new DataToJsonConverterFactoryCreatorSpy();
 	}
 
 	@Test(expectedExceptions = DataInitializationException.class, expectedExceptionsMessageRegExp = ""
-			+ "No implementations found for DataToJsonConverterFactory")
+			+ "No implementations found for DataToJsonConverterFactoryCreator")
 	public void testStartModuleThrowsErrorIfNoConverterFactoryImplementations() throws Exception {
-		starter.startUsingConverterFactoryImplementations(converterFactoryImplementations);
+		starter.startUsingConverterFactoryImplementations(converterFactoryCreatorImplementations);
 	}
 
 	@Test(expectedExceptions = DataInitializationException.class, expectedExceptionsMessageRegExp = ""
-			+ "More than one implementation found for DataToJsonConverterFactory")
+			+ "More than one implementation found for DataToJsonConverterFactoryCreator")
 	public void testStartModuleThrowsErrorIfMoreThanOneConverterFactoryImplementations()
 			throws Exception {
-		converterFactoryImplementations.add(new DataToJsonConverterFactorySpy());
-		converterFactoryImplementations.add(new DataToJsonConverterFactorySpy());
-		starter.startUsingConverterFactoryImplementations(converterFactoryImplementations);
+		converterFactoryCreatorImplementations.add(new DataToJsonConverterFactoryCreatorSpy());
+		converterFactoryCreatorImplementations.add(new DataToJsonConverterFactoryCreatorSpy());
+		starter.startUsingConverterFactoryImplementations(converterFactoryCreatorImplementations);
 	}
 
 	@Test
 	public void testGetConverterFactory() throws Exception {
-		converterFactoryImplementations.add(converterFactorySpy);
-		starter.startUsingConverterFactoryImplementations(converterFactoryImplementations);
-		assertSame(starter.getDataToJsonConverterFactory(), converterFactorySpy);
+		converterFactoryCreatorImplementations.add(converterFactoryCreatorSpy);
+		starter.startUsingConverterFactoryImplementations(converterFactoryCreatorImplementations);
+		assertSame(starter.getDataToJsonConverterFactoryCreator(), converterFactoryCreatorSpy);
 	}
 }

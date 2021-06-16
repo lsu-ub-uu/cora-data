@@ -29,11 +29,25 @@ public class DataToJsonConverterFactorySpy implements DataToJsonConverterFactory
 	public DataToJsonConverterSpy dataToJsonConverterSpy;
 
 	@Override
-	public DataToJsonConverter factor(Convertible convertible) {
+	public DataToJsonConverter factorUsingConvertible(Convertible convertible) {
 		this.convertible = convertible;
 		getConverterCalled = true;
 		dataToJsonConverterSpy = new DataToJsonConverterSpy();
 		return dataToJsonConverterSpy;
+	}
+
+	@Override
+	public DataToJsonConverter factorUsingBaseUrlAndConvertible(String baseUrl,
+			Convertible convertible) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public DataToJsonConverter factorUsingBaseUrlAndRecordUrlAndConvertible(String baseUrl, String recordUrl,
+			Convertible convertible) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

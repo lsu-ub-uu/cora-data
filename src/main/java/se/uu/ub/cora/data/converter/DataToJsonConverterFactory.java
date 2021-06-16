@@ -24,17 +24,48 @@ import se.uu.ub.cora.data.Convertible;
 /**
  * DataToJsonConverterFactory is a factory that creates new instances of {@link DataToJsonConverter}
  * for provided {@link Convertible}s
+ * <p>
+ * By default SHOULD implementations generate converters that creates json without action links. To
+ * get converters to generate action links call the method
+ * {@link #switchToActionLinkGeneratingModeUsingBaseUrl(String)} with the base url to use in the
+ * links.
  */
 
 public interface DataToJsonConverterFactory {
+
 	/**
-	 * factor creates a {@link DataToJsonConverter} for the provided {@link Convertible}
+	 * factorUsingConvertible creates a {@link DataToJsonConverter} for the provided
+	 * {@link Convertible}
 	 * 
 	 * @param convertible
 	 *            A {@link Convertible} to create a converter for
-	 * @return returns a {@link DataToJsonConverter} x of converting the {@link Convertible} to a
-	 *         json String.
+	 * 
+	 * @return returns a {@link DataToJsonConverter} capable of converting the {@link Convertible}
+	 *         to a json String.
 	 */
-	DataToJsonConverter factor(Convertible convertible);
+	DataToJsonConverter factorUsingConvertible(Convertible convertible);
+
+	/**
+	 * factorUsingBaseUrlAndConvertible creates a {@link DataToJsonConverter} for the provided
+	 * {@link Convertible} using the provided baseUrl.
+	 * 
+	 * @param baseUrl
+	 * @param convertible
+	 * @return
+	 */
+	DataToJsonConverter factorUsingBaseUrlAndConvertible(String baseUrl, Convertible convertible);
+
+	/**
+	 * factorUsingRecordUrlAndConvertible creates a {@link DataToJsonConverter} for the provided
+	 * {@link Convertible} using the provided recordUrl when creating action links.
+	 * @param baseUrl TODO
+	 * @param recordUrl
+	 * @param convertible
+	 *            A {@link Convertible} to create a converter for
+	 * 
+	 * @return
+	 */
+	DataToJsonConverter factorUsingBaseUrlAndRecordUrlAndConvertible(String baseUrl,
+			String recordUrl, Convertible convertible);
 
 }
