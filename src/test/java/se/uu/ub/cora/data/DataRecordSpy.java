@@ -84,4 +84,22 @@ public class DataRecordSpy implements DataRecord {
 
 	}
 
+	@Override
+	public String getType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean hasActions() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

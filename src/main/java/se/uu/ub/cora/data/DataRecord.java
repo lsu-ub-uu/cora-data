@@ -38,6 +38,24 @@ import java.util.Set;
 public interface DataRecord extends Data, Convertible {
 
 	/**
+	 * getType returns the record type for this record.
+	 * <p>
+	 * If the records type is unknown SHOULD a {@link DataMissingException} be thrown.
+	 * 
+	 * @return String with the type of this record
+	 */
+	String getType();
+
+	/**
+	 * getId returns the record id for this record.
+	 * <p>
+	 * If the records id is unknown SHOULD a {@link DataMissingException} be thrown.
+	 * 
+	 * @return String with the id of this record
+	 */
+	String getId();
+
+	/**
 	 * setDataGroup sets the DataGroup in the DataRecord replacing any preexisting DataGroup
 	 * 
 	 * @param dataGroup
@@ -69,6 +87,13 @@ public interface DataRecord extends Data, Convertible {
 	 * @return List of actions from the record.
 	 */
 	List<Action> getActions();
+
+	/**
+	 * hasActions return true if true this record has at least one action.
+	 * 
+	 * @return boolean whether this record has actions or not
+	 */
+	boolean hasActions();
 
 	/**
 	 * addReadPermission adds a permission to the preexisting read permission that the User has for
