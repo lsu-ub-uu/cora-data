@@ -121,6 +121,14 @@ public interface DataRecord extends Data, Convertible {
 	Set<String> getReadPermissions();
 
 	/**
+	 * hasReadPermissions returns true if this record has at least one read permission, otherwise
+	 * false.
+	 * 
+	 * @return boolean whether this record has read permissions or not
+	 */
+	boolean hasReadPermissions();
+
+	/**
 	 * addWritePermission adds a permission to the preexisting write permission hat the User has for
 	 * this record
 	 * 
@@ -145,5 +153,13 @@ public interface DataRecord extends Data, Convertible {
 	 * @return a Set of Strings containing the write permissions
 	 */
 	Set<String> getWritePermissions();
+
+	/**
+	 * hasWritePermissions returns true if this record has at least one write permission, otherwise
+	 * false.
+	 * 
+	 * @return boolean whether this record has read permissions or not.
+	 */
+	boolean hasWritePermissions();
 
 }

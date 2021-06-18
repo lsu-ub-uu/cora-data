@@ -102,4 +102,16 @@ public class DataRecordSpy implements DataRecord {
 		return false;
 	}
 
+	@Override
+	public boolean hasReadPermissions() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean hasWritePermissions() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
