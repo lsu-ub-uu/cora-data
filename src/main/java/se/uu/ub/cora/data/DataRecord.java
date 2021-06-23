@@ -81,19 +81,21 @@ public interface DataRecord extends Data, Convertible {
 	void addAction(Action action);
 
 	/**
-	 * getActions returns a list with actions that the User that interacted with the record is
-	 * authorized to execute.
-	 * 
-	 * @return List of actions from the record.
-	 */
-	List<Action> getActions();
-
-	/**
 	 * hasActions return true if true this record has at least one action.
 	 * 
 	 * @return boolean whether this record has actions or not
 	 */
 	boolean hasActions();
+
+	/**
+	 * getActions returns a list with actions that the User that interacted with the record is
+	 * authorized to execute.
+	 * <p>
+	 * If there are no actions for this record SHOULD an empty list be returned.
+	 * 
+	 * @return List of actions from the record.
+	 */
+	List<Action> getActions();
 
 	/**
 	 * addReadPermission adds a permission to the preexisting read permission that the User has for

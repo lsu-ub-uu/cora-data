@@ -27,6 +27,6 @@ package se.uu.ub.cora.data;
  * If multiple instances of {@link Data} needs to be sent to a client at once can they be added to a
  * {@link DataList}.
  */
-public interface Data {
+public interface Data extends Convertible {
 
 }
