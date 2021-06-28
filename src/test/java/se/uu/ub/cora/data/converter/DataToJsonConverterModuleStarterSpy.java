@@ -18,7 +18,6 @@
  */
 package se.uu.ub.cora.data.converter;
 
-import se.uu.ub.cora.data.starter.DataToJsonConverterFactorySpy;
 import se.uu.ub.cora.data.starter.DataToJsonConverterModuleStarter;
 
 public class DataToJsonConverterModuleStarterSpy implements DataToJsonConverterModuleStarter {
@@ -27,13 +26,13 @@ public class DataToJsonConverterModuleStarterSpy implements DataToJsonConverterM
 
 	@Override
 	public void startUsingConverterFactoryImplementations(
-			Iterable<DataToJsonConverterFactory> converterFactoryImplementations) {
+			Iterable<DataToJsonConverterFactoryCreator> converterFactoryImplementations) {
 		startWasCalled = true;
 	}
 
 	@Override
-	public DataToJsonConverterFactory getDataToJsonConverterFactory() {
-		return new DataToJsonConverterFactorySpy();
+	public DataToJsonConverterFactoryCreator getDataToJsonConverterFactoryCreator() {
+		return new DataToJsonConverterFactoryCreatorSpy();
 	}
 
 }

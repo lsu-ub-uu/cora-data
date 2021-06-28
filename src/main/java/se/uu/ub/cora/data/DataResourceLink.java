@@ -18,6 +18,24 @@
  */
 package se.uu.ub.cora.data;
 
-public interface DataResourceLink extends DataLink {
-
+/**
+ * DataResourceLink contains information linking the {@link DataRecord} this link is a part of to a
+ * resource such as an image. Currently are DataResourceLinks only used in record type binary or
+ * children of binary.
+ * <p>
+ * RecordTypes other than binary, links to a record with the type binary which in turn contains
+ * metainformation about the binary file, and can through ResourceLinks point to different versions
+ * of the binary data. The different versions can for instance be a thumbnail, a scaled version or
+ * the master version of an image.
+ */
+public interface DataResourceLink extends DataLink, Convertible {
+	/**
+	 * getMimeType returns the mimeType for this link.
+	 * <p>
+	 * This information is expected to be present, if this link does not have information about what
+	 * the mimetype is, MUST a {@link DataMissingException} be thrown.
+	 * 
+	 * @return A String with the mimetype for this link.
+	 */
+	String getMimeType();
 }

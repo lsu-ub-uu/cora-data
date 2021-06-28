@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Uppsala University Library
+ * Copyright 2019, 2021 Uppsala University Library
  *
  * This file is part of Cora.
  *
@@ -20,56 +20,67 @@ package se.uu.ub.cora.data.converter;
 
 import java.util.ServiceLoader;
 
-import se.uu.ub.cora.data.DataPart;
 import se.uu.ub.cora.data.starter.DataToJsonConverterModuleStarter;
 import se.uu.ub.cora.data.starter.DataToJsonConverterModuleStarterImp;
-import se.uu.ub.cora.json.builder.JsonBuilderFactory;
-import se.uu.ub.cora.json.builder.org.OrgJsonBuilderFactoryAdapter;
 
+/**
+ * 
+ * DataToJsonConverterProvider provides a means to get instances of a plugged in implementation of
+ * {@link DataToJsonConverterFactory}. This class will with the help of ServiceLoader search for
+ * implementations of {@link DataToJsonConverterFactoryCreator}s and as long as only one
+ * implementation is found use the found implementation to create new DataToJsonConverterFactories.
+ * <p>
+ * New factory instances can be created using the {@link #createImplementingFactory()} method.
+ */
 public class DataToJsonConverterProvider {
-
-	private static DataToJsonConverterFactory dataToJsonConverterFactory;
 	private static DataToJsonConverterModuleStarter jsonToDataConverterModuleStarter = new DataToJsonConverterModuleStarterImp();
+	private static DataToJsonConverterFactoryCreator converterFactoryCreator;
 
 	private DataToJsonConverterProvider() {
 		// not called
 		throw new UnsupportedOperationException();
 	}
 
-	public static DataToJsonConverter getConverterUsingDataPart(DataPart dataPart) {
-		ensureConverterFactoryIsSet();
-		JsonBuilderFactory jsonBuilderFactory = new OrgJsonBuilderFactoryAdapter();
-		return dataToJsonConverterFactory.createForDataElement(jsonBuilderFactory, dataPart);
+	/**
+	 * createImplementingFactory method provides a new factory on each call of type
+	 * {@link DataToJsonConverterFactory}
+	 * 
+	 * @return a new factory of type {@link DataToJsonConverterFactory}
+	 */
+	public static DataToJsonConverterFactory createImplementingFactory() {
+		ensureConverterFactoryCreatorIsSet();
+		return converterFactoryCreator.createFactory();
 	}
 
-	private static synchronized void ensureConverterFactoryIsSet() {
-		if (null == dataToJsonConverterFactory) {
+	private static synchronized void ensureConverterFactoryCreatorIsSet() {
+		if (null == converterFactoryCreator) {
 			getConverterFactoryImpUsingModuleStarter();
 		}
 	}
 
 	private static void getConverterFactoryImpUsingModuleStarter() {
-		Iterable<DataToJsonConverterFactory> dataGroupFactoryImplementations = ServiceLoader
-				.load(DataToJsonConverterFactory.class);
-		jsonToDataConverterModuleStarter
-				.startUsingConverterFactoryImplementations(dataGroupFactoryImplementations);
-		dataToJsonConverterFactory = jsonToDataConverterModuleStarter
-				.getDataToJsonConverterFactory();
+		Iterable<DataToJsonConverterFactoryCreator> dataToJsonConverterFactoryCreatorImplementations = ServiceLoader
+				.load(DataToJsonConverterFactoryCreator.class);
+		jsonToDataConverterModuleStarter.startUsingConverterFactoryImplementations(
+				dataToJsonConverterFactoryCreatorImplementations);
+		converterFactoryCreator = jsonToDataConverterModuleStarter
+				.getDataToJsonConverterFactoryCreator();
 	}
 
 	/**
-	 * Sets a DataToJsonConverterFactory that will be used to factor jsonToDataConverters for
-	 * Classes. This possibility to set a DataToJsonConverterFactory is provided to enable testing
-	 * of logging in other classes and is not intented to be used in production. The
+	 * Sets a setDataToJsonConverterFactoryCreator that will be used to factor jsonToDataConverters
+	 * for Classes. This possibility to set a DataToJsonConverterFactoryCreator is provided to
+	 * enable testing of logging in other classes and is not intented to be used in production. The
 	 * DataGroupFactory to use should be provided through an implementation of
-	 * DataToJsonConverterFactory in a seperate java module.
+	 * DataToJsonConverterFactoryCreator in a seperate java module.
 	 * 
-	 * @param dataToJsonConverterFactory
-	 *            A DataToJsonConverterFactory to use to create jsonToDataConverters for testing
+	 * @param dataToJsonConverterFactoryCreator
+	 *            A DataToJsonConverterFactoryCreator to use to create jsonToDataConverterFactories
+	 *            for testing
 	 */
-	public static void setDataToJsonConverterFactory(
-			DataToJsonConverterFactory dataToJsonConverterFactory) {
-		DataToJsonConverterProvider.dataToJsonConverterFactory = dataToJsonConverterFactory;
+	public static void setDataToJsonConverterFactoryCreator(
+			DataToJsonConverterFactoryCreator converterFactoryCreator) {
+		DataToJsonConverterProvider.converterFactoryCreator = converterFactoryCreator;
 
 	}
 
@@ -80,4 +91,5 @@ public class DataToJsonConverterProvider {
 	static void setStarter(DataToJsonConverterModuleStarter starter) {
 		jsonToDataConverterModuleStarter = starter;
 	}
+
 }

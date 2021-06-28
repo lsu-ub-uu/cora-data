@@ -1,5 +1,5 @@
 /*
- * Copyright 2015, 2019 Uppsala University Library
+ * Copyright 2015, 2019, 2021 Uppsala University Library
  * Copyright 2016 Olov McKie
  *
  * This file is part of Cora.
@@ -20,14 +20,37 @@
 
 package se.uu.ub.cora.data.converter;
 
+import se.uu.ub.cora.data.Convertible;
 import se.uu.ub.cora.json.builder.JsonObjectBuilder;
 
+/**
+ * DataToJsonConverter is an interface for classes that convert {@link Convertible} objects to
+ * String with json or {@link JsonObjectBuilder} classes.
+ */
 public interface DataToJsonConverter {
-
+	/**
+	 * toJsonObjectBuilder return a {@link JsonObjectBuilder} representation of the
+	 * {@link Convertible} that is to be converted.
+	 * 
+	 * @return A JsonObectBuilder set up to build the Convertible.
+	 */
 	JsonObjectBuilder toJsonObjectBuilder();
 
+	/**
+	 * toJsonCompactFormat return a String with a json String representation of the
+	 * {@link Convertible} that is to be converted using as little whitespace as possible.
+	 * 
+	 * @return A String with the json representation of the Convertible.
+	 */
 	String toJsonCompactFormat();
 
+	/**
+	 * toJson return a String with a json String representation of the {@link Convertible} that is
+	 * to be converted using a text representation that is as readable as possible, using whitespace
+	 * and indentation to make the json more readable.
+	 * 
+	 * @return A String with the json representation of the Convertible.
+	 */
 	String toJson();
 
 }

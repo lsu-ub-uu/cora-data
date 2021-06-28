@@ -20,10 +20,13 @@
 package se.uu.ub.cora.data;
 
 /**
- * Data defines information at the level sent to and from a cora system. This is normaly information
- * about an cora-object handled by the system. Data is used as a communication object between a cora
- * system and its clients.
+ * Data defines a unit of information at the level sent to and from a cora system. This is normaly
+ * information about an cora-object handled by the system. Data is used as a container of related
+ * information between a cora system and its clients.
+ * <p>
+ * If multiple instances of {@link Data} needs to be sent to a client at once can they be added to a
+ * {@link DataList}.
  */
-public interface Data {
+public interface Data extends Convertible {
 
 }

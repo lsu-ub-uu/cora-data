@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Uppsala University Library
+ * Copyright 2021 Uppsala University Library
  *
  * This file is part of Cora.
  *
@@ -19,20 +19,25 @@
 
 package se.uu.ub.cora.data;
 
-/**
- * DataMissingException is used when an operation can not be performed as the data the operation
- * would be performed on is missing.
- */
-public class DataMissingException extends RuntimeException {
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
-	private static final long serialVersionUID = 1L;
+import org.testng.annotations.Test;
 
-	public DataMissingException(String message) {
-		super(message);
+public class DataMissingExceptionTest {
+	@Test
+	public void testInit() {
+		DataMissingException notFound = new DataMissingException("message");
+		assertTrue(notFound instanceof RuntimeException);
+		assertEquals(notFound.getMessage(), "message");
 	}
 
-	public DataMissingException(String message, Exception exception) {
-		super(message, exception);
-	}
+	@Test
+	public void testInitWithException() {
+		Exception exception = new Exception();
+		DataMissingException notFound = new DataMissingException("message", exception);
 
+		assertEquals(notFound.getMessage(), "message");
+		assertEquals(notFound.getCause(), exception);
+	}
 }

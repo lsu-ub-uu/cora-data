@@ -18,12 +18,12 @@
  */
 package se.uu.ub.cora.data.starter;
 
-import se.uu.ub.cora.data.converter.DataToJsonConverterFactory;
+import se.uu.ub.cora.data.converter.DataToJsonConverterFactoryCreator;
 
 public interface DataToJsonConverterModuleStarter {
 
 	void startUsingConverterFactoryImplementations(
-			Iterable<DataToJsonConverterFactory> converterFactoryImplementations);
+			Iterable<DataToJsonConverterFactoryCreator> converterFactoryCreatorImplementations);
 
-	DataToJsonConverterFactory getDataToJsonConverterFactory();
+	DataToJsonConverterFactoryCreator getDataToJsonConverterFactoryCreator();
 }

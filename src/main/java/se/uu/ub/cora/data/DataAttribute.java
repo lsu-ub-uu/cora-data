@@ -21,7 +21,7 @@ package se.uu.ub.cora.data;
 /**
  * DataAttribute is the interface used for attributes to data.
  */
-public interface DataAttribute extends DataPart {
+public interface DataAttribute extends DataPart, Convertible {
 	/**
 	 * getValue returns this DataAttributes value
 	 * 

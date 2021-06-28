@@ -28,7 +28,7 @@ public class DataElementTest {
 	private DataElement dataElement;
 
 	@BeforeMethod
-	public void BeforeMethod() {
+	public void beforeMethod() {
 		dataElement = new DataAtomicSpy();
 	}
 
@@ -43,7 +43,8 @@ public class DataElementTest {
 		assertFalse(dataElement.hasAttributes());
 	}
 
-	@Test(expectedExceptions = DataMissingException.class)
+	@Test(expectedExceptions = DataMissingException.class, expectedExceptionsMessageRegExp = ""
+			+ "This class has not implemented getAttribute.")
 	public void testGetAttributeDoesNotExist() {
 		dataElement.getAttribute("someAttributeId");
 	}

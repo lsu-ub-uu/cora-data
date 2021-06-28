@@ -35,7 +35,25 @@ import java.util.Set;
  * allowed to read them.
  *
  */
-public interface DataRecord extends Data {
+public interface DataRecord extends Data, Convertible {
+
+	/**
+	 * getType returns the record type for this record.
+	 * <p>
+	 * If the records type is unknown SHOULD a {@link DataMissingException} be thrown.
+	 * 
+	 * @return String with the type of this record
+	 */
+	String getType();
+
+	/**
+	 * getId returns the record id for this record.
+	 * <p>
+	 * If the records id is unknown SHOULD a {@link DataMissingException} be thrown.
+	 * 
+	 * @return String with the id of this record
+	 */
+	String getId();
 
 	/**
 	 * setDataGroup sets the DataGroup in the DataRecord replacing any preexisting DataGroup
@@ -63,8 +81,17 @@ public interface DataRecord extends Data {
 	void addAction(Action action);
 
 	/**
+	 * hasActions return true if true this record has at least one action.
+	 * 
+	 * @return boolean whether this record has actions or not
+	 */
+	boolean hasActions();
+
+	/**
 	 * getActions returns a list with actions that the User that interacted with the record is
 	 * authorized to execute.
+	 * <p>
+	 * If there are no actions for this record SHOULD an empty list be returned.
 	 * 
 	 * @return List of actions from the record.
 	 */
@@ -96,6 +123,14 @@ public interface DataRecord extends Data {
 	Set<String> getReadPermissions();
 
 	/**
+	 * hasReadPermissions returns true if this record has at least one read permission, otherwise
+	 * false.
+	 * 
+	 * @return boolean whether this record has read permissions or not
+	 */
+	boolean hasReadPermissions();
+
+	/**
 	 * addWritePermission adds a permission to the preexisting write permission hat the User has for
 	 * this record
 	 * 
@@ -120,5 +155,13 @@ public interface DataRecord extends Data {
 	 * @return a Set of Strings containing the write permissions
 	 */
 	Set<String> getWritePermissions();
+
+	/**
+	 * hasWritePermissions returns true if this record has at least one write permission, otherwise
+	 * false.
+	 * 
+	 * @return boolean whether this record has read permissions or not.
+	 */
+	boolean hasWritePermissions();
 
 }

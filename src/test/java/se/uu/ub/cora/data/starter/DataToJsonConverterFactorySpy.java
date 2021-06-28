@@ -18,25 +18,36 @@
  */
 package se.uu.ub.cora.data.starter;
 
-import se.uu.ub.cora.data.DataPart;
+import se.uu.ub.cora.data.Convertible;
 import se.uu.ub.cora.data.converter.DataToJsonConverter;
 import se.uu.ub.cora.data.converter.DataToJsonConverterFactory;
-import se.uu.ub.cora.json.builder.JsonBuilderFactory;
 
 public class DataToJsonConverterFactorySpy implements DataToJsonConverterFactory {
 
 	public boolean getConverterCalled = false;
-	public JsonBuilderFactory factory;
-	public DataPart dataPart;
+	public Convertible convertible;
 	public DataToJsonConverterSpy dataToJsonConverterSpy;
 
 	@Override
-	public DataToJsonConverter createForDataElement(JsonBuilderFactory factory, DataPart dataPart) {
-		this.factory = factory;
-		this.dataPart = dataPart;
+	public DataToJsonConverter factorUsingConvertible(Convertible convertible) {
+		this.convertible = convertible;
 		getConverterCalled = true;
 		dataToJsonConverterSpy = new DataToJsonConverterSpy();
 		return dataToJsonConverterSpy;
+	}
+
+	@Override
+	public DataToJsonConverter factorUsingBaseUrlAndConvertible(String baseUrl,
+			Convertible convertible) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public DataToJsonConverter factorUsingBaseUrlAndRecordUrlAndConvertible(String baseUrl, String recordUrl,
+			Convertible convertible) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

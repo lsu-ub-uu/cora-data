@@ -18,7 +18,7 @@
  */
 package se.uu.ub.cora.data;
 
-public interface DataAtomic extends DataElement {
+public interface DataAtomic extends DataElement, Convertible {
 
 	String getValue();
 }

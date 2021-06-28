@@ -22,10 +22,16 @@ package se.uu.ub.cora.data.converter;
  * ConversionException is an exception used when an exceptions occurs while converting between data
  * formats.
  */
-public interface ConversionException {
+public class ConversionException extends RuntimeException {
 
-	/**
-	 * getMessage returns the detail message string of ConversionException.
-	 */
-	public String getMessage();
+	private static final long serialVersionUID = 1L;
+
+	public ConversionException(String message) {
+		super(message);
+	}
+
+	public ConversionException(String message, Exception exception) {
+		super(message, exception);
+	}
+
 }
