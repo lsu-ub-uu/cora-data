@@ -58,8 +58,11 @@ public interface DataToJsonConverterFactory {
 	/**
 	 * factorUsingRecordUrlAndConvertible creates a {@link DataToJsonConverter} for the provided
 	 * {@link Convertible} using the provided recordUrl when creating action links.
-	 * @param baseUrl TODO
+	 * 
+	 * @param baseUrl
+	 *            The baseUrl related to the convertible
 	 * @param recordUrl
+	 *            The recordUrl related to the convertible
 	 * @param convertible
 	 *            A {@link Convertible} to create a converter for
 	 * 

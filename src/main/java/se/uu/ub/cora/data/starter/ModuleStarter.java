@@ -20,7 +20,7 @@ package se.uu.ub.cora.data.starter;
 
 public abstract class ModuleStarter {
 
-	public ModuleStarter() {
+	protected ModuleStarter() {
 		super();
 	}
 
