@@ -33,7 +33,7 @@
 	<name>Cora data</name>
 
 	<properties>
-		<json.version>2.3.0</json.version>
+		<json.version>2.4.0</json.version>
 	</properties>
 
 	<scm>
