@@ -20,7 +20,6 @@ package se.uu.ub.cora.data.copier;
 
 import se.uu.ub.cora.data.DataAtomicSpy;
 import se.uu.ub.cora.data.DataElement;
-import se.uu.ub.cora.data.copier.DataCopier;
 
 public class DataCopierSpy implements DataCopier {
 

@@ -18,8 +18,8 @@
  */
 package se.uu.ub.cora.data.converter;
 
-import se.uu.ub.cora.data.mcr.MethodCallRecorder;
 import se.uu.ub.cora.data.starter.DataToJsonConverterFactorySpy;
+import se.uu.ub.cora.testutils.mcr.MethodCallRecorder;
 
 public class DataToJsonConverterFactoryCreatorSpy implements DataToJsonConverterFactoryCreator {
 	MethodCallRecorder MCR = new MethodCallRecorder();
