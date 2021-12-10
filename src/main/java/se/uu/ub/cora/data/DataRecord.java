@@ -35,7 +35,7 @@ import java.util.Set;
  * allowed to read them.
  *
  */
-public interface DataRecord extends Data, Convertible {
+public interface DataRecord extends Data, Convertible, ExternallyConvertible {
 
 	/**
 	 * getType returns the record type for this record.
