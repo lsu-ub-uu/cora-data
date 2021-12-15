@@ -164,4 +164,16 @@ public interface DataRecord extends Data, Convertible, ExternallyConvertible {
 	 */
 	boolean hasWritePermissions();
 
+	/**
+	 * getSearchId returns a search id if the data represents a recordType or a search.
+	 * <ul>
+	 * <li>For a recordType is the search id the linked search.</li>
+	 * <li>For a search is the search id the id of the record.</li>
+	 * </ul>
+	 * If a searchId does not exist, a {@link DataMissingException} MUST be thrown.
+	 * 
+	 * @return A String with the search id
+	 */
+	String getSearchId();
+
 }
