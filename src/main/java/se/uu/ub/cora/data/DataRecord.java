@@ -27,9 +27,10 @@ import java.util.Set;
  * adapted to the User who in an interaction (read, update, etc.) with the server got the DataRecord
  * in return.
  * <p>
- * The DataRecord consists of four major parts, a DataGroup holding the data for the record, a set
- * of Actions that the User is allowed to do with the record, read permissions that the User has for
- * this record, write permissions that the User has for this record.
+ * The DataRecord consists of three major parts, a DataGroup holding the data for the record, a set
+ * of Actions that the User is allowed to do with the record, and permissions devided into read
+ * permissions that the User has for parts of this record, write permissions that the User has for
+ * parts of this record.
  * <p>
  * Links to other DataGroups within the records DataGroup has "read" action added if the User is
  * allowed to read them.
