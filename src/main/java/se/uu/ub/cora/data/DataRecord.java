@@ -27,15 +27,16 @@ import java.util.Set;
  * adapted to the User who in an interaction (read, update, etc.) with the server got the DataRecord
  * in return.
  * <p>
- * The DataRecord consists of four major parts, a DataGroup holding the data for the record, a set
- * of Actions that the User is allowed to do with the record, read permissions that the User has for
- * this record, write permissions that the User has for this record.
+ * The DataRecord consists of three major parts, a DataGroup holding the data for the record, a set
+ * of Actions that the User is allowed to do with the record, and permissions devided into read
+ * permissions that the User has for parts of this record, write permissions that the User has for
+ * parts of this record.
  * <p>
  * Links to other DataGroups within the records DataGroup has "read" action added if the User is
  * allowed to read them.
  *
  */
-public interface DataRecord extends Data, Convertible {
+public interface DataRecord extends Data, Convertible, ExternallyConvertible {
 
 	/**
 	 * getType returns the record type for this record.
@@ -163,5 +164,17 @@ public interface DataRecord extends Data, Convertible {
 	 * @return boolean whether this record has read permissions or not.
 	 */
 	boolean hasWritePermissions();
+
+	/**
+	 * getSearchId returns a search id if the data represents a recordType or a search.
+	 * <ul>
+	 * <li>For a recordType is the search id the linked search.</li>
+	 * <li>For a search is the search id the id of the record.</li>
+	 * </ul>
+	 * If a searchId does not exist, a {@link DataMissingException} MUST be thrown.
+	 * 
+	 * @return A String with the search id
+	 */
+	String getSearchId();
 
 }

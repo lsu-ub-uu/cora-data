@@ -34,7 +34,7 @@ import java.util.List;
  * <p>
  * Numbering start at 1, so the first ten items in a returned list are 1-10.
  */
-public interface DataList extends Convertible {
+public interface DataList extends Convertible, ExternallyConvertible {
 
 	/**
 	 * getFromNo returns the start position of the included List of {@link Data} in relation to the
