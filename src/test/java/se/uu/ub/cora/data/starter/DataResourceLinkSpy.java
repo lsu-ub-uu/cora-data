@@ -173,4 +173,10 @@ public class DataResourceLinkSpy implements DataResourceLink {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public boolean hasAttributes() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
