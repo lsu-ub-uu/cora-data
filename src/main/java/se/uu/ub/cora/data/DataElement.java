@@ -26,15 +26,32 @@ import java.util.Collection;
  */
 public interface DataElement extends DataPart {
 
+	/**
+	 * setRepeatId sets the DataElements repeatId, if the repeatId has been set since before should
+	 * the value be updated.
+	 * 
+	 * @param repeatId
+	 *            A String with the repeatId
+	 */
 	void setRepeatId(String repeatId);
 
+	/**
+	 * getRepeatId returns the repeatId.
+	 * 
+	 * @return A String with the value of the repeatId
+	 */
 	String getRepeatId();
 
 	/**
 	 * addAttributeByIdWithValue adds a DataAttribute with the specified nameInData and value. The
 	 * implementation is expected to allow only one attribute with the specified nameInData.
+	 * 
+	 * @param nameInData
+	 *            A String with the nameInData of the attribute
+	 * @param value
+	 *            A String with the value of the attribute
 	 */
-	void addAttributeByIdWithValue(String id, String value);
+	void addAttributeByIdWithValue(String nameInData, String value);
 
 	/**
 	 * hasAttributes returns true if this DataElement has attributes else false is returned
@@ -48,6 +65,11 @@ public interface DataElement extends DataPart {
 	 * <p>
 	 * A {@link DataMissingException} SHOULD be thrown if no attribute exists with the specified
 	 * nameInData.
+	 * 
+	 * @param nameInData
+	 *            A String with the nameInData of the attribute
+	 * @return A DataAttribute matching the nameInData
+	 * 
 	 */
 	DataAttribute getAttribute(String nameInData);
 
