@@ -11,7 +11,6 @@ import se.uu.ub.cora.data.DataGroup;
 import se.uu.ub.cora.data.DataResourceLink;
 
 public class DataResourceLinkSpy implements DataResourceLink {
-
 	@Override
 	public void addAction(Action action) {
 		// TODO Auto-generated method stub
@@ -172,5 +171,11 @@ public class DataResourceLinkSpy implements DataResourceLink {
 	public String getMimeType() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public boolean hasAttributes() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }
