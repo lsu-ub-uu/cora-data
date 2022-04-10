@@ -1,5 +1,6 @@
 /*
- * Copyright 2019 Uppsala University Library
+ * Copyright 2021 Uppsala University Library
+ * Copyright 2022 Olov McKie
  *
  * This file is part of Cora.
  *
@@ -16,16 +17,23 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-package se.uu.ub.cora.data.copier;
+package se.uu.ub.cora.data.starter;
 
-import se.uu.ub.cora.data.DataElement;
-import se.uu.ub.cora.data.spy.DataAtomicSpy;
+import se.uu.ub.cora.data.DataFactory;
 
-public class DataCopierSpy implements DataCopier {
+public class DataModuleStarterImp extends ModuleStarter implements DataModuleStarter {
+
+	private DataFactory dataFactory;
 
 	@Override
-	public DataElement copy() {
-		return new DataAtomicSpy("someNameInDataFromDataCopierSpy", "someValue");
+	public void startUsingDataFactoryImplementations(
+			Iterable<DataFactory> dataFactoryImplementations) {
+		dataFactory = getImplementationThrowErrorIfNoneOrMoreThanOne(dataFactoryImplementations,
+				"DataFactory");
 	}
 
+	@Override
+	public DataFactory getDataFactory() {
+		return dataFactory;
+	}
 }

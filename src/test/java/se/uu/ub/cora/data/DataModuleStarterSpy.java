@@ -1,5 +1,6 @@
 /*
  * Copyright 2019 Uppsala University Library
+ * Copyright 2022 Olov McKie
  *
  * This file is part of Cora.
  *
@@ -16,16 +17,30 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-package se.uu.ub.cora.data.copier;
+package se.uu.ub.cora.data;
 
-import se.uu.ub.cora.data.DataElement;
-import se.uu.ub.cora.data.spy.DataAtomicSpy;
+import se.uu.ub.cora.data.spy.DataFactorySpy;
+import se.uu.ub.cora.data.starter.DataModuleStarter;
+import se.uu.ub.cora.testutils.mcr.MethodCallRecorder;
 
-public class DataCopierSpy implements DataCopier {
+public class DataModuleStarterSpy implements DataModuleStarter {
+	public MethodCallRecorder MCR = new MethodCallRecorder();
+
+	public boolean startWasCalled = false;
 
 	@Override
-	public DataElement copy() {
-		return new DataAtomicSpy("someNameInDataFromDataCopierSpy", "someValue");
+	public void startUsingDataFactoryImplementations(
+			Iterable<DataFactory> dataFactoryImplementations) {
+		MCR.addCall("dataFactoryImplementations", dataFactoryImplementations);
+		startWasCalled = true;
+	}
+
+	@Override
+	public DataFactory getDataFactory() {
+		MCR.addCall();
+		DataFactorySpy dataFactorySpy = new DataFactorySpy();
+		MCR.addReturned(dataFactorySpy);
+		return dataFactorySpy;
 	}
 
 }

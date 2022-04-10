@@ -16,16 +16,22 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-package se.uu.ub.cora.data.copier;
+package se.uu.ub.cora.data.spy;
 
-import se.uu.ub.cora.data.DataElement;
-import se.uu.ub.cora.data.spy.DataAtomicSpy;
+import se.uu.ub.cora.data.DataAttribute;
 
-public class DataCopierSpy implements DataCopier {
+public class DataAttributeSpy implements DataAttribute {
 
 	@Override
-	public DataElement copy() {
-		return new DataAtomicSpy("someNameInDataFromDataCopierSpy", "someValue");
+	public String getNameInData() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getValue() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
