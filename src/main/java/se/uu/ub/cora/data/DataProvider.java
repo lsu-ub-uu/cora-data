@@ -106,9 +106,10 @@ public class DataProvider {
 	}
 
 	public static DataGroup createGroupAsLinkUsingNameInDataAndTypeAndId(String nameInData,
-			String type, String id) {
+			String recordType, String recordId) {
 		ensureDataFactoryIsSet();
-		return dataFactory.factorGroupAsLinkUsingNameInDataAndTypeAndId(nameInData, type, id);
+		return dataFactory.factorGroupAsLinkUsingNameInDataAndTypeAndId(nameInData, recordType,
+				recordId);
 	}
 
 	public static DataRecordLink createRecordLinkUsingNameInData(String nameInData) {
@@ -117,9 +118,10 @@ public class DataProvider {
 	}
 
 	public static DataRecordLink createRecordLinkUsingNameInDataAndTypeAndId(String nameInData,
-			String type, String id) {
+			String recordType, String recordId) {
 		ensureDataFactoryIsSet();
-		return dataFactory.factorRecordLinkUsingNameInDataAndTypeAndId(nameInData, type, id);
+		return dataFactory.factorRecordLinkUsingNameInDataAndTypeAndId(nameInData, recordType,
+				recordId);
 	}
 
 	public static DataResourceLink createResourceLinkUsingNameInData(String nameInData) {
@@ -127,9 +129,9 @@ public class DataProvider {
 		return dataFactory.factorResourceLinkUsingNameInData(nameInData);
 	}
 
-	public static DataAtomic createAtomicUsingNameInData(String nameInData) {
+	public static DataAtomic createAtomicUsingNameInDataAndValue(String nameInData, String value) {
 		ensureDataFactoryIsSet();
-		return dataFactory.factorAtomicUsingNameInData(nameInData);
+		return dataFactory.factorAtomicUsingNameInDataAndValue(nameInData, value);
 	}
 
 	public static DataAtomic createAtomicUsingNameInDataAndValueAndRepeatId(String nameInData,
@@ -144,17 +146,4 @@ public class DataProvider {
 		ensureDataFactoryIsSet();
 		return dataFactory.factorAttributeUsingNameInDataAndValue(nameInData, value);
 	}
-
-	// sdf
-	// sdf
-	// sdf
-	// sdf
-	// sdf
-	// sdf
-	// sdf
-	// sdf
-	// sdf
-	// sdf
-	// sdf
-
 }

@@ -32,17 +32,25 @@ public interface DataFactory {
 
 	DataGroup factorGroupUsingNameInData(String nameInData);
 
-	DataGroup factorGroupAsLinkUsingNameInDataAndTypeAndId(String nameInData, String type,
-			String id);
+	/**
+	 * @deprecated link should be created as a link...
+	 * @param nameInData
+	 * @param recordType
+	 * @param recordId
+	 * @return
+	 */
+	@Deprecated
+	DataGroup factorGroupAsLinkUsingNameInDataAndTypeAndId(String nameInData, String recordType,
+			String recordId);
 
 	DataRecordLink factorRecordLinkUsingNameInData(String nameInData);
 
-	DataRecordLink factorRecordLinkUsingNameInDataAndTypeAndId(String nameInData, String type,
-			String id);
+	DataRecordLink factorRecordLinkUsingNameInDataAndTypeAndId(String nameInData, String recordType,
+			String recordId);
 
 	DataResourceLink factorResourceLinkUsingNameInData(String nameInData);
 
-	DataAtomic factorAtomicUsingNameInData(String nameInData);
+	DataAtomic factorAtomicUsingNameInDataAndValue(String nameInData, String value);
 
 	DataAtomic factorAtomicUsingNameInDataAndValueAndRepeatId(String nameInData, String value,
 			String repeatId);

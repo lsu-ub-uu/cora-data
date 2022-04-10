@@ -102,8 +102,8 @@ public class DataFactorySpy implements DataFactory {
 	}
 
 	@Override
-	public DataAtomic factorAtomicUsingNameInData(String nameInData) {
-		MCR.addCall("nameInData", nameInData);
+	public DataAtomic factorAtomicUsingNameInDataAndValue(String nameInData, String value) {
+		MCR.addCall("nameInData", nameInData, "value", value);
 		DataAtomic dataAtomic = new DataAtomicSpy();
 		MCR.addReturned(dataAtomic);
 		return dataAtomic;

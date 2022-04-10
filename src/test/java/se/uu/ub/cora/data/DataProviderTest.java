@@ -224,12 +224,13 @@ public class DataProviderTest {
 	public void testCreate_AtomicUsingNameInData() throws Exception {
 		DataModuleStarterSpy starter = startDataRecordModuleInitializerWithStarterSpy();
 
-		DataAtomic dataAtomic = DataProvider.createAtomicUsingNameInData("atomic");
+		DataAtomic dataAtomic = DataProvider.createAtomicUsingNameInDataAndValue("atomic", "value");
 
 		assertStarterWasCalled(starter);
 		DataFactorySpy dataFactorySpy = getFactorySpyFromStarterSpy(starter);
-		dataFactorySpy.MCR.assertParameters("factorAtomicUsingNameInData", 0, "atomic");
-		dataFactorySpy.MCR.assertReturn("factorAtomicUsingNameInData", 0, dataAtomic);
+		dataFactorySpy.MCR.assertParameters("factorAtomicUsingNameInDataAndValue", 0, "atomic",
+				"value");
+		dataFactorySpy.MCR.assertReturn("factorAtomicUsingNameInDataAndValue", 0, dataAtomic);
 	}
 
 	@Test
