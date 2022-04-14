@@ -20,7 +20,7 @@ package se.uu.ub.cora.data.copier;
 
 import java.util.ServiceLoader;
 
-import se.uu.ub.cora.data.DataElement;
+import se.uu.ub.cora.data.DataChild;
 import se.uu.ub.cora.data.starter.DataCopierModuleStarter;
 import se.uu.ub.cora.data.starter.DataCopierModuleStarterImp;
 
@@ -33,7 +33,7 @@ public class DataCopierProvider {
 		throw new UnsupportedOperationException();
 	}
 
-	public static DataCopier getDataCopierUsingDataElement(DataElement dataElement) {
+	public static DataCopier getDataCopierUsingDataElement(DataChild dataElement) {
 		ensureDataCopierFactoryIsSet();
 		return dataCopierFactory.factorForDataElement(dataElement);
 	}

@@ -18,7 +18,7 @@
  */
 package se.uu.ub.cora.data.starter;
 
-import se.uu.ub.cora.data.DataElement;
+import se.uu.ub.cora.data.DataChild;
 import se.uu.ub.cora.data.copier.DataCopier;
 import se.uu.ub.cora.data.copier.DataCopierFactory;
 import se.uu.ub.cora.data.copier.DataCopierSpy;
@@ -26,11 +26,11 @@ import se.uu.ub.cora.data.copier.DataCopierSpy;
 public class DataCopierFactorySpy implements DataCopierFactory {
 
 	public boolean factorForDataElementCalled = false;
-	public DataElement dataElement;
+	public DataChild dataElement;
 	public DataCopierSpy copierReturnedFromFactory;
 
 	@Override
-	public DataCopier factorForDataElement(DataElement dataElement) {
+	public DataCopier factorForDataElement(DataChild dataElement) {
 		this.dataElement = dataElement;
 		factorForDataElementCalled = true;
 		copierReturnedFromFactory = new DataCopierSpy();

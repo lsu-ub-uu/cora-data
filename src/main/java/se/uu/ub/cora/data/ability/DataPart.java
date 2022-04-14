@@ -17,7 +17,7 @@
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package se.uu.ub.cora.data;
+package se.uu.ub.cora.data.ability;
 
 /**
  * DataPart defines the minimum required functionality for any part of data that the system handles.

@@ -29,6 +29,20 @@ package se.uu.ub.cora.data;
  * the master version of an image.
  */
 public interface DataResourceLink extends DataLink, Convertible {
+	void setStreamId(String streamId);
+
+	String getStreamId();
+
+	void setFileName(String fileName);
+
+	String getFileName();
+
+	void setFileSize(String fileSize);
+
+	String getFileSize();
+
+	void setMimeType(String mimeType);
+
 	/**
 	 * getMimeType returns the mimeType for this link.
 	 * <p>

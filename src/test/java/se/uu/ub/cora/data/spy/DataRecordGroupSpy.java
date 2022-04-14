@@ -23,7 +23,7 @@ import java.util.List;
 
 import se.uu.ub.cora.data.DataAtomic;
 import se.uu.ub.cora.data.DataAttribute;
-import se.uu.ub.cora.data.DataElement;
+import se.uu.ub.cora.data.DataChild;
 import se.uu.ub.cora.data.DataGroup;
 import se.uu.ub.cora.data.DataRecordGroup;
 
@@ -42,38 +42,38 @@ public class DataRecordGroupSpy implements DataRecordGroup {
 	}
 
 	@Override
-	public void addChild(DataElement dataElement) {
+	public void addChild(DataChild dataElement) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void addChildren(Collection<DataElement> dataElements) {
+	public void addChildren(Collection<DataChild> dataElements) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public List<DataElement> getChildren() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<DataElement> getAllChildrenWithNameInData(String nameInData) {
+	public List<DataChild> getChildren() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<DataElement> getAllChildrenWithNameInDataAndAttributes(String nameInData,
+	public List<DataChild> getAllChildrenWithNameInData(String nameInData) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<DataChild> getAllChildrenWithNameInDataAndAttributes(String nameInData,
 			DataAttribute... childAttributes) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public DataElement getFirstChildWithNameInData(String nameInData) {
+	public DataChild getFirstChildWithNameInData(String nameInData) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -134,17 +134,17 @@ public class DataRecordGroupSpy implements DataRecordGroup {
 		return null;
 	}
 
-	@Override
-	public void setRepeatId(String repeatId) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public String getRepeatId() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	// @Override
+	// public void setRepeatId(String repeatId) {
+	// // TODO Auto-generated method stub
+	//
+	// }
+	//
+	// @Override
+	// public String getRepeatId() {
+	// // TODO Auto-generated method stub
+	// return null;
+	// }
 
 	@Override
 	public void addAttributeByIdWithValue(String nameInData, String value) {
@@ -172,6 +172,13 @@ public class DataRecordGroupSpy implements DataRecordGroup {
 
 	@Override
 	public String getNameInData() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Collection<DataAtomic> getAllDataAtomicsWithNameInDataAndAttributes(
+			String childNameInData, DataAttribute... childAttributes) {
 		// TODO Auto-generated method stub
 		return null;
 	}

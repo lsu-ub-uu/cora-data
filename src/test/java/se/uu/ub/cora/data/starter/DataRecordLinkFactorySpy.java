@@ -20,6 +20,7 @@ package se.uu.ub.cora.data.starter;
 
 import se.uu.ub.cora.data.DataRecordLink;
 import se.uu.ub.cora.data.DataRecordLinkFactory;
+import se.uu.ub.cora.data.spy.DataRecordLinkSpy;
 
 public class DataRecordLinkFactorySpy implements DataRecordLinkFactory {
 

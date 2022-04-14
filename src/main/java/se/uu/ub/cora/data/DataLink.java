@@ -23,7 +23,7 @@ package se.uu.ub.cora.data;
  * DataLink contains information linking the {@link DataRecord} this link is a part of to another
  * entity in the system.
  */
-public interface DataLink extends DataGroup {
+public interface DataLink extends DataChild {
 
 	/**
 	 * addAction adds an Action to this DataLink. The actions added represents the actions the

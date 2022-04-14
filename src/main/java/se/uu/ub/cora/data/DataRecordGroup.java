@@ -19,6 +19,10 @@
  */
 package se.uu.ub.cora.data;
 
+import se.uu.ub.cora.data.ability.DataCharacteristic;
+import se.uu.ub.cora.data.ability.DataParent;
+import se.uu.ub.cora.data.ability.DataPart;
+
 /**
  * 
  * DataRecordGroup contains all data for a record. It is a {@link DataGroup} that has a meta
@@ -45,6 +49,6 @@ package se.uu.ub.cora.data;
  * created at the edges of the system, the API, storage and search.
  *
  */
-public interface DataRecordGroup extends Data, DataGroup {
+public interface DataRecordGroup extends Data, DataPart, DataCharacteristic, DataParent {
 
 }

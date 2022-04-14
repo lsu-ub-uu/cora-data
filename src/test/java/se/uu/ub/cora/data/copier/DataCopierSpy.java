@@ -18,13 +18,13 @@
  */
 package se.uu.ub.cora.data.copier;
 
-import se.uu.ub.cora.data.DataElement;
+import se.uu.ub.cora.data.DataChild;
 import se.uu.ub.cora.data.spy.DataAtomicSpy;
 
 public class DataCopierSpy implements DataCopier {
 
 	@Override
-	public DataElement copy() {
+	public DataChild copy() {
 		return new DataAtomicSpy("someNameInDataFromDataCopierSpy", "someValue");
 	}
 

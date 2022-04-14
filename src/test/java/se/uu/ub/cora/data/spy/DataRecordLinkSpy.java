@@ -20,13 +20,9 @@
 package se.uu.ub.cora.data.spy;
 
 import java.util.Collection;
-import java.util.List;
 
 import se.uu.ub.cora.data.Action;
-import se.uu.ub.cora.data.DataAtomic;
 import se.uu.ub.cora.data.DataAttribute;
-import se.uu.ub.cora.data.DataElement;
-import se.uu.ub.cora.data.DataGroup;
 import se.uu.ub.cora.data.DataRecordLink;
 
 public class DataRecordLinkSpy implements DataRecordLink {
@@ -48,35 +44,35 @@ public class DataRecordLinkSpy implements DataRecordLink {
 		return null;
 	}
 
-	@Override
-	public String getFirstAtomicValueWithNameInData(String nameInData) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public DataGroup getFirstGroupWithNameInData(String childNameInData) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void addChild(DataElement dataElement) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public List<DataElement> getChildren() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean containsChildWithNameInData(String nameInData) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	// @Override
+	// public String getFirstAtomicValueWithNameInData(String nameInData) {
+	// // TODO Auto-generated method stub
+	// return null;
+	// }
+	//
+	// @Override
+	// public DataGroup getFirstGroupWithNameInData(String childNameInData) {
+	// // TODO Auto-generated method stub
+	// return null;
+	// }
+	//
+	// @Override
+	// public void addChild(DataChild dataElement) {
+	// // TODO Auto-generated method stub
+	//
+	// }
+	//
+	// @Override
+	// public List<DataChild> getChildren() {
+	// // TODO Auto-generated method stub
+	// return null;
+	// }
+	//
+	// @Override
+	// public boolean containsChildWithNameInData(String nameInData) {
+	// // TODO Auto-generated method stub
+	// return false;
+	// }
 
 	@Override
 	public void setRepeatId(String repeatId) {
@@ -90,17 +86,17 @@ public class DataRecordLinkSpy implements DataRecordLink {
 
 	}
 
-	@Override
-	public DataElement getFirstChildWithNameInData(String nameInData) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<DataGroup> getAllGroupsWithNameInData(String nameInData) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	// @Override
+	// public DataChild getFirstChildWithNameInData(String nameInData) {
+	// // TODO Auto-generated method stub
+	// return null;
+	// }
+	//
+	// @Override
+	// public List<DataGroup> getAllGroupsWithNameInData(String nameInData) {
+	// // TODO Auto-generated method stub
+	// return null;
+	// }
 
 	@Override
 	public DataAttribute getAttribute(String attributeId) {
@@ -108,71 +104,71 @@ public class DataRecordLinkSpy implements DataRecordLink {
 		return null;
 	}
 
-	@Override
-	public List<DataAtomic> getAllDataAtomicsWithNameInData(String childNameInData) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean removeFirstChildWithNameInData(String childNameInData) {
-		return true;
-	}
-
-	@Override
-	public Collection<DataGroup> getAllGroupsWithNameInDataAndAttributes(String childNameInData,
-			DataAttribute... childAttributes) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	// @Override
+	// public List<DataAtomic> getAllDataAtomicsWithNameInData(String childNameInData) {
+	// // TODO Auto-generated method stub
+	// return null;
+	// }
+	//
+	// @Override
+	// public boolean removeFirstChildWithNameInData(String childNameInData) {
+	// return true;
+	// }
+	//
+	// @Override
+	// public Collection<DataGroup> getAllGroupsWithNameInDataAndAttributes(String childNameInData,
+	// DataAttribute... childAttributes) {
+	// // TODO Auto-generated method stub
+	// return null;
+	// }
 
 	@Override
 	public Collection<DataAttribute> getAttributes() {
 		return null;
 	}
 
-	@Override
-	public boolean removeAllChildrenWithNameInData(String childNameInData) {
-		return true;
-	}
-
-	@Override
-	public DataAtomic getFirstDataAtomicWithNameInData(String childNameInData) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void addChildren(Collection<DataElement> dataElements) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public List<DataElement> getAllChildrenWithNameInData(String nameInData) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean hasChildren() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean removeAllChildrenWithNameInDataAndAttributes(String childNameInData,
-			DataAttribute... childAttributes) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public List<DataElement> getAllChildrenWithNameInDataAndAttributes(String nameInData,
-			DataAttribute... childAttributes) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	// @Override
+	// public boolean removeAllChildrenWithNameInData(String childNameInData) {
+	// return true;
+	// }
+	//
+	// @Override
+	// public DataAtomic getFirstDataAtomicWithNameInData(String childNameInData) {
+	// // TODO Auto-generated method stub
+	// return null;
+	// }
+	//
+	// @Override
+	// public void addChildren(Collection<DataChild> dataElements) {
+	// // TODO Auto-generated method stub
+	//
+	// }
+	//
+	// @Override
+	// public List<DataChild> getAllChildrenWithNameInData(String nameInData) {
+	// // TODO Auto-generated method stub
+	// return null;
+	// }
+	//
+	// @Override
+	// public boolean hasChildren() {
+	// // TODO Auto-generated method stub
+	// return false;
+	// }
+	//
+	// @Override
+	// public boolean removeAllChildrenWithNameInDataAndAttributes(String childNameInData,
+	// DataAttribute... childAttributes) {
+	// // TODO Auto-generated method stub
+	// return false;
+	// }
+	//
+	// @Override
+	// public List<DataChild> getAllChildrenWithNameInDataAndAttributes(String nameInData,
+	// DataAttribute... childAttributes) {
+	// // TODO Auto-generated method stub
+	// return null;
+	// }
 
 	@Override
 	public boolean hasReadAction() {
