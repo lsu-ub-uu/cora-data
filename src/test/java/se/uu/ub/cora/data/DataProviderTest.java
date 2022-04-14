@@ -140,7 +140,7 @@ public class DataProviderTest {
 	}
 
 	@Test
-	public void testCreate_RecordGroup() throws Exception {
+	public void testCreate_RecordGroupUsingNameInData() throws Exception {
 		DataModuleStarterSpy starter = startDataRecordModuleInitializerWithStarterSpy();
 
 		DataRecordGroup dataRecordGroup = DataProvider
@@ -154,6 +154,18 @@ public class DataProviderTest {
 	}
 
 	@Test
+	public void testCreate_RecordGroupFromDataGroup() throws Exception {
+		DataModuleStarterSpy starter = startDataRecordModuleInitializerWithStarterSpy();
+
+		DataRecordGroup dataRecordGroup = DataProvider.createRecordGroupFromDataGroup(dataGroup);
+
+		assertStarterWasCalled(starter);
+		DataFactorySpy dataFactorySpy = getFactorySpyFromStarterSpy(starter);
+		dataFactorySpy.MCR.assertParameters("factorRecordGroupFromDataGroup", 0, dataGroup);
+		dataFactorySpy.MCR.assertReturn("factorRecordGroupFromDataGroup", 0, dataRecordGroup);
+	}
+
+	@Test
 	public void testCreate_GroupUsingNameInData() throws Exception {
 		DataModuleStarterSpy starter = startDataRecordModuleInitializerWithStarterSpy();
 
@@ -163,21 +175,6 @@ public class DataProviderTest {
 		DataFactorySpy dataFactorySpy = getFactorySpyFromStarterSpy(starter);
 		dataFactorySpy.MCR.assertParameters("factorGroupUsingNameInData", 0, "dataGroup");
 		dataFactorySpy.MCR.assertReturn("factorGroupUsingNameInData", 0, dataRecordGroup);
-	}
-
-	@Test
-	public void testCreate_GroupAsLink() throws Exception {
-		DataModuleStarterSpy starter = startDataRecordModuleInitializerWithStarterSpy();
-
-		DataGroup dataRecordGroup = DataProvider
-				.createGroupAsLinkUsingNameInDataAndTypeAndId("dataGroup", "type", "id");
-
-		assertStarterWasCalled(starter);
-		DataFactorySpy dataFactorySpy = getFactorySpyFromStarterSpy(starter);
-		dataFactorySpy.MCR.assertParameters("factorGroupAsLinkUsingNameInDataAndTypeAndId", 0,
-				"dataGroup", "type", "id");
-		dataFactorySpy.MCR.assertReturn("factorGroupAsLinkUsingNameInDataAndTypeAndId", 0,
-				dataRecordGroup);
 	}
 
 	@Test

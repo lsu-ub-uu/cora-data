@@ -30,18 +30,9 @@ public interface DataFactory {
 
 	DataRecordGroup factorRecordGroupUsingNameInData(String nameInData);
 
-	DataGroup factorGroupUsingNameInData(String nameInData);
+	DataRecordGroup factorRecordGroupFromDataGroup(DataGroup dataGroup);
 
-	/**
-	 * @deprecated link should be created as a link...
-	 * @param nameInData
-	 * @param recordType
-	 * @param recordId
-	 * @return
-	 */
-	@Deprecated
-	DataGroup factorGroupAsLinkUsingNameInDataAndTypeAndId(String nameInData, String recordType,
-			String recordId);
+	DataGroup factorGroupUsingNameInData(String nameInData);
 
 	DataRecordLink factorRecordLinkUsingNameInData(String nameInData);
 

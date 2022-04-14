@@ -100,16 +100,20 @@ public class DataProvider {
 		return dataFactory.factorRecordGroupUsingNameInData(nameInData);
 	}
 
+	/**
+	 * 
+	 * @param dataGroup
+	 * @return
+	 */
+	public static DataRecordGroup createRecordGroupFromDataGroup(DataGroup dataGroup) {
+		ensureDataFactoryIsSet();
+		// TODO Auto-generated method stub
+		return dataFactory.factorRecordGroupFromDataGroup(dataGroup);
+	}
+
 	public static DataGroup createGroupUsingNameInData(String nameInData) {
 		ensureDataFactoryIsSet();
 		return dataFactory.factorGroupUsingNameInData(nameInData);
-	}
-
-	public static DataGroup createGroupAsLinkUsingNameInDataAndTypeAndId(String nameInData,
-			String recordType, String recordId) {
-		ensureDataFactoryIsSet();
-		return dataFactory.factorGroupAsLinkUsingNameInDataAndTypeAndId(nameInData, recordType,
-				recordId);
 	}
 
 	public static DataRecordLink createRecordLinkUsingNameInData(String nameInData) {
@@ -146,4 +150,5 @@ public class DataProvider {
 		ensureDataFactoryIsSet();
 		return dataFactory.factorAttributeUsingNameInDataAndValue(nameInData, value);
 	}
+
 }
