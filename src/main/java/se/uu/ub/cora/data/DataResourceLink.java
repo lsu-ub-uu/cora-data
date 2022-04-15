@@ -1,5 +1,6 @@
 /*
  * Copyright 2019 Uppsala University Library
+ * Copyright 2022 Olov McKie
  *
  * This file is part of Cora.
  *
@@ -29,18 +30,66 @@ package se.uu.ub.cora.data;
  * the master version of an image.
  */
 public interface DataResourceLink extends DataLink, Convertible {
+	/**
+	 * setStreamId sets the streamId for this link.
+	 * <p>
+	 * If there is a streamId since before must it be replaced by this method so that only one
+	 * exist.
+	 */
 	void setStreamId(String streamId);
 
+	/**
+	 * getStreamId returns the streamId for this link.
+	 * <p>
+	 * This information is expected to be present, if this link does not have information about what
+	 * the streamId is, MUST a {@link DataMissingException} be thrown.
+	 * 
+	 * @return A String with the streamId for this link.
+	 */
 	String getStreamId();
 
+	/**
+	 * setFileName sets the fileName for this link.
+	 * <p>
+	 * If there is a fileName since before must it be replaced by this method so that only one
+	 * exist.
+	 */
 	void setFileName(String fileName);
 
+	/**
+	 * getFileName returns the fileName for this link.
+	 * <p>
+	 * This information is expected to be present, if this link does not have information about what
+	 * the fileName is, MUST a {@link DataMissingException} be thrown.
+	 * 
+	 * @return A String with the fileName for this link.
+	 */
 	String getFileName();
 
+	/**
+	 * setFileSize sets the fileSize for this link.
+	 * <p>
+	 * If there is a fileSize since before must it be replaced by this method so that only one
+	 * exist.
+	 */
 	void setFileSize(String fileSize);
 
+	/**
+	 * getFileSize returns the fileSize for this link.
+	 * <p>
+	 * This information is expected to be present, if this link does not have information about what
+	 * the filesize is, MUST a {@link DataMissingException} be thrown.
+	 * 
+	 * @return A String with the fileSize for this link.
+	 */
 	String getFileSize();
 
+	/**
+	 * setMimeType sets the mimeType for this link.
+	 * <p>
+	 * If there is a mimeType since before must it be replaced by this method so that only one
+	 * exist.
+	 */
 	void setMimeType(String mimeType);
 
 	/**
