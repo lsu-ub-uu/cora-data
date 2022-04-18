@@ -49,6 +49,7 @@ import se.uu.ub.cora.data.ability.DataPart;
  * created at the edges of the system, the API, storage and search.
  *
  */
-public interface DataRecordGroup extends Data, DataPart, DataCharacteristic, DataParent {
+public interface DataRecordGroup
+		extends Data, ExternallyConvertible, DataPart, DataCharacteristic, DataParent {
 
 }
