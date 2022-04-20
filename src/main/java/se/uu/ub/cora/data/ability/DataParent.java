@@ -55,16 +55,16 @@ public interface DataParent {
 	 * @param dataElement
 	 *            to add to this DataGroup
 	 */
-	void addChild(DataChild dataElement);
+	void addChild(DataChild dataChild);
 
 	/**
 	 * addChildren is used to add the entered dataElements as children into the current dataGroup.
 	 * If the entered collection of dataElements is empty should no children be added.
 	 * 
-	 * @param dataElements
+	 * @param dataChildren
 	 *            to add as children
 	 */
-	void addChildren(Collection<DataChild> dataElements);
+	void addChildren(Collection<DataChild> dataChildren);
 
 	/**
 	 * getChildren is used to get a List with all the children of this {@link DataGroup}
