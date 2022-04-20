@@ -127,6 +127,19 @@ public interface DataParent {
 	String getFirstAtomicValueWithNameInData(String nameInData);
 
 	/**
+	 * getFirstDataAtomicWithNameInData returns the first DataAtomic child with the specified
+	 * nameInData.
+	 * <p>
+	 * A {@link DataMissingException} SHOULD be thrown if no child exists with the specified
+	 * nameInData.
+	 * 
+	 * @param nameInData
+	 *            A String with the nameInData of the child to get
+	 * @return The first {@link DataAtomic} that matches nameInData.
+	 */
+	DataAtomic getFirstDataAtomicWithNameInData(String nameInData);
+
+	/**
 	 * getAllDataAtomicsWithNameInData is used to get a List of the all {@link DataAtomic} that
 	 * matches the specified nameInData.
 	 * <p>
@@ -151,7 +164,7 @@ public interface DataParent {
 	 * @return A Collection of {@link DataAtomic} that matches the specified nameInData and the
 	 *         specified attributes.
 	 */
-	Collection<DataAtomic> getAllDataAtomicsWithNameInDataAndAttributes(String childNameInData,
+	Collection<DataAtomic> getAllDataAtomicsWithNameInDataAndAttributes(String nameInData,
 			DataAttribute... childAttributes);
 
 	/**
@@ -225,18 +238,5 @@ public interface DataParent {
 	 */
 	boolean removeAllChildrenWithNameInDataAndAttributes(String nameInData,
 			DataAttribute... childAttributes);
-
-	/**
-	 * getFirstDataAtomicWithNameInData returns the first DataAtomic child with the specified
-	 * nameInData.
-	 * <p>
-	 * A {@link DataMissingException} SHOULD be thrown if no child exists with the specified
-	 * nameInData.
-	 * 
-	 * @param nameInData
-	 *            A String with the nameInData of the child to get
-	 * @return The first {@link DataAtomic} that matches nameInData.
-	 */
-	DataAtomic getFirstDataAtomicWithNameInData(String nameInData);
 
 }
