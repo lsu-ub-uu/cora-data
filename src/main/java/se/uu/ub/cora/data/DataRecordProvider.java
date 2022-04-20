@@ -23,6 +23,10 @@ import java.util.ServiceLoader;
 import se.uu.ub.cora.data.starter.DataRecordModuleStarter;
 import se.uu.ub.cora.data.starter.DataRecordModuleStarterImp;
 
+/**
+ * @deprecated use DataProvider and DataFactory instead
+ */
+@Deprecated
 public class DataRecordProvider {
 
 	private static DataRecordFactory dataRecordFactory;
@@ -33,6 +37,10 @@ public class DataRecordProvider {
 		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	public static DataRecord getDataRecordWithDataGroup(DataGroup dataGroup) {
 		ensureDataRecordFactoryIsSet();
 		return dataRecordFactory.factorUsingDataGroup(dataGroup);
@@ -47,6 +55,10 @@ public class DataRecordProvider {
 	 * @param dataRecordFactory
 	 *            A DataRecordFactory to use to create dataRecords for testing
 	 */
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	public static void setDataRecordFactory(DataRecordFactory dataRecordFactory) {
 		DataRecordProvider.dataRecordFactory = dataRecordFactory;
 
@@ -66,11 +78,19 @@ public class DataRecordProvider {
 		dataRecordFactory = dataRecordModuleStarter.getDataRecordFactory();
 	}
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	static void setStarter(DataRecordModuleStarter starter) {
 		dataRecordModuleStarter = starter;
 
 	}
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	static DataRecordModuleStarter getStarter() {
 		return dataRecordModuleStarter;
 	}

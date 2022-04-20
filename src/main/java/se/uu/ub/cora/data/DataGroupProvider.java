@@ -23,6 +23,10 @@ import java.util.ServiceLoader;
 import se.uu.ub.cora.data.starter.DataGroupModuleStarter;
 import se.uu.ub.cora.data.starter.DataGroupModuleStarterImp;
 
+/**
+ * @deprecated use DataProvider and DataFactory instead
+ */
+@Deprecated
 public class DataGroupProvider {
 
 	private static DataGroupFactory dataGroupFactory;
@@ -33,6 +37,10 @@ public class DataGroupProvider {
 		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	public static DataGroup getDataGroupUsingNameInData(String nameInData) {
 		ensureDataGroupFactoryIsSet();
 		return dataGroupFactory.factorUsingNameInData(nameInData);
@@ -52,6 +60,10 @@ public class DataGroupProvider {
 		dataGroupFactory = dataGroupModuleStarter.getDataGroupFactory();
 	}
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	public static DataGroup getDataGroupAsLinkUsingNameInDataTypeAndId(String nameInData,
 			String recordType, String recordId) {
 		ensureDataGroupFactoryIsSet();
@@ -68,15 +80,27 @@ public class DataGroupProvider {
 	 * @param dataGroupFactory
 	 *            A DataGroupFactory to use to create dataGroups for testing
 	 */
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	public static void setDataGroupFactory(DataGroupFactory dataGroupFactory) {
 		DataGroupProvider.dataGroupFactory = dataGroupFactory;
 
 	}
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	static DataGroupModuleStarter getStarter() {
 		return dataGroupModuleStarter;
 	}
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	static void setStarter(DataGroupModuleStarter starter) {
 		dataGroupModuleStarter = starter;
 	}

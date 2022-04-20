@@ -20,10 +20,22 @@ package se.uu.ub.cora.data.starter;
 
 import se.uu.ub.cora.data.DataResourceLinkFactory;
 
+/**
+ * @deprecated use DataProvider and DataFactory instead
+ */
+@Deprecated
 public interface DataResourceLinkModuleStarter {
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	DataResourceLinkFactory getDataResourceLinkFactory();
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	void startUsingDataResourceLinkFactoryImplementations(
 			Iterable<DataResourceLinkFactory> dataResourceLinkFactoryImplementations);
 

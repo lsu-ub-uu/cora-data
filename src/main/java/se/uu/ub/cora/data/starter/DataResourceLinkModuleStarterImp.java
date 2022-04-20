@@ -20,12 +20,20 @@ package se.uu.ub.cora.data.starter;
 
 import se.uu.ub.cora.data.DataResourceLinkFactory;
 
+/**
+ * @deprecated use DataProvider and DataFactory instead
+ */
+@Deprecated
 public class DataResourceLinkModuleStarterImp extends ModuleStarter
 		implements DataResourceLinkModuleStarter {
 
 	private DataResourceLinkFactory dataResourceLinkFactory;
 
 	@Override
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	public void startUsingDataResourceLinkFactoryImplementations(
 			Iterable<DataResourceLinkFactory> dataResourceLinkFactoryImplementations) {
 		dataResourceLinkFactory = getImplementationThrowErrorIfNoneOrMoreThanOne(
@@ -34,6 +42,10 @@ public class DataResourceLinkModuleStarterImp extends ModuleStarter
 	}
 
 	@Override
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	public DataResourceLinkFactory getDataResourceLinkFactory() {
 		return dataResourceLinkFactory;
 	}

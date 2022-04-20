@@ -23,9 +23,20 @@ import java.util.ServiceLoader;
 import se.uu.ub.cora.data.starter.DataAtomicModuleStarter;
 import se.uu.ub.cora.data.starter.DataAtomicModuleStarterImp;
 
+/**
+ * @deprecated use DataProvider and DataFactory instead
+ */
+@Deprecated
 public class DataAtomicProvider {
-
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	private static DataAtomicFactory dataAtomicFactory;
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	private static DataAtomicModuleStarter dataAtomicModuleStarter = new DataAtomicModuleStarterImp();
 
 	private DataAtomicProvider() {
@@ -33,6 +44,10 @@ public class DataAtomicProvider {
 		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	public static DataAtomic getDataAtomicUsingNameInDataAndValue(String nameInData, String value) {
 		ensureDataAtomicFactoryIsSet();
 		return dataAtomicFactory.factorUsingNameInDataAndValue(nameInData, value);
@@ -44,6 +59,10 @@ public class DataAtomicProvider {
 		}
 	}
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	public static DataAtomic getDataAtomicUsingNameInDataAndValueAndRepeatId(String nameInData,
 			String value, String repeatId) {
 		ensureDataAtomicFactoryIsSet();
@@ -68,15 +87,27 @@ public class DataAtomicProvider {
 	 * @param dataAtomicFactory
 	 *            A DataAtomicFactory to use to create dataAtomics for testing
 	 */
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	public static void setDataAtomicFactory(DataAtomicFactory dataAtomicFactory) {
 		DataAtomicProvider.dataAtomicFactory = dataAtomicFactory;
 
 	}
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	static DataAtomicModuleStarter getStarter() {
 		return dataAtomicModuleStarter;
 	}
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	static void setStarter(DataAtomicModuleStarter starter) {
 		dataAtomicModuleStarter = starter;
 	}

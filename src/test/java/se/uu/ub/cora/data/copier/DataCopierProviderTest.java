@@ -31,7 +31,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import se.uu.ub.cora.data.DataAtomic;
-import se.uu.ub.cora.data.DataAtomicSpy;
+import se.uu.ub.cora.data.spy.DataAtomicSpy;
 import se.uu.ub.cora.data.starter.DataCopierFactorySpy;
 import se.uu.ub.cora.data.starter.DataCopierModuleStarter;
 import se.uu.ub.cora.data.starter.DataCopierModuleStarterImp;

@@ -1,5 +1,6 @@
 /*
  * Copyright 2019 Uppsala University Library
+ * Copyright 2022 Olov McKie
  *
  * This file is part of Cora.
  *
@@ -18,16 +19,28 @@
  */
 package se.uu.ub.cora.data;
 
-/**
- * @deprecated use DataProvider and DataFactory instead
- */
-@Deprecated
-public interface DataResourceLinkFactory {
+import se.uu.ub.cora.data.spy.DataFactorySpy;
+import se.uu.ub.cora.data.starter.DataModuleStarter;
+import se.uu.ub.cora.testutils.mcr.MethodCallRecorder;
 
-	/**
-	 * @deprecated use DataProvider and DataFactory instead
-	 */
-	@Deprecated
-	DataResourceLink factorUsingNameInData(String nameInData);
+public class DataModuleStarterSpy implements DataModuleStarter {
+	public MethodCallRecorder MCR = new MethodCallRecorder();
+
+	public boolean startWasCalled = false;
+
+	@Override
+	public void startUsingDataFactoryImplementations(
+			Iterable<DataFactory> dataFactoryImplementations) {
+		MCR.addCall("dataFactoryImplementations", dataFactoryImplementations);
+		startWasCalled = true;
+	}
+
+	@Override
+	public DataFactory getDataFactory() {
+		MCR.addCall();
+		DataFactorySpy dataFactorySpy = new DataFactorySpy();
+		MCR.addReturned(dataFactorySpy);
+		return dataFactorySpy;
+	}
 
 }

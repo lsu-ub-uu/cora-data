@@ -16,27 +16,19 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-package se.uu.ub.cora.data.starter;
 
-import se.uu.ub.cora.data.DataAttributeFactory;
+package se.uu.ub.cora.data.ability;
 
 /**
- * @deprecated use DataProvider and DataFactory instead
+ * DataPart defines the minimum required functionality for any part of data that the system handles.
+ * All dataParts must at least have a name.
  */
-@Deprecated
-public interface DataAttributeModuleStarter {
-
+public interface DataPart {
 	/**
-	 * @deprecated use DataProvider and DataFactory instead
+	 * getNameInData returns the name of this piece of information.
+	 * 
+	 * @return A String with the name of this piece of data.
 	 */
-	@Deprecated
-	void startUsingDataAttributeFactoryImplementations(
-			Iterable<DataAttributeFactory> loggerFactoryImplementations);
-
-	/**
-	 * @deprecated use DataProvider and DataFactory instead
-	 */
-	@Deprecated
-	DataAttributeFactory getDataAttributeFactory();
+	String getNameInData();
 
 }

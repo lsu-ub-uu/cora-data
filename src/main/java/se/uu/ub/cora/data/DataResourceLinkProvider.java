@@ -23,6 +23,10 @@ import java.util.ServiceLoader;
 import se.uu.ub.cora.data.starter.DataResourceLinkModuleStarter;
 import se.uu.ub.cora.data.starter.DataResourceLinkModuleStarterImp;
 
+/**
+ * @deprecated use DataProvider and DataFactory instead
+ */
+@Deprecated
 public class DataResourceLinkProvider {
 
 	private static DataResourceLinkFactory dataResourceLinkFactory;
@@ -33,6 +37,10 @@ public class DataResourceLinkProvider {
 		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	public static DataResourceLink getDataResourceLinkUsingNameInData(String nameInData) {
 		ensureDataResourceLinkFactoryIsSet();
 		return dataResourceLinkFactory.factorUsingNameInData(nameInData);
@@ -62,15 +70,27 @@ public class DataResourceLinkProvider {
 	 * @param dataResourceLinkFactory
 	 *            A DataResourceLinkFactory to use to create dataResourcelinks for testing
 	 */
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	public static void setDataResourceLinkFactory(DataResourceLinkFactory dataResourceLinkFactory) {
 		DataResourceLinkProvider.dataResourceLinkFactory = dataResourceLinkFactory;
 
 	}
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	static DataResourceLinkModuleStarter getStarter() {
 		return dataResourceLinkModuleStarter;
 	}
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	static void setStarter(DataResourceLinkModuleStarter starter) {
 		dataResourceLinkModuleStarter = starter;
 	}

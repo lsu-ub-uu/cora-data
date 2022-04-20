@@ -20,10 +20,18 @@ package se.uu.ub.cora.data.starter;
 
 import se.uu.ub.cora.data.DataAtomicFactory;
 
+/**
+ * @deprecated use DataProvider and DataFactory instead
+ */
+@Deprecated
 public class DataAtomicModuleStarterImp extends ModuleStarter implements DataAtomicModuleStarter {
 	private DataAtomicFactory dataAtomicFactory;
 
 	@Override
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	public void startUsingDataAtomicFactoryImplementations(
 			Iterable<DataAtomicFactory> loggerFactoryImplementations) {
 		dataAtomicFactory = getImplementationThrowErrorIfNoneOrMoreThanOne(
@@ -31,6 +39,10 @@ public class DataAtomicModuleStarterImp extends ModuleStarter implements DataAto
 	}
 
 	@Override
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	public DataAtomicFactory getDataAtomicFactory() {
 		return dataAtomicFactory;
 	}

@@ -20,11 +20,23 @@ package se.uu.ub.cora.data.starter;
 
 import se.uu.ub.cora.data.DataListFactory;
 
+/**
+ * @deprecated use DataProvider and DataFactory instead
+ */
+@Deprecated
 public interface DataListModuleStarter {
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	void startUsingDataListFactoryImplementations(
 			Iterable<DataListFactory> dataListFactoryImplementations);
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	DataListFactory getDataListFactory();
 
 }

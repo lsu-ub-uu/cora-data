@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Uppsala University Library
+ * Copyright 2015, 2019, 2022 Uppsala University Library
  *
  * This file is part of Cora.
  *
@@ -16,27 +16,30 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-package se.uu.ub.cora.data.starter;
 
-import se.uu.ub.cora.data.DataAttributeFactory;
+package se.uu.ub.cora.data;
+
+import se.uu.ub.cora.data.ability.DataCharacteristic;
+import se.uu.ub.cora.data.ability.DataPart;
 
 /**
- * @deprecated use DataProvider and DataFactory instead
+ * DataChild defines elements that can be added as children to a DataGroup.
  */
-@Deprecated
-public interface DataAttributeModuleStarter {
+public interface DataChild extends DataPart, DataCharacteristic {
 
 	/**
-	 * @deprecated use DataProvider and DataFactory instead
+	 * setRepeatId sets the DataElements repeatId, if the repeatId has been set since before should
+	 * the value be updated.
+	 * 
+	 * @param repeatId
+	 *            A String with the repeatId
 	 */
-	@Deprecated
-	void startUsingDataAttributeFactoryImplementations(
-			Iterable<DataAttributeFactory> loggerFactoryImplementations);
+	void setRepeatId(String repeatId);
 
 	/**
-	 * @deprecated use DataProvider and DataFactory instead
+	 * getRepeatId returns the repeatId.
+	 * 
+	 * @return A String with the value of the repeatId
 	 */
-	@Deprecated
-	DataAttributeFactory getDataAttributeFactory();
-
+	String getRepeatId();
 }

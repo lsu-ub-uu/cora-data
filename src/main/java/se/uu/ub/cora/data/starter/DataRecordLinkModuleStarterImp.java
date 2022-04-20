@@ -21,12 +21,20 @@ package se.uu.ub.cora.data.starter;
 
 import se.uu.ub.cora.data.DataRecordLinkFactory;
 
+/**
+ * @deprecated use DataProvider and DataFactory instead
+ */
+@Deprecated
 public class DataRecordLinkModuleStarterImp extends ModuleStarter
 		implements DataRecordLinkModuleStarter {
 
 	private DataRecordLinkFactory dataRecordLinkFactory;
 
 	@Override
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	public void startUsingDataRecordLinkFactoryImplementations(
 			Iterable<DataRecordLinkFactory> loggerFactoryImplementations) {
 		dataRecordLinkFactory = getImplementationThrowErrorIfNoneOrMoreThanOne(
@@ -34,6 +42,10 @@ public class DataRecordLinkModuleStarterImp extends ModuleStarter
 	}
 
 	@Override
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	public DataRecordLinkFactory getDataRecordLinkFactory() {
 		return dataRecordLinkFactory;
 	}

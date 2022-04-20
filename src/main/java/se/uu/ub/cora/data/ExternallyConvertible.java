@@ -23,7 +23,7 @@ package se.uu.ub.cora.data;
  * leaving and entering the system to external resources such as databases.
  * <p>
  * Currently known implementations are {@linkplain DataList}, {@linkplain DataRecord} and
- * TopDataGroup the top level DataGroup found in DataRecords and DataLists
+ * {@link DataRecordGroup} found in DataRecords and DataLists
  */
 public interface ExternallyConvertible {
 }

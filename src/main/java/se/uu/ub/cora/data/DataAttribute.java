@@ -18,6 +18,8 @@
  */
 package se.uu.ub.cora.data;
 
+import se.uu.ub.cora.data.ability.DataPart;
+
 /**
  * DataAttribute is the interface used for attributes to data.
  */

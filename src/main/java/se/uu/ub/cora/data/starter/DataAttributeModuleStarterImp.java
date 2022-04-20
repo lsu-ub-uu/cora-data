@@ -20,11 +20,19 @@ package se.uu.ub.cora.data.starter;
 
 import se.uu.ub.cora.data.DataAttributeFactory;
 
+/**
+ * @deprecated use DataProvider and DataFactory instead
+ */
+@Deprecated
 public class DataAttributeModuleStarterImp extends ModuleStarter
 		implements DataAttributeModuleStarter {
 	private DataAttributeFactory dataAttributeFactory;
 
 	@Override
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	public void startUsingDataAttributeFactoryImplementations(
 			Iterable<DataAttributeFactory> loggerFactoryImplementations) {
 		dataAttributeFactory = getImplementationThrowErrorIfNoneOrMoreThanOne(
@@ -32,6 +40,10 @@ public class DataAttributeModuleStarterImp extends ModuleStarter
 	}
 
 	@Override
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	public DataAttributeFactory getDataAttributeFactory() {
 		return dataAttributeFactory;
 	}

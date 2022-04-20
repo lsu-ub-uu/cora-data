@@ -18,10 +18,22 @@
  */
 package se.uu.ub.cora.data;
 
+/**
+ * @deprecated use DataProvider and DataFactory instead
+ */
+@Deprecated
 public interface DataRecordLinkFactory {
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	DataRecordLink factorUsingNameInData(String nameInData);
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	DataRecordLink factorAsLinkWithNameInDataTypeAndId(String nameInData, String recordType,
 			String recordId);
 

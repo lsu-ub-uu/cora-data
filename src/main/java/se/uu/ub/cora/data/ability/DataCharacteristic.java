@@ -1,5 +1,5 @@
 /*
- * Copyright 2015, 2019, 2022 Uppsala University Library
+ * Copyright 2022 Uppsala University Library
  *
  * This file is part of Cora.
  *
@@ -17,31 +17,17 @@
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package se.uu.ub.cora.data;
+package se.uu.ub.cora.data.ability;
 
 import java.util.Collection;
 
+import se.uu.ub.cora.data.DataAttribute;
+import se.uu.ub.cora.data.DataMissingException;
+
 /**
- * DataElement defines elements that can be added as children to a DataGroup.
+ * DataCharacteristic adds the ability to handle attributes..
  */
-public interface DataElement extends DataPart {
-
-	/**
-	 * setRepeatId sets the DataElements repeatId, if the repeatId has been set since before should
-	 * the value be updated.
-	 * 
-	 * @param repeatId
-	 *            A String with the repeatId
-	 */
-	void setRepeatId(String repeatId);
-
-	/**
-	 * getRepeatId returns the repeatId.
-	 * 
-	 * @return A String with the value of the repeatId
-	 */
-	String getRepeatId();
-
+public interface DataCharacteristic {
 	/**
 	 * addAttributeByIdWithValue adds a DataAttribute with the specified nameInData and value. The
 	 * implementation is expected to allow only one attribute with the specified nameInData.

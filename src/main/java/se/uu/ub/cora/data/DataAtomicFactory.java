@@ -18,10 +18,21 @@
  */
 package se.uu.ub.cora.data;
 
+/**
+ * @deprecated use DataProvider and DataFactory instead
+ */
+@Deprecated
 public interface DataAtomicFactory {
-
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	DataAtomic factorUsingNameInDataAndValue(String nameInData, String value);
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	DataAtomic factorUsingNameInDataAndValueAndRepeatId(String nameInData, String value,
 			String repeatId);
 

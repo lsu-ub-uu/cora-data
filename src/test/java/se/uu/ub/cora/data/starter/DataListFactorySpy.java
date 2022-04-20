@@ -20,6 +20,7 @@ package se.uu.ub.cora.data.starter;
 
 import se.uu.ub.cora.data.DataList;
 import se.uu.ub.cora.data.DataListFactory;
+import se.uu.ub.cora.data.spy.DataListSpy;
 
 public class DataListFactorySpy implements DataListFactory {
 

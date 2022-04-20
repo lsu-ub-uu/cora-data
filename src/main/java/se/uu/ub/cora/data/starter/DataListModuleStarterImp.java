@@ -20,11 +20,19 @@ package se.uu.ub.cora.data.starter;
 
 import se.uu.ub.cora.data.DataListFactory;
 
+/**
+ * @deprecated use DataProvider and DataFactory instead
+ */
+@Deprecated
 public class DataListModuleStarterImp extends ModuleStarter implements DataListModuleStarter {
 
 	private DataListFactory dataListFactory;
 
 	@Override
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	public void startUsingDataListFactoryImplementations(
 			Iterable<DataListFactory> dataListFactoryImplementations) {
 		dataListFactory = getImplementationThrowErrorIfNoneOrMoreThanOne(
@@ -33,6 +41,10 @@ public class DataListModuleStarterImp extends ModuleStarter implements DataListM
 	}
 
 	@Override
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	public DataListFactory getDataListFactory() {
 		return dataListFactory;
 	}

@@ -1,5 +1,6 @@
 /*
- * Copyright 2019 Uppsala University Library
+ * Copyright 2021 Uppsala University Library
+ * Copyright 2022 Olov McKie
  *
  * This file is part of Cora.
  *
@@ -18,25 +19,12 @@
  */
 package se.uu.ub.cora.data.starter;
 
-import se.uu.ub.cora.data.DataAttributeFactory;
+import se.uu.ub.cora.data.DataFactory;
 
-/**
- * @deprecated use DataProvider and DataFactory instead
- */
-@Deprecated
-public interface DataAttributeModuleStarter {
+public interface DataModuleStarter {
 
-	/**
-	 * @deprecated use DataProvider and DataFactory instead
-	 */
-	@Deprecated
-	void startUsingDataAttributeFactoryImplementations(
-			Iterable<DataAttributeFactory> loggerFactoryImplementations);
+	void startUsingDataFactoryImplementations(Iterable<DataFactory> dataFactoryImplementations);
 
-	/**
-	 * @deprecated use DataProvider and DataFactory instead
-	 */
-	@Deprecated
-	DataAttributeFactory getDataAttributeFactory();
+	DataFactory getDataFactory();
 
 }

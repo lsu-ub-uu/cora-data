@@ -18,8 +18,16 @@
  */
 package se.uu.ub.cora.data;
 
+/**
+ * @deprecated use DataProvider and DataFactory instead
+ */
+@Deprecated
 public interface DataListFactory {
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	DataList factorWithContainDataOfType(String nameOfDataType);
 
 }

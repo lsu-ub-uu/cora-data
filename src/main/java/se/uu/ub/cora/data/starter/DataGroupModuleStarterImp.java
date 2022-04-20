@@ -21,11 +21,19 @@ package se.uu.ub.cora.data.starter;
 
 import se.uu.ub.cora.data.DataGroupFactory;
 
+/**
+ * @deprecated use DataProvider and DataFactory instead
+ */
+@Deprecated
 public class DataGroupModuleStarterImp extends ModuleStarter implements DataGroupModuleStarter {
 
 	private DataGroupFactory dataGroupFactory;
 
 	@Override
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	public void startUsingDataGroupFactoryImplementations(
 			Iterable<DataGroupFactory> loggerFactoryImplementations) {
 		dataGroupFactory = getImplementationThrowErrorIfNoneOrMoreThanOne(
@@ -33,6 +41,10 @@ public class DataGroupModuleStarterImp extends ModuleStarter implements DataGrou
 	}
 
 	@Override
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	public DataGroupFactory getDataGroupFactory() {
 		return dataGroupFactory;
 	}

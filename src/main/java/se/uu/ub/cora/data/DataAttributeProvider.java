@@ -23,6 +23,10 @@ import java.util.ServiceLoader;
 import se.uu.ub.cora.data.starter.DataAttributeModuleStarter;
 import se.uu.ub.cora.data.starter.DataAttributeModuleStarterImp;
 
+/**
+ * @deprecated use DataProvider and DataFactory instead
+ */
+@Deprecated
 public class DataAttributeProvider {
 
 	private static DataAttributeFactory dataAttributeFactory;
@@ -33,6 +37,10 @@ public class DataAttributeProvider {
 		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	public static DataAttribute getDataAttributeUsingNameInDataAndValue(String nameInData,
 			String value) {
 		ensureDataAttributeFactoryIsSet();
@@ -62,14 +70,26 @@ public class DataAttributeProvider {
 	 * @param dataAttributeFactory
 	 *            A DataAttributeFactory to use to create dataAttributes for testing
 	 */
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	public static void setDataAttributeFactory(DataAttributeFactory dataAttributeFactory) {
 		DataAttributeProvider.dataAttributeFactory = dataAttributeFactory;
 	}
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	static DataAttributeModuleStarter getStarter() {
 		return dataAttributeModuleStarter;
 	}
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	static void setStarter(DataAttributeModuleStarter starter) {
 		dataAttributeModuleStarter = starter;
 	}

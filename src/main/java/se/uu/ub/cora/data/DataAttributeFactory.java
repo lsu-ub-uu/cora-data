@@ -18,8 +18,16 @@
  */
 package se.uu.ub.cora.data;
 
+/**
+ * @deprecated use DataProvider and DataFactory instead
+ */
+@Deprecated
 public interface DataAttributeFactory {
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	DataAttribute factorUsingNameInDataAndValue(String nameInData, String value);
 
 }

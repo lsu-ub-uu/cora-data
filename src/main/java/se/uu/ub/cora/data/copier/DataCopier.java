@@ -18,10 +18,10 @@
  */
 package se.uu.ub.cora.data.copier;
 
-import se.uu.ub.cora.data.DataElement;
+import se.uu.ub.cora.data.DataChild;
 
 public interface DataCopier {
 
-	DataElement copy();
+	DataChild copy();
 
 }

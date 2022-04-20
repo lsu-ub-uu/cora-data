@@ -1,26 +1,39 @@
-package se.uu.ub.cora.data.starter;
+/*
+ * Copyright 2019 Uppsala University Library
+ *
+ * This file is part of Cora.
+ *
+ *     Cora is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU General Public License as published by
+ *     the Free Software Foundation, either version 3 of the License, or
+ *     (at your option) any later version.
+ *
+ *     Cora is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU General Public License for more details.
+ *
+ *     You should have received a copy of the GNU General Public License
+ *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
+ */
+package se.uu.ub.cora.data.spy;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import se.uu.ub.cora.data.Action;
 import se.uu.ub.cora.data.DataAtomic;
 import se.uu.ub.cora.data.DataAttribute;
-import se.uu.ub.cora.data.DataElement;
+import se.uu.ub.cora.data.DataChild;
 import se.uu.ub.cora.data.DataGroup;
-import se.uu.ub.cora.data.DataResourceLink;
 
-public class DataResourceLinkSpy implements DataResourceLink {
-	@Override
-	public void addAction(Action action) {
-		// TODO Auto-generated method stub
+public class DataGroupSpy implements DataGroup {
 
-	}
+	public String nameInData;
+	public List<DataChild> children = new ArrayList<>();
 
-	@Override
-	public List<Action> getActions() {
-		// TODO Auto-generated method stub
-		return null;
+	public DataGroupSpy(String nameInData) {
+		this.nameInData = nameInData;
 	}
 
 	@Override
@@ -30,9 +43,9 @@ public class DataResourceLinkSpy implements DataResourceLink {
 	}
 
 	@Override
-	public String getRepeatId() {
+	public boolean hasChildren() {
 		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}
 
 	@Override
@@ -48,21 +61,26 @@ public class DataResourceLinkSpy implements DataResourceLink {
 	}
 
 	@Override
-	public void addChild(DataElement dataElement) {
-		// TODO Auto-generated method stub
+	public void addChild(DataChild dataElement) {
+		children.add(dataElement);
 
 	}
 
 	@Override
-	public List<DataElement> getChildren() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<DataChild> getChildren() {
+		return children;
 	}
 
 	@Override
 	public boolean containsChildWithNameInData(String nameInData) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public String getRepeatId() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
@@ -78,7 +96,7 @@ public class DataResourceLinkSpy implements DataResourceLink {
 	}
 
 	@Override
-	public DataElement getFirstChildWithNameInData(String nameInData) {
+	public DataChild getFirstChildWithNameInData(String nameInData) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -107,14 +125,15 @@ public class DataResourceLinkSpy implements DataResourceLink {
 	}
 
 	@Override
-	public Collection<DataGroup> getAllGroupsWithNameInDataAndAttributes(String childNameInData,
-			DataAttribute... childAttributes) {
+	public Collection<DataAttribute> getAttributes() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Collection<DataAttribute> getAttributes() {
+	public Collection<DataGroup> getAllGroupsWithNameInDataAndAttributes(String childNameInData,
+			DataAttribute... childAttributes) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -130,21 +149,15 @@ public class DataResourceLinkSpy implements DataResourceLink {
 	}
 
 	@Override
-	public void addChildren(Collection<DataElement> dataElements) {
+	public void addChildren(Collection<DataChild> dataElements) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public List<DataElement> getAllChildrenWithNameInData(String nameInData) {
+	public List<DataChild> getAllChildrenWithNameInData(String nameInData) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public boolean hasChildren() {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 	@Override
@@ -155,20 +168,8 @@ public class DataResourceLinkSpy implements DataResourceLink {
 	}
 
 	@Override
-	public List<DataElement> getAllChildrenWithNameInDataAndAttributes(String nameInData,
+	public List<DataChild> getAllChildrenWithNameInDataAndAttributes(String nameInData,
 			DataAttribute... childAttributes) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean hasReadAction() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public String getMimeType() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -178,4 +179,12 @@ public class DataResourceLinkSpy implements DataResourceLink {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public Collection<DataAtomic> getAllDataAtomicsWithNameInDataAndAttributes(
+			String childNameInData, DataAttribute... childAttributes) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

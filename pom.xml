@@ -27,14 +27,14 @@
 	</parent>
 
 	<artifactId>coradata</artifactId>
-    <version>6.3-SNAPSHOT</version>
+    <version>7.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>Cora data</name>
 
 	<properties>
 		<json.version>3.3.0</json.version>
-		<testutils.version>1.3.0</testutils.version>
+		<testutils.version>1.4-SNAPSHOT</testutils.version>
 	</properties>
 
 	<scm>

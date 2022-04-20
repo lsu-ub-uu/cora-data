@@ -23,6 +23,10 @@ import java.util.ServiceLoader;
 import se.uu.ub.cora.data.starter.DataRecordLinkModuleStarter;
 import se.uu.ub.cora.data.starter.DataRecordLinkModuleStarterImp;
 
+/**
+ * @deprecated use DataProvider and DataFactory instead
+ */
+@Deprecated
 public class DataRecordLinkProvider {
 
 	private static DataRecordLinkFactory dataRecordLinkFactory;
@@ -33,6 +37,10 @@ public class DataRecordLinkProvider {
 		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	public static DataRecordLink getDataRecordLinkUsingNameInData(String nameInData) {
 		ensureDataRecordLinkFactoryIsSet();
 		return dataRecordLinkFactory.factorUsingNameInData(nameInData);
@@ -52,6 +60,10 @@ public class DataRecordLinkProvider {
 		dataRecordLinkFactory = dataRecordLinkModuleStarter.getDataRecordLinkFactory();
 	}
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	public static DataRecordLink getDataRecordLinkAsLinkUsingNameInDataTypeAndId(String nameInData,
 			String recordType, String recordId) {
 		ensureDataRecordLinkFactoryIsSet();
@@ -68,15 +80,27 @@ public class DataRecordLinkProvider {
 	 * @param dataRecordLinkFactory
 	 *            A DataRecordLinkFactory to use to create dataRecordlinks for testing
 	 */
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	public static void setDataRecordLinkFactory(DataRecordLinkFactory dataRecordLinkFactory) {
 		DataRecordLinkProvider.dataRecordLinkFactory = dataRecordLinkFactory;
 
 	}
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	static DataRecordLinkModuleStarter getStarter() {
 		return dataRecordLinkModuleStarter;
 	}
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	static void setStarter(DataRecordLinkModuleStarter starter) {
 		dataRecordLinkModuleStarter = starter;
 	}

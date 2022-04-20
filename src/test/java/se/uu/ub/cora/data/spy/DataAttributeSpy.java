@@ -16,27 +16,22 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-package se.uu.ub.cora.data.starter;
+package se.uu.ub.cora.data.spy;
 
-import se.uu.ub.cora.data.DataAttributeFactory;
+import se.uu.ub.cora.data.DataAttribute;
 
-/**
- * @deprecated use DataProvider and DataFactory instead
- */
-@Deprecated
-public interface DataAttributeModuleStarter {
+public class DataAttributeSpy implements DataAttribute {
 
-	/**
-	 * @deprecated use DataProvider and DataFactory instead
-	 */
-	@Deprecated
-	void startUsingDataAttributeFactoryImplementations(
-			Iterable<DataAttributeFactory> loggerFactoryImplementations);
+	@Override
+	public String getNameInData() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-	/**
-	 * @deprecated use DataProvider and DataFactory instead
-	 */
-	@Deprecated
-	DataAttributeFactory getDataAttributeFactory();
+	@Override
+	public String getValue() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

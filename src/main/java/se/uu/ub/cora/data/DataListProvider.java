@@ -23,6 +23,10 @@ import java.util.ServiceLoader;
 import se.uu.ub.cora.data.starter.DataListModuleStarter;
 import se.uu.ub.cora.data.starter.DataListModuleStarterImp;
 
+/**
+ * @deprecated use DataProvider and DataFactory instead
+ */
+@Deprecated
 public class DataListProvider {
 
 	private static DataListFactory dataListFactory;
@@ -33,6 +37,10 @@ public class DataListProvider {
 		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	public static DataList getDataListWithNameOfDataType(String nameOfDataType) {
 		ensureDataListFactoryIsSet();
 		return dataListFactory.factorWithContainDataOfType(nameOfDataType);
@@ -47,6 +55,10 @@ public class DataListProvider {
 	 * @param dataListFactory
 	 *            A DataRecordFactory to use to create dataRecords for testing
 	 */
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	public static void setDataListFactory(DataListFactory dataListFactory) {
 		DataListProvider.dataListFactory = dataListFactory;
 
@@ -66,11 +78,19 @@ public class DataListProvider {
 		dataListFactory = dataListModuleStarter.getDataListFactory();
 	}
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	static void setStarter(DataListModuleStarter starter) {
 		dataListModuleStarter = starter;
 
 	}
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	static DataListModuleStarter getStarter() {
 		return dataListModuleStarter;
 	}

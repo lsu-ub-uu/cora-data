@@ -1,5 +1,6 @@
 /*
- * Copyright 2019 Uppsala University Library
+ * Copyright 2021 Uppsala University Library
+ * Copyright 2022 Olov McKie
  *
  * This file is part of Cora.
  *
@@ -16,19 +17,23 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
+package se.uu.ub.cora.data.starter;
 
-package se.uu.ub.cora.data;
+import se.uu.ub.cora.data.DataFactory;
 
-/**
- * DataPart defines the minimum required functionality for any part of data that the system handles.
- * All dataParts must at least have a name.
- */
-public interface DataPart {
-	/**
-	 * getNameInData returns the name of this piece of information.
-	 * 
-	 * @return A String with the name of this piece of data.
-	 */
-	String getNameInData();
+public class DataModuleStarterImp extends ModuleStarter implements DataModuleStarter {
 
+	private DataFactory dataFactory;
+
+	@Override
+	public void startUsingDataFactoryImplementations(
+			Iterable<DataFactory> dataFactoryImplementations) {
+		dataFactory = getImplementationThrowErrorIfNoneOrMoreThanOne(dataFactoryImplementations,
+				"DataFactory");
+	}
+
+	@Override
+	public DataFactory getDataFactory() {
+		return dataFactory;
+	}
 }

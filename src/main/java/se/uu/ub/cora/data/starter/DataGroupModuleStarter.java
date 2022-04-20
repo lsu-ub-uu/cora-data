@@ -21,11 +21,23 @@ package se.uu.ub.cora.data.starter;
 
 import se.uu.ub.cora.data.DataGroupFactory;
 
+/**
+ * @deprecated use DataProvider and DataFactory instead
+ */
+@Deprecated
 public interface DataGroupModuleStarter {
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	void startUsingDataGroupFactoryImplementations(
 			Iterable<DataGroupFactory> dataGroupFactoryImplementations);
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	DataGroupFactory getDataGroupFactory();
 
 }

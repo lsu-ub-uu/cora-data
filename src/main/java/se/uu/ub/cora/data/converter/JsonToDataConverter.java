@@ -19,7 +19,7 @@
 
 package se.uu.ub.cora.data.converter;
 
-import se.uu.ub.cora.data.DataPart;
+import se.uu.ub.cora.data.Convertible;
 
 /**
  * JsonToDataConverter converts a json string to a DataPart object.
@@ -32,8 +32,8 @@ public interface JsonToDataConverter {
 	 * If an exception occurs during conversion MUST an exception implementing
 	 * {@link ConversionException} be thrown.
 	 * 
-	 * @return a DataPart converted from the json String
+	 * @return a Convertible converted from the json String
 	 */
-	DataPart toInstance();
+	Convertible toInstance();
 
 }

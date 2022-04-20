@@ -20,11 +20,23 @@ package se.uu.ub.cora.data.starter;
 
 import se.uu.ub.cora.data.DataAtomicFactory;
 
+/**
+ * @deprecated use DataProvider and DataFactory instead
+ */
+@Deprecated
 public interface DataAtomicModuleStarter {
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	void startUsingDataAtomicFactoryImplementations(
 			Iterable<DataAtomicFactory> loggerFactoryImplementations);
 
+	/**
+	 * @deprecated use DataProvider and DataFactory instead
+	 */
+	@Deprecated
 	DataAtomicFactory getDataAtomicFactory();
 
 }
