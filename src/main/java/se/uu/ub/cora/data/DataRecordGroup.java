@@ -25,14 +25,14 @@ import se.uu.ub.cora.data.ability.DataPart;
 
 /**
  * 
- * DataRecordGroup contains all data for a record. It is a {@link DataGroup} that has a meta
- * information about the record it represents known as recordInfo in a child DataGroup, with the
- * name recordInfo. DataRecordGroups main difference from a DataGroup is that it is known to be the
- * one for the entire record.
+ * DataRecordGroup contains all data for a record. It has meta information about the record it
+ * represents known as recordInfo in a child DataGroup, with the name recordInfo. DataRecordGroups
+ * main differences from a DataGroup is that it can not have a repeatId, it can not be added as a
+ * child to a DataParent and it is known to be the one for the entire record.
  * <p>
  * This difference makes it possible to directly handle information that is known to exist in
- * recordInfo such as type, id, dataDivider, createdBy, updated, tsCreated, etc. And to add utility
- * methods to handle changes to this data.
+ * recordInfo such as type, id, dataDivider, createdBy, updated, tsCreated, etc. And to provide
+ * utility methods to handle changes to this data.
  * <p>
  * <b>DataRecordGroup is work in progress</b>
  * <p>
@@ -47,9 +47,74 @@ import se.uu.ub.cora.data.ability.DataPart;
  * Finally dataGroup will be replaced with DataRecordGroup in all places where a DataGroup is used
  * as a datagroup for the entire record (DataRecordGroup). This work must start where DataGroups are
  * created at the edges of the system, the API, storage and search.
- *
  */
 public interface DataRecordGroup
 		extends Data, ExternallyConvertible, DataPart, DataCharacteristic, DataParent {
 
+	DataGroup asDataGroup();
+
+	// link pointing to recordType
+	void setType(String type);
+
+	/**
+	 * getType returns the record type for this record.
+	 * <p>
+	 * If the records type is unknown SHOULD a {@link DataMissingException} be thrown.
+	 * 
+	 * @return String with the type of this record
+	 */
+	String getType();
+
+	boolean hasType();
+
+	void setId(String id);
+
+	/**
+	 * getId returns the record id for this record.
+	 * <p>
+	 * If the records id is unknown SHOULD a {@link DataMissingException} be thrown.
+	 * 
+	 * @return String with the id of this record
+	 */
+	String getId();
+
+	boolean hasId();
+
+	// link pointing to system
+	void setDataDivider(String dataDivider);
+
+	String getDataDivider();
+
+	boolean hasDataDivider();
+
+	// link pointing to user
+	/**
+	 * setCreatedInfoUsingUserIdAndTsCreated MUST be implemented so that
+	 * <p>
+	 * MUST also set a corresponding updated group
+	 * 
+	 * @param userId
+	 * @param tsCreated
+	 */
+	void setCreatedInfoUsingUserIdAndTsCreated(String userId, String tsCreated);
+
+	// void setCreatedBy(String tsCreated);
+
+	String getCreatedBy();
+
+	boolean hasCreatedBy();
+
+	// createdBy
+	// tsCreated
+	// void setTsCreated(String dataDivider);
+
+	String getTsCreated();
+
+	boolean hasTsCreated();
+
+	void addUpdatedInfoUsingUserIdAndTsUpdated(String userId, String tsUpdated);
+	// updated
+	//// link updatedBy pointing to user
+	//// tsUpdated
+	// "2018-11-29T13:55:55.827000Z"
 }

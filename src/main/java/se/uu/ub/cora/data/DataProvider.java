@@ -107,7 +107,6 @@ public class DataProvider {
 	 */
 	public static DataRecordGroup createRecordGroupFromDataGroup(DataGroup dataGroup) {
 		ensureDataFactoryIsSet();
-		// TODO Auto-generated method stub
 		return dataFactory.factorRecordGroupFromDataGroup(dataGroup);
 	}
 
