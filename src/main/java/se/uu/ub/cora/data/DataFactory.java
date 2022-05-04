@@ -32,6 +32,8 @@ public interface DataFactory {
 
 	DataRecordGroup factorRecordGroupFromDataGroup(DataGroup dataGroup);
 
+	DataGroup factorGroupFromDataRecordGroup(DataRecordGroup dataRecordGroup);
+
 	DataGroup factorGroupUsingNameInData(String nameInData);
 
 	DataRecordLink factorRecordLinkUsingNameInData(String nameInData);

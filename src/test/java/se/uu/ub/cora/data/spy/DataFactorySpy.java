@@ -68,6 +68,14 @@ public class DataFactorySpy implements DataFactory {
 	}
 
 	@Override
+	public DataGroup factorGroupFromDataRecordGroup(DataRecordGroup dataRecordGroup) {
+		MCR.addCall("dataRecordGroup", dataRecordGroup);
+		DataGroup dataGroupSpy = new DataGroupSpy("spy name in data");
+		MCR.addReturned(dataGroupSpy);
+		return dataGroupSpy;
+	}
+
+	@Override
 	public DataGroup factorGroupUsingNameInData(String nameInData) {
 		MCR.addCall("nameInData", nameInData);
 		DataGroup dataGroupSpy = new DataGroupSpy(nameInData);

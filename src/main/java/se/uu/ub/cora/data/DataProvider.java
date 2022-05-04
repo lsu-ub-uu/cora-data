@@ -110,6 +110,11 @@ public class DataProvider {
 		return dataFactory.factorRecordGroupFromDataGroup(dataGroup);
 	}
 
+	public static DataGroup createGroupFromDataRecordGroup(DataRecordGroup dataRecordGroup) {
+		ensureDataFactoryIsSet();
+		return dataFactory.factorGroupFromDataRecordGroup(dataRecordGroup);
+	}
+
 	public static DataGroup createGroupUsingNameInData(String nameInData) {
 		ensureDataFactoryIsSet();
 		return dataFactory.factorGroupUsingNameInData(nameInData);

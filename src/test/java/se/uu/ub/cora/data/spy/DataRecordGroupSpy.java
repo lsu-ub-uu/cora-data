@@ -134,18 +134,6 @@ public class DataRecordGroupSpy implements DataRecordGroup {
 		return null;
 	}
 
-	// @Override
-	// public void setRepeatId(String repeatId) {
-	// // TODO Auto-generated method stub
-	//
-	// }
-	//
-	// @Override
-	// public String getRepeatId() {
-	// // TODO Auto-generated method stub
-	// return null;
-	// }
-
 	@Override
 	public void addAttributeByIdWithValue(String nameInData, String value) {
 		// TODO Auto-generated method stub
@@ -181,6 +169,66 @@ public class DataRecordGroupSpy implements DataRecordGroup {
 			String childNameInData, DataAttribute... childAttributes) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void setType(String type) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public String getType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setId(String id) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public String getId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setDataDivider(String dataDivider) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public String getDataDivider() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setCreatedInfoUsingUserIdAndTsCreated(String userId, String tsCreated) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public String getCreatedBy() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getTsCreated() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void addUpdatedInfoUsingUserIdAndTsUpdated(String userId, String tsUpdated) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

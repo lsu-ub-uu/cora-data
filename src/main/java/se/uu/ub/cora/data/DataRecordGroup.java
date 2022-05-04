@@ -51,7 +51,7 @@ import se.uu.ub.cora.data.ability.DataPart;
 public interface DataRecordGroup
 		extends Data, ExternallyConvertible, DataPart, DataCharacteristic, DataParent {
 
-	DataGroup asDataGroup();
+	// DataGroup asDataGroup();
 
 	// link pointing to recordType
 	void setType(String type);
@@ -65,7 +65,7 @@ public interface DataRecordGroup
 	 */
 	String getType();
 
-	boolean hasType();
+	// boolean hasType();
 
 	void setId(String id);
 
@@ -78,14 +78,14 @@ public interface DataRecordGroup
 	 */
 	String getId();
 
-	boolean hasId();
+	// boolean hasId();
 
 	// link pointing to system
 	void setDataDivider(String dataDivider);
 
 	String getDataDivider();
 
-	boolean hasDataDivider();
+	// boolean hasDataDivider();
 
 	// link pointing to user
 	/**
@@ -102,7 +102,7 @@ public interface DataRecordGroup
 
 	String getCreatedBy();
 
-	boolean hasCreatedBy();
+	// boolean hasCreatedBy();
 
 	// createdBy
 	// tsCreated
@@ -110,7 +110,7 @@ public interface DataRecordGroup
 
 	String getTsCreated();
 
-	boolean hasTsCreated();
+	// boolean hasTsCreated();
 
 	void addUpdatedInfoUsingUserIdAndTsUpdated(String userId, String tsUpdated);
 	// updated
