@@ -270,9 +270,8 @@ public class DataProviderTest {
 
 		assertStarterWasCalled(starter);
 		DataFactorySpy dataFactorySpy = getFactorySpyFromStarterSpy(starter);
-		dataFactorySpy.MCR.assertParameters("factorDataChildFilterUsingNameInDataAndValue", 0,
+		dataFactorySpy.MCR.assertParameters("factorDataChildFilterUsingNameInData", 0,
 				childNameInData);
-		dataFactorySpy.MCR.assertReturn("factorDataChildFilterUsingNameInDataAndValue", 0,
-				dataChildFilter);
+		dataFactorySpy.MCR.assertReturn("factorDataChildFilterUsingNameInData", 0, dataChildFilter);
 	}
 }

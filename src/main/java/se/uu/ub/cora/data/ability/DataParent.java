@@ -250,10 +250,8 @@ public interface DataParent {
 	 * <p>
 	 * An empty list SHOULD be returned if no child exists with the specified nameInData.
 	 * 
-	 * @param nameInData
-	 *            A String with the nameInData of the children to get
-	 * @param childAttributes
-	 *            A Varargs with attributes the children must have to be returned
+	 * @param childFilter
+	 *            A DataChildFilter to filter the children to return
 	 * @return A List with all children that has the specified nameInData
 	 */
 	List<DataChild> getAllChildrenMatchingFilter(DataChildFilter childFilter);
@@ -262,8 +260,8 @@ public interface DataParent {
 	 * removeAllChildrenWithNameInData removes all children in this DataGroup that has the specified
 	 * nameInData.
 	 * 
-	 * @param nameInData
-	 *            A String with the nameInData of the children to remove
+	 * @param childFilter
+	 *            A DataChildFilter to filter the children to remove
 	 * @return true if any child has been removed, false otherwise
 	 */
 	boolean removeAllChildrenMatchingFilter(DataChildFilter childFilter);
