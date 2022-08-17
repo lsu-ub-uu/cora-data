@@ -129,9 +129,9 @@ public class DataFactorySpy implements DataFactory {
 	@Override
 	public DataChildFilter factorDataChildFilterUsingNameInData(String childNameInData) {
 		MCR.addCall("childNameInData", childNameInData);
-		DataChildFilter dataAttribute = new DataChildFilterSpy();
-		MCR.addReturned(dataAttribute);
-		return dataAttribute;
+		DataChildFilter dataChildFilter = new DataChildFilterSpy();
+		MCR.addReturned(dataChildFilter);
+		return dataChildFilter;
 	}
 
 }
