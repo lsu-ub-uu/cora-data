@@ -28,7 +28,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import se.uu.ub.cora.data.DataGroupFactory;
-import se.uu.ub.cora.data.DataGroupFactorySpy;
+import se.uu.ub.cora.data.spy.DataGroupFactorySpy;
 
 public class DataGroupModuleStarterTest {
 	DataGroupModuleStarterImp starter;

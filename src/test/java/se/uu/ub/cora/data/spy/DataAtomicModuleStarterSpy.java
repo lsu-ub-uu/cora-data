@@ -1,5 +1,6 @@
-package se.uu.ub.cora.data;
+package se.uu.ub.cora.data.spy;
 
+import se.uu.ub.cora.data.DataAtomicFactory;
 import se.uu.ub.cora.data.starter.DataAtomicModuleStarter;
 
 public class DataAtomicModuleStarterSpy implements DataAtomicModuleStarter {

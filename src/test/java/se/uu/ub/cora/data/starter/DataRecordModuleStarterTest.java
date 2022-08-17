@@ -28,7 +28,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import se.uu.ub.cora.data.DataRecordFactory;
-import se.uu.ub.cora.data.DataRecordFactorySpy;
+import se.uu.ub.cora.data.spy.DataRecordFactorySpy;
 
 public class DataRecordModuleStarterTest {
 	DataRecordModuleStarterImp starter;

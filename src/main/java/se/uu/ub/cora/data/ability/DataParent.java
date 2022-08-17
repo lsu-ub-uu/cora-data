@@ -24,6 +24,7 @@ import java.util.List;
 import se.uu.ub.cora.data.DataAtomic;
 import se.uu.ub.cora.data.DataAttribute;
 import se.uu.ub.cora.data.DataChild;
+import se.uu.ub.cora.data.DataChildFilter;
 import se.uu.ub.cora.data.DataGroup;
 import se.uu.ub.cora.data.DataMissingException;
 
@@ -96,7 +97,9 @@ public interface DataParent {
 	 * @param childAttributes
 	 *            A Varargs with attributes the children must have to be returned
 	 * @return A List with all children that has the specified nameInData
+	 * @deprecated Use {@link #getAllChildrenMatchingFilter(DataChildFilter)} instead.
 	 */
+	@Deprecated
 	List<DataChild> getAllChildrenWithNameInDataAndAttributes(String nameInData,
 			DataAttribute... childAttributes);
 
@@ -235,8 +238,34 @@ public interface DataParent {
 	 * @param childAttributes
 	 *            A Varargs with attributes the children must have to be returned
 	 * @return true if any child has been removed, false otherwise
+	 * @deprecated Use {@link #removeAllChildrenMatchingFilter(DataChildFilter)} instead.
 	 */
+	@Deprecated
 	boolean removeAllChildrenWithNameInDataAndAttributes(String nameInData,
 			DataAttribute... childAttributes);
+
+	/**
+	 * getAllChildrenWithNameInDataAndAttributes is used to get all children that matches the
+	 * specified nameInData and the specified attributes, as DataElements.
+	 * <p>
+	 * An empty list SHOULD be returned if no child exists with the specified nameInData.
+	 * 
+	 * @param nameInData
+	 *            A String with the nameInData of the children to get
+	 * @param childAttributes
+	 *            A Varargs with attributes the children must have to be returned
+	 * @return A List with all children that has the specified nameInData
+	 */
+	List<DataChild> getAllChildrenMatchingFilter(DataChildFilter childFilter);
+
+	/**
+	 * removeAllChildrenWithNameInData removes all children in this DataGroup that has the specified
+	 * nameInData.
+	 * 
+	 * @param nameInData
+	 *            A String with the nameInData of the children to remove
+	 * @return true if any child has been removed, false otherwise
+	 */
+	boolean removeAllChildrenMatchingFilter(DataChildFilter childFilter);
 
 }

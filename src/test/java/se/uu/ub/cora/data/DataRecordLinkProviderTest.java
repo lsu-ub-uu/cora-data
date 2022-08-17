@@ -31,6 +31,7 @@ import java.lang.reflect.Modifier;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import se.uu.ub.cora.data.spy.DataRecordLinkModuleStarterSpy;
 import se.uu.ub.cora.data.starter.DataInitializationException;
 import se.uu.ub.cora.data.starter.DataRecordLinkFactorySpy;
 import se.uu.ub.cora.data.starter.DataRecordLinkModuleStarter;

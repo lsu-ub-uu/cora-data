@@ -48,4 +48,6 @@ public interface DataFactory {
 
 	DataAttribute factorAttributeUsingNameInDataAndValue(String nameInData, String value);
 
+	DataChildFilter factorDataChildFilterUsingNameInData(String childNameInData);
+
 }

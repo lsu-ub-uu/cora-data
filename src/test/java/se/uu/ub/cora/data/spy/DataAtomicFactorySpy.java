@@ -16,7 +16,10 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-package se.uu.ub.cora.data;
+package se.uu.ub.cora.data.spy;
+
+import se.uu.ub.cora.data.DataAtomic;
+import se.uu.ub.cora.data.DataAtomicFactory;
 
 public class DataAtomicFactorySpy implements DataAtomicFactory {
 

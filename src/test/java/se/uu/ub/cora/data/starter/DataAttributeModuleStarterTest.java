@@ -28,7 +28,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import se.uu.ub.cora.data.DataAttributeFactory;
-import se.uu.ub.cora.data.DataAttributeFactorySpy;
+import se.uu.ub.cora.data.spy.DataAttributeFactorySpy;
 
 public class DataAttributeModuleStarterTest {
 	DataAttributeModuleStarterImp starter;

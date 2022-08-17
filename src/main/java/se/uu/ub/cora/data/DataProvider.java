@@ -107,7 +107,6 @@ public class DataProvider {
 	 */
 	public static DataRecordGroup createRecordGroupFromDataGroup(DataGroup dataGroup) {
 		ensureDataFactoryIsSet();
-		// TODO Auto-generated method stub
 		return dataFactory.factorRecordGroupFromDataGroup(dataGroup);
 	}
 
@@ -151,4 +150,9 @@ public class DataProvider {
 		return dataFactory.factorAttributeUsingNameInDataAndValue(nameInData, value);
 	}
 
+	public static DataChildFilter createDataChildFilterUsingChildNameInData(
+			String childNameInData) {
+		ensureDataFactoryIsSet();
+		return dataFactory.factorDataChildFilterUsingNameInData(childNameInData);
+	}
 }
