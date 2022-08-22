@@ -29,6 +29,8 @@ import se.uu.ub.cora.data.ability.DataParent;
  * <p/>
  * DataChildFilters SHOULD be created using the
  * {@link DataProvider#createDataChildFilterUsingNameInData(String)} method.
+ * 
+ * DataChildFilter SHOULD be implemented as thread-safe.
  */
 public interface DataChildFilter {
 	/**
@@ -55,4 +57,5 @@ public interface DataChildFilter {
 	 * @return Returns a boolean whether the child matches with the configured filter
 	 */
 	public boolean childMatches(DataChild child);
+
 }
