@@ -30,7 +30,7 @@ import se.uu.ub.cora.data.ability.DataParent;
  * DataChildFilters SHOULD be created using the
  * {@link DataProvider#createDataChildFilterUsingNameInData(String)} method.
  * 
- * DataChildFilter SHOULD be implemented as thread-safe.
+ * DataChildFilter SHOULD be considered non thread-safe.
  */
 public interface DataChildFilter {
 	/**
