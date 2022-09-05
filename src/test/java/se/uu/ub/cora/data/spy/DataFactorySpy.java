@@ -21,6 +21,7 @@ package se.uu.ub.cora.data.spy;
 
 import se.uu.ub.cora.data.DataAtomic;
 import se.uu.ub.cora.data.DataAttribute;
+import se.uu.ub.cora.data.DataChildFilter;
 import se.uu.ub.cora.data.DataFactory;
 import se.uu.ub.cora.data.DataGroup;
 import se.uu.ub.cora.data.DataList;
@@ -123,6 +124,14 @@ public class DataFactorySpy implements DataFactory {
 		DataAttribute dataAttribute = new DataAttributeSpy();
 		MCR.addReturned(dataAttribute);
 		return dataAttribute;
+	}
+
+	@Override
+	public DataChildFilter factorDataChildFilterUsingNameInData(String childNameInData) {
+		MCR.addCall("childNameInData", childNameInData);
+		DataChildFilter dataChildFilter = new DataChildFilterSpy();
+		MCR.addReturned(dataChildFilter);
+		return dataChildFilter;
 	}
 
 }

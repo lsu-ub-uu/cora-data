@@ -16,22 +16,26 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-package se.uu.ub.cora.data;
+package se.uu.ub.cora.data.spy;
 
-public class DataAttributeFactorySpy implements DataAttributeFactory {
+import se.uu.ub.cora.data.DataListFactory;
+import se.uu.ub.cora.data.starter.DataListFactorySpy;
+import se.uu.ub.cora.data.starter.DataListModuleStarter;
 
-	public boolean withNameInDataAndValueWasCalled = false;
-	public String nameInData;
-	public String value;
-	public DataAttributeSpy returnedDataAttribute;
+public class DataListModuleStarterSpy implements DataListModuleStarter {
+
+	public boolean startWasCalled = false;
 
 	@Override
-	public DataAttribute factorUsingNameInDataAndValue(String nameInData, String value) {
-		this.nameInData = nameInData;
-		this.value = value;
-		withNameInDataAndValueWasCalled = true;
-		returnedDataAttribute = new DataAttributeSpy();
-		return returnedDataAttribute;
+	public void startUsingDataListFactoryImplementations(
+			Iterable<DataListFactory> dataListFactoryImplementations) {
+		startWasCalled = true;
+
+	}
+
+	@Override
+	public DataListFactory getDataListFactory() {
+		return new DataListFactorySpy();
 	}
 
 }

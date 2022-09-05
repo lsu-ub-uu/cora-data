@@ -16,20 +16,25 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-package se.uu.ub.cora.data;
+package se.uu.ub.cora.data.spy;
 
-public class DataAttributeSpy implements DataAttribute {
+import se.uu.ub.cora.data.DataRecordFactory;
+import se.uu.ub.cora.data.starter.DataRecordModuleStarter;
+
+public class DataRecordModuleStarterSpy implements DataRecordModuleStarter {
+
+	public boolean startWasCalled = false;
 
 	@Override
-	public String getNameInData() {
-		// TODO Auto-generated method stub
-		return null;
+	public void startUsingDataRecordFactoryImplementations(
+			Iterable<DataRecordFactory> dataRecordFactoryImplementations) {
+		startWasCalled = true;
 	}
 
 	@Override
-	public String getValue() {
+	public DataRecordFactory getDataRecordFactory() {
 		// TODO Auto-generated method stub
-		return null;
+		return new DataRecordFactorySpy();
 	}
 
 }

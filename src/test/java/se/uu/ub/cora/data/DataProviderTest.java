@@ -32,6 +32,7 @@ import org.testng.annotations.Test;
 
 import se.uu.ub.cora.data.spy.DataFactorySpy;
 import se.uu.ub.cora.data.spy.DataGroupSpy;
+import se.uu.ub.cora.data.spy.DataModuleStarterSpy;
 import se.uu.ub.cora.data.starter.DataInitializationException;
 import se.uu.ub.cora.data.starter.DataModuleStarter;
 import se.uu.ub.cora.data.starter.DataModuleStarterImp;
@@ -257,5 +258,20 @@ public class DataProviderTest {
 		dataFactorySpy.MCR.assertParameters("factorAttributeUsingNameInDataAndValue", 0,
 				"attribute", "value");
 		dataFactorySpy.MCR.assertReturn("factorAttributeUsingNameInDataAndValue", 0, dataAttribute);
+	}
+
+	@Test
+	public void testCreateDataChildFilterUsingChildNameInData() throws Exception {
+		DataModuleStarterSpy starter = startDataRecordModuleInitializerWithStarterSpy();
+
+		String childNameInData = "someChildNameInData";
+		DataChildFilter dataChildFilter = DataProvider
+				.createDataChildFilterUsingChildNameInData(childNameInData);
+
+		assertStarterWasCalled(starter);
+		DataFactorySpy dataFactorySpy = getFactorySpyFromStarterSpy(starter);
+		dataFactorySpy.MCR.assertParameters("factorDataChildFilterUsingNameInData", 0,
+				childNameInData);
+		dataFactorySpy.MCR.assertReturn("factorDataChildFilterUsingNameInData", 0, dataChildFilter);
 	}
 }

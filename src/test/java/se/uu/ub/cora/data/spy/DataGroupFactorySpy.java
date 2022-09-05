@@ -1,4 +1,7 @@
-package se.uu.ub.cora.data;
+package se.uu.ub.cora.data.spy;
+
+import se.uu.ub.cora.data.DataGroup;
+import se.uu.ub.cora.data.DataGroupFactory;
 
 public class DataGroupFactorySpy implements DataGroupFactory {
 

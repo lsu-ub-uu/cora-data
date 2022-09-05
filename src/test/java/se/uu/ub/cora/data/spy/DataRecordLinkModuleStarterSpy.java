@@ -16,24 +16,27 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-package se.uu.ub.cora.data;
+package se.uu.ub.cora.data.spy;
 
-import se.uu.ub.cora.data.starter.DataRecordModuleStarter;
+import se.uu.ub.cora.data.DataRecordLinkFactory;
+import se.uu.ub.cora.data.starter.DataRecordLinkFactorySpy;
+import se.uu.ub.cora.data.starter.DataRecordLinkModuleStarter;
 
-public class DataRecordModuleStarterSpy implements DataRecordModuleStarter {
+public class DataRecordLinkModuleStarterSpy implements DataRecordLinkModuleStarter {
 
 	public boolean startWasCalled = false;
+	public DataRecordLinkFactory factorySpy;
 
 	@Override
-	public void startUsingDataRecordFactoryImplementations(
-			Iterable<DataRecordFactory> dataRecordFactoryImplementations) {
+	public void startUsingDataRecordLinkFactoryImplementations(
+			Iterable<DataRecordLinkFactory> recordLinkFactoryImplementations) {
 		startWasCalled = true;
 	}
 
 	@Override
-	public DataRecordFactory getDataRecordFactory() {
-		// TODO Auto-generated method stub
-		return new DataRecordFactorySpy();
+	public DataRecordLinkFactory getDataRecordLinkFactory() {
+		factorySpy = new DataRecordLinkFactorySpy();
+		return factorySpy;
 	}
 
 }

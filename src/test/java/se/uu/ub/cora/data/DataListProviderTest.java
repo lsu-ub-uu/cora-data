@@ -30,6 +30,7 @@ import java.lang.reflect.Modifier;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import se.uu.ub.cora.data.spy.DataListModuleStarterSpy;
 import se.uu.ub.cora.data.starter.DataInitializationException;
 import se.uu.ub.cora.data.starter.DataListFactorySpy;
 import se.uu.ub.cora.data.starter.DataListModuleStarter;
