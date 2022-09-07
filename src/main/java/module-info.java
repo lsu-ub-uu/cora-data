@@ -3,6 +3,7 @@ module se.uu.ub.cora.data {
 
 	exports se.uu.ub.cora.data;
 	exports se.uu.ub.cora.data.converter;
+	exports se.uu.ub.cora.data.collectterms;
 	exports se.uu.ub.cora.data.copier;
 
 	uses se.uu.ub.cora.data.DataFactory;
@@ -11,7 +12,7 @@ module se.uu.ub.cora.data {
 	uses se.uu.ub.cora.data.DataRecordFactory;
 	uses se.uu.ub.cora.data.DataAttributeFactory;
 	uses se.uu.ub.cora.data.DataListFactory;
-	
+
 	uses se.uu.ub.cora.data.converter.JsonToDataConverterFactory;
 	uses se.uu.ub.cora.data.converter.DataToJsonConverterFactoryCreator;
 	uses se.uu.ub.cora.data.copier.DataCopierFactory;
