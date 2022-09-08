@@ -48,7 +48,6 @@ public class CollectTermsTest {
 	@Test
 	public void testAddPermissionTerm() throws Exception {
 		PermissionTerm term = new PermissionTerm(null, null, null);
-
 		collectTerms.addPermissionTerm(term);
 
 		assertEquals(collectTerms.permissionTerms.size(), 1);
