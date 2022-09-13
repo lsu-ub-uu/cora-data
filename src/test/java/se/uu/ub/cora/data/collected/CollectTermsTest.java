@@ -16,7 +16,7 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-package se.uu.ub.cora.data.collectterms;
+package se.uu.ub.cora.data.collected;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
@@ -26,6 +26,11 @@ import java.util.Collections;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import se.uu.ub.cora.data.collected.CollectTerms;
+import se.uu.ub.cora.data.collected.IndexTerm;
+import se.uu.ub.cora.data.collected.PermissionTerm;
+import se.uu.ub.cora.data.collected.StorageTerm;
 
 public class CollectTermsTest {
 

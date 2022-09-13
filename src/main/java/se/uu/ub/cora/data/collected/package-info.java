@@ -16,33 +16,8 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-package se.uu.ub.cora.data.collectterms;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 /**
- * CollectTerms is a holder for all collected collectTerms for a record.
- * 
+ * The data package contains data holders to hold information about Collected Terms.
  */
-public class CollectTerms {
-	public Optional<String> recordId = Optional.empty();
-	public Optional<String> recordType = Optional.empty();
-	public List<PermissionTerm> permissionTerms = new ArrayList<>();
-	public List<StorageTerm> storageTerms = new ArrayList<>();
-	public List<IndexTerm> indexTerms = new ArrayList<>();
-
-	public void addPermissionTerm(PermissionTerm term) {
-		permissionTerms.add(term);
-	}
-
-	public void addStorageTerm(StorageTerm term) {
-		storageTerms.add(term);
-	}
-
-	public void addIndexTerm(IndexTerm term) {
-		indexTerms.add(term);
-	}
-
-}
+package se.uu.ub.cora.data.collected;

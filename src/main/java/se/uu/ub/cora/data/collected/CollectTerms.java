@@ -16,27 +16,33 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-package se.uu.ub.cora.data.collectterms;
+package se.uu.ub.cora.data.collected;
 
-import static org.testng.Assert.assertEquals;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+/**
+ * CollectTerms is a holder for all collected collectTerms for a record.
+ * 
+ */
+public class CollectTerms {
+	public Optional<String> recordId = Optional.empty();
+	public Optional<String> recordType = Optional.empty();
+	public List<PermissionTerm> permissionTerms = new ArrayList<>();
+	public List<StorageTerm> storageTerms = new ArrayList<>();
+	public List<IndexTerm> indexTerms = new ArrayList<>();
 
-public class PermissionTermTest {
-
-	PermissionTerm permissionTerm;
-
-	@BeforeMethod
-	private void beforeMethod() {
-		permissionTerm = new PermissionTerm("id", "value", "permissionKey");
+	public void addPermissionTerm(PermissionTerm term) {
+		permissionTerms.add(term);
 	}
 
-	@Test
-	public void testMethodsAutoCreatedAsTheClassCurrentlyIsARecord() throws Exception {
-		assertEquals(permissionTerm.id(), "id");
-		assertEquals(permissionTerm.value(), "value");
-		assertEquals(permissionTerm.permissionKey(), "permissionKey");
+	public void addStorageTerm(StorageTerm term) {
+		storageTerms.add(term);
+	}
+
+	public void addIndexTerm(IndexTerm term) {
+		indexTerms.add(term);
 	}
 
 }
