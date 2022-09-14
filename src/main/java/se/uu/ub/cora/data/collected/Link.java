@@ -18,5 +18,5 @@
 */
 package se.uu.ub.cora.data.collected;
 
-public record RecordToRecordLink(String fromType, String fromId, String toType, String toId) {
+public record Link(String type, String id) {
 }

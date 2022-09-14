@@ -23,21 +23,19 @@ import static org.testng.Assert.assertEquals;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class RecordToRecordLinkTest {
+public class LinkTest {
 
-	RecordToRecordLink link;
+	Link link;
 
 	@BeforeMethod
 	private void beforeMethod() {
-		link = new RecordToRecordLink("fromType", "fromId", "toType", "toId");
+		link = new Link("toType", "toId");
 	}
 
 	@Test
 	public void testMethodsAutoCreatedAsTheClassCurrentlyIsARecord() throws Exception {
-		assertEquals(link.fromType(), "fromType");
-		assertEquals(link.fromId(), "fromId");
-		assertEquals(link.toType(), "toType");
-		assertEquals(link.toId(), "toId");
+		assertEquals(link.type(), "toType");
+		assertEquals(link.id(), "toId");
 	}
 
 }
