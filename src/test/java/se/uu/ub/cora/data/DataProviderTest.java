@@ -33,6 +33,7 @@ import org.testng.annotations.Test;
 import se.uu.ub.cora.data.spy.DataFactorySpy;
 import se.uu.ub.cora.data.spy.DataGroupSpy;
 import se.uu.ub.cora.data.spy.DataModuleStarterSpy;
+import se.uu.ub.cora.data.spy.DataRecordGroupSpy;
 import se.uu.ub.cora.data.starter.DataInitializationException;
 import se.uu.ub.cora.data.starter.DataModuleStarter;
 import se.uu.ub.cora.data.starter.DataModuleStarterImp;
@@ -164,6 +165,19 @@ public class DataProviderTest {
 		DataFactorySpy dataFactorySpy = getFactorySpyFromStarterSpy(starter);
 		dataFactorySpy.MCR.assertParameters("factorRecordGroupFromDataGroup", 0, dataGroup);
 		dataFactorySpy.MCR.assertReturn("factorRecordGroupFromDataGroup", 0, dataRecordGroup);
+	}
+
+	@Test
+	public void testCreate_GroupFromRecordGroup() throws Exception {
+		DataModuleStarterSpy starter = startDataRecordModuleInitializerWithStarterSpy();
+		DataRecordGroup dataRecordGroup = new DataRecordGroupSpy();
+
+		DataGroup dataGroup = DataProvider.createGroupFromRecordGroup(dataRecordGroup);
+
+		assertStarterWasCalled(starter);
+		DataFactorySpy dataFactorySpy = getFactorySpyFromStarterSpy(starter);
+		dataFactorySpy.MCR.assertParameters("factorGroupFromDataRecordGroup", 0, dataRecordGroup);
+		dataFactorySpy.MCR.assertReturn("factorGroupFromDataRecordGroup", 0, dataGroup);
 	}
 
 	@Test

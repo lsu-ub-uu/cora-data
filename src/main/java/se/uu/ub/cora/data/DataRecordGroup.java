@@ -25,15 +25,18 @@ import se.uu.ub.cora.data.ability.DataPart;
 
 /**
  * 
- * DataRecordGroup contains all data for a record. It is a {@link DataGroup} that has a meta
- * information about the record it represents known as recordInfo in a child DataGroup, with the
- * name recordInfo. DataRecordGroups main difference from a DataGroup is that it is known to be the
- * one for the entire record.
- * <p>
+ * DataRecordGroup contains all data for a record. It has a metainformation about the record it
+ * represents known as recordInfo in a child DataGroup, with the name recordInfo. DataRecordGroups
+ * main difference from a DataGroup is that it is known to be the one for the entire record.
+ * </p>
  * This difference makes it possible to directly handle information that is known to exist in
  * recordInfo such as type, id, dataDivider, createdBy, updated, tsCreated, etc. And to add utility
  * methods to handle changes to this data.
- * <p>
+ * </p>
+ * {@link DataProvider} has methods to turn a DataRecordGroup into a DataGroup and vice versa. See:
+ * {@link DataProvider#createRecordGroupFromDataGroup(DataGroup)} and
+ * {@link DataProvider#createGroupFromRecordGroup(DataRecordGroup)}
+ * </p>
  * <b>DataRecordGroup is work in progress</b>
  * <p>
  * <u>THE GOAL</u>
