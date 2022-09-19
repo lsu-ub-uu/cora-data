@@ -20,18 +20,21 @@
 package se.uu.ub.cora.data;
 
 import se.uu.ub.cora.data.ability.DataCharacteristic;
-import se.uu.ub.cora.data.ability.DataParent;
 import se.uu.ub.cora.data.ability.DataPart;
 
 /**
  * 
  * DataRecordGroup contains all data for a record. It has a metainformation about the record it
- * represents known as recordInfo in a child DataGroup, with the name recordInfo. DataRecordGroups
- * main difference from a DataGroup is that it is known to be the one for the entire record.
+ * represents known as recordInfo, in a child DataGroup, with the name "recordInfo".
  * </p>
- * This difference makes it possible to directly handle information that is known to exist in
- * recordInfo such as type, id, dataDivider, createdBy, updated, tsCreated, etc. And to add utility
- * methods to handle changes to this data.
+ * As this class holds all information about a {@link Record} except links and permissions, are
+ * there a number of utility methods added to this class to manipulate the metainformation about the
+ * record found in recordInfo, such as type, id, dataDivider, createdBy, updated, tsCreated, etc.
+ * 
+ * </p>
+ * There are a few usecases when it is of lesser importance if the class beening handled is a
+ * {@link DataRecordGroup} or a {@link DataGroup}, such as when converting to other formats. The
+ * recomeded way to handle these usecases is to use the common parent class {@link DataParent}.
  * </p>
  * {@link DataProvider} has methods to turn a DataRecordGroup into a DataGroup and vice versa. See:
  * {@link DataProvider#createRecordGroupFromDataGroup(DataGroup)} and

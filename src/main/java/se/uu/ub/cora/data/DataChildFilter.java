@@ -20,8 +20,6 @@ package se.uu.ub.cora.data;
 
 import java.util.Set;
 
-import se.uu.ub.cora.data.ability.DataParent;
-
 /**
  * DataChildFilter is used to filter children when working with a {@link DataParent} (
  * {@link DataRecordGroup}, {@link DataGroup}), to filter wich children are affected by the
