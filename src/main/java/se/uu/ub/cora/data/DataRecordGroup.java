@@ -50,11 +50,9 @@ public interface DataRecordGroup
 	 * linkedRecordId for the {@link DataRecordLink} with nameInData "type" found in the child
 	 * {@link DataGroup} with nameInData "recordInfo".
 	 * </p>
+	 * If the records type is unknown SHOULD a {@link DataMissingException} be thrown with
+	 * information about why the type can not be determined.
 	 * 
-	 * @throws DataMissingException
-	 *             if the records type is unknown.
-	 * @implSpec If the records type is unknown SHOULD a {@link DataMissingException} be thrown with
-	 *           information about why the type can not be determined.
 	 * @return A String with the type of this DataRecordGroup
 	 */
 	String getType();
@@ -77,11 +75,10 @@ public interface DataRecordGroup
 	 * getId returns the records id for this DataRecordGroup. This information is the value from the
 	 * child {@link DataAtomic} with nameInData "id" found in the {@link DataGroup} with nameInData
 	 * "recordInfo".
+	 * </p>
+	 * If the records id is unknown SHOULD a {@link DataMissingException} be thrown with information
+	 * about why the id can not be determined.
 	 * 
-	 * @throws DataMissingException
-	 *             if the records id is unknown.
-	 * @implSpec If the records id is unknown SHOULD a {@link DataMissingException} be thrown with
-	 *           information about why the id can not be determined.
 	 * @return A String with the id of this DataRecordGroup
 	 */
 	String getId();
@@ -103,11 +100,10 @@ public interface DataRecordGroup
 	 * getDataDivider returns the records dataDivider for this DataRecordGroup. This information is
 	 * the linkedRecordId for the {@link DataRecordLink} with nameInData "DataDivider" found in the
 	 * child {@link DataGroup} with nameInData "recordInfo".
+	 * </p>
+	 * If the records dataDivider is unknown SHOULD a {@link DataMissingException} be thrown with
+	 * information about why the dataDivider can not be determined.
 	 * 
-	 * @throws DataMissingException
-	 *             if the records dataDivider is unknown.
-	 * @implSpec If the records dataDivider is unknown SHOULD a {@link DataMissingException} be
-	 *           thrown with information about why the dataDivider can not be determined.
 	 * @return A String with the dataDivider of this DataRecordGroup
 	 */
 	String getDataDivider();
