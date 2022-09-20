@@ -18,5 +18,14 @@
 */
 package se.uu.ub.cora.data.collected;
 
+/**
+ * Link is a container that holds information about a link to a record.
+ * 
+ * 
+ * @param type
+ *            String with the type of the record to which the record is linking.
+ * @param id
+ *            String with the id of the record to which the record is linking.
+ */
 public record Link(String type, String id) {
 }
