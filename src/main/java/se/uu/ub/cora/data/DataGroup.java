@@ -18,10 +18,21 @@
  */
 package se.uu.ub.cora.data;
 
-import se.uu.ub.cora.data.ability.DataParent;
-
 /**
- * DataGroup is a container for related DataElements
+ * DataGroup is a container for related {@link DataChild} elements.
+ * </p>
+ * DataGroup has a sibling class {@link DataRecordGroup} that is intended to be used when handling
+ * the top most dataGroup for a record, as it has extra utility methods to handle the info found in
+ * recordInfo.
+ * </p>
+ * There are a few usecases when it is of lesser importance if the class beening handled is a
+ * {@link DataRecordGroup} or a {@link DataGroup}, such as when converting to other formats. The
+ * recomeded way to handle these usecases is to use the common parent class {@link DataParent}.
+ * </p>
+ * {@link DataProvider} has methods to turn a DataRecordGroup into a DataGroup and vice versa. See:
+ * {@link DataProvider#createRecordGroupFromDataGroup(DataGroup)} and
+ * {@link DataProvider#createGroupFromRecordGroup(DataRecordGroup)}
+ * </p>
  */
 public interface DataGroup extends DataParent, DataChild, Data, Convertible, ExternallyConvertible {
 

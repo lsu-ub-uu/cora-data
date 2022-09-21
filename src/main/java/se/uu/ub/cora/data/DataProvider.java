@@ -101,13 +101,29 @@ public class DataProvider {
 	}
 
 	/**
+	 * createRecordGroupFromDataGroup creates a {@link DataRecordGroup} from a {@link DataGroup}.
 	 * 
 	 * @param dataGroup
-	 * @return
+	 *            A DataGroup to turn into a DataRecordGroup.
+	 * @return A DataRecordGroup with the same nameInData, attributes and children as the provided
+	 *         DataGroup
 	 */
 	public static DataRecordGroup createRecordGroupFromDataGroup(DataGroup dataGroup) {
 		ensureDataFactoryIsSet();
 		return dataFactory.factorRecordGroupFromDataGroup(dataGroup);
+	}
+
+	/**
+	 * createGroupFromRecordGroup creates a {@link DataGroup} from a {@link DataRecordGroup}.
+	 * 
+	 * @param dataRecordGroup
+	 *            A DataRecordGroup to turn into a DataGroup.
+	 * @return A DataGroup with the same nameInData, attributes and children as the provided
+	 *         DataRecordGroup
+	 */
+	public static DataGroup createGroupFromRecordGroup(DataRecordGroup dataRecordGroup) {
+		ensureDataFactoryIsSet();
+		return dataFactory.factorGroupFromDataRecordGroup(dataRecordGroup);
 	}
 
 	public static DataGroup createGroupUsingNameInData(String nameInData) {
@@ -155,4 +171,5 @@ public class DataProvider {
 		ensureDataFactoryIsSet();
 		return dataFactory.factorDataChildFilterUsingNameInData(childNameInData);
 	}
+
 }

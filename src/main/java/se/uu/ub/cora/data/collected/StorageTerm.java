@@ -16,28 +16,17 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-package se.uu.ub.cora.data.collectterms;
+package se.uu.ub.cora.data.collected;
 
-import static org.testng.Assert.assertEquals;
-
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
-
-public class IndexTermTest {
-
-	IndexTerm storageTerm;
-
-	@BeforeMethod
-	private void beforeMethod() {
-		storageTerm = new IndexTerm("id", "value", "indexFieldName", "indexType");
-	}
-
-	@Test
-	public void testMethodsAutoCreatedAsTheClassCurrentlyIsARecord() throws Exception {
-		assertEquals(storageTerm.id(), "id");
-		assertEquals(storageTerm.value(), "value");
-		assertEquals(storageTerm.indexFieldName(), "indexFieldName");
-		assertEquals(storageTerm.indexType(), "indexType");
-	}
+/**
+ * StorageTerm holds information about one collected storageTerm.
+ * 
+ * @param id
+ *            String with the storage term id.
+ * @param value
+ *            String with the value of the strorage term.
+ * @param storageKey
+ */
+public record StorageTerm(String id, String value, String storageKey) {
 
 }

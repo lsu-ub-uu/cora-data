@@ -3,7 +3,7 @@
  *
  * This file is part of Cora.
  *
- *     Cora is free software: you can redistribute it and/or modify
+ *     Cora is free software: you can redistribute it and or modify
  *     it under the terms of the GNU General Public License as published by
  *     the Free Software Foundation, either version 3 of the License, or
  *     (at your option) any later version.
@@ -16,18 +16,26 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-package se.uu.ub.cora.data.collectterms;
+package se.uu.ub.cora.data.collected;
 
-/**
- * PermissionTerm holds information about one collected permissionTerm.
- * 
- * @param id
- *            String with the permission term id.
- * @param value
- *            String with the value of the permission term.
- * @param permissionKey
- */
+import static org.testng.Assert.assertEquals;
 
-public record PermissionTerm(String id, String value, String permissionKey) {
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+public class LinkTest {
+
+	Link link;
+
+	@BeforeMethod
+	private void beforeMethod() {
+		link = new Link("toType", "toId");
+	}
+
+	@Test
+	public void testMethodsAutoCreatedAsTheClassCurrentlyIsARecord() throws Exception {
+		assertEquals(link.type(), "toType");
+		assertEquals(link.id(), "toId");
+	}
 
 }

@@ -16,17 +16,10 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-package se.uu.ub.cora.data.ability;
+package se.uu.ub.cora.data;
 
 import java.util.Collection;
 import java.util.List;
-
-import se.uu.ub.cora.data.DataAtomic;
-import se.uu.ub.cora.data.DataAttribute;
-import se.uu.ub.cora.data.DataChild;
-import se.uu.ub.cora.data.DataChildFilter;
-import se.uu.ub.cora.data.DataGroup;
-import se.uu.ub.cora.data.DataMissingException;
 
 /**
  * DataParent is a container for related DataElements, i.e. it has children.
@@ -245,20 +238,26 @@ public interface DataParent {
 			DataAttribute... childAttributes);
 
 	/**
-	 * getAllChildrenWithNameInDataAndAttributes is used to get all children that matches the
-	 * specified nameInData and the specified attributes, as DataElements.
+	 * getAllChildrenMatchingFilter is used to get all children that matches the specified
+	 * childFilter.
+	 * </p>
+	 * See, {@link DataChildFilter#childMatches(DataChild)} for exactly how a child is considered a
+	 * match.
 	 * <p>
 	 * An empty list SHOULD be returned if no child exists with the specified nameInData.
 	 * 
 	 * @param childFilter
 	 *            A DataChildFilter to filter the children to return
-	 * @return A List with all children that has the specified nameInData
+	 * @return A List with all children that matches the specified childFilter
 	 */
 	List<DataChild> getAllChildrenMatchingFilter(DataChildFilter childFilter);
 
 	/**
-	 * removeAllChildrenWithNameInData removes all children in this DataGroup that has the specified
-	 * nameInData.
+	 * removeAllChildrenMatchingFilter removes all children in this DataGroup that matches the
+	 * specified childFilter.
+	 * </p>
+	 * See, {@link DataChildFilter#childMatches(DataChild)} for exactly how a child is considered a
+	 * match.
 	 * 
 	 * @param childFilter
 	 *            A DataChildFilter to filter the children to remove

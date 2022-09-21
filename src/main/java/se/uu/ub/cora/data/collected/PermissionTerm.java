@@ -16,27 +16,18 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-package se.uu.ub.cora.data.collectterms;
+package se.uu.ub.cora.data.collected;
 
-import static org.testng.Assert.assertEquals;
+/**
+ * PermissionTerm holds information about one collected permissionTerm.
+ * 
+ * @param id
+ *            String with the permission term id.
+ * @param value
+ *            String with the value of the permission term.
+ * @param permissionKey
+ */
 
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
-
-public class StorageTermTest {
-
-	StorageTerm storageTerm;
-
-	@BeforeMethod
-	private void beforeMethod() {
-		storageTerm = new StorageTerm("id", "value", "storageKey");
-	}
-
-	@Test
-	public void testMethodsAutoCreatedAsTheClassCurrentlyIsARecord() throws Exception {
-		assertEquals(storageTerm.id(), "id");
-		assertEquals(storageTerm.value(), "value");
-		assertEquals(storageTerm.storageKey(), "storageKey");
-	}
+public record PermissionTerm(String id, String value, String permissionKey) {
 
 }

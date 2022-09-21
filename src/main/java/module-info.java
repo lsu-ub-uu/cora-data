@@ -3,7 +3,7 @@ module se.uu.ub.cora.data {
 
 	exports se.uu.ub.cora.data;
 	exports se.uu.ub.cora.data.converter;
-	exports se.uu.ub.cora.data.collectterms;
+	exports se.uu.ub.cora.data.collected;
 	exports se.uu.ub.cora.data.copier;
 
 	uses se.uu.ub.cora.data.DataFactory;

@@ -16,8 +16,29 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
+package se.uu.ub.cora.data.collected;
 
-/**
- * The data package contains data holders to hold information about Collected Terms.
- */
-package se.uu.ub.cora.data.collectterms;
+import static org.testng.Assert.assertEquals;
+
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import se.uu.ub.cora.data.collected.PermissionTerm;
+
+public class PermissionTermTest {
+
+	PermissionTerm permissionTerm;
+
+	@BeforeMethod
+	private void beforeMethod() {
+		permissionTerm = new PermissionTerm("id", "value", "permissionKey");
+	}
+
+	@Test
+	public void testMethodsAutoCreatedAsTheClassCurrentlyIsARecord() throws Exception {
+		assertEquals(permissionTerm.id(), "id");
+		assertEquals(permissionTerm.value(), "value");
+		assertEquals(permissionTerm.permissionKey(), "permissionKey");
+	}
+
+}

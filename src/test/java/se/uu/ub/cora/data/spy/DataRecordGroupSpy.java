@@ -196,4 +196,37 @@ public class DataRecordGroupSpy implements DataRecordGroup {
 		return false;
 	}
 
+	@Override
+	public String getType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setType(String type) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public String getId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setId(String id) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public String getDataDivider() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setDataDivider(String dataDivider) {
+		// TODO Auto-generated method stub
+	}
+
 }

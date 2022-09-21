@@ -20,36 +20,105 @@
 package se.uu.ub.cora.data;
 
 import se.uu.ub.cora.data.ability.DataCharacteristic;
-import se.uu.ub.cora.data.ability.DataParent;
 import se.uu.ub.cora.data.ability.DataPart;
 
 /**
  * 
- * DataRecordGroup contains all data for a record. It is a {@link DataGroup} that has a meta
- * information about the record it represents known as recordInfo in a child DataGroup, with the
- * name recordInfo. DataRecordGroups main difference from a DataGroup is that it is known to be the
- * one for the entire record.
- * <p>
- * This difference makes it possible to directly handle information that is known to exist in
- * recordInfo such as type, id, dataDivider, createdBy, updated, tsCreated, etc. And to add utility
- * methods to handle changes to this data.
- * <p>
- * <b>DataRecordGroup is work in progress</b>
- * <p>
- * <u>THE GOAL</u>
- * <p>
- * DataRecordGroup is intended to have methods such as getId and getType, and other methods to do
- * with the fact that it is the DataGroup for the entire record and therefor is known to have the
- * recordInfo group as a child. These methods can unfortunately not be added until we have switched
- * to using DataRecordGroup, in DataRecord, DataList and other places where the DataGroup used today
- * really is a DataRecordGroup.
- * <p>
- * Finally dataGroup will be replaced with DataRecordGroup in all places where a DataGroup is used
- * as a datagroup for the entire record (DataRecordGroup). This work must start where DataGroups are
- * created at the edges of the system, the API, storage and search.
+ * DataRecordGroup contains all data for a record. It has a metainformation about the record it
+ * represents known as recordInfo, in a child DataGroup, with the name "recordInfo".
+ * </p>
+ * As this class holds all information about a {@link Record} except links and permissions, are
+ * there a number of utility methods added to this class to manipulate the metainformation about the
+ * record found in recordInfo, such as type, id, dataDivider, createdBy, updated, tsCreated, etc.
+ * 
+ * </p>
+ * There are a few usecases when it is of lesser importance if the class beening handled is a
+ * {@link DataRecordGroup} or a {@link DataGroup}, such as when converting to other formats. The
+ * recomeded way to handle these usecases is to use the common parent class {@link DataParent}.
+ * </p>
+ * {@link DataProvider} has methods to turn a DataRecordGroup into a DataGroup and vice versa. See:
+ * {@link DataProvider#createRecordGroupFromDataGroup(DataGroup)} and
+ * {@link DataProvider#createGroupFromRecordGroup(DataRecordGroup)}
+ * </p>
+ * <b>DataRecordGroup is work in progress, more methods needs to be added</b>
  *
  */
 public interface DataRecordGroup
 		extends Data, ExternallyConvertible, DataPart, DataCharacteristic, DataParent {
+	/**
+	 * getType returns the records type for this DataRecordGroup. This information is the
+	 * linkedRecordId for the {@link DataRecordLink} with nameInData "type" found in the child
+	 * {@link DataGroup} with nameInData "recordInfo".
+	 * </p>
+	 * If the records type is unknown SHOULD a {@link DataMissingException} be thrown with
+	 * information about why the type can not be determined.
+	 * 
+	 * @return A String with the type of this DataRecordGroup
+	 */
+	String getType();
 
+	/**
+	 * setType sets the records type for this DataRecordGroup. This information is the
+	 * linkedRecordId for the {@link DataRecordLink} with nameInData "type" found in the child
+	 * {@link DataGroup} with nameInData "recordInfo".
+	 * </p>
+	 * If the {@link DataRecordLink} type, or the {@link DataGroup} recordInfo is missing, should
+	 * they be automatically added, and the links linkedRecordId set to the provided value. If the
+	 * link must be created should its "linkedRecordType" be set to the value "recordType".
+	 * 
+	 * @param type
+	 *            A String with the type of this DataRecordGroup
+	 */
+	void setType(String type);
+
+	/**
+	 * getId returns the records id for this DataRecordGroup. This information is the value from the
+	 * child {@link DataAtomic} with nameInData "id" found in the {@link DataGroup} with nameInData
+	 * "recordInfo".
+	 * </p>
+	 * If the records id is unknown SHOULD a {@link DataMissingException} be thrown with information
+	 * about why the id can not be determined.
+	 * 
+	 * @return A String with the id of this DataRecordGroup
+	 */
+	String getId();
+
+	/**
+	 * setId sets the records id for this DataRecordGroup. This information is the value of the
+	 * {@link DataAtomic} with nameInData "id" found in the child {@link DataGroup} with nameInData
+	 * "recordInfo".
+	 * </p>
+	 * If the {@link DataAtomic} id, or the {@link DataGroup} recordInfo is missing, should they be
+	 * automatically added, and the atomics value set to the provided value.
+	 * 
+	 * @param id
+	 *            A String with the id of this DataRecordGroup
+	 */
+	void setId(String id);
+
+	/**
+	 * getDataDivider returns the records dataDivider for this DataRecordGroup. This information is
+	 * the linkedRecordId for the {@link DataRecordLink} with nameInData "DataDivider" found in the
+	 * child {@link DataGroup} with nameInData "recordInfo".
+	 * </p>
+	 * If the records dataDivider is unknown SHOULD a {@link DataMissingException} be thrown with
+	 * information about why the dataDivider can not be determined.
+	 * 
+	 * @return A String with the dataDivider of this DataRecordGroup
+	 */
+	String getDataDivider();
+
+	/**
+	 * setDataDivider sets the records dataDivider for this DataRecordGroup. This information is the
+	 * linkedRecordId for the {@link DataRecordLink} with nameInData "dataDivider" found in the
+	 * child {@link DataGroup} with nameInData "recordInfo".
+	 * </p>
+	 * If the {@link DataRecordLink} dataDivider, or the {@link DataGroup} recordInfo is missing,
+	 * should they be automatically added, and the links linkedRecordId set to the provided value.
+	 * If the link must be created should its "linkedRecordType" be set to the value "system".
+	 * 
+	 * @param dataDivider
+	 *            A String with the dataDivider of this DataRecordGroup
+	 */
+	void setDataDivider(String dataDivider);
 }
