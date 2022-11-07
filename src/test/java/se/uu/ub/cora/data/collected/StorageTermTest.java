@@ -23,20 +23,18 @@ import static org.testng.Assert.assertEquals;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import se.uu.ub.cora.data.collected.StorageTerm;
-
 public class StorageTermTest {
 
 	StorageTerm storageTerm;
 
 	@BeforeMethod
 	private void beforeMethod() {
-		storageTerm = new StorageTerm("id", "value", "storageKey");
+		storageTerm = new StorageTerm("id", "storageKey", "value");
 	}
 
 	@Test
 	public void testMethodsAutoCreatedAsTheClassCurrentlyIsARecord() throws Exception {
-		assertEquals(storageTerm.id(), "id");
+		assertEquals(storageTerm.storageTermId(), "id");
 		assertEquals(storageTerm.value(), "value");
 		assertEquals(storageTerm.storageKey(), "storageKey");
 	}

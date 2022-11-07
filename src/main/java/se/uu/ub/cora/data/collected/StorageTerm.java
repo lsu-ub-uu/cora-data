@@ -21,12 +21,14 @@ package se.uu.ub.cora.data.collected;
 /**
  * StorageTerm holds information about one collected storageTerm.
  * 
- * @param id
- *            String with the storage term id.
- * @param value
- *            String with the value of the strorage term.
+ * @param storageTermId
+ *            String with the id of the storageTerm that deffines the metadata for this storageTerm
  * @param storageKey
+ *            String with the key of the storageTerm, the value will be stored under this key.
+ * @param value
+ *            String with the collected value for the storageTerm, picked out from the record
+ *            currently being stored.
  */
-public record StorageTerm(String id, String value, String storageKey) {
+public record StorageTerm(String storageTermId, String storageKey, String value) {
 
 }
