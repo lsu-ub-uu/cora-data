@@ -22,7 +22,7 @@ package se.uu.ub.cora.data.collected;
  * StorageTerm holds information about one collected storageTerm.
  * 
  * @param storageTermId
- *            String with the id of the storageTerm that deffines the metadata for this storageTerm
+ *            String with the id of the storageTerm that deffines the metadata for this storageTerm.
  * @param storageKey
  *            String with the key of the storageTerm, the value will be stored under this key.
  * @param value
