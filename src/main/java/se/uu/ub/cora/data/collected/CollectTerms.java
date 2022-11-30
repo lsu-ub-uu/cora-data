@@ -19,8 +19,10 @@
 package se.uu.ub.cora.data.collected;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * CollectTerms is a holder for all collected collectTerms for a record.
@@ -30,7 +32,7 @@ public class CollectTerms {
 	public Optional<String> recordId = Optional.empty();
 	public Optional<String> recordType = Optional.empty();
 	public List<PermissionTerm> permissionTerms = new ArrayList<>();
-	public List<StorageTerm> storageTerms = new ArrayList<>();
+	public Set<StorageTerm> storageTerms = new LinkedHashSet<>();
 	public List<IndexTerm> indexTerms = new ArrayList<>();
 
 	public void addPermissionTerm(PermissionTerm term) {

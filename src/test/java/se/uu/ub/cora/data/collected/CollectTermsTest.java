@@ -27,11 +27,6 @@ import java.util.Collections;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import se.uu.ub.cora.data.collected.CollectTerms;
-import se.uu.ub.cora.data.collected.IndexTerm;
-import se.uu.ub.cora.data.collected.PermissionTerm;
-import se.uu.ub.cora.data.collected.StorageTerm;
-
 public class CollectTermsTest {
 
 	CollectTerms collectTerms;
@@ -66,7 +61,7 @@ public class CollectTermsTest {
 		collectTerms.addStorageTerm(term);
 
 		assertEquals(collectTerms.storageTerms.size(), 1);
-		assertSame(collectTerms.storageTerms.get(0), term);
+		assertSame(collectTerms.storageTerms.toArray()[0], term);
 	}
 
 	@Test

@@ -23,6 +23,16 @@ import se.uu.ub.cora.json.parser.JsonValue;
 
 public interface JsonToDataConverterFactory {
 
+	/**
+	 * createForJsonObject creates a new JsonToDataConverter for a given jsonValue. The converter
+	 * converts Json to Datagroups.
+	 * </p>
+	 * All implementations of this interface MUST be thread safe.
+	 * 
+	 * @param jsonValue
+	 *            the JsonValue that will be converted to DataGroup.
+	 * @return A newly created JsonToDataConverter.
+	 */
 	JsonToDataConverter createForJsonObject(JsonValue jsonValue);
 
 }
