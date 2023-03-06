@@ -224,7 +224,7 @@ public class DataRecordGroupSpy implements DataRecordGroup {
 	}
 
 	@Override
-	public void setValidationType(String validaitonType) {
+	public void setValidationType(String validationType) {
 		// TODO Auto-generated method stub
 
 	}

@@ -144,8 +144,8 @@ public interface DataRecordGroup
 	 * If the link must be created should its "linkedRecordType" be set to the value
 	 * "validationType".
 	 * 
-	 * @param dataDivider
+	 * @param validationType
 	 *            A String with the validationType of this DataRecordGroup
 	 */
-	void setValidationType(String validaitonType);
+	void setValidationType(String validationType);
 }
