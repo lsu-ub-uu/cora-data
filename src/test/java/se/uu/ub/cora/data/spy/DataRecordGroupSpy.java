@@ -135,18 +135,6 @@ public class DataRecordGroupSpy implements DataRecordGroup {
 		return null;
 	}
 
-	// @Override
-	// public void setRepeatId(String repeatId) {
-	// // TODO Auto-generated method stub
-	//
-	// }
-	//
-	// @Override
-	// public String getRepeatId() {
-	// // TODO Auto-generated method stub
-	// return null;
-	// }
-
 	@Override
 	public void addAttributeByIdWithValue(String nameInData, String value) {
 		// TODO Auto-generated method stub
@@ -227,6 +215,18 @@ public class DataRecordGroupSpy implements DataRecordGroup {
 	@Override
 	public void setDataDivider(String dataDivider) {
 		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public String getValidationType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setValidationType(String validaitonType) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

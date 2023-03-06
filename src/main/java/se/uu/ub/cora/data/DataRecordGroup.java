@@ -98,7 +98,7 @@ public interface DataRecordGroup
 
 	/**
 	 * getDataDivider returns the records dataDivider for this DataRecordGroup. This information is
-	 * the linkedRecordId for the {@link DataRecordLink} with nameInData "DataDivider" found in the
+	 * the linkedRecordId for the {@link DataRecordLink} with nameInData "dataDivider" found in the
 	 * child {@link DataGroup} with nameInData "recordInfo".
 	 * </p>
 	 * If the records dataDivider is unknown SHOULD a {@link DataMissingException} be thrown with
@@ -121,4 +121,31 @@ public interface DataRecordGroup
 	 *            A String with the dataDivider of this DataRecordGroup
 	 */
 	void setDataDivider(String dataDivider);
+
+	/**
+	 * getValidationType returns the records validationType for this DataRecordGroup. This
+	 * information is the linkedRecordId for the {@link DataRecordLink} with nameInData
+	 * "validationType" found in the child {@link DataGroup} with nameInData "recordInfo".
+	 * </p>
+	 * If the records validationType is unknown SHOULD a {@link DataMissingException} be thrown with
+	 * information about why the validationType can not be determined.
+	 * 
+	 * @return A String with the validationType of this DataRecordGroup
+	 */
+	String getValidationType();
+
+	/**
+	 * setValidationType sets the records validationType for this DataRecordGroup. This information
+	 * is the linkedRecordId for the {@link DataRecordLink} with nameInData "validationType" found
+	 * in the child {@link DataGroup} with nameInData "recordInfo".
+	 * </p>
+	 * If the {@link DataRecordLink} validationType, or the {@link DataGroup} recordInfo is missing,
+	 * should they be automatically added, and the links linkedRecordId set to the provided value.
+	 * If the link must be created should its "linkedRecordType" be set to the value
+	 * "validationType".
+	 * 
+	 * @param dataDivider
+	 *            A String with the validationType of this DataRecordGroup
+	 */
+	void setValidationType(String validaitonType);
 }
