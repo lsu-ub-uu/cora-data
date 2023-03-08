@@ -229,4 +229,39 @@ public class DataRecordGroupSpy implements DataRecordGroup {
 
 	}
 
+	@Override
+	public <T> boolean containsChildOfTypeWithNameAndAttributes(Class<T> type, String name,
+			DataAttribute... attributes) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public <T extends DataChild> T getFirstChildOfTypeWithNameAndAttributes(Class<T> type,
+			String name, DataAttribute... attributes) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public <T extends DataChild> List<T> getChildrenOfTypeWithNameAndAttributes(Class<T> type,
+			String name, DataAttribute... attributes) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public <T> boolean removeFirstChildWithTypeNameAndAttributes(Class<T> type, String name,
+			DataAttribute... attributes) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public <T> boolean removeChildrenWithTypeNameAndAttributes(Class<T> type, String name,
+			DataAttribute... attributes) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
