@@ -201,36 +201,33 @@ public class DataGroupSpy implements DataGroup {
 	}
 
 	@Override
-	public <T> boolean containsChildOfTypeWithNameAndAttributes(Class<T> type, String name,
-			DataAttribute... attributes) {
+	public <T> boolean containsChildOfTypeAndName(Class<T> type, String name) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public <T extends DataChild> T getFirstChildOfTypeWithNameAndAttributes(Class<T> type,
-			String name, DataAttribute... attributes) {
+	public <T extends DataChild> T getFirstChildOfTypeAndName(Class<T> type,
+			String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <T extends DataChild> List<T> getChildrenOfTypeWithNameAndAttributes(Class<T> type,
-			String name, DataAttribute... attributes) {
+	public <T extends DataChild> List<T> getChildrenOfTypeAndName(Class<T> type,
+			String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public <T> boolean removeFirstChildWithTypeNameAndAttributes(Class<T> type, String name,
-			DataAttribute... attributes) {
+	public <T> boolean removeFirstChildWithTypeAndName(Class<T> type, String name) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public <T> boolean removeChildrenWithTypeNameAndAttributes(Class<T> type, String name,
-			DataAttribute... attributes) {
+	public <T> boolean removeChildrenWithTypeAndName(Class<T> type, String name) {
 		// TODO Auto-generated method stub
 		return false;
 	}

@@ -266,8 +266,8 @@ public interface DataParent {
 	boolean removeAllChildrenMatchingFilter(DataChildFilter childFilter);
 
 	/**
-	 * containsChildOfTypeWithNameAndAttributes checks if this DataParent has at least one child
-	 * with the specified name class, nameInData and attributes.
+	 * containsChildOfTypeAndName checks if this DataParent has at least one child with the
+	 * specified name class, nameInData and attributes.
 	 * 
 	 * @param <T>
 	 *            Automatically set to the requested type of class
@@ -276,18 +276,15 @@ public interface DataParent {
 	 *            that extends it.
 	 * @param name
 	 *            A String with the nameInData of the child to find
-	 * @param attributes
-	 *            A Varargs with attributes the child must have to be found
 	 * @return A boolean, true if a child exists with the specified name, else false.
 	 */
 
-	<T> boolean containsChildOfTypeWithNameAndAttributes(Class<T> type, String name,
-			DataAttribute... attributes);
+	<T> boolean containsChildOfTypeAndName(Class<T> type, String name);
 
 	/**
-	 * getFirstChildOfTypeWithNameAndAttributes is used to get the first {@link DataChild} that
-	 * matches the specified class, nameInData and attributes. The returned list is typed to the
-	 * same class that is requested.
+	 * getFirstChildOfTypeAndName is used to get the first {@link DataChild} that matches the
+	 * specified class, nameInData and attributes. The returned list is typed to the same class that
+	 * is requested.
 	 * 
 	 * @param <T>
 	 *            Automatically set to the requested type of class
@@ -296,17 +293,14 @@ public interface DataParent {
 	 *            class that extends it.
 	 * @param name
 	 *            A String with the nameInData of the child to get
-	 * @param attributes
-	 *            A Varargs with attributes the child must have to be returned
 	 * @return
 	 */
-	<T extends DataChild> T getFirstChildOfTypeWithNameAndAttributes(Class<T> type, String name,
-			DataAttribute... attributes);
+	<T extends DataChild> T getFirstChildOfTypeAndName(Class<T> type, String name);
 
 	/**
-	 * getChildrenOfTypeWithNameAndAttributes is used to get a List of the all {@link DataChild}s
-	 * that matches the specified class, nameInData and attributes. The returned list is typed to
-	 * the same class that is requested.
+	 * getChildrenOfTypeAndName is used to get a List of the all {@link DataChild}s that matches the
+	 * specified class, nameInData and attributes. The returned list is typed to the same class that
+	 * is requested.
 	 * 
 	 * @param <T>
 	 *            Automatically set to the requested type of class
@@ -315,16 +309,13 @@ public interface DataParent {
 	 *            class that extends it.
 	 * @param name
 	 *            A String with the nameInData of the children to get
-	 * @param attributes
-	 *            A Varargs with attributes the children must have to be returned
 	 * @return
 	 */
-	<T extends DataChild> List<T> getChildrenOfTypeWithNameAndAttributes(Class<T> type, String name,
-			DataAttribute... attributes);
+	<T extends DataChild> List<T> getChildrenOfTypeAndName(Class<T> type, String name);
 
 	/**
-	 * removeFirstChildWithTypeNameAndAttributes is used to remove the first {@link DataChild}s that
-	 * matches the specified class, nameInData and attributes.
+	 * removeFirstChildWithTypeAndName is used to remove the first {@link DataChild}s that matches
+	 * the specified class, nameInData and attributes.
 	 * 
 	 * @param <T>
 	 *            Automatically set to the type of class to remove
@@ -333,16 +324,13 @@ public interface DataParent {
 	 *            class that extends it.
 	 * @param name
 	 *            A String with the nameInData of the child to remove
-	 * @param attributes
-	 *            A Varargs with attributes the child must have to be removed
 	 * @return true if any child has been removed, false otherwise
 	 */
-	<T> boolean removeFirstChildWithTypeNameAndAttributes(Class<T> type, String name,
-			DataAttribute... attributes);
+	<T> boolean removeFirstChildWithTypeAndName(Class<T> type, String name);
 
 	/**
-	 * removeChildrenWithTypeNameAndAttributes is used to remove all {@link DataChild}s that matches
-	 * the specified class, nameInData and attributes.
+	 * removeChildrenWithTypeAndName is used to remove all {@link DataChild}s that matches the
+	 * specified class, nameInData and attributes.
 	 * 
 	 * @param <T>
 	 *            Automatically set to the type of class to remove
@@ -351,11 +339,8 @@ public interface DataParent {
 	 *            class that extends it.
 	 * @param name
 	 *            A String with the nameInData of the children to remove
-	 * @param attributes
-	 *            A Varargs with attributes the children must have to be removed
 	 * @return true if any child has been removed, false otherwise
 	 */
-	<T> boolean removeChildrenWithTypeNameAndAttributes(Class<T> type, String name,
-			DataAttribute... attributes);
+	<T> boolean removeChildrenWithTypeAndName(Class<T> type, String name);
 
 }
