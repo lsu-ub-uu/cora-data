@@ -20,6 +20,7 @@
 package se.uu.ub.cora.data.spy;
 
 import java.util.Collection;
+import java.util.Optional;
 
 import se.uu.ub.cora.data.Action;
 import se.uu.ub.cora.data.DataAttribute;
@@ -129,6 +130,12 @@ public class DataResourceLinkSpy implements DataResourceLink {
 	public String getMimeType() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public Optional<String> getAttributeValue(String nameInData) {
+		// TODO Auto-generated method stub
+		return Optional.empty();
 	}
 
 }
