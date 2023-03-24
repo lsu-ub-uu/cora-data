@@ -285,6 +285,9 @@ public interface DataParent {
 	 * getFirstChildOfTypeAndName is used to get the first {@link DataChild} that matches the
 	 * specified class, nameInData and attributes. The returned list is typed to the same class that
 	 * is requested.
+	 * <p>
+	 * A {@link DataMissingException} SHOULD be thrown if no child exists with the specified Class
+	 * and nameInData.
 	 * 
 	 * @param <T>
 	 *            Automatically set to the requested type of class
@@ -301,6 +304,8 @@ public interface DataParent {
 	 * getChildrenOfTypeAndName is used to get a List of the all {@link DataChild}s that matches the
 	 * specified class, nameInData and attributes. The returned list is typed to the same class that
 	 * is requested.
+	 * <p>
+	 * An empty list SHOULD be returned if no child exists with the specified Class and nameInData.
 	 * 
 	 * @param <T>
 	 *            Automatically set to the requested type of class
@@ -326,7 +331,7 @@ public interface DataParent {
 	 *            A String with the nameInData of the child to remove
 	 * @return true if any child has been removed, false otherwise
 	 */
-	<T> boolean removeFirstChildWithTypeAndName(Class<T> type, String name);
+	<T extends DataChild> boolean removeFirstChildWithTypeAndName(Class<T> type, String name);
 
 	/**
 	 * removeChildrenWithTypeAndName is used to remove all {@link DataChild}s that matches the
@@ -341,6 +346,6 @@ public interface DataParent {
 	 *            A String with the nameInData of the children to remove
 	 * @return true if any child has been removed, false otherwise
 	 */
-	<T> boolean removeChildrenWithTypeAndName(Class<T> type, String name);
+	<T extends DataChild> boolean removeChildrenWithTypeAndName(Class<T> type, String name);
 
 }
