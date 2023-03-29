@@ -265,4 +265,87 @@ public interface DataParent {
 	 */
 	boolean removeAllChildrenMatchingFilter(DataChildFilter childFilter);
 
+	/**
+	 * containsChildOfTypeAndName checks if this DataParent has at least one child with the
+	 * specified name class, nameInData and attributes.
+	 * 
+	 * @param <T>
+	 *            Automatically set to the requested type of class
+	 * @param type
+	 *            A Class that the child must have to be found. Must be {@link DataChild} or a class
+	 *            that extends it.
+	 * @param name
+	 *            A String with the nameInData of the child to find
+	 * @return A boolean, true if a child exists with the specified name, else false.
+	 */
+
+	<T> boolean containsChildOfTypeAndName(Class<T> type, String name);
+
+	/**
+	 * getFirstChildOfTypeAndName is used to get the first {@link DataChild} that matches the
+	 * specified class, nameInData and attributes. The returned list is typed to the same class that
+	 * is requested.
+	 * <p>
+	 * A {@link DataMissingException} SHOULD be thrown if no child exists with the specified Class
+	 * and nameInData.
+	 * 
+	 * @param <T>
+	 *            Automatically set to the requested type of class
+	 * @param type
+	 *            A Class that the child must have to be returned. Must be {@link DataChild} or a
+	 *            class that extends it.
+	 * @param name
+	 *            A String with the nameInData of the child to get
+	 * @return
+	 */
+	<T extends DataChild> T getFirstChildOfTypeAndName(Class<T> type, String name);
+
+	/**
+	 * getChildrenOfTypeAndName is used to get a List of the all {@link DataChild}s that matches the
+	 * specified class, nameInData and attributes. The returned list is typed to the same class that
+	 * is requested.
+	 * <p>
+	 * An empty list SHOULD be returned if no child exists with the specified Class and nameInData.
+	 * 
+	 * @param <T>
+	 *            Automatically set to the requested type of class
+	 * @param type
+	 *            A Class that the children must have to be returned. Must be {@link DataChild} or a
+	 *            class that extends it.
+	 * @param name
+	 *            A String with the nameInData of the children to get
+	 * @return
+	 */
+	<T extends DataChild> List<T> getChildrenOfTypeAndName(Class<T> type, String name);
+
+	/**
+	 * removeFirstChildWithTypeAndName is used to remove the first {@link DataChild}s that matches
+	 * the specified class, nameInData and attributes.
+	 * 
+	 * @param <T>
+	 *            Automatically set to the type of class to remove
+	 * @param type
+	 *            A Class that the child must have to be removed. Must be {@link DataChild} or a
+	 *            class that extends it.
+	 * @param name
+	 *            A String with the nameInData of the child to remove
+	 * @return true if any child has been removed, false otherwise
+	 */
+	<T extends DataChild> boolean removeFirstChildWithTypeAndName(Class<T> type, String name);
+
+	/**
+	 * removeChildrenWithTypeAndName is used to remove all {@link DataChild}s that matches the
+	 * specified class, nameInData and attributes.
+	 * 
+	 * @param <T>
+	 *            Automatically set to the type of class to remove
+	 * @param type
+	 *            A Class that the children must have to be removed. Must be {@link DataChild} or a
+	 *            class that extends it.
+	 * @param name
+	 *            A String with the nameInData of the children to remove
+	 * @return true if any child has been removed, false otherwise
+	 */
+	<T extends DataChild> boolean removeChildrenWithTypeAndName(Class<T> type, String name);
+
 }

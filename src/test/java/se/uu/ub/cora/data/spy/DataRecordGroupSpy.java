@@ -20,6 +20,7 @@ package se.uu.ub.cora.data.spy;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 import se.uu.ub.cora.data.DataAtomic;
 import se.uu.ub.cora.data.DataAttribute;
@@ -135,18 +136,6 @@ public class DataRecordGroupSpy implements DataRecordGroup {
 		return null;
 	}
 
-	// @Override
-	// public void setRepeatId(String repeatId) {
-	// // TODO Auto-generated method stub
-	//
-	// }
-	//
-	// @Override
-	// public String getRepeatId() {
-	// // TODO Auto-generated method stub
-	// return null;
-	// }
-
 	@Override
 	public void addAttributeByIdWithValue(String nameInData, String value) {
 		// TODO Auto-generated method stub
@@ -227,6 +216,55 @@ public class DataRecordGroupSpy implements DataRecordGroup {
 	@Override
 	public void setDataDivider(String dataDivider) {
 		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public String getValidationType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setValidationType(String validationType) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public <T> boolean containsChildOfTypeAndName(Class<T> type, String name) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public <T extends DataChild> T getFirstChildOfTypeAndName(Class<T> type, String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public <T extends DataChild> List<T> getChildrenOfTypeAndName(Class<T> type, String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public <T extends DataChild> boolean removeFirstChildWithTypeAndName(Class<T> type,
+			String name) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public <T extends DataChild> boolean removeChildrenWithTypeAndName(Class<T> type, String name) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Optional<String> getAttributeValue(String nameInData) {
+		// TODO Auto-generated method stub
+		return Optional.empty();
 	}
 
 }
