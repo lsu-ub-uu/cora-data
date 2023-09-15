@@ -1,22 +1,5 @@
-/*
- * Copyright 2019 Uppsala University Library
- * Copyright 2022 Olov McKie
- *
- * This file is part of Cora.
- *
- *     Cora is free software: you can redistribute it and/or modify
- *     it under the terms of the GNU General Public License as published by
- *     the Free Software Foundation, either version 3 of the License, or
- *     (at your option) any later version.
- *
- *     Cora is distributed in the hope that it will be useful,
- *     but WITHOUT ANY WARRANTY; without even the implied warranty of
- *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *     GNU General Public License for more details.
- *
- *     You should have received a copy of the GNU General Public License
- *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
- */
+/**Copyright 2019 Uppsala University Library*Copyright 2022 Olov McKie**This file is part of Cora.**Cora is free software:you can redistribute it and/or modify*it under the terms of the GNU General Public License as published by*the Free Software Foundation,either version 3 of the License,or*(at your option)any later version.**Cora is distributed in the hope that it will be useful,*but WITHOUT ANY WARRANTY;without even the implied warranty of*MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the*GNU General Public License for more details.**You should have received a copy of the GNU General Public License*along with Cora.If not,see<http://www.gnu.org/licenses/>.
+*/
 package se.uu.ub.cora.data.spy;
 
 import java.util.Collection;
@@ -80,42 +63,6 @@ public class DataResourceLinkSpy implements DataResourceLink {
 
 	@Override
 	public Collection<DataAttribute> getAttributes() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setStreamId(String streamId) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public String getStreamId() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setFileName(String filename) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public String getFileName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setFileSize(String fileSize) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public String getFileSize() {
 		// TODO Auto-generated method stub
 		return null;
 	}

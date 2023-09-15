@@ -20,22 +20,16 @@
 package se.uu.ub.cora.data;
 
 /**
- * DataResourceLink contains information linking the {@link DataRecord} this link is a part of to a
- * resource such as an image. Currently are DataResourceLinks only used in record type binary or
- * children of binary.
+ * DataResourceLink is a link to a (binary) resource stored in storage. It represents the link
+ * between the {@link DataRecord} and the resource. DataResourceLinks only used in record type
+ * <b>binary</b>.
  * <p>
- * RecordTypes other than binary, links to a record with the type binary which in turn contains
- * metainformation about the binary file, and can through ResourceLinks point to different versions
- * of the binary data. The different versions can for instance be a thumbnail, a scaled version or
- * the master version of an image.
+ * Each ResourceLink points to a representation of the resource, according to metadata definition.
  */
 public interface DataResourceLink extends DataLink, Convertible {
 
 	/**
 	 * setMimeType sets the mimeType for this link.
-	 * <p>
-	 * If there is a mimeType since before must it be replaced by this method so that only one
-	 * exist.
 	 */
 	void setMimeType(String mimeType);
 
