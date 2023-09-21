@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Uppsala University Library
+ * Copyright 2019, 2023 Uppsala University Library
  * Copyright 2022 Olov McKie
  *
  * This file is part of Cora.
@@ -20,75 +20,16 @@
 package se.uu.ub.cora.data;
 
 /**
- * DataResourceLink contains information linking the {@link DataRecord} this link is a part of to a
- * resource such as an image. Currently are DataResourceLinks only used in record type binary or
- * children of binary.
+ * DataResourceLink is a link to a (binary) resource stored in storage. It represents the link
+ * between the {@link DataRecord} and the resource. DataResourceLinks only used in record type
+ * <b>binary</b>.
  * <p>
- * RecordTypes other than binary, links to a record with the type binary which in turn contains
- * metainformation about the binary file, and can through ResourceLinks point to different versions
- * of the binary data. The different versions can for instance be a thumbnail, a scaled version or
- * the master version of an image.
+ * Each ResourceLink points to a representation of the resource, according to metadata definition.
  */
 public interface DataResourceLink extends DataLink, Convertible {
-	/**
-	 * setStreamId sets the streamId for this link.
-	 * <p>
-	 * If there is a streamId since before must it be replaced by this method so that only one
-	 * exist.
-	 */
-	void setStreamId(String streamId);
-
-	/**
-	 * getStreamId returns the streamId for this link.
-	 * <p>
-	 * This information is expected to be present, if this link does not have information about what
-	 * the streamId is, MUST a {@link DataMissingException} be thrown.
-	 * 
-	 * @return A String with the streamId for this link.
-	 */
-	String getStreamId();
-
-	/**
-	 * setFileName sets the fileName for this link.
-	 * <p>
-	 * If there is a fileName since before must it be replaced by this method so that only one
-	 * exist.
-	 */
-	void setFileName(String fileName);
-
-	/**
-	 * getFileName returns the fileName for this link.
-	 * <p>
-	 * This information is expected to be present, if this link does not have information about what
-	 * the fileName is, MUST a {@link DataMissingException} be thrown.
-	 * 
-	 * @return A String with the fileName for this link.
-	 */
-	String getFileName();
-
-	/**
-	 * setFileSize sets the fileSize for this link.
-	 * <p>
-	 * If there is a fileSize since before must it be replaced by this method so that only one
-	 * exist.
-	 */
-	void setFileSize(String fileSize);
-
-	/**
-	 * getFileSize returns the fileSize for this link.
-	 * <p>
-	 * This information is expected to be present, if this link does not have information about what
-	 * the filesize is, MUST a {@link DataMissingException} be thrown.
-	 * 
-	 * @return A String with the fileSize for this link.
-	 */
-	String getFileSize();
 
 	/**
 	 * setMimeType sets the mimeType for this link.
-	 * <p>
-	 * If there is a mimeType since before must it be replaced by this method so that only one
-	 * exist.
 	 */
 	void setMimeType(String mimeType);
 
