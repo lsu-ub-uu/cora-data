@@ -41,7 +41,7 @@ public interface DataFactory {
 	DataRecordLink factorRecordLinkUsingNameInDataAndTypeAndId(String nameInData, String recordType,
 			String recordId);
 
-	DataResourceLink factorResourceLinkUsingNameInData(String nameInData);
+	DataResourceLink factorResourceLinkUsingNameInDataAndMimeType(String nameInData, String mimeType);
 
 	DataAtomic factorAtomicUsingNameInDataAndValue(String nameInData, String value);
 

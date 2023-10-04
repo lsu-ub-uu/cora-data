@@ -102,8 +102,9 @@ public class DataFactorySpy implements DataFactory {
 	}
 
 	@Override
-	public DataResourceLink factorResourceLinkUsingNameInData(String nameInData) {
-		MCR.addCall("nameInData", nameInData);
+	public DataResourceLink factorResourceLinkUsingNameInDataAndMimeType(String nameInData,
+			String mimeType) {
+		MCR.addCall("nameInData", nameInData, "mimeType", mimeType);
 		DataResourceLink dataLinkSpy = new DataResourceLinkSpy();
 		MCR.addReturned(dataLinkSpy);
 		return dataLinkSpy;

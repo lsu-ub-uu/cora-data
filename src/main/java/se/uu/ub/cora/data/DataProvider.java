@@ -143,9 +143,10 @@ public class DataProvider {
 				recordId);
 	}
 
-	public static DataResourceLink createResourceLinkUsingNameInData(String nameInData) {
+	public static DataResourceLink createResourceLinkUsingNameInDataAndMimeType(String nameInData,
+			String mimeType) {
 		ensureDataFactoryIsSet();
-		return dataFactory.factorResourceLinkUsingNameInData(nameInData);
+		return dataFactory.factorResourceLinkUsingNameInDataAndMimeType(nameInData, mimeType);
 	}
 
 	public static DataAtomic createAtomicUsingNameInDataAndValue(String nameInData, String value) {
