@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Uppsala University Library
+ * Copyright 2019, 2024 Uppsala University Library
  *
  * This file is part of Cora.
  *
@@ -176,5 +176,21 @@ public interface DataRecord extends Data, Convertible, ExternallyConvertible {
 	 * @return A String with the search id
 	 */
 	String getSearchId();
+
+	/**
+	 * Add a protocol to the record, the protocl is identified by a name from input parameter
+	 * protocol.
+	 * 
+	 * @param protocol
+	 *            String with the name of the protocol.
+	 */
+	void addProtocol(String protocol);
+
+	/**
+	 * Returns all the protocols added to a record.
+	 * 
+	 * @return Set of String of all protocols added to a record.
+	 */
+	Set<String> getProtocols();
 
 }
