@@ -50,7 +50,9 @@ public interface DataToJsonConverterFactory {
 	 * {@link Convertible} using the provided baseUrl.
 	 * 
 	 * @param baseUrl
+	 *            The baseUrl related to the convertible
 	 * @param convertible
+	 *            A {@link Convertible} to create a converter for
 	 * @return
 	 */
 	DataToJsonConverter factorUsingBaseUrlAndConvertible(String baseUrl, Convertible convertible);
