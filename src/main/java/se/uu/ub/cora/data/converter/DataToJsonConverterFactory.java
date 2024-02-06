@@ -49,13 +49,14 @@ public interface DataToJsonConverterFactory {
 	 * factorUsingBaseUrlAndConvertible creates a {@link DataToJsonConverter} for the provided
 	 * {@link Convertible} using the provided baseUrl.
 	 * 
-	 * @param baseUrl
-	 *            The baseUrl related to the convertible
 	 * @param convertible
 	 *            A {@link Convertible} to create a converter for
+	 * @param externalUrls
+	 *            A data holder object with external rule such as baseUrl and iiifUrl
 	 * @return
 	 */
-	DataToJsonConverter factorUsingBaseUrlAndConvertible(String baseUrl, Convertible convertible);
+	DataToJsonConverter factorUsingConvertibleAndExternalUrls(Convertible convertible,
+			ExternalUrls externalUrls);
 
 	/**
 	 * factorUsingRecordUrlAndConvertible creates a {@link DataToJsonConverter} for the provided
