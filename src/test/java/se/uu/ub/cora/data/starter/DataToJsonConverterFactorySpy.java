@@ -21,6 +21,7 @@ package se.uu.ub.cora.data.starter;
 import se.uu.ub.cora.data.Convertible;
 import se.uu.ub.cora.data.converter.DataToJsonConverter;
 import se.uu.ub.cora.data.converter.DataToJsonConverterFactory;
+import se.uu.ub.cora.data.converter.ExternalUrls;
 
 public class DataToJsonConverterFactorySpy implements DataToJsonConverterFactory {
 
@@ -37,8 +38,8 @@ public class DataToJsonConverterFactorySpy implements DataToJsonConverterFactory
 	}
 
 	@Override
-	public DataToJsonConverter factorUsingBaseUrlAndConvertible(String baseUrl,
-			Convertible convertible) {
+	public DataToJsonConverter factorUsingConvertibleAndExternalUrls(Convertible convertible,
+			ExternalUrls externalUrls) {
 		// TODO Auto-generated method stub
 		return null;
 	}
