@@ -23,8 +23,8 @@ import java.util.List;
 import java.util.Set;
 
 import se.uu.ub.cora.data.Action;
-import se.uu.ub.cora.data.DataGroup;
 import se.uu.ub.cora.data.DataRecord;
+import se.uu.ub.cora.data.DataRecordGroup;
 
 /*
  * Copyright 2021 Uppsala University Library
@@ -47,7 +47,7 @@ import se.uu.ub.cora.data.DataRecord;
 public class DataRecordSpy implements DataRecord {
 
 	@Override
-	public DataGroup getDataGroup() {
+	public DataRecordGroup getDataRecordGroup() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -89,7 +89,7 @@ public class DataRecordSpy implements DataRecord {
 	}
 
 	@Override
-	public void setDataGroup(DataGroup dataGroup) {
+	public void setDataRecordGroup(DataRecordGroup dataRecordGroup) {
 		// TODO Auto-generated method stub
 
 	}

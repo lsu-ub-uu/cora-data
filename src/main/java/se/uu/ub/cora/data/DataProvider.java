@@ -90,9 +90,9 @@ public class DataProvider {
 		return dataFactory.factorListUsingNameOfDataType(nameOfDataType);
 	}
 
-	public static DataRecord createRecordWithDataGroup(DataGroup dataGroup) {
+	public static DataRecord createRecordWithDataRecordGroup(DataRecordGroup dataRecordGroup) {
 		ensureDataFactoryIsSet();
-		return dataFactory.factorRecordUsingDataGroup(dataGroup);
+		return dataFactory.factorRecordUsingDataRecordGroup(dataRecordGroup);
 	}
 
 	public static DataRecordGroup createRecordGroupUsingNameInData(String nameInData) {

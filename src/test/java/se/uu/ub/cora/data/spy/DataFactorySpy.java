@@ -1,4 +1,5 @@
 /*
+
  * Copyright 2019 Uppsala University Library
  * Copyright 2022 Olov McKie
  *
@@ -34,6 +35,7 @@ import se.uu.ub.cora.testutils.mcr.MethodCallRecorder;
 public class DataFactorySpy implements DataFactory {
 	public MethodCallRecorder MCR = new MethodCallRecorder();
 	public DataGroup dataGroup;
+	public DataRecordGroup dataRecordGroup;
 
 	@Override
 	public DataList factorListUsingNameOfDataType(String nameOfDataType) {
@@ -44,9 +46,9 @@ public class DataFactorySpy implements DataFactory {
 	}
 
 	@Override
-	public DataRecord factorRecordUsingDataGroup(DataGroup dataGroup) {
-		MCR.addCall("dataGroup", dataGroup);
-		this.dataGroup = dataGroup;
+	public DataRecord factorRecordUsingDataRecordGroup(DataRecordGroup dataRecordGroup) {
+		MCR.addCall("dataGroup", dataRecordGroup);
+		this.dataRecordGroup = dataRecordGroup;
 		DataRecord dataRecordSpy = new DataRecordSpy();
 		MCR.addReturned(dataRecordSpy);
 		return dataRecordSpy;

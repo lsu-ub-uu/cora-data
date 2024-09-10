@@ -41,11 +41,13 @@ import se.uu.ub.cora.data.starter.DataModuleStarterImp;
 public class DataProviderTest {
 
 	private DataGroupSpy dataGroup;
+	private DataRecordGroupSpy dataRecordGroup;
 
 	@BeforeMethod
 	public void beforeMethod() {
 		DataProvider.onlyForTestSetDataFactory(null);
 		dataGroup = new DataGroupSpy("someNameInData");
+		dataRecordGroup = new DataRecordGroupSpy();
 	}
 
 	@Test
@@ -78,7 +80,7 @@ public class DataProviderTest {
 		DataProvider.setStarter(new DataModuleStarterImp());
 		Exception caughtException = null;
 		try {
-			DataProvider.createRecordWithDataGroup(dataGroup);
+			DataProvider.createRecordWithDataRecordGroup(dataRecordGroup);
 		} catch (Exception e) {
 			caughtException = e;
 		}
@@ -95,9 +97,9 @@ public class DataProviderTest {
 		DataFactorySpy dataFactorySpy = new DataFactorySpy();
 		DataProvider.onlyForTestSetDataFactory(dataFactorySpy);
 
-		DataProvider.createRecordWithDataGroup(dataGroup);
+		DataProvider.createRecordWithDataRecordGroup(dataRecordGroup);
 
-		assertEquals(dataFactorySpy.dataGroup, dataGroup);
+		dataFactorySpy.MCR.assertParameters("factorRecordUsingDataRecordGroup", 0, dataRecordGroup);
 	}
 
 	private DataModuleStarterSpy startDataRecordModuleInitializerWithStarterSpy() {
@@ -133,12 +135,12 @@ public class DataProviderTest {
 	public void testCreate_Record() throws Exception {
 		DataModuleStarterSpy starter = startDataRecordModuleInitializerWithStarterSpy();
 
-		DataRecord dataRecord = DataProvider.createRecordWithDataGroup(dataGroup);
+		DataRecord dataRecord = DataProvider.createRecordWithDataRecordGroup(dataRecordGroup);
 
 		assertStarterWasCalled(starter);
 		DataFactorySpy dataFactorySpy = getFactorySpyFromStarterSpy(starter);
-		dataFactorySpy.MCR.assertParameters("factorRecordUsingDataGroup", 0, dataGroup);
-		dataFactorySpy.MCR.assertReturn("factorRecordUsingDataGroup", 0, dataRecord);
+		dataFactorySpy.MCR.assertParameters("factorRecordUsingDataRecordGroup", 0, dataRecordGroup);
+		dataFactorySpy.MCR.assertReturn("factorRecordUsingDataRecordGroup", 0, dataRecord);
 	}
 
 	@Test
