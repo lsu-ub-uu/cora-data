@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Olov McKie
+ * Copyright 2022, 2024 Olov McKie
  *
  * This file is part of Cora.
  *
@@ -46,13 +46,11 @@ public class DataRecordGroupSpy implements DataRecordGroup {
 	@Override
 	public void addChild(DataChild dataElement) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void addChildren(Collection<DataChild> dataElements) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -139,7 +137,6 @@ public class DataRecordGroupSpy implements DataRecordGroup {
 	@Override
 	public void addAttributeByIdWithValue(String nameInData, String value) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -227,7 +224,6 @@ public class DataRecordGroupSpy implements DataRecordGroup {
 	@Override
 	public void setValidationType(String validationType) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -265,6 +261,55 @@ public class DataRecordGroupSpy implements DataRecordGroup {
 	public Optional<String> getAttributeValue(String nameInData) {
 		// TODO Auto-generated method stub
 		return Optional.empty();
+	}
+
+	@Override
+	public String getCreatedBy() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setCreatedBy(String userId) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public String getTsCreated() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setTsCreated(String tsCreated) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void setTsCreatedToNow() {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public String getLatestUpdatedBy() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getLatestTsUpdated() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void addUpdatedUsingUserIdAndTs(String userId, String tsUpdated) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void addUpdatedUsingUserIdAndTsNow(String userId) {
+		// TODO Auto-generated method stub
 	}
 
 }
