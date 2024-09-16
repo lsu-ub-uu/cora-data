@@ -272,4 +272,17 @@ public interface DataRecordGroup
 	 *            A String with the userId of the user that last updated this DataRecordGroup
 	 */
 	void addUpdatedUsingUserIdAndTsNow(String userId);
+
+	/**
+	 * overwriteProtectionShouldBeEnforced returns true if overwrite protection should be enforced
+	 * for this DataRecordGroup. This information is derrived from the value of the
+	 * {@link DataAtomic} with nameInData "ignoreOverwriteProtection" found in the child
+	 * {@link DataGroup} with nameInData "recordInfo".
+	 * </p>
+	 * If the records ignoreOverwriteProtection is unknown should the answer to this metod be true
+	 * 
+	 * @return A boolean that is false if and only if the "ignoreOverwriteProtection" in the
+	 *         recordInfo group is present and set to true, else is true returned.
+	 */
+	boolean overwriteProtectionShouldBeEnforced();
 }

@@ -312,4 +312,10 @@ public class DataRecordGroupSpy implements DataRecordGroup {
 		// TODO Auto-generated method stub
 	}
 
+	@Override
+	public boolean overwriteProtectionShouldBeEnforced() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
