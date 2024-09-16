@@ -285,4 +285,10 @@ public interface DataRecordGroup
 	 *         recordInfo group is present and set to true, else is true returned.
 	 */
 	boolean overwriteProtectionShouldBeEnforced();
+
+	/**
+	 * removeOverwriteProtection removes the atomic with nameInData "ignoreOverwriteProtection" from
+	 * recordInfo.
+	 */
+	void removeOverwriteProtection();
 }

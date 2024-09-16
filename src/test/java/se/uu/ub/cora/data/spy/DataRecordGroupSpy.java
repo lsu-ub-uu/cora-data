@@ -318,4 +318,9 @@ public class DataRecordGroupSpy implements DataRecordGroup {
 		return false;
 	}
 
+	@Override
+	public void removeOverwriteProtection() {
+		// TODO Auto-generated method stub
+	}
+
 }
