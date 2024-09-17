@@ -323,4 +323,16 @@ public class DataRecordGroupSpy implements DataRecordGroup {
 		// TODO Auto-generated method stub
 	}
 
+	@Override
+	public List<DataChild> getAllUpdated() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setAllUpdated(List<DataChild> list) {
+		// TODO Auto-generated method stub
+
+	}
+
 }

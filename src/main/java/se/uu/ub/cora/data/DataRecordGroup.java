@@ -19,6 +19,8 @@
  */
 package se.uu.ub.cora.data;
 
+import java.util.Collection;
+
 import se.uu.ub.cora.data.ability.DataCharacteristic;
 import se.uu.ub.cora.data.ability.DataPart;
 
@@ -274,6 +276,28 @@ public interface DataRecordGroup
 	void addUpdatedUsingUserIdAndTsNow(String userId);
 
 	/**
+	 * getAllUpdated gets all {@link DataGroup} with nameInData "updated" from the recordInfo.
+	 * </p>
+	 * If no "updated" group exists in recordInfo SHOULD a {@link DataMissingException} be thrown
+	 * with information about why the updated groups can not be determined.
+	 */
+	Collection<DataChild> getAllUpdated();
+
+	/**
+	 * setAllUpdated adds the provided updated dataChildren to this DataRecordGroups recordInfo.
+	 * </p>
+	 * Any child with nameInData "updated" that exist since before in recordInfo, is removed before
+	 * the provided update children are added.
+	 * </p>
+	 * If the {@link DataGroup} recordInfo is missing, should it be automatically added, and the
+	 * update children added to it.
+	 * 
+	 * @param updated
+	 *            A {@link Collection} containing {@link DataChild} with updated info
+	 */
+	void setAllUpdated(Collection<DataChild> updated);
+
+	/**
 	 * overwriteProtectionShouldBeEnforced returns true if overwrite protection should be enforced
 	 * for this DataRecordGroup. This information is derrived from the value of the
 	 * {@link DataAtomic} with nameInData "ignoreOverwriteProtection" found in the child
@@ -291,4 +315,5 @@ public interface DataRecordGroup
 	 * recordInfo.
 	 */
 	void removeOverwriteProtection();
+
 }
