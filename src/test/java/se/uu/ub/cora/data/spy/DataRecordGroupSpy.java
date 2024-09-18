@@ -330,9 +330,8 @@ public class DataRecordGroupSpy implements DataRecordGroup {
 	}
 
 	@Override
-	public void setAllUpdated(List<DataChild> list) {
+	public void setAllUpdated(Collection<DataChild> updated) {
 		// TODO Auto-generated method stub
-
 	}
 
 }
