@@ -1,6 +1,6 @@
 /*
  * Copyright 2021 Uppsala University Library
- * Copyright 2022 Olov McKie
+ * Copyright 2022, 2024 Olov McKie
  *
  * This file is part of Cora.
  *
@@ -18,6 +18,8 @@
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
 package se.uu.ub.cora.data;
+
+import java.util.Collection;
 
 import se.uu.ub.cora.data.ability.DataCharacteristic;
 import se.uu.ub.cora.data.ability.DataPart;
@@ -148,4 +150,170 @@ public interface DataRecordGroup
 	 *            A String with the validationType of this DataRecordGroup
 	 */
 	void setValidationType(String validationType);
+
+	/**
+	 * getCreatedBy returns the userId of the user that created this DataRecordGroup. This
+	 * information is the linkedRecordId for the {@link DataRecordLink} with nameInData "createdBy"
+	 * found in the child {@link DataGroup} with nameInData "recordInfo".
+	 * </p>
+	 * If the records createdBy is unknown SHOULD a {@link DataMissingException} be thrown with
+	 * information about why the createdBy can not be determined.
+	 * 
+	 * @return A String with the userId of the user that created this DataRecordGroup
+	 */
+	String getCreatedBy();
+
+	/**
+	 * setCreatedBy sets the records createdBy for this DataRecordGroup. This information is the
+	 * linkedRecordId for the {@link DataRecordLink} with nameInData "createdBy" found in the child
+	 * {@link DataGroup} with nameInData "recordInfo".
+	 * </p>
+	 * If the {@link DataRecordLink} createdBy, or the {@link DataGroup} recordInfo is missing,
+	 * should they be automatically added, and the links linkedRecordId set to the provided value.
+	 * If the link must be created should its "linkedRecordType" be set to the value "user".
+	 * 
+	 * @param userId
+	 *            A String with the userId of the user that created this DataRecordGroup
+	 */
+	void setCreatedBy(String userId);
+
+	/**
+	 * getTsCreated returns the timestamp of when the record for this DataRecordGroup was created.
+	 * This information is the value from the child {@link DataAtomic} with nameInData "tsCreated"
+	 * found in the {@link DataGroup} with nameInData "recordInfo".
+	 * </p>
+	 * If the records tsCreated is unknown SHOULD a {@link DataMissingException} be thrown with
+	 * information about why the tsCreated can not be determined.
+	 * 
+	 * @return A String with the timestamp of when the record for this DataRecordGroup was created
+	 */
+	String getTsCreated();
+
+	/**
+	 * setTsCreated sets the the timestamp of when the record for this DataRecordGroup was created.
+	 * This information is the value of the {@link DataAtomic} with nameInData "tsCreated" found in
+	 * the child {@link DataGroup} with nameInData "recordInfo".
+	 * </p>
+	 * If the {@link DataAtomic} tsCreated, or the {@link DataGroup} recordInfo is missing, should
+	 * they be automatically added, and the atomics value set to the provided value.
+	 * 
+	 * @param tsCreated
+	 *            A String with the timestamp of when the record for this DataRecordGroup was
+	 *            created
+	 */
+	void setTsCreated(String tsCreated);
+
+	/**
+	 * setTsCreatedToNow sets the the timestamp of when the record for this DataRecordGroup was
+	 * created to now. This information is the value of the {@link DataAtomic} with nameInData
+	 * "tsCreated" found in the child {@link DataGroup} with nameInData "recordInfo".
+	 * </p>
+	 * If the {@link DataAtomic} tsCreated, or the {@link DataGroup} recordInfo is missing, should
+	 * they be automatically added, and the atomics value set to now using format ISO-8601 with 6
+	 * fractional digits (yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ).
+	 */
+	void setTsCreatedToNow();
+
+	/**
+	 * getLatestUpdatedBy returns the userId of the last user that updated this DataRecordGroup.
+	 * This information is the linkedRecordId for the {@link DataRecordLink} with nameInData
+	 * "updatedBy" found in the last child {@link DataGroup} with nameInData "updated" inside the
+	 * child {@link DataGroup} with nameInData "recordInfo".
+	 * </p>
+	 * If the records last updatedBy is unknown SHOULD a {@link DataMissingException} be thrown with
+	 * information about why the last updatedBy can not be determined.
+	 * 
+	 * @return A String with the userId of the user that last updated this DataRecordGroup
+	 */
+	String getLatestUpdatedBy();
+
+	/**
+	 * getLatestTsUpdated returns the timestamp of when the record for this DataRecordGroup was last
+	 * updated. This information is the value from the child {@link DataAtomic} with nameInData
+	 * "tsUpdated" found in the last {@link DataGroup} with nameInData "updated" in the
+	 * {@link DataGroup} with nameInData "recordInfo".
+	 * </p>
+	 * If the records last tsUpdated is unknown SHOULD a {@link DataMissingException} be thrown with
+	 * information about why the last tsUpdated can not be determined.
+	 * 
+	 * @return A String with the timestamp of when this DataRecordGroup was last updated
+	 */
+	String getLatestTsUpdated();
+
+	/**
+	 * addUpdatedUsingUserIdAndTs creates and adds a new {@link DataGroup} with nameInData "updated"
+	 * to recordInfo. The updated group consists of two parts, "updatedBy" a DataRecordLink with
+	 * nameInData "updatedBy", and linkedRecordType "user" and linkedRecordId the provide userId and
+	 * "tsUpdated" a DataAtomic with nameInData "tsUpdated" and the provided value. A repeatId is
+	 * also automatically set to the updated group, with 0 or one higher than the previous highest
+	 * only number repeatId.
+	 * </p>
+	 * If the {@link DataGroup} recordInfo is missing, should it be automatically added, and the
+	 * created updated group added to it.
+	 * 
+	 * @param userId
+	 *            A String with the userId of the user that last updated this DataRecordGroup
+	 * @param tsUpdated
+	 *            A String with the timestamp of when the record for this DataRecordGroup was last
+	 *            updated
+	 */
+	void addUpdatedUsingUserIdAndTs(String userId, String tsUpdated);
+
+	/**
+	 * addUpdatedUsingNowAndUserId creates and adds a new {@link DataGroup} with nameInData
+	 * "updated" to recordInfo. The updated group consists of two parts, "updatedBy" a
+	 * DataRecordLink with nameInData "updatedBy", and linkedRecordType "user" and linkedRecordId
+	 * the provide userId and "tsUpdated" a DataAtomic with nameInData "tsUpdated" and the timestamp
+	 * set to now. A repeatId is also automatically set to the updated group, with 0 or one higher
+	 * than the previous highest only number repeatId.
+	 * </p>
+	 * If the {@link DataGroup} recordInfo is missing, should it be automatically added, and the
+	 * created updated group added to it.
+	 * 
+	 * @param userId
+	 *            A String with the userId of the user that last updated this DataRecordGroup
+	 */
+	void addUpdatedUsingUserIdAndTsNow(String userId);
+
+	/**
+	 * getAllUpdated gets all {@link DataGroup} with nameInData "updated" from the recordInfo.
+	 * </p>
+	 * If no "updated" group exists in recordInfo SHOULD a {@link DataMissingException} be thrown
+	 * with information about why the updated groups can not be determined.
+	 */
+	Collection<DataChild> getAllUpdated();
+
+	/**
+	 * setAllUpdated adds the provided updated dataChildren to this DataRecordGroups recordInfo.
+	 * </p>
+	 * Any child with nameInData "updated" that exist since before in recordInfo, is removed before
+	 * the provided update children are added.
+	 * </p>
+	 * If the {@link DataGroup} recordInfo is missing, should it be automatically added, and the
+	 * update children added to it.
+	 * 
+	 * @param updated
+	 *            A {@link Collection} containing {@link DataChild} with updated info
+	 */
+	void setAllUpdated(Collection<DataChild> updated);
+
+	/**
+	 * overwriteProtectionShouldBeEnforced returns true if overwrite protection should be enforced
+	 * for this DataRecordGroup. This information is derrived from the value of the
+	 * {@link DataAtomic} with nameInData "ignoreOverwriteProtection" found in the child
+	 * {@link DataGroup} with nameInData "recordInfo".
+	 * </p>
+	 * If the records ignoreOverwriteProtection is unknown should the answer to this metod be true
+	 * 
+	 * @return A boolean that is false if and only if the "ignoreOverwriteProtection" in the
+	 *         recordInfo group is present and set to true, else is true returned.
+	 */
+	boolean overwriteProtectionShouldBeEnforced();
+
+	/**
+	 * removeOverwriteProtection removes the atomic with nameInData "ignoreOverwriteProtection" from
+	 * recordInfo.
+	 */
+	void removeOverwriteProtection();
+
 }

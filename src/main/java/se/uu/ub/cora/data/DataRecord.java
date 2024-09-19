@@ -57,20 +57,21 @@ public interface DataRecord extends Data, Convertible, ExternallyConvertible {
 	String getId();
 
 	/**
-	 * setDataGroup sets the DataGroup in the DataRecord replacing any preexisting DataGroup
+	 * setDataRecordGroup sets the {@link DataRecordGroup} in the DataRecord replacing any
+	 * preexisting DataRecordGroup
 	 * 
-	 * @param dataGroup
+	 * @param dataRecordGroup
 	 *            that is governed by the record
 	 */
-	void setDataGroup(DataGroup dataGroup);
+	void setDataRecordGroup(DataRecordGroup dataRecordGroup);
 
 	/**
-	 * getDataGroup returns the datagroup governed by the record. Multiple calls to getDataGroup
-	 * should return the same instance.
+	 * getDataRecordGroup returns the {@link DataRecordGroup} governed by the record. Multiple calls
+	 * to getDataRecordGroup should return the same instance.
 	 * 
-	 * @return the DataGroup governed by the record
+	 * @return the DataRecordGroup governed by the record
 	 */
-	DataGroup getDataGroup();
+	DataRecordGroup getDataRecordGroup();
 
 	/**
 	 * addAction adds an action to the preexistings list of actions that the User that interacted

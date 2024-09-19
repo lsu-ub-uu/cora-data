@@ -40,25 +40,21 @@ public class DataListSpy implements DataList {
 	@Override
 	public void addData(Data data) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void setFromNo(String valueOf) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void setToNo(String valueOf) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void setTotalNo(String valueOf) {
 		// TODO Auto-generated method stub
-
 	}
 
 }

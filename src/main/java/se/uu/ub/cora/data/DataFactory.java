@@ -26,7 +26,7 @@ public interface DataFactory {
 
 	DataList factorListUsingNameOfDataType(String nameOfDataType);
 
-	DataRecord factorRecordUsingDataGroup(DataGroup dataGroup);
+	DataRecord factorRecordUsingDataRecordGroup(DataRecordGroup dataRecordGroup);
 
 	DataRecordGroup factorRecordGroupUsingNameInData(String nameInData);
 
