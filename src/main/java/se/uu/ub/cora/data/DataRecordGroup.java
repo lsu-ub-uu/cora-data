@@ -20,6 +20,7 @@
 package se.uu.ub.cora.data;
 
 import java.util.Collection;
+import java.util.Optional;
 
 import se.uu.ub.cora.data.ability.DataCharacteristic;
 import se.uu.ub.cora.data.ability.DataPart;
@@ -315,5 +316,30 @@ public interface DataRecordGroup
 	 * recordInfo.
 	 */
 	void removeOverwriteProtection();
+
+	/**
+	 * getTsVisibility returns the timestamp from when the value of visibility was changed
+	 */
+	Optional<String> getTsVisibility();
+
+	/**
+	 * Returns the current value of the visibility status.
+	 */
+	Optional<String> getVisibility();
+
+	/**
+	 * Set tsVisibility to now, as ISO 8601 format
+	 */
+	void setTsVisibilityNow();
+
+	/**
+	 * Set tsVisibility
+	 */
+	void setTsVisibility(String tsVisibility);
+
+	/**
+	 * Set the desired statis of visibility
+	 */
+	void setVisibility(String visibility);
 
 }

@@ -334,4 +334,34 @@ public class DataRecordGroupSpy implements DataRecordGroup {
 		// TODO Auto-generated method stub
 	}
 
+	@Override
+	public Optional<String> getTsVisibility() {
+		// TODO Auto-generated method stub
+		return Optional.empty();
+	}
+
+	@Override
+	public Optional<String> getVisibility() {
+		// TODO Auto-generated method stub
+		return Optional.empty();
+	}
+
+	@Override
+	public void setTsVisibilityNow() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setTsVisibility(String tsVisibility) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setVisibility(String visibility) {
+		// TODO Auto-generated method stub
+
+	}
+
 }
