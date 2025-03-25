@@ -374,4 +374,26 @@ public interface DataRecordGroup
 	 *            A String with the value of the visibility for the record
 	 */
 	void setVisibility(String visibility);
+
+	/**
+	 * getPermissionUnit returns the permission unit for this DataRecordGroup. This information is
+	 * the linkedRecordId for the {@link DataRecordLink} with nameInData "permissionUnit" found in
+	 * the {@link DataGroup} with nameInData "recordInfo".
+	 * 
+	 * @return A String with the permission unit of this DataRecordGroup.
+	 */
+	String getPermissionUnit();
+
+	/**
+	 * setPermissionUnit sets the permission unit for this DataRecordGroup. This information is the
+	 * linkedRecordId for the {@link DataRecordLink} with nameInData "permissionUnit" found in the
+	 * {@link DataGroup} with nameInData "recordInfo".
+	 * </p>
+	 * If the permission unit is unknown SHOULD a {@link DataMissingException} be thrown with
+	 * information about why the permission unit can not be determined.
+	 * 
+	 * @param permissionUnit
+	 *            A String with the permission unit to set for this DataRecordGroup.
+	 */
+	void setPermissionUnit(String permissionUnit);
 }

@@ -26,7 +26,7 @@ import java.util.Set;
  * different methods.
  * <p/>
  * DataChildFilters SHOULD be created using the
- * {@link DataProvider#createDataChildFilterUsingNameInData(String)} method.
+ * {@link DataProvider#createDataChildFilterUsingChildNameInData(String)} method.
  * 
  * DataChildFilter SHOULD be considered non thread-safe.
  */

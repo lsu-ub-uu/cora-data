@@ -364,4 +364,16 @@ public class DataRecordGroupSpy implements DataRecordGroup {
 
 	}
 
+	@Override
+	public String getPermissionUnit() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setPermissionUnit(String permissionUnit) {
+		// TODO Auto-generated method stub
+
+	}
+
 }
