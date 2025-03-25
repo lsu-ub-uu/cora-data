@@ -20,6 +20,7 @@
 package se.uu.ub.cora.data;
 
 import java.util.Collection;
+import java.util.Optional;
 
 import se.uu.ub.cora.data.ability.DataCharacteristic;
 import se.uu.ub.cora.data.ability.DataPart;
@@ -316,4 +317,83 @@ public interface DataRecordGroup
 	 */
 	void removeOverwriteProtection();
 
+	/**
+	 * getTsVisibility returns an Optional with the timestamp of when the visibility of this record
+	 * for this DataRecordGroup was last updated. This information is the value from the child
+	 * {@link DataAtomic} with nameInData "tsVisibility" found in the {@link DataGroup} with
+	 * nameInData "recordInfo".
+	 * </p>
+	 * If the records tsVisibility is unknown SHOULD a empty Optional be returned.
+	 * 
+	 * @return An Optional with the timestamp of when the record for this DataRecordGroup was
+	 *         created as a String
+	 */
+	Optional<String> getTsVisibility();
+
+	/**
+	 * Returns the current value of the visibility status.
+	 */
+	Optional<String> getVisibility();
+
+	/**
+	 * setTsVisibilityNow sets the the timestamp of when the visibiltiy of the record for this
+	 * DataRecordGroup was last updated to now. This information is the value of the
+	 * {@link DataAtomic} with nameInData "tsVisibility" found in the child {@link DataGroup} with
+	 * nameInData "recordInfo".
+	 * </p>
+	 * If the {@link DataAtomic} tsVisibility, or the {@link DataGroup} recordInfo is missing,
+	 * should they be automatically added, and the atomics value set to the provided value.
+	 */
+	void setTsVisibilityNow();
+
+	/**
+	 * setTsVisibility sets the the timestamp of when the visibiltiy of the record for this
+	 * DataRecordGroup was last updated. This information is the value of the {@link DataAtomic}
+	 * with nameInData "tsVisibility" found in the child {@link DataGroup} with nameInData
+	 * "recordInfo".
+	 * </p>
+	 * If the {@link DataAtomic} tsVisibility, or the {@link DataGroup} recordInfo is missing,
+	 * should they be automatically added, and the atomics value set to the provided value.
+	 * 
+	 * @param tsCreated
+	 *            A String with the timestamp of when the visibility of the record was last updated
+	 */
+	void setTsVisibility(String tsVisibility);
+
+	/**
+	 * setVisibility sets the the visibiltiy of the record for this DataRecordGroup, there are three
+	 * possible values, published, unpublished and hidden. This information is the value of the
+	 * {@link DataAtomic} with nameInData "visibility" found in the child {@link DataGroup} with
+	 * nameInData "recordInfo".
+	 * </p>
+	 * If the {@link DataAtomic} visibility, or the {@link DataGroup} recordInfo is missing, should
+	 * they be automatically added, and the atomics value set to the provided value.
+	 * 
+	 * 
+	 * @param tsCreated
+	 *            A String with the value of the visibility for the record
+	 */
+	void setVisibility(String visibility);
+
+	/**
+	 * getPermissionUnit returns the permission unit for this DataRecordGroup. This information is
+	 * the linkedRecordId for the {@link DataRecordLink} with nameInData "permissionUnit" found in
+	 * the {@link DataGroup} with nameInData "recordInfo".
+	 * 
+	 * @return A String with the permission unit of this DataRecordGroup.
+	 */
+	String getPermissionUnit();
+
+	/**
+	 * setPermissionUnit sets the permission unit for this DataRecordGroup. This information is the
+	 * linkedRecordId for the {@link DataRecordLink} with nameInData "permissionUnit" found in the
+	 * {@link DataGroup} with nameInData "recordInfo".
+	 * </p>
+	 * If the permission unit is unknown SHOULD a {@link DataMissingException} be thrown with
+	 * information about why the permission unit can not be determined.
+	 * 
+	 * @param permissionUnit
+	 *            A String with the permission unit to set for this DataRecordGroup.
+	 */
+	void setPermissionUnit(String permissionUnit);
 }
