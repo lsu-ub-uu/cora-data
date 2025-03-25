@@ -318,7 +318,15 @@ public interface DataRecordGroup
 	void removeOverwriteProtection();
 
 	/**
-	 * getTsVisibility returns the timestamp from when the value of visibility was changed
+	 * getTsVisibility returns an Optional with the timestamp of when the visibility of this record
+	 * for this DataRecordGroup was last updated. This information is the value from the child
+	 * {@link DataAtomic} with nameInData "tsVisibility" found in the {@link DataGroup} with
+	 * nameInData "recordInfo".
+	 * </p>
+	 * If the records tsVisibility is unknown SHOULD a empty Optional be returned.
+	 * 
+	 * @return An Optional with the timestamp of when the record for this DataRecordGroup was
+	 *         created as a String
 	 */
 	Optional<String> getTsVisibility();
 
@@ -328,18 +336,42 @@ public interface DataRecordGroup
 	Optional<String> getVisibility();
 
 	/**
-	 * Set tsVisibility to now, as ISO 8601 format
+	 * setTsVisibilityNow sets the the timestamp of when the visibiltiy of the record for this
+	 * DataRecordGroup was last updated to now. This information is the value of the
+	 * {@link DataAtomic} with nameInData "tsVisibility" found in the child {@link DataGroup} with
+	 * nameInData "recordInfo".
+	 * </p>
+	 * If the {@link DataAtomic} tsVisibility, or the {@link DataGroup} recordInfo is missing,
+	 * should they be automatically added, and the atomics value set to the provided value.
 	 */
 	void setTsVisibilityNow();
 
 	/**
-	 * Set tsVisibility
+	 * setTsVisibility sets the the timestamp of when the visibiltiy of the record for this
+	 * DataRecordGroup was last updated. This information is the value of the {@link DataAtomic}
+	 * with nameInData "tsVisibility" found in the child {@link DataGroup} with nameInData
+	 * "recordInfo".
+	 * </p>
+	 * If the {@link DataAtomic} tsVisibility, or the {@link DataGroup} recordInfo is missing,
+	 * should they be automatically added, and the atomics value set to the provided value.
+	 * 
+	 * @param tsCreated
+	 *            A String with the timestamp of when the visibility of the record was last updated
 	 */
 	void setTsVisibility(String tsVisibility);
 
 	/**
-	 * Set the desired statis of visibility
+	 * setVisibility sets the the visibiltiy of the record for this DataRecordGroup, there are three
+	 * possible values, published, unpublished and hidden. This information is the value of the
+	 * {@link DataAtomic} with nameInData "visibility" found in the child {@link DataGroup} with
+	 * nameInData "recordInfo".
+	 * </p>
+	 * If the {@link DataAtomic} visibility, or the {@link DataGroup} recordInfo is missing, should
+	 * they be automatically added, and the atomics value set to the provided value.
+	 * 
+	 * 
+	 * @param tsCreated
+	 *            A String with the value of the visibility for the record
 	 */
 	void setVisibility(String visibility);
-
 }
