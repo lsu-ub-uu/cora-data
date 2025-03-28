@@ -376,13 +376,14 @@ public interface DataRecordGroup
 	void setVisibility(String visibility);
 
 	/**
-	 * getPermissionUnit returns the permission unit for this DataRecordGroup. This information is
-	 * the linkedRecordId for the {@link DataRecordLink} with nameInData "permissionUnit" found in
-	 * the {@link DataGroup} with nameInData "recordInfo".
+	 * getPermissionUnit returns the permission unit for this DataRecordGroup, if exists. This
+	 * information is the linkedRecordId for the {@link DataRecordLink} with nameInData
+	 * "permissionUnit" found in the {@link DataGroup} with nameInData "recordInfo".
 	 * 
-	 * @return A String with the permission unit of this DataRecordGroup.
+	 * @return A Optional of String with the permission unit of this DataRecordGroup. If it does not
+	 *         exist then an empty optional is returned.
 	 */
-	String getPermissionUnit();
+	Optional<String> getPermissionUnit();
 
 	/**
 	 * setPermissionUnit sets the permission unit for this DataRecordGroup. This information is the
