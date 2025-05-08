@@ -301,9 +301,25 @@ public interface DataParent {
 	<T extends DataChild> T getFirstChildOfTypeAndName(Class<T> type, String name);
 
 	/**
+	 * getChildrenOfType is used to get a List of the all {@link DataChild}s that matches the
+	 * specified class. The returned list is typed to the same class that is requested.
+	 * <p>
+	 * An empty list SHOULD be returned if no child exists with the specified Class and nameInData.
+	 * 
+	 * @param <T>
+	 *            Automatically set to the requested type of class
+	 * @param type
+	 *            A Class that the children must have to be returned. Must be {@link DataChild} or a
+	 *            class that extends it.
+	 * @param name
+	 *            A String with the nameInData of the children to get
+	 * @return
+	 */
+	<T extends DataChild> List<T> getChildrenOfType(Class<T> type);
+
+	/**
 	 * getChildrenOfTypeAndName is used to get a List of the all {@link DataChild}s that matches the
-	 * specified class, nameInData and attributes. The returned list is typed to the same class that
-	 * is requested.
+	 * specified class, nameInData The returned list is typed to the same class that is requested.
 	 * <p>
 	 * An empty list SHOULD be returned if no child exists with the specified Class and nameInData.
 	 * 
