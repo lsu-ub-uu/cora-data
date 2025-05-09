@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Uppsala University Library
+ * Copyright 2019, 2025 Uppsala University Library
  *
  * This file is part of Cora.
  *
@@ -17,6 +17,8 @@
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
 package se.uu.ub.cora.data;
+
+import java.util.Optional;
 
 /**
  * DataRecordLink contains information linking the {@link DataRecord} this link is a part of to
@@ -42,5 +44,25 @@ public interface DataRecordLink extends DataLink, Convertible {
 	 * @return A String with the record type that this link refers to.
 	 */
 	public String getLinkedRecordType();
+
+	/**
+	 * setLinkedRecord sets the linked record, as group, for this link.
+	 * <p>
+	 * This method is intended to be used only when decorating a record.
+	 * 
+	 * @param group
+	 *            The {@link DataGroup} that should be set as the linked record for this link.
+	 */
+	public void setLinkedRecord(DataGroup group);
+
+	/**
+	 * getLinkedRecord returns the linked record for this link.
+	 * <p>
+	 * This method is intended to be used only when decorating a record and convertiong to external
+	 * format.
+	 * 
+	 * @return The {@link DataGroup} that is set as the linked record, as group, for this link.
+	 */
+	public Optional<DataGroup> getLinkedRecord();
 
 }

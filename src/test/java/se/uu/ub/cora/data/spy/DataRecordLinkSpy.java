@@ -24,6 +24,7 @@ import java.util.Optional;
 
 import se.uu.ub.cora.data.Action;
 import se.uu.ub.cora.data.DataAttribute;
+import se.uu.ub.cora.data.DataGroup;
 import se.uu.ub.cora.data.DataRecordLink;
 
 public class DataRecordLinkSpy implements DataRecordLink {
@@ -102,6 +103,16 @@ public class DataRecordLinkSpy implements DataRecordLink {
 	public boolean hasRepeatId() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public void setLinkedRecord(DataGroup group) {
+	}
+
+	@Override
+	public Optional<DataGroup> getLinkedRecord() {
+		// TODO Auto-generated method stub
+		return Optional.empty();
 	}
 
 }
