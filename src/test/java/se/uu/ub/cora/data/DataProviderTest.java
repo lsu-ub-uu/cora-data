@@ -226,12 +226,13 @@ public class DataProviderTest {
 		DataModuleStarterSpy starter = startDataRecordModuleInitializerWithStarterSpy();
 
 		DataResourceLink dataResourceLink = DataProvider
-				.createResourceLinkUsingNameInDataAndMimeType("resourceLink", "someMimeType");
+				.createResourceLinkUsingNameInDataAndTypeAndIdAndMimeType("resourceLink",
+						"someType", "someId", "someMimeType");
 
 		assertStarterWasCalled(starter);
 		DataFactorySpy dataFactorySpy = getFactorySpyFromStarterSpy(starter);
 		dataFactorySpy.MCR.assertParameters("factorResourceLinkUsingNameInDataAndMimeType", 0,
-				"resourceLink", "someMimeType");
+				"resourceLink", "someType", "someId", "someMimeType");
 		dataFactorySpy.MCR.assertReturn("factorResourceLinkUsingNameInDataAndMimeType", 0,
 				dataResourceLink);
 	}

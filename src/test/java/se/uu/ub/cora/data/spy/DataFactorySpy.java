@@ -1,6 +1,6 @@
 /*
 
- * Copyright 2019 Uppsala University Library
+ * Copyright 2019, 2025 Uppsala University Library
  * Copyright 2022 Olov McKie
  *
  * This file is part of Cora.
@@ -105,8 +105,9 @@ public class DataFactorySpy implements DataFactory {
 
 	@Override
 	public DataResourceLink factorResourceLinkUsingNameInDataAndMimeType(String nameInData,
-			String mimeType) {
-		MCR.addCall("nameInData", nameInData, "mimeType", mimeType);
+			String recordType, String recordId, String mimeType) {
+		MCR.addCall("nameInData", nameInData, "recordType", recordType, "recordId", recordId,
+				"mimeType", mimeType);
 		DataResourceLink dataLinkSpy = new DataResourceLinkSpy();
 		MCR.addReturned(dataLinkSpy);
 		return dataLinkSpy;

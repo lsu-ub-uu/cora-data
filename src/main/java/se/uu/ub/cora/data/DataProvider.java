@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Uppsala University Library
+ * Copyright 2019, 2025 Uppsala University Library
  * Copyright 2022 Olov McKie
  *
  * This file is part of Cora.
@@ -126,16 +126,43 @@ public class DataProvider {
 		return dataFactory.factorGroupFromDataRecordGroup(dataRecordGroup);
 	}
 
+	/**
+	 * createGroupUsingNameInData creates a {@link DataGroup} with the specified nameInData.
+	 * 
+	 * @param nameInData
+	 *            The nameInData to use for the new DataGroup.
+	 * @return A new DataGroup with the specified nameInData.
+	 */
 	public static DataGroup createGroupUsingNameInData(String nameInData) {
 		ensureDataFactoryIsSet();
 		return dataFactory.factorGroupUsingNameInData(nameInData);
 	}
 
+	/**
+	 * createRecordLinkUsingNameInData creates a {@link DataRecordLink} with the specified
+	 * nameInData.
+	 * 
+	 * @param nameInData
+	 *            The nameInData to use for the new DataRecordLink.
+	 * @return A new DataRecordLink with the specified nameInData.
+	 */
 	public static DataRecordLink createRecordLinkUsingNameInData(String nameInData) {
 		ensureDataFactoryIsSet();
 		return dataFactory.factorRecordLinkUsingNameInData(nameInData);
 	}
 
+	/**
+	 * createRecordLinkUsingNameInDataAndTypeAndId creates a {@link DataRecordLink} with the
+	 * specified nameInData, record type, and record ID.
+	 * 
+	 * @param nameInData
+	 *            The nameInData to use for the new DataRecordLink.
+	 * @param recordType
+	 *            The type of the record to link to.
+	 * @param recordId
+	 *            The ID of the record to link to.
+	 * @return A new DataRecordLink with the specified parameters.
+	 */
 	public static DataRecordLink createRecordLinkUsingNameInDataAndTypeAndId(String nameInData,
 			String recordType, String recordId) {
 		ensureDataFactoryIsSet();
@@ -143,17 +170,54 @@ public class DataProvider {
 				recordId);
 	}
 
-	public static DataResourceLink createResourceLinkUsingNameInDataAndMimeType(String nameInData,
-			String mimeType) {
+	/**
+	 * createResourceLinkUsingNameInDataAndTypeAndIdAndMimeType creates a {@link DataResourceLink}
+	 * with the specified nameInData, record type, record ID, and MIME type.
+	 * 
+	 * @param nameInData
+	 *            The nameInData to use for the new DataResourceLink.
+	 * @param recordType
+	 *            The type of the record to link to.
+	 * @param recordId
+	 *            The ID of the record to link to.
+	 * @param mimeType
+	 *            The MIME type of the resource.
+	 * @return A new DataResourceLink with the specified parameters.
+	 */
+	public static DataResourceLink createResourceLinkUsingNameInDataAndTypeAndIdAndMimeType(
+			String nameInData, String recordType, String recordId, String mimeType) {
 		ensureDataFactoryIsSet();
-		return dataFactory.factorResourceLinkUsingNameInDataAndMimeType(nameInData, mimeType);
+		return dataFactory.factorResourceLinkUsingNameInDataAndMimeType(nameInData, recordType,
+				recordId, mimeType);
 	}
 
+	/**
+	 * createAtomicUsingNameInDataAndValue creates a {@link DataAtomic} with the specified
+	 * nameInData and value.
+	 * 
+	 * @param nameInData
+	 *            The nameInData to use for the new DataAtomic.
+	 * @param value
+	 *            The value of the new DataAtomic.
+	 * @return A new DataAtomic with the specified parameters.
+	 */
 	public static DataAtomic createAtomicUsingNameInDataAndValue(String nameInData, String value) {
 		ensureDataFactoryIsSet();
 		return dataFactory.factorAtomicUsingNameInDataAndValue(nameInData, value);
 	}
 
+	/**
+	 * createAtomicUsingNameInDataAndValueAndRepeatId creates a {@link DataAtomic} with the
+	 * specified nameInData, value, and repeat ID.
+	 * 
+	 * @param nameInData
+	 *            The nameInData to use for the new DataAtomic.
+	 * @param value
+	 *            The value of the new DataAtomic.
+	 * @param repeatId
+	 *            The repeat ID of the new DataAtomic.
+	 * @return A new DataAtomic with the specified parameters.
+	 */
 	public static DataAtomic createAtomicUsingNameInDataAndValueAndRepeatId(String nameInData,
 			String value, String repeatId) {
 		ensureDataFactoryIsSet();
@@ -161,12 +225,29 @@ public class DataProvider {
 				repeatId);
 	}
 
+	/**
+	 * createAttributeUsingNameInDataAndValue creates a {@link DataAttribute} with the specified
+	 * nameInData and value.
+	 * 
+	 * @param nameInData
+	 *            The nameInData to use for the new DataAttribute.
+	 * @param value
+	 *            The value of the new DataAttribute.
+	 * @return A new DataAttribute with the specified parameters.
+	 */
 	public static DataAttribute createAttributeUsingNameInDataAndValue(String nameInData,
 			String value) {
 		ensureDataFactoryIsSet();
 		return dataFactory.factorAttributeUsingNameInDataAndValue(nameInData, value);
 	}
 
+	/**
+	 * Creates a DataChildFilter using the specified child nameInData.
+	 * 
+	 * @param childNameInData
+	 *            The child nameInData.
+	 * @return A new DataChildFilter instance.
+	 */
 	public static DataChildFilter createDataChildFilterUsingChildNameInData(
 			String childNameInData) {
 		ensureDataFactoryIsSet();
