@@ -115,7 +115,7 @@ public interface DataFactory {
 	 *            the MIME type
 	 * @return a new DataResourceLink instance
 	 */
-	DataResourceLink factorResourceLinkUsingNameInDataAndMimeType(String nameInData,
+	DataResourceLink factorResourceLinkUsingNameInDataAndTypeAndIdAndMimeType(String nameInData,
 			String recordType, String recordId, String mimeType);
 
 	/**

@@ -187,7 +187,7 @@ public class DataProvider {
 	public static DataResourceLink createResourceLinkUsingNameInDataAndTypeAndIdAndMimeType(
 			String nameInData, String recordType, String recordId, String mimeType) {
 		ensureDataFactoryIsSet();
-		return dataFactory.factorResourceLinkUsingNameInDataAndMimeType(nameInData, recordType,
+		return dataFactory.factorResourceLinkUsingNameInDataAndTypeAndIdAndMimeType(nameInData, recordType,
 				recordId, mimeType);
 	}
 

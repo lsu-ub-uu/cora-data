@@ -104,7 +104,7 @@ public class DataFactorySpy implements DataFactory {
 	}
 
 	@Override
-	public DataResourceLink factorResourceLinkUsingNameInDataAndMimeType(String nameInData,
+	public DataResourceLink factorResourceLinkUsingNameInDataAndTypeAndIdAndMimeType(String nameInData,
 			String recordType, String recordId, String mimeType) {
 		MCR.addCall("nameInData", nameInData, "recordType", recordType, "recordId", recordId,
 				"mimeType", mimeType);
