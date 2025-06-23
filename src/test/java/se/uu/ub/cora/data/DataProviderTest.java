@@ -231,10 +231,11 @@ public class DataProviderTest {
 
 		assertStarterWasCalled(starter);
 		DataFactorySpy dataFactorySpy = getFactorySpyFromStarterSpy(starter);
-		dataFactorySpy.MCR.assertParameters("factorResourceLinkUsingNameInDataAndMimeType", 0,
-				"resourceLink", "someType", "someId", "someMimeType");
-		dataFactorySpy.MCR.assertReturn("factorResourceLinkUsingNameInDataAndMimeType", 0,
-				dataResourceLink);
+		dataFactorySpy.MCR.assertParameters(
+				"factorResourceLinkUsingNameInDataAndTypeAndIdAndMimeType", 0, "resourceLink",
+				"someType", "someId", "someMimeType");
+		dataFactorySpy.MCR.assertReturn("factorResourceLinkUsingNameInDataAndTypeAndIdAndMimeType",
+				0, dataResourceLink);
 	}
 
 	@Test
