@@ -91,4 +91,16 @@ public class DataResourceLinkSpy implements DataResourceLink {
 		return false;
 	}
 
+	@Override
+	public String getType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

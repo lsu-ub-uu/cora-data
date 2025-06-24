@@ -1,5 +1,5 @@
 /*
- * Copyright 2019, 2023 Uppsala University Library
+ * Copyright 2019, 2023, 2025 Uppsala University Library
  * Copyright 2022 Olov McKie
  *
  * This file is part of Cora.
@@ -20,7 +20,7 @@
 package se.uu.ub.cora.data;
 
 /**
- * DataResourceLink is a link to a (binary) resource stored in storage. It represents the link
+ * DataResourceLink is a link to a "binary" resource stored in storage. It represents the link
  * between the {@link DataRecord} and the resource. DataResourceLinks only used in record type
  * <b>binary</b>.
  * <p>
@@ -29,17 +29,29 @@ package se.uu.ub.cora.data;
 public interface DataResourceLink extends DataLink, Convertible {
 
 	/**
+	 * getType returns the record type for this link.
+	 * 
+	 * @return A String with the record type for this link.
+	 */
+	String getType();
+
+	/**
+	 * getId returns the id for this link.
+	 * 
+	 * @return A String with the id for this link.
+	 */
+	String getId();
+
+	/**
 	 * setMimeType sets the mimeType for this link.
 	 */
 	void setMimeType(String mimeType);
 
 	/**
 	 * getMimeType returns the mimeType for this link.
-	 * <p>
-	 * This information is expected to be present, if this link does not have information about what
-	 * the mimetype is, MUST a {@link DataMissingException} be thrown.
 	 * 
 	 * @return A String with the mimetype for this link.
 	 */
 	String getMimeType();
+
 }

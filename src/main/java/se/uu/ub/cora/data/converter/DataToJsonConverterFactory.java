@@ -64,14 +64,11 @@ public interface DataToJsonConverterFactory {
 	 * 
 	 * @param baseUrl
 	 *            The baseUrl related to the convertible
-	 * @param recordUrl
-	 *            The recordUrl related to the convertible
 	 * @param convertible
 	 *            A {@link Convertible} to create a converter for
-	 * 
 	 * @return
 	 */
-	DataToJsonConverter factorUsingBaseUrlAndRecordUrlAndConvertible(String baseUrl,
-			String recordUrl, Convertible convertible);
+	DataToJsonConverter factorUsingBaseUrlAndConvertible(String baseUrl,
+			Convertible convertible);
 
 }
