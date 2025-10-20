@@ -347,7 +347,7 @@ public interface DataRecordGroup
 	void setTsVisibilityNow();
 
 	/**
-	 * setTsVisibility sets the the timestamp of when the visibiltiy of the record for this
+	 * setTsVisibility sets the timestamp of when the visibiltiy of the record for this
 	 * DataRecordGroup was last updated. This information is the value of the {@link DataAtomic}
 	 * with nameInData "tsVisibility" found in the child {@link DataGroup} with nameInData
 	 * "recordInfo".
@@ -361,7 +361,7 @@ public interface DataRecordGroup
 	void setTsVisibility(String tsVisibility);
 
 	/**
-	 * setVisibility sets the the visibiltiy of the record for this DataRecordGroup, there are three
+	 * setVisibility sets the visibiltiy of the record for this DataRecordGroup, there are three
 	 * possible values, published, unpublished and hidden. This information is the value of the
 	 * {@link DataAtomic} with nameInData "visibility" found in the child {@link DataGroup} with
 	 * nameInData "recordInfo".
@@ -374,6 +374,21 @@ public interface DataRecordGroup
 	 *            A String with the value of the visibility for the record
 	 */
 	void setVisibility(String visibility);
+
+	/**
+	 * setInTrashBin sets whether the record is in the trash bin for this DataRecordGroup.
+	 * 
+	 * @param inTrashBin
+	 *            A boolean indicating whether the record is in the trash bin or not.
+	 */
+	void setInTrashBin(boolean inTrashBin);
+
+	/**
+	 * isInTrashBin returns whether the record is in the trash bin for this DataRecordGroup.
+	 * 
+	 * @return An optional with a boolean indicating whether the record is in the trash bin or not.
+	 */
+	Optional<Boolean> isInTrashBin();
 
 	/**
 	 * getPermissionUnit returns the permission unit for this DataRecordGroup, if exists. This
