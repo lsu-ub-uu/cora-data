@@ -382,4 +382,14 @@ public class DataRecordGroupSpy implements DataRecordGroup {
 		return null;
 	}
 
+	@Override
+	public void setInTrashBin(boolean inTrashBin) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public Optional<Boolean> isInTrashBin() {
+		return Optional.empty();
+	}
 }
