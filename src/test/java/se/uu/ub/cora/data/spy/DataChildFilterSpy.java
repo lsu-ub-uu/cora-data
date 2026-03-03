@@ -20,4 +20,10 @@ public class DataChildFilterSpy implements DataChildFilter {
 		return false;
 	}
 
+	@Override
+	public String getNameInData() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

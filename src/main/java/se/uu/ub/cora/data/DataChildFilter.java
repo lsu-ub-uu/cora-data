@@ -31,6 +31,14 @@ import java.util.Set;
  * DataChildFilter SHOULD be considered non thread-safe.
  */
 public interface DataChildFilter {
+
+	/**
+	 * getNameInData returns the nameInData related to the DataChildFilter
+	 * 
+	 * @return A String with the nameInData of the DataChildFilter
+	 */
+	public String getNameInData();
+
 	/**
 	 * addAttributeUsingNameInDataAndPossibleValues add a new attribute to this filter with the
 	 * specified nameInData and possibleValues
