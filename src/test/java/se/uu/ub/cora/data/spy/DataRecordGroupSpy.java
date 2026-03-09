@@ -28,6 +28,7 @@ import se.uu.ub.cora.data.DataChild;
 import se.uu.ub.cora.data.DataChildFilter;
 import se.uu.ub.cora.data.DataGroup;
 import se.uu.ub.cora.data.DataRecordGroup;
+import se.uu.ub.cora.data.DataRecordLink;
 
 public class DataRecordGroupSpy implements DataRecordGroup {
 
@@ -391,5 +392,17 @@ public class DataRecordGroupSpy implements DataRecordGroup {
 	@Override
 	public Optional<Boolean> isInTrashBin() {
 		return Optional.empty();
+	}
+
+	@Override
+	public Optional<DataRecordLink> getHostRecord() {
+		// TODO Auto-generated method stub
+		return Optional.empty();
+	}
+
+	@Override
+	public void setHostRecord(String linkedRecordType, String linkedRecordId) {
+		// TODO Auto-generated method stub
+
 	}
 }

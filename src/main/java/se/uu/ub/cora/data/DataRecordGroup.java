@@ -331,11 +331,6 @@ public interface DataRecordGroup
 	Optional<String> getTsVisibility();
 
 	/**
-	 * Returns the current value of the visibility status.
-	 */
-	Optional<String> getVisibility();
-
-	/**
 	 * setTsVisibilityNow sets the the timestamp of when the visibiltiy of the record for this
 	 * DataRecordGroup was last updated to now. This information is the value of the
 	 * {@link DataAtomic} with nameInData "tsVisibility" found in the child {@link DataGroup} with
@@ -361,8 +356,19 @@ public interface DataRecordGroup
 	void setTsVisibility(String tsVisibility);
 
 	/**
-	 * setVisibility sets the visibiltiy of the record for this DataRecordGroup, there are three
-	 * possible values, published, unpublished and hidden. This information is the value of the
+	 * getVisibility returns an Optional with the visibility of this record. This information is the
+	 * value from the child {@link DataAtomic} with nameInData "visibility" found in the
+	 * {@link DataGroup} with nameInData "recordInfo".
+	 * </p>
+	 * If the records visibility is unknown SHOULD a empty Optional be returned.
+	 * 
+	 * @return An Optional String with the visibility for this DataRecordGroup.
+	 */
+	Optional<String> getVisibility();
+
+	/**
+	 * setVisibility sets the visibiltiy of the record for this DataRecordGroup, there are two
+	 * possible values, published and unpublished. This information is the value of the
 	 * {@link DataAtomic} with nameInData "visibility" found in the child {@link DataGroup} with
 	 * nameInData "recordInfo".
 	 * </p>
@@ -370,13 +376,18 @@ public interface DataRecordGroup
 	 * they be automatically added, and the atomics value set to the provided value.
 	 * 
 	 * 
-	 * @param tsCreated
+	 * @param visibility
 	 *            A String with the value of the visibility for the record
 	 */
 	void setVisibility(String visibility);
 
 	/**
-	 * setInTrashBin sets whether the record is in the trash bin for this DataRecordGroup.
+	 * setInTrashBin sets whether the record is in the trash bin for this DataRecordGroup. This
+	 * information is the value of the {@link DataAtomic} with nameInData "inTrashBin" found in the
+	 * child {@link DataGroup} with nameInData "recordInfo".
+	 * </p>
+	 * If the {@link DataAtomic} inTrashBin, or the {@link DataGroup} recordInfo is missing, should
+	 * they be automatically added, and the atomics value set to the provided value.
 	 * 
 	 * @param inTrashBin
 	 *            A boolean indicating whether the record is in the trash bin or not.
@@ -384,9 +395,12 @@ public interface DataRecordGroup
 	void setInTrashBin(boolean inTrashBin);
 
 	/**
-	 * isInTrashBin returns whether the record is in the trash bin for this DataRecordGroup.
+	 * isInTrashBin returns whether the record is in the trash bin for this DataRecordGroup, if
+	 * exists. This information is the value of the {@link DataAtomic} with nameInData "inTrashBin"
+	 * found in the child {@link DataGroup} with nameInData "recordInfo".
 	 * 
-	 * @return An optional with a boolean indicating whether the record is in the trash bin or not.
+	 * @return A Optional of Boolean with the value of inTrashBin. If it does not exist then an
+	 *         empty optional is returned.
 	 */
 	Optional<Boolean> isInTrashBin();
 
@@ -404,12 +418,31 @@ public interface DataRecordGroup
 	 * setPermissionUnit sets the permission unit for this DataRecordGroup. This information is the
 	 * linkedRecordId for the {@link DataRecordLink} with nameInData "permissionUnit" found in the
 	 * {@link DataGroup} with nameInData "recordInfo".
-	 * </p>
-	 * If the permission unit is unknown SHOULD a {@link DataMissingException} be thrown with
-	 * information about why the permission unit can not be determined.
 	 * 
 	 * @param permissionUnit
 	 *            A String with the permission unit to set for this DataRecordGroup.
 	 */
 	void setPermissionUnit(String permissionUnit);
+
+	/**
+	 * getHostRecord returns a {@link DataRecordLink} defined for this record, if exists. This
+	 * information is the linkedRecord for the {@link DataRecordLink} with nameInData "hostRecord"
+	 * found in the {@link DataGroup} with nameInData "recordInfo".
+	 * 
+	 * @return A Optional of {@link DataRecordLink} with the host record of this DataRecordGroup. If
+	 *         it does not exist then an empty optional is returned.
+	 */
+	Optional<DataRecordLink> getHostRecord();
+
+	/**
+	 * setHostRecord sets the host record for this DataRecordGroup. This information is the
+	 * linkedRecordId for the {@link DataRecordLink} with nameInData "hostRecord" found in the
+	 * {@link DataGroup} with nameInData "recordInfo".
+	 * 
+	 * @param linkedRecordType
+	 *            A String with the host records type to set for this DataRecordGroup.
+	 * @param linkedRecordId
+	 *            A String with the host records id to set for this DataRecordGroup.
+	 */
+	void setHostRecord(String linkedRecordType, String linkedRecordId);
 }
